@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="template" client="site">
+	<name>SpaceZ</name>
+	<version>1.0</version>
+	<creationDate>August 2021</creationDate>
+	<author>Joomla! Project</author>
+	<authorEmail>michal@workita.com</authorEmail>
+	<copyright>(C) 2021 Michał Sobkowiak</copyright>
+	<description>TPL_SPACEZ_XML_DESCRIPTION</description>
+	<files>
+		<filename>component.php</filename>
+		<filename>sz_header.php</filename>
+	 <filename>sz_footer.php</filename>
+		<filename>error.php</filename>
+		<filename>index.php</filename>
+		<filename>joomla.asset.json</filename>
+		<filename>offline.php</filename>
+		<filename>templateDetails.xml</filename>
+		<filename>template_preview.png</filename>
+		<filename>template_thumbnail.png</filename>
+		<folder>css</folder>
+		<folder>html</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+		<folder>scss</folder>
+	</files>
+	<positions>
+		<position>topbar</position>
+		<position>action</position>
+		<position>top1</position>
+		<position>top2</position>
+		<position>top3</position>
+		<position>top4</position>
+		<position>top5</position>
+		<position>top6</position>
+		<position>below-top</position>
+		<position>menu</position>
+		<position>search</position>
+		<position>banner</position>
+		<position>banner1</position>
+		<position>top-a</position>
+		<position>top-b</position>
+		<position>main-top</position>
+		<position>main-bottom</position>
+		<position>breadcrumbs</position>
+		<position>sidebar-left</position>
+		<position>sidebar-right</position>
+		<position>bottom1</position>
+		<position>bottom1</position>
+		<position>footer</position>
+		<position>footer1</position>
+		<position>footer2</position>
+		<position>footer3</position>
+		<position>footer-after</position>
+		<position>translation-team</position>
+		<position>copyright</position>
+		<position>debug</position>
+		<position>fixed</position>
+	</positions>
+	<languages folder="language">
+		<language tag="en-GB">en-GB/tpl_spacez.ini</language>
+		<language tag="en-GB">en-GB/tpl_spacez.sys.ini</language>
+		<language tag="pl-PL">pl-PL/pl-PL.tpl_spacez.ini</language>
+		<language tag="pl-PL">pl-PL/pl-PL.tpl_spacez.sys.ini</language>
+	</languages>
+	<config>
+		<fields name="params">
+			<fieldset name="advanced">
+				<field
+					name="brand"
+					type="radio"
+					label="TPL_SPACEZ_BRAND_LABEL"
+					default="1"
+					layout="joomla.form.field.radio.switcher"
+					filter="boolean"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="logoFile"
+					type="media"
+					default=""
+					label="TPL_SPACEZ_LOGO_LABEL"
+					showon="brand:1"
+				/>
+
+				<field
+					name="siteTitle"
+					type="text"
+					default=""
+					label="TPL_SPACEZ_TITLE"
+					filter="string"
+					showon="brand:1"
+				/>
+
+				<field
+					name="siteDescription"
+					type="text"
+					default=""
+					label="TPL_SPACEZ_TAGLINE"
+					filter="string"
+					showon="brand:1"
+				/>
+
+				<field
+					name="useFontScheme"
+					type="groupedlist"
+					label="TPL_SPACEZ_FONT_LABEL"
+					default="0"
+					>
+					<option value="0">JNONE</option>
+					<group label="TPL_SPACEZ_FONT_GROUP_LOCAL">
+						<option value="fonts-local_roboto">Roboto (local)</option>
+					</group>
+					<group label="TPL_SPACEZ_FONT_GROUP_WEB">
+						<option value="fonts-web_fira-sans">Fira Sans (web)</option>
+						<option value="fonts-web_roboto+noto-sans">Roboto + Noto Sans (web)</option>
+					</group>
+				</field>
+
+				<field
+					name="noteFontScheme"
+					type="note"
+					description="TPL_SPACEZ_FONT_NOTE_TEXT"
+					class="alert alert-warning"
+				/>
+
+				<field
+					name="colorName"
+					type="list"
+					default="colors_standard"
+					label="TPL_SPACEZ_COLOR_NAME_LABEL"
+					>
+					<option value="colors_standard">TPL_SPACEZ_COLOR_NAME_STANDARD</option>
+					<option value="colors_alternative">TPL_SPACEZ_COLOR_NAME_ALTERNATIVE</option>
+				</field>
+
+				<field
+					name="fluidContainer"
+					type="radio"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					label="TPL_SPACEZ_FLUID_LABEL"
+					>
+					<option value="0">TPL_SPACEZ_STATIC</option>
+					<option value="1">TPL_SPACEZ_FLUID</option>
+				</field>
+
+				<field
+					name="stickyHeader"
+					type="radio"
+					label="TPL_SPACEZ_STICKY_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field
+					name="backTop"
+					type="radio"
+					label="TPL_SPACEZ_BACKTOTOP_LABEL"
+					layout="joomla.form.field.radio.switcher"
+					default="0"
+					filter="integer"
+					>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>

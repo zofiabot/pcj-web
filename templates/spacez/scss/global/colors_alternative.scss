@@ -1,0 +1,8 @@
+// Variables, Functions and Mixins
+@import "../tools/tools";
+
+:root {
+  --spacez-color-primary: #{$alternative-color-primary};
+  --spacez-color-link: #{$alternative-color-link};
+  --spacez-color-hover: #{$alternative-color-hover};
+}

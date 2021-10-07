@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="file" version="2.5" method="upgrade">
+	<name>JCE - Polish</name>
+	<version>2.6.33</version>
+	<creationDate>2018-11-08</creationDate>
+	<author>JCE Transifex Polish Team</author>
+	<authorEmail>info@joomlacontenteditor.net</authorEmail>
+	<authorUrl>https://www.transifex.com/projects/p/jce/language/pl-PL/</authorUrl>
+	<copyright>© 2018 Widget Factory Limited</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<url>https://www.transifex.com/projects/p/jce/language/pl-PL/</url>
+	<description>Polish Language Pack for JCE 2.6.33</description>
+	<fileset>
+		<files folder="administrator/language/pl-PL" target="administrator/language/pl-PL">
+				<file>pl-PL.com_jce.ini</file>
+		<file>pl-PL.com_jce.menu.ini</file>
+		<file>pl-PL.com_jce_pro.sys.ini</file>
+		<file>pl-PL.com_jce.sys.ini</file>
+		<file>pl-PL.mod_jce_quickicon.ini</file>
+		<file>pl-PL.pkg_jce_pro.sys.ini</file>
+		<file>pl-PL.pkg_jce.sys.ini</file>
+		<file>pl-PL.plg_content_jce.ini</file>
+		<file>pl-PL.plg_content_jce.sys.ini</file>
+		<file>pl-PL.plg_editors_jce.ini</file>
+		<file>pl-PL.plg_editors_jce.sys.ini</file>
+		<file>pl-PL.plg_extension_jce.ini</file>
+		<file>pl-PL.plg_extension_jce.sys.ini</file>
+		<file>pl-PL.plg_installer_jce.ini</file>
+		<file>pl-PL.plg_installer_jce.sys.ini</file>
+		<file>pl-PL.plg_quickicon_jce.ini</file>
+		<file>pl-PL.plg_quickicon_jce.sys.ini</file>
+		<file>pl-PL.plg_system_jce.ini</file>
+		<file>pl-PL.plg_system_jcemediabox.ini</file>
+		<file>pl-PL.plg_system_jcemediabox.sys.ini</file>
+		<file>pl-PL.plg_system_jce.sys.ini</file>
+		</files>
+		<files folder="language/pl-PL" target="language/pl-PL">
+				<file>pl-PL.com_jce.ini</file>
+		<file>pl-PL.com_jce_pro.ini</file>
+		</files>
+  	</fileset>
+</extension>

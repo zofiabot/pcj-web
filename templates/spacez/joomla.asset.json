@@ -1,0 +1,155 @@
+{
+	"$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
+	"name": "spacez",
+	"version": "4.0.0",
+	"description": "This file contains details of the assets used by Jpl, the Joomla 4 site template for Joomla.pl.",
+	"license": "Single-use",
+	"assets": [
+		{
+			"name": "core",
+			"description": "Overrides and disables 'core' scripts",
+			"type": "script",
+			"uri": ""
+		},
+		{
+			"name": "bootstrap",
+			"description": "Overrides and disables 'core' scripts",
+			"type": "script",
+			"uri": ""
+		},
+		{
+			"name": "jquery",
+			"description": "Overrides and disables 'core' scripts",
+			"type": "script",
+			"uri": ""
+		},		
+		{
+			"name": "jquery-noconflict",
+			"description": "Overrides and disables 'core' scripts",
+			"type": "script",
+			"uri": ""
+		},
+		{
+			"name": "messages",
+			"description": "Overrides and disables 'core' scripts",
+			"type": "script",
+			"uri": ""
+		},
+		{
+			"name": "template.spacez.ltr",
+			"description": "The css file to be used when the site is left to right (LTR).",
+			"type": "style",
+			"uri": "template.min.css"
+		},
+		{
+			"name": "template.spacez.rtl",
+			"description": "The css file to be used when the site is right to left (RTL).",
+			"type": "style",
+			"uri": "template-rtl.min.css"
+		},
+		{
+			"name": "template.offline",
+			"description": "The css file to be used when the site is offline and offline.php is being used.",
+			"type": "style",
+			"uri": "offline.css"
+		},
+		{
+			"name": "template.active.language",
+			"description": "An asset to allow language specific css, eg 'language/[lang-CODE]/[lang-CODE].css', to use it as a dependency to the active template",
+			"type": "style",
+			"uri": "",
+			"class": "LangActiveAssetItem",
+			"dependencies": [
+				"template.active"
+			]
+		},
+		{
+			"name": "template.user",
+			"description": "A file where a user can add their own css.",
+			"type": "style",
+			"uri": "user.css",
+			"dependencies": [
+				"template.active",
+				"template.active.language"
+			]
+		},
+		{
+			"name": "template.spacez",
+			"description": "The file containing the javascript for this template.",
+			"type": "script",
+			"uri": "template.js",
+			"attributes" : {
+				"defer": true
+			},
+			"dependencies": [
+				"mainmenu",
+				"kute",
+				"bootstrap.native"
+			]
+		},
+		{
+			"name": "template.active",
+			"description": "A dummy asset to allow extensions to use it as a dependency to the active template.",
+			"type": "script",
+			"uri": "",
+			"dependencies": [
+				"template.spacez"
+			]
+		},
+		{
+			"name": "mainmenu",
+			"description": "The file containing the kute animation javascript.",
+			"type": "script",
+			"uri": "templates/SpaceZ/js/vendor/mainmenu/multilevel-menu.js",
+			"attributes" : {
+				"defer": true
+			}
+		},
+		{
+			"name": "kute",
+			"description": "The file containing the kute animation javascript.",
+			"type": "script",
+			"uri": "templates/SpaceZ/js/vendor/kute/kute.js",
+			"attributes" : {
+				"defer": true
+			}
+		},
+		{
+			"name": "bootstrap.native",
+			"description": "The file containing the bootstrap javascript (non-jquery version).",
+			"type": "script",
+			"uri": "templates/SpaceZ/js/vendor/bootstrap-native/bootstrap-native.js",
+			"attributes" : {
+				"defer": true
+			}
+		},
+		{
+			"name": "template.user",
+			"description": "The name of a file where a user can add their own javascript",
+			"type": "script",
+			"uri":	"templates/SpaceZ/js/user.js",
+			"dependencies": [
+				"template.active"
+			]
+		},
+		{
+			"name": "template.spacez.ltr",
+			"type": "preset",
+			"dependencies": [
+				"template.spacez.ltr#style"
+			]
+		},
+		{
+			"name": "template.spacez.rtl",
+			"type": "preset",
+			"dependencies": [
+				"template.spacez.rtl#style"
+			]
+		},
+		{
+			"name": "searchtools",
+			"type": "style",
+			"uri": "system/searchtools/searchtools.min.css"
+		}
+	]
+}

@@ -1,0 +1,7 @@
+/.htaccess
+/administrator/cache/*
+/bin/*
+/cache/*
+/cli/*
+/tmp/*
+/configuration.php

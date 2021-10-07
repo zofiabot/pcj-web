@@ -1,0 +1,10 @@
+// Fonts
+$roboto-font-path: "../../fonts/lato-fontface/fonts" !default;
+@import "../../fonts/lato-fontface/scss/lato-fontface";
+
+:root {
+  --spacez-font-family-body: "Lato", sans-serif;
+  --spacez-font-family-headings: "Lato", sans-serif;
+  --spacez-font-weight-headings: 300;
+  --spacez-font-weight-normal: 600;
+}
