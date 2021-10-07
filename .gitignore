@@ -4,4 +4,6 @@
 /cache/*
 /cli/*
 /tmp/*
+/a-backups/*
+/templates/spacez/scss/*
 /configuration.php
