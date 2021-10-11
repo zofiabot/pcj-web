@@ -1,9 +1,9 @@
 /.htaccess
 /administrator/cache/*
+/administrator/logs/*
 /bin/*
-/a-backups/*
 /cache/*
 /cli/*
 /tmp/*
-/templates/spacez/scss/*
+/a-backups/*
 /configuration.php
