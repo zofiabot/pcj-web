@@ -8,8 +8,8 @@
 // Color system
 
 // scss-docs-start gray-color-variables
-$white:		#fff !default;
-$gray-100: #f8f9fa !default;
+$white:    #fbfcf0 !default;
+$gray-100: #f8f9f0 !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
@@ -18,7 +18,7 @@ $gray-600: #6c757d !default;
 $gray-700: #495057 !default;
 $gray-800: #343a40 !default;
 $gray-900: #212529 !default;
-$black:		#000 !default;
+$black:		 #000    !default;
 // scss-docs-end gray-color-variables
 
 // fusv-disable
@@ -42,23 +42,23 @@ $blue:		#223fcc !default; // changed SpaceZ
 $indigo:  #2200aa !default; // changed SpaceZ
 $purple:  #2a0948 !default; // changed SpaceZ
 $pink:		#d63384 !default;
-$red:		 #dc3545 !default;
+$red:		  #dc3545 !default;
 $orange:  #fd7e14 !default;
 $yellow:  #ffc107 !default;
-$green:		#76bc21 !default; // changed SpaceZ
+$green:		#338800 !default; // changed SpaceZ
 $teal:		#20c997 !default;
-$cyan:		#00acf0 !default; // changed SpaceZ
+$cyan:		#0077bb !default; // changed SpaceZ
 // scss-docs-end color-variables
 
 // scss-docs-start colors-map
 $colors: (
   "blue":				$blue,
-  "indigo":		 $indigo,
-  "purple":		 $purple,
+  "indigo":		  $indigo,
+  "purple":		  $purple,
   "pink":				$pink,
   "red":				$red,
-  "orange":		 $orange,
-  "yellow":		 $yellow,
+  "orange":		  $orange,
+  "yellow":		  $yellow,
   "green":		  $green,
   "teal":				$teal,
   "cyan":				$cyan,
@@ -69,13 +69,13 @@ $colors: (
 // scss-docs-end colors-map
 
 // scss-docs-start theme-color-variables
-$primary:				$blue !default;
-$secondary:		 $gray-600 !default;
+$primary:				$indigo !default;
+$secondary:		  $gray-600 !default;
 $success:				$green !default;
 $info:				  $cyan !default;
 $warning:				$yellow !default;
 $danger:				$red !default;
-$light:				 $gray-100 !default;
+$light:				  $gray-100 !default;
 $dark:				  $purple !default;  // changed SpaceZ
 // scss-docs-end theme-color-variables
 
@@ -86,7 +86,7 @@ $theme-colors: (
   "success":		$success,
   "info":				$info,
   "warning":		$warning,
-  "danger":		 $danger,
+  "danger":		  $danger,
   "light":		  $light,
   "dark":				$dark
 ) !default;
@@ -493,7 +493,7 @@ $small-font-size:						 .875em !default;
 
 $sub-sup-font-size:						.75em !default;
 
-$text-muted:								  $gray-600 !default;
+$text-muted:								  $gray-700 !default; // changed SpaceZ
 
 $initialism-font-size:				$small-font-size !default;
 
@@ -1284,7 +1284,7 @@ $alert-link-font-weight:				$font-weight-bold !default;
 $alert-border-width:						$border-width !default;
 $alert-bg-scale:								-80% !default;
 $alert-border-scale:						-70% !default;
-$alert-color-scale:						 40% !default;
+$alert-color-scale:						  40% !default;
 $alert-dismissible-padding-r:		$alert-padding-x * 3 !default; // 3x covers width of x plus default padding on either side
 // scss-docs-end alert-variables
 
@@ -1299,7 +1299,7 @@ $progress-border-radius:						$border-radius !default;
 $progress-box-shadow:								$box-shadow-inset !default;
 $progress-bar-color:								$white !default;
 $progress-bar-bg:										$primary !default;
-$progress-bar-animation-timing:		 1s linear infinite !default;
+$progress-bar-animation-timing:		  1s linear infinite !default;
 $progress-bar-transition:						width .6s ease !default;
 // scss-docs-end progress-variables
 
@@ -1308,7 +1308,7 @@ $progress-bar-transition:						width .6s ease !default;
 
 // scss-docs-start list-group-variables
 $list-group-color:								  $gray-900 !default;
-$list-group-bg:										 $white !default;
+$list-group-bg:										  $white !default;
 $list-group-border-color:						rgba($black, .125) !default;
 $list-group-border-width:						$border-width !default;
 $list-group-border-radius:				  $border-radius !default;
@@ -1364,7 +1364,7 @@ $breadcrumb-item-padding-x:				 .5rem !default;
 $breadcrumb-margin-bottom:				  1rem !default;
 $breadcrumb-bg:										 null !default;
 $breadcrumb-divider-color:				  $gray-600 !default;
-$breadcrumb-active-color:						$gray-600 !default;
+$breadcrumb-active-color:						$gray-800 !default; // changed SpaceZ
 $breadcrumb-divider:								quote("/") !default;
 $breadcrumb-divider-flipped:				$breadcrumb-divider !default;
 $breadcrumb-border-radius:				  null !default;

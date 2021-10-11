@@ -54,9 +54,10 @@ function svg ( $args )
 
 		$svg .= "width='{$width}' height='{$height}' viewBox='0 0 {$vb[0]} {$vb[1]}'";
 
-		if ( $title || $desc ) { $svg .= " aria-describedby='{$tid}{$did}'>"; } 
+		if ( $title ) { $svg .= " aria-labelledby='{$tid}'>"; } 
+		if ( $desc ) { $svg .= " aria-describedby='{$did}'>"; } 
 
-		else { $svg .= ' aria-hidden="true" focusable="false">'; }
+		if (!( $title || $desc )) { $svg .= ' aria-hidden="true" focusable="false">'; }
 
 		$svg .= $title . $desc . $defs . $paths . "</svg>";
 
@@ -64,8 +65,8 @@ function svg ( $args )
 }
 
 function smico() {	// produces small icons
-										// accepts single argument or number of arguments
-										// in later case order is [ name, size, title, class ]
+					// accepts single argument or number of arguments
+					// in later case order is [ name, size, title, class ]
 
 		$args = func_get_args();
 

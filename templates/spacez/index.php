@@ -93,17 +93,15 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 <?php require_once('sz_header.php');?>
 
 	<?php if ($this->countModules('breadcrumbs', true)) : ?>
-		<section class="section-slider action bg-indigo pt-5">
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
 					<jdoc:include type="modules" name="breadcrumbs" style="none" />
 				</div>
 			</div>
-		</section>
 	<?php endif; ?>
 
 	<?php if ($this->countModules('action', true)) : ?>
-		<section class="section-slider action bg-indigo pt-5">
+		<section class="section-slider action dark pt-1 pb-5">
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
 					<jdoc:include type="modules" name="action" style="3col" />
@@ -113,7 +111,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 	
 	<?php if ($this->countModules('top1', true)) : ?>
-		<section class="section-top	py-4 top1">
+		<section class="section-top pt-2 pb-5 top1">
 			<div class="container text-center">
 				<?php format_advantages('top1'); ?>
 			</div>
@@ -121,11 +119,11 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 	
 	<?php if ($this->countModules('top2', true)) : ?>
-		<section class="section-top py-4 top2">
+		<section class="section-top top2">
 			<div class="container">
 				<div class="row align-items-center justify-content-center g-4">
 				<div class="col col-12 col-md-8 fs-5 pe-md-3 ps-md-5"> <?php echo renderModule( 'top2',0 ) ?></div>
-				<div class="col col-12 col-md-4 mt-0 fancy-list"> <?php echo renderModule( 'top2',1 ) ?></div>
+				<div class="col col-12 col-md-4 my-2 fancy-list"> <?php echo renderModule( 'top2',1 ) ?></div>
 				</div>
 			</div>
 		</section>
@@ -184,6 +182,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 			<jdoc:include type="message" />
 			<main>
 			<jdoc:include type="component" />
+			<!-- <?php echo presentIcons(); ?> -->
 			</main>
 			<jdoc:include type="modules" name="main-bottom" style="none" />
 		</div>
@@ -197,8 +196,8 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php require_once ( 'sz_footer.php' ); ?>
 
 	<?php if ($this->params->get('backTop') == 1) : ?>
-		<a href="#top" id="back-top" class="back-to-top-link" aria-label="<?php echo Text::_('TPL_SPACEZ_BACKTOTOP'); ?>">
-			<span class="icon-arrow-up icon-fw" aria-hidden="true"></span>
+		<a href="#top" id="back-top" class="back-to-top btn btn-dark" aria-label="<?php echo Text::_('TPL_SPACEZ_BACKTOTOP'); ?>">
+			<?php echo smico('chevrons-up', 32, Text::_('TPL_SPACEZ_BACKTOTOP') ) ?>
 		</a>
 	<?php endif; ?>
 

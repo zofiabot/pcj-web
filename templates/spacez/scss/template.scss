@@ -468,7 +468,7 @@ div.article-body {
 		column-gap: $grid-gutter-width;
 
 	h2, h3 {column-span: all;}
-	h4 {break-before: always; break-after: avoid; break-inside: avoid;} // not working yet :(
+	h4 {break-before: always; break-after: avoid; break-inside: avoid;} // not working yet :( 
 }
 
 @include media-breakpoint-up(lg) {

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 64 60"
+   version="1.1"
+   id="svg14"
+   sodipodi:docname="demo2.svg"
+   inkscape:version="1.1 (c68e22c387, 2021-05-23)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs18" />
+  <sodipodi:namedview
+     id="namedview16"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     showgrid="false"
+     inkscape:zoom="3.4720347"
+     inkscape:cx="-51.554784"
+     inkscape:cy="81.220386"
+     inkscape:window-width="1866"
+     inkscape:window-height="1043"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg14" />
+  <title
+     id="title2">presentation board</title>
+  <g
+     id="Layer_2"
+     data-name="Layer 2">
+    <g
+       id="presentation_board"
+       data-name="presentation board">
+      <path
+         d="M60.2,0H3.8A3.83,3.83,0,0,0,0,3.84V5.93A3.82,3.82,0,0,0,3.27,9.71V44.48a1,1,0,0,0,1,1H22.8l-7,13.05A1,1,0,0,0,16.73,60h7.53a1,1,0,0,0,.88-.53l2.61-4.89h9.85l2.61,4.89a1,1,0,0,0,.88.53h7.53a1,1,0,0,0,.88-1.47l-7-13h17.2a1,1,0,0,0,1-1V9.71A3.82,3.82,0,0,0,64,5.93V3.84A3.83,3.83,0,0,0,60.2,0ZM23.66,58H18.4l6.67-12.52h5.26Zm5.15-5.42,3.79-7.1h.14l3.79,7.1ZM46.95,58H41.68L35,45.48h5.26ZM58.73,43.48H5.27V9.77H58.73ZM62,5.93a1.83,1.83,0,0,1-1.8,1.84H3.8A1.83,1.83,0,0,1,2,5.93V3.84A1.83,1.83,0,0,1,3.8,2H60.2A1.83,1.83,0,0,1,62,3.84Z"
+         id="path4" />
+      <path
+         d="M13.78,37.85h7.14a1,1,0,0,0,1-1V27.41a1,1,0,0,0-1-1H13.78a1,1,0,0,0-1,1v9.44A1,1,0,0,0,13.78,37.85Zm1-9.44h5.14v7.44H14.78Z"
+         id="path6" />
+      <path
+         d="M28.66,37.85H35.8a1,1,0,0,0,1-1V23.19a1,1,0,0,0-1-1H28.66a1,1,0,0,0-1,1V36.85A1,1,0,0,0,28.66,37.85Zm1-13.66H34.8V35.85H29.66Z"
+         id="path8" />
+      <path
+         d="M43.54,37.85h7.14a1,1,0,0,0,1-1V18a1,1,0,0,0-1-1H43.54a1,1,0,0,0-1,1V36.85A1,1,0,0,0,43.54,37.85Zm1-18.88h5.14V35.85H44.54Z"
+         id="path10" />
+    </g>
+  </g>
+  <metadata
+     id="metadata1035">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>presentation board</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

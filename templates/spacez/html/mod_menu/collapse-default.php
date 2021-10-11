@@ -17,9 +17,9 @@ use Joomla\CMS\Language\Text;
 
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-	 <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-<?php echo $module->id ?>"  aria-expanded="false" aria-label="Toggle navigation">
-		  <span class="navbar-toggler-icon icon-dark"></span>
-		</button>
+	 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-<?php echo $module->id ?>"  aria-expanded="false" aria-label="Toggle navigation">
+	 	<?php echo smico('menu', 24) ?>
+	</button>
 	 <div class="collapse navbar-collapse" id="navbar-<?php echo $module->id; ?>">
 		 <?php require __DIR__ . '/default.php'; ?>
 	 </div>

@@ -14,8 +14,8 @@ defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 ?>
-<nav class="mod-breadcrumbs__wrapper" aria-label="<?php echo htmlspecialchars($module->title, ENT_QUOTES, 'UTF-8'); ?>">
-	<ol itemscope itemtype="https://schema.org/BreadcrumbList" class="mod-breadcrumbs breadcrumb p-2">
+<nav class="breadcrumbs" aria-label="<?php echo htmlspecialchars($module->title, ENT_QUOTES, 'UTF-8'); ?>">
+	<ol itemscope itemtype="https://schema.org/BreadcrumbList" class="breadcrumb pt-3 px-2 m-0">
 
 		<?php
 		// Get rid of duplicated entries on trail including home page when using multilanguage

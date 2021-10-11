@@ -11,6 +11,7 @@ defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\Language\Text;
+require_once('templates/spacez/functions.php');
 
 $item		= $displayData['data'];
 $display = $item->text;
@@ -20,40 +21,40 @@ switch ((string) $display)
 {
 	// Check for "Start" item
 	case Text::_('JLIB_HTML_START') :
-		$item->text = Text::_('JPREVIOUS');
-		$icon = $app->getLanguage()->isRtl() ? 'bi-double-chevron-right' : 'bi-double-chevron-left';
 		$aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+		$item->text = Text::_('JPREVIOUS');
+		$icon = $app->getLanguage()->isRtl() ? 'chevrons-right' : 'chevrons-left';
 		break;
 
 	// Check for "Prev" item
 	case $item->text === Text::_('JPREV') :
-		$item->text = Text::_('JPREVIOUS');
-		$icon = $app->getLanguage()->isRtl() ? 'bi-chevron-right' : 'bi-chevron-left';
 		$aria =Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+		$item->text = Text::_('JPREVIOUS');
+		$icon = $app->getLanguage()->isRtl() ? 'chevron-right' : 'chevron-left' ;
 		break;
 
 	// Check for "Next" item
 	case Text::_('JNEXT') :
-		$item->text = Text::_('JNEXT');
-		$icon = $app->getLanguage()->isRtl() ? 'icon-angle-left' : 'bi-chevron-right';
 		$aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+		$item->text = Text::_('JNEXT');
+		$icon = $app->getLanguage()->isRtl() ? 'chevron-left' : 'chevron-right';
 		break;
 
 	// Check for "End" item
 	case Text::_('JLIB_HTML_END') :
-		$icon = $app->getLanguage()->isRtl() ? 'bi-chevron-double-left' : 'bi-chevron-double-right';
 		$aria = Text::sprintf('JLIB_HTML_GOTO_POSITION', strtolower($item->text));
+		$icon = $app->getLanguage()->isRtl() ? 'chevrons-left' : 'chevrons-right';
 		break;
 
 	default:
-		$icon = null;
 		$aria = Text::sprintf('JLIB_HTML_GOTO_PAGE', strtolower($item->text));
+		$icon = null;
 		break;
 }
 
 if ($icon !== null)
 {
-	$display = '<i class="' . $icon . '" role="img" aria-label="' . $display . '"></i>';
+	$display = smico($icon, 23, $display);
 }
 
 if ($displayData['active'])

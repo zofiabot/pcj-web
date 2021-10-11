@@ -20,7 +20,7 @@ use Joomla\CMS\Document;
 
 ?>
 
-<header class="pt-3 <?php echo $stickyHeader ? ' ' . $stickyHeader : ''; ?>">
+<header class="dark py-2 py-lg-3 <?php echo $stickyHeader ? ' ' . $stickyHeader : ''; ?>" id="top">
 
 	<?php if ($this->countModules('topbar')) : ?>
 		<div class="container-fluid container-topbar">
@@ -28,31 +28,26 @@ use Joomla\CMS\Document;
 		</div>
 	<?php endif; ?>
 
-	<div class="container">
-			<div class="d-flex flex-wrap align-items-evenly">
+	<div class="container d-flex">
+		
+		<?php if ($this->params->get( 'brand', 1 )) : ?>
+		<a class="navbar-brand justify-self-start" href="<?php echo $this->baseurl; ?>/">
+			<?php echo joomlalogo( $sitename, 64 ) . pcjlogo( $sitename, 64 ); ?>
+		</a>
+		<?php endif; ?>
+		<!-- <nav class="navbar navbar-expand-lg"> -->
 
-			<?php if ($this->params->get( 'brand', 1 )) : ?>
-					<a class="d-flex text-decoration-none navbar-brand" href="<?php echo $this->baseurl; ?>/">
-						<?php echo joomlalogo( $sitename, 64 ) . pcjlogo( $sitename, 64 ); ?>
-					</a>
-					<?php if ($this->params->get('siteDescription')) : ?>
-						<div class="site-description"><?php echo htmlspecialchars($this->params->get('siteDescription')); ?></div>
-					<?php endif; ?>
-			<?php endif; ?>
+			<jdoc:include type="modules" name="menu" style="none" />
+			<!-- <div id="navsearch" class="container-search ms-xl-2 justify-self-end"> -->
+		<!-- </nav> -->
+				<jdoc:include type="modules" name="search" style="none" />
+			<!-- </div> -->
 
-				<div id="mainmenu" class="nav me-auto justify-self-start">
-					<jdoc:include type="modules" name="menu" style="none" />
-				</div>
-				<div id="navsearch" class="container-search ms-xl-2 justify-self-end">
-					<jdoc:include type="modules" name="search" style="none" />
-				</div>
-
-			</div>
+		</div>
 			<?php if ($this->countModules('below-top')) : ?>
 				<div class="container-fluid container-below-top">
 					<jdoc:include type="modules" name="below-top" style="none" />
 				</div>
 			<?php endif; ?>
-		</div>
 	</div>
 </header>
