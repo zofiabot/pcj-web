@@ -15,7 +15,7 @@ $module  = $displayData['module'];
 $params  = $displayData['params'];
 $attribs = $displayData['attribs'];
 $title = $module->title;
-$title = strtr( $title, [ '[[strong]]' => '<strong>', '[[/strong]]' => '</strong>' ]);
+$title = tagReplace( $title );
 
 if ($module->content === null || $module->content === '')
 {

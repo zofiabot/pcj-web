@@ -92,14 +92,6 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 
 <?php require_once('sz_header.php');?>
 
-	<?php if ($this->countModules('breadcrumbs', true)) : ?>
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<jdoc:include type="modules" name="breadcrumbs" style="none" />
-				</div>
-			</div>
-	<?php endif; ?>
-
 	<?php if ($this->countModules('action', true)) : ?>
 		<section class="section-slider action dark pt-1 pb-5">
 			<div class="container">
@@ -117,6 +109,17 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 			</div>
 		</section>
 	<?php endif; ?>
+
+	<?php if ($this->countModules('breadcrumbs', true)) : ?>
+		<section class="section-breadcrumbs pt-2 pb-5">
+			<div class="container">
+				<div class="row align-items-center justify-content-center">
+					<jdoc:include type="modules" name="breadcrumbs" style="none" />
+				</div>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	
 	<?php if ($this->countModules('top2', true)) : ?>
 		<section class="section-top top2">
@@ -146,9 +149,9 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 	
 	<?php if ($this->countModules('top5', true)) : ?>
-		<section class="section-top py-4 top5">
+		<section class="section-top pb-4 top5">
 			<div class="container">
-				<jdoc:include type="modules" name="top5" style="module" />
+				<?php format_sites('top5'); ?>
 			</div>
 		</section>
 	<?php endif; ?>

@@ -1,10 +1,9 @@
 <?php
 /**
- * * @package		Templates.SpaceZ
- * @subpackage	Templates.SpaceZ
+ * @package		Templates.SpaceZ
  *
- * @copyright Michał Sobkowiak & Zofia
- * @license	GNU General Public License version 2 or later; see LICENSE.txt
+ * @copyright	(C) 2021 Michał Sobkowiak & Zofia
+ * @license		Single use licence for Polskie Centrum Joomla
  */
 
 defined('_JEXEC') or die;
@@ -28,11 +27,12 @@ function format_advantages( $positionName , $num = 0 ) {
 	
 	for ( $i=0; $i < $DOM->getElementsByTagName('h4')->length; $i++ ){
 	
-		$output .= '<div class="advantage col g-2 ' . strtolower($Headers->item($i)->textContent) . 
-				'"><div>
-								<h5>' . ($Headers->item($i)->textContent) . '</h5>' .
-				svg( [$icons[$i], [ 128 , 128], 'size' => 64 ] ) .
-								'<p>' . ($Details->item($i)->textContent) . '</p></div></div>';
+		$output .= 	'<div class="advantage col g-2 ' . strtolower($Headers->item($i)->textContent) . 
+					'"><div>
+						<h5>' . ($Headers->item($i)->textContent) . '</h5>' .
+						svg( [$icons[$i], [ 128 , 128], 'size' => 64 ] ) .
+						'<p>' . ($Details->item($i)->textContent) . '</p>' .
+					'</div></div>';
 
 	}
 
@@ -44,6 +44,41 @@ function format_advantages( $positionName , $num = 0 ) {
 							 trim($Button->textContent) . '</a></div>' . '</div>';
 	
 	}
+
+	return print($output);
+
+}
+
+function format_sites( $positionName , $num = 0 ) {
+	
+	$html = renderModule ($positionName, $num);
+	$html = $html; // 0 for first module
+	
+	$DOM = new DOMDocument( '1.1', 'utf-8' );
+	$DOM->loadHTML( mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' ) );
+	
+	$Headers = $DOM->getElementsByTagName('h3');
+	$Header = tagReplace($Headers[0]->textContent);
+	$Buttons = $DOM->getElementsByTagName('a');
+	
+	$output =  '<h3>'. $Header . '</h3><div class="d-flex row row-cols-lg-5 row-cols-md-3 row-cols-2 justify-content-center g-2">' ;
+
+	$icons = [ Logo_SitesForum, Logo_SitesFundacja, Logo_SitesDemo, Logo_SitesWiki, Logo_JoomlaDay ];
+	$classes = [ 's-forum', 's-fundacja', 's-demo', 's-wiki', 's-jday' ];
+	
+	$i=0;
+	foreach ($Buttons as $Button){
+	
+		$output .= 	'<div class="col">' .
+						'<a href="' . trim($Button->getAttribute('href')) . '" class="sites-link">' . 
+							svg( [$icons[$i], [ 128 , 128 ], 'size' => 64, 'title' => trim($Button->textContent), 'class' => $classes[$i] ] ) .
+						'</a>' .
+					'</div>';
+		$i++;
+
+	}
+
+	$output = '' . $output . '</div>';
 
 	return print($output);
 
@@ -73,6 +108,14 @@ function renderModule ( $positionName, $num = 0 ){
 	}
 	
 	return $output[$num];
+
+}
+
+function tagReplace ( $text ){
+
+	$text = strtr( $text, [ '[[strong]]' => '<strong>', '[[/strong]]' => '</strong>' ]);
+
+	return $text;
 
 }
 
