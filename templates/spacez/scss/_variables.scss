@@ -8,8 +8,8 @@
 // Color system
 
 // scss-docs-start gray-color-variables
-$white:    #fbfcf0 !default;
-$gray-100: #f8f9f0 !default;
+$white:    #fdfefa !default;
+$gray-100: #fbfcf8 !default;
 $gray-200: #e9ecef !default;
 $gray-300: #dee2e6 !default;
 $gray-400: #ced4da !default;
@@ -278,7 +278,7 @@ $position-values: (
 //
 // Settings for the `<body>` element.
 
-$body-bg:										$light !default; // changed SpaceZ
+$body-bg:										$white !default; // changed SpaceZ
 $body-color:								$gray-900 !default; // changed SpaceZ
 $body-text-align:						null !default;
 

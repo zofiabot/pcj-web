@@ -15,7 +15,7 @@ use Joomla\CMS\Language\Text;
 //HTMLHelper::_('bootstrap.collapse');
 ?>
 
-<nav class="navbar navbar-expand-lg">
+<nav class="navbar navbar-expand-lg testing">
   <div class="container-fluid">
 	 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-<?php echo $module->id ?>"  aria-expanded="false" aria-label="Toggle navigation">
 	 	<?php echo smico('menu', 24) ?>

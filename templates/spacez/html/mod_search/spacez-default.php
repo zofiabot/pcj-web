@@ -35,11 +35,11 @@ $collapseicon = smico('search', 28, $text, 'collapsed') .  smico('x', 28, $text,
 $formicon = smico('search', 28, $text) ;
 
 $inputfield = '<input type="text" name="searchword" id="searchword" class="searchword form-control dark" type="search" placeholder="' . $text . '" aria-label="' . $text . '" >';
-$btn_search = '<button class="btn btn-dark input-group-text">' . $formicon . '</button>';
+$btn_search = '<button class="btn input-group-text">' . $formicon . '</button>';
 
 ?>
 
-<nav class="navbar navbar-expand-xl ms-lg-auto">
+<nav class="navbar navbar-search navbar-expand-xl ms-lg-auto align-self-start justify-self-end pt-2">
 	
 	
 	<form action="<?php echo JRoute::_('index.php'); ?>" method="post" class="d-flex" role="search">
@@ -50,7 +50,7 @@ $btn_search = '<button class="btn btn-dark input-group-text">' . $formicon . '</
 			
 		</div>
 		
-		<button class="btn btn-dark navbar-toggler input-group-text collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#search-nav" aria-controls="search-nav" aria-expanded="false" aria-label="Toggle navigation" onclick="this.form.searchword.focus();">
+		<button class="navbar-toggler collapsed pt-2" type="button" data-bs-toggle="collapse" data-bs-target="#search-nav" aria-controls="search-nav" aria-expanded="false" aria-label="Toggle navigation">
 			<?php echo $collapseicon ?>
 		</button>
 

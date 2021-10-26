@@ -90,17 +90,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 ?>">
 
 
-<?php require_once('sz_header.php');?>
-
-	<?php if ($this->countModules('action', true)) : ?>
-		<section class="section-slider action dark pt-1 pb-5">
-			<div class="container">
-				<div class="row align-items-center justify-content-center">
-					<jdoc:include type="modules" name="action" style="3col" />
-				</div>
-			</div>
-		</section>
-	<?php endif; ?>
+	<?php require_once('sz_header.php');?>
 	
 	<?php if ($this->countModules('top1', true)) : ?>
 		<section class="section-top pt-2 pb-5 top1">
@@ -111,7 +101,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 
 	<?php if ($this->countModules('breadcrumbs', true)) : ?>
-		<section class="section-breadcrumbs pt-2 pb-5">
+		<section class="section-breadcrumbs pt-4 pb-2">
 			<div class="container">
 				<div class="row align-items-center justify-content-center">
 					<jdoc:include type="modules" name="breadcrumbs" style="none" />
@@ -141,7 +131,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 	
 	<?php if ($this->countModules('top4', true)) : ?>
-		<section class="section-top py-4 top4">
+		<section class="section-top py-4 mb-5 top4">
 			<div class="container container-top4">
 				<jdoc:include type="modules" name="top4" style="none" />
 			</div>
@@ -149,15 +139,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php endif; ?>
 	
 	<?php if ($this->countModules('top5', true)) : ?>
-		<section class="section-top pb-4 top5">
-			<div class="container">
-				<?php format_sites('top5'); ?>
-			</div>
-		</section>
-	<?php endif; ?>
-	
-	<?php if ($this->countModules('top6', true)) : ?>
-		<section class="section-top py-4 top6">
+		<section class="section-top py-4 top5">
 			<div class="container">
 				<jdoc:include type="modules" name="top6" style="module" />
 			</div>
@@ -194,6 +176,31 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php // TODO
 	
 	if ($this->countModules('sidebar-right', true)) : ?>
+	<?php endif; ?>
+
+	<?php if ($this->countModules('bottom1', true)) : ?>
+		<section class="section-top py-4 bottom1">
+			<div class="container">
+				<jdoc:include type="modules" name="bottom1" style="module" />
+			</div>
+		</section>
+	<?php endif; ?>
+
+
+	<?php if ($this->countModules('bottom2', true)) : ?>
+		<section class="section-top py-4 bottom2">
+			<div class="container">
+				<jdoc:include type="modules" name="bottom2" style="module" />
+			</div>
+		</section>
+	<?php endif; ?>
+
+	<?php if ($this->countModules('sites', true)) : ?>
+		<section class="section-top pb-4 sites">
+			<div class="container">
+				<?php format_sites('sites'); ?>
+			</div>
+		</section>
 	<?php endif; ?>
 
 	<?php require_once ( 'sz_footer.php' ); ?>

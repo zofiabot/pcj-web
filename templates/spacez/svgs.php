@@ -84,7 +84,7 @@ function smico() {	// produces small icons
 
 		if (defined( 'SmallIconFeather-' . $svg[0] )) { $svg[0]	= constant('SmallIconFeather-' . $svg[0]); }
 		elseif	(defined( 'SmallIcon-' . $svg[0] )) { $svg[0]	= constant('SmallIcon-' . $svg[0]); }
-		else {	$svg = [ constant('SmallIconFeather-alert-octagon'),'title' => Text::_('TPL_SPACEZ_WRONG_ICON'), 'class' => 'smico alert-danger' ]; }
+		else {	$svg = [ constant('SmallIconFeather-alert-octagon'),'title' => Text::_('TPL_SPACEZ_WRONG_ICON').$svg[0] , 'class' => 'smico alert-danger' ]; }
 		
 		return svg($svg) ;
 }

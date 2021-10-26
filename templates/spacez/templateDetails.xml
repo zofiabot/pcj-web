@@ -46,13 +46,15 @@
 		<position>sidebar-left</position>
 		<position>sidebar-right</position>
 		<position>bottom1</position>
-		<position>bottom1</position>
+		<position>bottom2</position>
 		<position>footer</position>
 		<position>footer1</position>
 		<position>footer2</position>
 		<position>footer3</position>
 		<position>footer-after</position>
 		<position>translation-team</position>
+		<position>social</position>
+		<position>sites</position>
 		<position>copyright</position>
 		<position>debug</position>
 		<position>fixed</position>

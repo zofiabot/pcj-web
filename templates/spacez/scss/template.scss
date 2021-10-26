@@ -15,7 +15,7 @@ a:hover, a:focus {transform: scale(1.05)} // added SpaceZ
 %heading {
 	padding-top: 1em; // 1
   }
-
+body {overflow-x: hidden}
   
 // Configuration
 @import "../../../media/vendor/bootstrap/scss/functions";
@@ -44,16 +44,16 @@ a:hover, a:focus {transform: scale(1.05)} // added SpaceZ
 @import "../../../media/vendor/bootstrap/scss/pagination";
 @import "../../../media/vendor/bootstrap/scss/badge";
 @import "../../../media/vendor/bootstrap/scss/alert";
-@import "../../../media/vendor/bootstrap/scss/progress";
-@import "../../../media/vendor/bootstrap/scss/list-group";
+// @import "../../../media/vendor/bootstrap/scss/progress";
+// @import "../../../media/vendor/bootstrap/scss/list-group";
 @import "../../../media/vendor/bootstrap/scss/close";
-@import "../../../media/vendor/bootstrap/scss/toasts";
-@import "../../../media/vendor/bootstrap/scss/modal";
-@import "../../../media/vendor/bootstrap/scss/tooltip";
-@import "../../../media/vendor/bootstrap/scss/popover";
-@import "../../../media/vendor/bootstrap/scss/carousel";
-@import "../../../media/vendor/bootstrap/scss/spinners";
-@import "../../../media/vendor/bootstrap/scss/offcanvas";
+// @import "../../../media/vendor/bootstrap/scss/toasts";
+// @import "../../../media/vendor/bootstrap/scss/modal";
+// @import "../../../media/vendor/bootstrap/scss/tooltip";
+// @import "../../../media/vendor/bootstrap/scss/popover";
+// @import "../../../media/vendor/bootstrap/scss/carousel";
+// @import "../../../media/vendor/bootstrap/scss/spinners";
+// @import "../../../media/vendor/bootstrap/scss/offcanvas";
 
 // Helpers
 @import "../../../media/vendor/bootstrap/scss/helpers";
@@ -95,7 +95,7 @@ a{text-decoration: none;}
   right: 0.75em;
 }
 
-.footer, .top5 {
+footer, .top5 {
   ul, ol {list-style:none;padding-left:0; margin-left:0}
 }
 
@@ -103,21 +103,10 @@ svg {fill: currentColor;}
 
 select#limit {width:5em}
 
-div.action {text-align: center;}
+div.action {text-align: center}
 
 div.action p {width:60%;margin-left:auto; margin-right:auto}
 
-//nav .btn { position:absolute }
-//.navbar-toggler:focus {z-index:1000}
-//.navbar-toggler .icon {height:30px; width:30px}
-
-//input.bg-dark{
-//  border-color: rgba(255,255,255,0.2)
-//}
-//.bg-dark button{
-//  border-color: rgba(255,255,255,0.2);
-//  border-left-width: 0
-//}
 
 svg.logo {
 	width:3.5rem;height:auto;
@@ -125,29 +114,14 @@ svg.logo {
 	path {fill: currentColor}
 }
 
-#search-nav * {border-color:tint-color($dark, 10%)}
-#search-nav svg { vertical-align: middle;padding: 0 0 .2rem; }
-#search-nav:focus-within {transform: scale(1.1);}
-#searchword {width: 11rem;}
-@include media-breakpoint-up(xl) {
-	#searchword {width: 14rem;}
-}
-nav svg.collapsed {display: none;}
-
-nav button.collapsed {
-	svg.expanded {display: none;}
-	svg.collapsed {display: inline !important;}
-}
-header button {box-shadow: none !important;}
-.search-results small {
-  margin-bottom:1em;
-  margin-top:0.2em;
-  vertical-align: top;
-  }
-
 .search-results h4 {
-  margin-top:1em;
+	margin-top:1em;
   }
+.search-results small {
+	margin-bottom:1em;
+	margin-top:0.2em;
+	vertical-align: top;
+}
 
 // start for bootstrap cheatsheet
 .bd-cheatsheet { 
@@ -165,6 +139,13 @@ header button {box-shadow: none !important;}
 	.carousel-item { padding: 12em 1em !important;}
 }
 // end for bootstrap cheatsheet
+
+header {transform: skew(0deg, 1.5deg); background-color: $gray-200; transform-origin: center right;margin-bottom:-2.2rem;padding-bottom:0;
+
+	.social, #main-nav, section.action div.row {transform: skew( 0deg,-1.5deg);transform-origin: center right; position:relative ;}
+}
+
+#main-nav {z-index: 1000;}
 
 ul.dropdown-menu.show {
 	margin-top: -9px !important; // mainmenu dropdown alignment
@@ -207,16 +188,12 @@ ul.dropdown-menu.show {
 		background-color: $primary;
 		border:0;
 		box-shadow: 0 .5rem .5rem #00000088; 
-	
-
-		a.dropdown-item {color:$light; background-color: $primary; font-weight: 900; z-index: 1;}
+		a.dropdown-item {color:$light; background-color: $primary; font-weight: 900;}
 		a.dropdown-item:hover, a.dropdown-item:focus, a.dropdown-item:active, a:focus-within, a:target {
 			color: $primary;
 			background-color: $light;  
 			transform: scale(1.1);
 			border-radius: .25rem; box-shadow: 0 0 .2rem #00000088;
-			z-index: 10;
-			position: relative;
 			font-weight: 700;
 			padding: 0.25rem 1rem  0.25rem 1.13rem;
 		}
@@ -265,24 +242,20 @@ svg|a:hover, svg|a:active {
   outline: dotted 1px red;
 }
 
-
 .top1, .top4 {
 
-	border-width: 1px;
-	border-style: solid;
-	border-image: linear-gradient(to right, transparent, rgba($white, 0.2), transparent) 1 0 ;
-	background: #f4f0e8;
-	background-image: linear-gradient(to right, transparent, tint-color($white, 10%), transparent) ;
-
+	background:$white;
 }
-
 
 .top1 {
 
 	transform: skew(0deg, -2deg); margin-bottom: 2rem; margin-top: -2rem;
 
-	p, h5, svg {transform: skew( 0deg,2deg) rotate(-2deg);}
+	p, h5, svg, .btn {transform: skew( 0deg,2deg);}
 }
+
+
+
 .advantage {
 
 	div {
@@ -294,21 +267,20 @@ svg|a:hover, svg|a:active {
 		// flex-wrap: wrap;
 		transition: all 0.4s ease-in-out, box-shadow .5s ease-out;
 
-		h5 { width: 100%; }
+		h5 { width: 100%; color: $dark;}
 		p, svg { width:85%; margin: .5rem auto 0; }
-		svg { 
+		svg{ 
 			margin: 0 auto; 
-		
+			color: tint-color($dark, 40%);
 			path {fill: currentColor}
 		}
 	}
 }
 
-div.advantage:hover div, .adv-btn a.btn:hover {
+div.advantage:hover div {
 	transform: scale(1);
-	// box-shadow:0 0 .05rem #ffff, inset 0 0  1rem #ffff, inset 0 0  5rem #eeef,  0 0 .3rem #2bfa, 0 0 .2rem #ffff, 0 0 1rem #0005;
 }
-.adv-btn a.btn:hover { transform: scale(1.1); box-shadow:0 0 .05rem #ffff, 0 0 1rem #0005; }
+.adv-btn a.btn:hover { transform: scale(1.1) skew( 0deg,2deg); box-shadow:0 0 .05rem #ffff, 0 0 1rem #0005; }
 
 
 .fundacja { 
@@ -343,6 +315,9 @@ section.top2 {
 		font-size: 1.2rem;
 		font-weight: 700;
 	 }
+	 ul.nav li.nav-item a {
+		color: $dark;
+	 }
 	 ul.nav li.nav-item a::before {
 		content: counter(my-awesome-counter);
 		color:$white;
@@ -354,7 +329,7 @@ section.top2 {
 		line-height: var(--size);
 		width: var(--size);
 		height: var(--size);
-		background: $primary;
+		background: $purple-400;
 		border-radius: 50%;
 		text-align: center;
 		vertical-align: middle;
@@ -377,6 +352,28 @@ div[class*='mod-'] {
 	a {color: $white;}
 }
 
+.social-links {
+	
+	padding-bottom: .1em;
+
+	a { padding:.25rem; }
+
+	a svg { 
+		transform: scale(0.75) !important;
+		margin-bottom: .2rem;
+	}
+	
+	a:hover svg, a:focus svg{ 
+		transform: scale(1.2) !important;
+		transition: all 0.7s ease-in-out !important;
+	}
+}
+header ul.social-links {}
+
+footer ul.list-inline {flex-direction: row;
+	li {padding: .25rem .25rem;}
+}
+
 .users-group {
 
 	display:flex;
@@ -386,6 +383,7 @@ div[class*='mod-'] {
 	align-content: center;
 
 	li {display: block;padding: .0rem;}
+
 
 	a{ 
 		background-color: $white;
@@ -401,7 +399,7 @@ div[class*='mod-'] {
 		font-weight: 800;
 	}
 	
-	a:hover{ 
+	a:hover, a:focus{ 
 		background-color: $white;
 		box-shadow: 0 .5rem 1rem #0003, 0 .3rem .6rem #0003;
 		transform: scale(1);
@@ -410,7 +408,7 @@ div[class*='mod-'] {
 
 }
 
-.top5 {
+.sites {
 	.sites-link {
 		color: $gray-700; padding: .5rem 1rem;display: inline-block;
 		svg {
@@ -429,15 +427,17 @@ div[class*='mod-'] {
 }
 #tt { max-width: 100%; height: auto; min-width: auto; max-height: 180px; }
 
-.smico {fill:none;stroke:currentColor;stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;vertical-align: middle;margin: -0.25rem; }
+.smico {fill:none;stroke:currentColor;stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;vertical-align: middle;margin: -0.25rem;}
+
 .btn .smico {vertical-align: middle;}
+
 .pathway .smico {margin-top:-.75em;}
+
 .mod-custom-195 {
 	transform: scale(0.85);
 
 	p {margin:0;padding: $spacer * .5}
 }
-
 
 article figure.item-image {
 	position:relative;
@@ -447,9 +447,9 @@ article figure.item-image {
 	margin: 0;
 	z-index: -1;
 	margin-top: -6rem;
-  }
-  
-  article figure.item-image::after {
+}
+
+article figure.item-image::after {
 	content:'';
 	position:absolute;
 	left:0; top:0;
@@ -462,8 +462,9 @@ article figure.item-image {
 	// background: -ms-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* IE10+ */
 	background:  linear-gradient(0deg, rgba($light, 0.5), rgba($light, 0) 6em),  linear-gradient(0deg, rgba($light, 1), rgba($light, 0) 12em), linear-gradient(180deg, rgba($light, 0.5), rgba($light, 0) 12em), linear-gradient(180deg, rgba($light, 1), rgba($light, 0) 6em); /* W3C */
 	// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
-  }
-  article figure.item-image img{
+}
+
+article figure.item-image img{
 	display:block;
 	width:100%;
 	height:auto;
@@ -494,7 +495,6 @@ div.article-body {
 	div.article-body {column-count: 3;}
 }
 
-
 figure + div.article-body {
 	border-top: 1px solid rgba($gray-500, 0.3);
 	margin-top: -6rem;
@@ -503,16 +503,44 @@ figure + div.article-body {
 	.blog-item {width: fit-content;}
 }
 
-section::after {border: transparent; border-width: 2rem 50vw 0;}
+footer section.dark{
+
+	transform: skew(0deg, 2deg); 
+
+	.container > div{transform: skew( 0deg, -2deg);}
+}
+
+footer section.dark::after {
+	transform: skew( 0deg, -1deg); 
+	margin-bottom: -1.5rem; content:''; 
+	display: block; border: 1px solid transparent; 
+	border-width: 0 40vw 0 60vw ;
+	border-top: 3rem solid $dark; 
+	background-color: shade-color($dark, 40%) ;
+}
+
+footer section.darker::after {
+	margin-bottom: -1.5rem; content:''; 
+	display: block; border: 1px solid transparent; 
+	border-width: 0 60vw 0 40vw ;
+	border-bottom: 2rem solid shade-color($dark, 50%); 
+	background-color: shade-color($dark, 20%);
+}
 
 .dark {
 	background-color: $dark; color: tint-color($dark, 90%);
 	*, .form-control::placeholder {color: tint-color($dark, 70%);}
-	
 }
 
+header, footer  .dark {
+	background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), transparent, transparent);
+}
+
+footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(150,0,100,0.1));}
+
 .darker {
-	background-color: shade-color($dark, 30%); color: tint-color($dark, 90%);
+	background-color: shade-color($dark, 20%); color: tint-color($dark, 90%);
+	background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, transparent);
 	* {color: tint-color($dark, 60%);}
 }
 
@@ -523,12 +551,33 @@ section::after {border: transparent; border-width: 2rem 50vw 0;}
 
 .dark, .darker, .darkest {
 	a {color: tint-color($dark, 75%);font-weight: 700;}
-	a:hover, a:focus {color: tint-color($dark, 90%);transform: scale(1.05) !important}
+	a:hover, a:focus {color: tint-color($dark, 90%);transform: scale(1.05)}
 	.btn {color: $white;}
 }
 
+#search-nav * {border-color:tint-color($dark, 10%)}
+#search-nav svg { vertical-align: middle;padding: 0 0 .2rem; }
+#search-nav:focus-within {transform: scale(1.1);}
+#searchword {width: 11rem; background:transparent;color: $white; box-shadow: none !important;}
+@include media-breakpoint-up(xl) {
+	#searchword {width: 14rem;}
+}
+nav svg.collapsed {display: none;}
+
+nav button.collapsed {
+	svg.expanded {display: none;}
+	svg.collapsed {display: inline !important;}
+}
+header button {box-shadow: none !important;}
+
 a.navbar-brand * {color:$light}
+button.navbar-toggler {align-self: start; border: 0;}
+.navbar-search {padding: 0;}
 
 .back-to-top {position: fixed; bottom:4px; right:4px;padding: 0.375rem}
 
 hr#system-readmore {display:none}
+
+.card-body h3, .card-header h3 {padding-top: 0; font-size: 1.2rem; line-height: 1em;} //TODO remove first selector once implemented in component
+
+.action h2 {padding-top: 0;}

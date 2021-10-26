@@ -112,7 +112,11 @@ function renderModule ( $positionName, $num = 0 ){
 }
 
 function tagReplace ( $text ){
-
+	$text = preg_replace_callback(
+        "/\[\[smico:[A-z-]*\]\]/",
+        function($matches){return smico(preg_replace("/\[\[smico:([A-z-]*)\]\]/","$1",$matches[0]));},
+        $text
+    );
 	$text = strtr( $text, [ '[[strong]]' => '<strong>', '[[/strong]]' => '</strong>' ]);
 
 	return $text;

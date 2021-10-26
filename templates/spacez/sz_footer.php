@@ -14,13 +14,13 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Document;
 ?>
-<footer class="container-footer footer pt-2">
+<footer class="container-footer footer p-0 dark">
 	<section class="py-2 dark">
 		<div class="container row align-items-start mx-auto">
 			<jdoc:include type="modules" name="footer" style="3col" />
 		</div>
 	</section>
-	<section class="py-2 darker">
+	<section class="py-4 darker">
 		<div class="container row align-items-center mx-auto">
 			<jdoc:include type="modules" name="footer-after" style="2col" />
 			<div class="p-2 col-12 col-md-6 align-self-center align-items-center align-middle d-flex text-end">
@@ -31,7 +31,7 @@ use Joomla\CMS\Document;
 	</section>
 	<section class="py-2 darkest">
 		<div class="container row mx-auto">
-			<div class="p-2 col-12 align-self-center"><jdoc:include type="modules" name="copyright" style="none" /></div>
+			<div class="p-2 col-12 align-self-center"><jdoc:include type="modules" name="footer2" style="module" /><jdoc:include type="modules" name="copyright" style="none" /></div>
 		</div>
 	</section>
 </footer>

@@ -50,6 +50,6 @@ $moduleAttribs = ArrayHelper::toString($moduleAttribs);
 $header = "<{$headerTag} {$headerAttribs}>{$module->title}</{$headerTag}>";
 
 echo "<{$moduleTag} {$moduleAttribs}>";
-if ($module->showtitle) {echo $header;}
-echo $module->content;
+if ($module->showtitle) {echo tagReplace($header);}
+echo tagReplace($module->content);
 echo "</{$moduleTag}>";
