@@ -1,6 +1,6 @@
 <?php
 /**
- * @package		 Joomla.Site
+ * @package		Joomla.Site
  * @subpackage  Templates.spacez
  *
  * @copyright	(C) 2021 Michał Sobkowiak & Zofia

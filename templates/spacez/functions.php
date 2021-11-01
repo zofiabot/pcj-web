@@ -58,7 +58,7 @@ function format_sites( $positionName , $num = 0 ) {
 	$DOM->loadHTML( mb_convert_encoding( $html, 'HTML-ENTITIES', 'UTF-8' ) );
 	
 	$Headers = $DOM->getElementsByTagName('h3');
-	$Header = is_string($Headers)? tagReplace($Headers->textContent) : tagReplace($Headers[0]->textContent);
+	$Header = is_string($Headers)? tagReplace($Headers) : tagReplace($Headers[0]->textContent);
 	$Buttons = $DOM->getElementsByTagName('a');
 	
 	$output =  '<h3>'. $Header . '</h3><div class="d-flex row row-cols-lg-5 row-cols-md-3 row-cols-2 justify-content-center g-2">' ;
