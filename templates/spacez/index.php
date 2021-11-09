@@ -167,7 +167,6 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 			<jdoc:include type="message" />
 			<main>
 			<jdoc:include type="component" />
-			<!-- <?php echo presentIcons(); ?> -->
 			</main>
 			<jdoc:include type="modules" name="main-bottom" style="none" />
 		</div>

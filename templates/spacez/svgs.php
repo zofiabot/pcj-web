@@ -101,13 +101,17 @@ function presentIcons() { // produces small icons
 						$featherIcons.= '<kbd class="m-2 pt-3 pb-5 text-center col-2"><strong>'. str_replace('SmallIcon-','',$name) .'</strong></br></br>' .svg([constant($name) ,'class'=>'smico','size'=>32]).'</kbd>';
 				} elseif (str_starts_with( $name, 'Icon' )) {
 						$otherIcons.= '<kbd class="m-2 pt-3 pb-5 text-center col-2"><strong>'. str_replace('Icon','',$name) .'</strong></br></br>' .svg([constant($name) ,'class'=>'icon','size'=>48]).'</kbd>';
+				} elseif (str_starts_with( $name, 'Logo_Sites' )) {
+					$logoIcons.= '<kbd class="m-2 pt-3 pb-5 text-center col-2"><strong>'. str_replace('Logo_','',$name) .'</strong></br></br>' .svg([constant($name) ,'class'=>'icon m-0 my-3','size'=>[128,'']]).'</kbd>';
+				} elseif (str_starts_with( $name, 'Logo_JoomlaDay' )) {
+					$logoIcons.= '<kbd class="m-2 pt-3 pb-5 text-center col-2"><strong>'. str_replace('Logo_','',$name) .'</strong></br></br>' .svg([constant($name) ,'class'=>'icon m-0 my-3','size'=>[128,'']]).'</kbd>';
 				} elseif (str_starts_with( $name, 'Logo_' )) {
-						$logoIcons.= '<kbd class="m-2 pt-3 pb-5 text-center col-2"><strong>'. str_replace('Logo_','',$name) .'</strong></br></br>' .svg([constant($name) ,'class'=>'icon m-0','size'=>64]).'</kbd>';
+					$logoIcons.= '<kbd class="m-2 pt-3 pb-5 text-center col-2"><strong>'. str_replace('Logo_','',$name) .'</strong></br></br>' .svg([constant($name) ,'class'=>'icon m-0','size'=>64]).'</kbd>';
 				}
 		}
 		$result = "<h4>Ikony Feather <small class='muted fs-6'> 24x24 </small></h4><div class='row align-items-start'>{$featherIcons}</div>";
 		$result .= "<h4>Inne Ikony <small class='muted fs-6'> 128x128 </small></h4><div class='row align-items-start'>{$otherIcons}</div>";
-		$result .= "<h4>Loga <small class='muted fs-6'> 196x196 lub inne </small></h4><div class='row align-items-start'>{$logoIcons}</div>";
+		$result .= "<h4>Loga <small class='muted fs-6'> 196x196 lub inne </small></h4><div class='row align-items-start logos'>{$logoIcons}</div>";
 
 		return $result;
 }

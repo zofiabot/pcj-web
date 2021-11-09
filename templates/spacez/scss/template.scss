@@ -127,7 +127,7 @@ svg.logo {
 // start for bootstrap cheatsheet
 .bd-cheatsheet { 
 	h3 { padding-top: 3rem !important;margin-bottom: 0 !important } // for bootstrap cheatsheet
-	h2 { padding-bottom: 4.5rem !important; padding-top: .5rem !important; background-color:$light !important }
+	h2 { padding-bottom: 4.5rem !important; padding-top: .5rem !important; background-color:$light !important; font-size: 2rem; }
 	[id="modal"] .bd-example .btn,
 	[id="buttons"] .bd-example .btn,
 	[id="tooltips"] .bd-example .btn,
@@ -286,7 +286,11 @@ div.advantage:hover div {
 
 .fundacja { 
 
-	padding-left: 6rem; background: transparent escape-svg($fundacja-svg) left top no-repeat;background-size: contain; margin-bottom: .5rem;
+	padding-left: 6rem; 
+	background: transparent escape-svg($fundacja-svg) left top no-repeat;
+	background-size: contain; 
+	margin-bottom: .5rem;
+	opacity: .85;
 
 	h4 {padding-top: .5rem;}
 
@@ -410,8 +414,16 @@ footer ul.list-inline {flex-direction: row;
 }
 
 .sites {
+	background: rebeccapurple;border: 1px solid transparent;
+	div.row {transform: skew( 0deg, 1.5deg);}
+	div.col {transform: skew( 0deg, -1.5deg);text-align: center;}
 	.sites-link {
-		color: $gray-700; padding: .5rem 1rem;display: inline-block;
+		color: $gray-700;
+		padding: .5rem 1rem;
+		display: inline-block;
+		background: url(../images/sites.svg) top center no-repeat;
+		width: 210px;
+		margin: .5rem auto;
 		svg {
 			
 			width: 100%;
@@ -425,8 +437,11 @@ footer ul.list-inline {flex-direction: row;
 
 		.s-demo {color: #2a3b57;}
 	}
+	h3 {color: #fffb !important;text-align: right;padding-bottom: .5rem;}
 }
-#tt { max-width: 100%; height: auto; min-width: auto; max-height: 180px; }
+.logos svg text {font-family:var(--bs-font-sans-serif);font-size:64px;font-weight:700}
+
+#tt { max-width: 100%; height: auto; min-width: auto; max-height: 180px; opacity: .85;}
 
 .smico {fill:none;stroke:currentColor;stroke-width:1.2px;stroke-linecap:butt;stroke-linejoin:miter;vertical-align: middle;margin: -0.25rem;}
 
@@ -505,19 +520,26 @@ figure + div.article-body {
 }
 
 footer section.dark{
-
 	transform: skew(0deg, 2deg); 
 
 	.container > div{transform: skew( 0deg, -2deg);}
 }
 
+section.sites::before {
+	margin-top: -0.5rem; content:''; 
+	display: block; 
+	border: 0px solid transparent; 
+	border-width: 0 20vw 0 80vw ;
+	border-bottom: 1rem solid rebeccapurple; 
+	background-color: $light ;
+}
 footer section.dark::after {
 	transform: skew( 0deg, -1deg); 
 	margin-bottom: -1.5rem; content:''; 
 	display: block; border: 1px solid transparent; 
 	border-width: 0 40vw 0 60vw ;
 	border-top: 3rem solid $dark; 
-	background-color: shade-color($dark, 40%) ;
+	background-color: shade-color($dark, 30%) ;
 }
 
 footer section.darker::after {
@@ -533,15 +555,15 @@ footer section.darker::after {
 	*, .form-control::placeholder {color: tint-color($dark, 70%);}
 }
 
-header, footer  .dark {
+.dark {
 	background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), transparent, transparent);
 }
 
 footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(150,0,100,0.1));}
 
 .darker {
-	background-color: shade-color($dark, 20%); color: tint-color($dark, 90%);
-	background-image: linear-gradient(to bottom, rgba(0,0,0,0.3), transparent, transparent);
+	background-color: shade-color($dark, 30%); color: tint-color($dark, 90%);
+	background-image: linear-gradient(to bottom, transparent, transparent, shade-color($dark, 20%));
 	* {color: tint-color($dark, 60%);}
 }
 
@@ -556,9 +578,11 @@ footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(1
 	.btn {color: $white;}
 }
 
-#search-nav * {border-color:tint-color($dark, 10%)}
-#search-nav svg { vertical-align: middle;padding: 0 0 .2rem; }
-#search-nav:focus-within {transform: scale(1.1);}
+#search-nav{ flex-wrap: nowrap;
+	* {border-color:tint-color($dark, 10%)}
+	svg { vertical-align: middle;padding: 0 0 .2rem; }
+	:focus-within {transform: scale(1.1);}
+}
 #searchword {width: 11rem; background:transparent;color: $white; box-shadow: none !important;}
 @include media-breakpoint-up(xl) {
 	#searchword {width: 14rem;}
@@ -581,4 +605,12 @@ hr#system-readmore {display:none}
 
 .card-body h3, .card-header h3 {padding-top: 0; font-size: 1.2rem; line-height: 1em;} //TODO remove first selector once implemented in component
 
-.action h2 {padding-top: 0;}
+.action h2, footer h3 {padding-top: 0;}
+
+// Legacy Typography
+
+.image_left { padding: .25rem .25rem .25rem 0; float: left}
+.image_right { padding: .25rem 0 .25rem .25rem; float: right}
+
+// Debug & Tools
+.debug	{ position: fixed; margin-top: -2.5rem; padding:  .25rem .5rem; background: var(--bs-dark);}

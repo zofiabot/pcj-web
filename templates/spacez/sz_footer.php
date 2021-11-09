@@ -1,6 +1,6 @@
 <?php
 /**
- * * @package		Templates.SpaceZ
+ * @package		Templates.SpaceZ
  *
  * @copyright	(C) 2021 Michał Sobkowiak & Zofia
  * @license		Single use licence for Polskie Centrum Joomla
@@ -15,6 +15,7 @@ use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Document;
 ?>
 <footer class="container-footer footer p-0 dark">
+	
 	<section class="py-2 dark">
 		<div class="container row align-items-start mx-auto">
 			<jdoc:include type="modules" name="footer" style="3col" />

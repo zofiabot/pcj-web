@@ -22,6 +22,8 @@ use Joomla\CMS\Uri\Uri;
 use Joomla\Component\Content\Administrator\Extension\ContentComponent;
 use Joomla\Component\Content\Site\Helper\RouteHelper;
 
+require_once('templates/spacez/functions.php');
+
 // Create shortcuts to some parameters.
 $params  = $this->item->params;
 $canEdit = $params->get('access-edit');
@@ -105,7 +107,7 @@ $isExpired				 = !is_null($this->item->publish_down) && $this->item->publish_dow
 		echo $this->item->toc;
 	endif; ?>
 	<div itemprop="articleBody" class="article-body">
-		<?php echo $this->item->text; ?>
+		<?php echo tagReplace($this->item->text); ?>
 	</div>
 
 	<?php if ($info == 1 || $info == 2) : ?>

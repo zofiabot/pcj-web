@@ -1,6 +1,6 @@
 <?php
 /**
- * * @package		Templates.SpaceZ
+ * @package		Templates.SpaceZ
  *
  * @copyright	(C) 2020 Michał Sobkowiak & Zofia
  * @license		Single use licence for Polskie Centrum Joomla
@@ -34,10 +34,10 @@ use Joomla\CMS\Document;
 			<?php endif; ?>
 			
 			<?php if ($this->params->get( 'brand', 1 )) : ?>
-				<a class="navbar-brand justify-self-start me-0" href="<?php echo $this->baseurl; ?>/">
+				<a class="navbar-brand justify-self-start me-0 d-none d-sm-block" href="<?php echo $this->baseurl; ?>/">
 				<?php echo joomlalogo( $sitename, 64 ); ?>
 			</a>
-			<a class="navbar-brand justify-self-start ms-0" href="<?php echo $this->baseurl; ?>/">
+			<a class="navbar-brand justify-self-start ms-0 d-xs-none" href="<?php echo $this->baseurl; ?>/">
 				<?php echo pcjlogo( $sitename, 64 ); ?>
 			</a>
 			<?php endif; ?>
@@ -75,4 +75,12 @@ use Joomla\CMS\Document;
 		</div>
 	</section>
 	<?php endif; ?>
+		<div class="debug">
+		<div class="d-sm-none">X Small</div>
+		<div class="d-none d-sm-block d-md-none">Small</div>
+		<div class="d-none d-md-block d-lg-none">Medium</div>
+		<div class="d-none d-lg-block d-xl-none">Large</div>
+		<div class="d-none d-xl-block d-xxl-none">X Large</div>
+		<div class="d-none d-xxl-block">XX Large</div>
+		</div>
 </header>

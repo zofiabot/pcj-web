@@ -27,7 +27,7 @@ function format_advantages( $positionName , $num = 0 ) {
 	
 	for ( $i=0; $i < $DOM->getElementsByTagName('h4')->length; $i++ ){
 	
-		$output .= 	'<div class="advantage col g-2 ' . strtolower($Headers->item($i)->textContent) . 
+		$output .= 	'<div class="advantage col ' . strtolower($Headers->item($i)->textContent) . 
 					'"><div>
 						<h5>' . ($Headers->item($i)->textContent) . '</h5>' .
 						svg( [$icons[$i], [ 128 , 128], 'size' => 64 ] ) .
@@ -61,7 +61,7 @@ function format_sites( $positionName , $num = 0 ) {
 	$Header = is_string($Headers)? tagReplace($Headers) : tagReplace($Headers[0]->textContent);
 	$Buttons = $DOM->getElementsByTagName('a');
 	
-	$output =  '<h3>'. $Header . '</h3><div class="d-flex row row-cols-lg-5 row-cols-md-3 row-cols-2 justify-content-center g-2">' ;
+	$output =  '<h3>'. $Header . '</h3><div class="d-flex row row-cols-xl-5 row row-cols-lg-4 row-cols-md-3 row-cols-2 justify-content-center g-2">' ;
 
 	$icons = [ Logo_SitesForum, Logo_SitesFundacja, Logo_SitesDemo, Logo_SitesWiki, Logo_JoomlaDay ];
 	$classes = [ 's-forum', 's-fundacja', 's-demo', 's-wiki', 's-jday' ];
@@ -117,7 +117,7 @@ function tagReplace ( $text ){
         function($matches){return smico(preg_replace("/\[\[smico:([A-z-]*)\]\]/","$1",$matches[0]));},
         $text
     );
-	$text = strtr( $text, [ '[[strong]]' => '<strong>', '[[/strong]]' => '</strong>' ]);
+	$text = strtr( $text, [ '[[strong]]' => '<strong>', '[[/strong]]' => '</strong>', '[[icons]]' => presentIcons() ]);
 
 	return $text;
 
