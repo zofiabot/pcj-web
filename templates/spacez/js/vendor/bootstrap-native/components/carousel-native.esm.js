@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Carousel v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Carousel v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 const addEventListener = 'addEventListener';
 
 const removeEventListener = 'removeEventListener';
@@ -11,13 +11,13 @@ const supportPassive = (() => {
   let result = false;
   try {
 		const opts = Object.defineProperty({}, 'passive', {
-		  get() {
+		 get() {
 				result = true;
 				return result;
-		  },
+		 },
 		});
 		document[addEventListener]('DOMContentLoaded', function wrap() {
-		  document[removeEventListener]('DOMContentLoaded', wrap, opts);
+		 document[removeEventListener]('DOMContentLoaded', wrap, opts);
 		}, opts);
   } catch (e) {
 		throw Error('Passive events are not supported');
@@ -42,7 +42,7 @@ function getElementTransitionDuration(element) {
   const durationValue = computedStyle[transitionDuration];
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
@@ -60,14 +60,14 @@ function emulateTransitionEnd(element, handler) {
 
   if (duration) {
 		element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
-		  if (e.target === element) {
+		 if (e.target === element) {
 				handler.apply(element, [e]);
 				element.removeEventListener(transitionEndEvent, transitionEndWrapper);
 				called = 1;
-		  }
+		 }
 		});
 		setTimeout(() => {
-		  if (!called) element.dispatchEvent(endEvent);
+		 if (!called) element.dispatchEvent(endEvent);
 		}, duration + 17);
   } else {
 		handler.apply(element, [endEvent]);
@@ -102,9 +102,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -140,34 +140,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -178,7 +178,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -191,7 +191,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | Carousel
------------------------------------------------ */
+-----------------------------------------------*/
 
 // CAROUSEL PRIVATE GC
 // ===================
@@ -242,8 +242,8 @@ function carouselTransitionEndHandler(self) {
 
 		// check for element, might have been disposed
 		if (!document.hidden && options.interval
-		  && !hasClass(element, pausedClass)) {
-		  self.cycle();
+		 && !hasClass(element, pausedClass)) {
+		 self.cycle();
 		}
   }
 }
@@ -256,8 +256,8 @@ function carouselPauseHandler(e) {
   if (!hasClass(element, pausedClass)) {
 		addClass(element, pausedClass);
 		if (!isAnimating) {
-		  clearInterval(self.timer);
-		  self.timer = null;
+		 clearInterval(self.timer);
+		 self.timer = null;
 		}
   }
 }
@@ -271,9 +271,9 @@ function carouselResumeHandler(e) {
 		removeClass(element, pausedClass);
 
 		if (!isAnimating) {
-		  clearInterval(self.timer);
-		  self.timer = null;
-		  self.cycle();
+		 clearInterval(self.timer);
+		 self.timer = null;
+		 self.cycle();
 		}
   }
 }
@@ -315,11 +315,11 @@ function carouselKeyHandler({ which }) {
 
   switch (which) {
 		case 39:
-		  self.next();
-		  break;
+		 self.next();
+		 break;
 		case 37:
-		  self.prev();
-		  break;
+		 self.prev();
+		 break;
   }
 }
 
@@ -364,14 +364,14 @@ function carouselTouchEndHandler(e) {
   if (self.isTouch) {
 		// the event target is outside the carousel OR carousel doens't include the related target
 		if ((!element.contains(e.target) || !element.contains(e.relatedTarget))
-		  && Math.abs(startX - endX) < 75) { // AND swipe distance is less than 75px
-		  // when the above conditions are satisfied, no need to continue
-		  return;
+		 && Math.abs(startX - endX) < 75) { // AND swipe distance is less than 75px
+		 // when the above conditions are satisfied, no need to continue
+		 return;
 		} // OR determine next index to slide to
 		if (currentX < startX) {
-		  self.index += 1;
+		 self.index += 1;
 		} else if (currentX > startX) {
-		  self.index -= 1;
+		 self.index -= 1;
 		}
 
 		self.isTouch = false;
@@ -459,8 +459,8 @@ class Carousel extends BaseComponent {
 		if (slides.length < 2) { return; }
 
 		self.controls = [
-		  queryElement(`.${carouselControl}-prev`, element),
-		  queryElement(`.${carouselControl}-next`, element),
+		 queryElement(`.${carouselControl}-prev`, element),
+		 queryElement(`.${carouselControl}-next`, element),
 		];
 
 		// a LIVE collection is prefferable
@@ -472,13 +472,13 @@ class Carousel extends BaseComponent {
 
 		// don't use TRUE as interval, it's actually 0, use the default 5000ms better
 		self.options.interval = options.interval === true
-		  ? defaultCarouselOptions.interval
-		  : options.interval;
+		 ? defaultCarouselOptions.interval
+		 : options.interval;
 
 		// set first slide active if none
 		if (getActiveIndex(self) < 0) {
-		  if (slides.length) addClass(slides[0], activeClass);
-		  if (self.indicators.length) activateCarouselIndicator(self, 0);
+		 if (slides.length) addClass(slides[0], activeClass);
+		 if (self.indicators.length) activateCarouselIndicator(self, 0);
 		}
 
 		// attach event handlers
@@ -494,20 +494,20 @@ class Carousel extends BaseComponent {
 		const self = this;
 		const { isPaused, element, options } = self;
 		if (self.timer) {
-		  clearInterval(self.timer);
-		  self.timer = null;
+		 clearInterval(self.timer);
+		 self.timer = null;
 		}
 
 		if (isPaused) {
-		  removeClass(element, pausedClass);
-		  self.isPaused = !isPaused;
+		 removeClass(element, pausedClass);
+		 self.isPaused = !isPaused;
 		}
 
 		self.timer = setInterval(() => {
-		  if (isElementInScrollRange(element)) {
+		 if (isElementInScrollRange(element)) {
 				self.index += 1;
 				self.to(self.index);
-		  }
+		 }
 		}, options.interval);
   }
 
@@ -515,10 +515,10 @@ class Carousel extends BaseComponent {
 		const self = this;
 		const { element, options, isPaused } = self;
 		if (options.interval && !isPaused) {
-		  clearInterval(self.timer);
-		  self.timer = null;
-		  addClass(element, pausedClass);
-		  self.isPaused = !isPaused;
+		 clearInterval(self.timer);
+		 self.timer = null;
+		 addClass(element, pausedClass);
+		 self.isPaused = !isPaused;
 		}
   }
 
@@ -535,7 +535,7 @@ class Carousel extends BaseComponent {
   to(idx) {
 		const self = this;
 		const {
-		  element, isAnimating, slides, options,
+		 element, isAnimating, slides, options,
 		} = self;
 		const activeItem = getActiveIndex(self);
 		let next = idx;
@@ -546,9 +546,9 @@ class Carousel extends BaseComponent {
 
 		// determine transition direction
 		if ((activeItem < next) || (activeItem === 0 && next === slides.length - 1)) {
-		  self.direction = 'left'; // next
+		 self.direction = 'left'; // next
 		} else if ((activeItem > next) || (activeItem === slides.length - 1 && next === 0)) {
-		  self.direction = 'right'; // prev
+		 self.direction = 'right'; // prev
 		}
 		const { direction } = self;
 
@@ -559,13 +559,13 @@ class Carousel extends BaseComponent {
 		const orientation = direction === 'left' ? 'next' : 'prev';
 		const directionClass = direction === 'left' ? 'start' : 'end';
 		const eventProperties = {
-		  relatedTarget: slides[next], direction, from: activeItem, to: next,
+		 relatedTarget: slides[next], direction, from: activeItem, to: next,
 		};
 
 		// update event properties
 		Object.keys(eventProperties).forEach((k) => {
-		  carouselSlideEvent[k] = eventProperties[k];
-		  carouselSlidEvent[k] = eventProperties[k];
+		 carouselSlideEvent[k] = eventProperties[k];
+		 carouselSlidEvent[k] = eventProperties[k];
 		});
 
 		// discontinue when prevented
@@ -582,26 +582,26 @@ class Carousel extends BaseComponent {
 		activateCarouselIndicator(self, next);
 
 		if (getElementTransitionDuration(slides[next]) && hasClass(element, 'slide')) {
-		  addClass(slides[next], `${carouselItem}-${orientation}`);
-		  reflow(slides[next]);
-		  addClass(slides[next], `${carouselItem}-${directionClass}`);
-		  addClass(slides[activeItem], `${carouselItem}-${directionClass}`);
+		 addClass(slides[next], `${carouselItem}-${orientation}`);
+		 reflow(slides[next]);
+		 addClass(slides[next], `${carouselItem}-${directionClass}`);
+		 addClass(slides[activeItem], `${carouselItem}-${directionClass}`);
 
-		  emulateTransitionEnd(slides[next], () => carouselTransitionEndHandler(self));
+		 emulateTransitionEnd(slides[next], () => carouselTransitionEndHandler(self));
 		} else {
-		  addClass(slides[next], activeClass);
-		  removeClass(slides[activeItem], activeClass);
+		 addClass(slides[next], activeClass);
+		 removeClass(slides[activeItem], activeClass);
 
-		  setTimeout(() => {
+		 setTimeout(() => {
 				self.isAnimating = false;
 
 				// check for element, might have been disposed
 				if (element && options.interval && !hasClass(element, pausedClass)) {
-				  self.cycle();
+				 self.cycle();
 				}
 
 				element.dispatchEvent(carouselSlidEvent);
-		  }, 100);
+		 }, 100);
 		}
   }
 
@@ -611,8 +611,8 @@ class Carousel extends BaseComponent {
 		const itemClasses = ['start', 'end', 'prev', 'next'];
 
 		Array.from(slides).forEach((slide, idx) => {
-		  if (hasClass(slide, activeClass)) activateCarouselIndicator(self, idx);
-		  itemClasses.forEach((c) => removeClass(slide, `${carouselItem}-${c}`));
+		 if (hasClass(slide, activeClass)) activateCarouselIndicator(self, idx);
+		 itemClasses.forEach((c) => removeClass(slide, `${carouselItem}-${c}`));
 		});
 
 		toggleCarouselHandlers(self);

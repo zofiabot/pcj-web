@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Toast v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Toast v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -23,7 +23,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		  ? parseFloat(durationValue) * durationScale : 0;
+		 ? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
   }
@@ -34,18 +34,18 @@
 		const duration = getElementTransitionDuration(element);
 
 		if (duration) {
-		  element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+		 element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
 				if (e.target === element) {
-				  handler.apply(element, [e]);
-				  element.removeEventListener(transitionEndEvent, transitionEndWrapper);
-				  called = 1;
+				 handler.apply(element, [e]);
+				 element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+				 called = 1;
 				}
-		  });
-		  setTimeout(() => {
+		 });
+		 setTimeout(() => {
 				if (!called) element.dispatchEvent(endEvent);
-		  }, duration + 17);
+		 }, duration + 17);
 		} else {
-		  handler.apply(element, [endEvent]);
+		 handler.apply(element, [endEvent]);
 		}
   }
 
@@ -84,30 +84,30 @@
 		const OriginalCustomEvent = new CustomEvent(namespacedEventType, { cancelable: true });
 
 		if (eventProperties instanceof Object) {
-		  Object.keys(eventProperties).forEach((key) => {
+		 Object.keys(eventProperties).forEach((key) => {
 				Object.defineProperty(OriginalCustomEvent, key, {
-				  value: eventProperties[key],
+				 value: eventProperties[key],
 				});
-		  });
+		 });
 		}
 		return OriginalCustomEvent;
   }
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -120,59 +120,59 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
   /* Native JavaScript for Bootstrap 5 | Toast
-  -------------------------------------------- */
+  --------------------------------------------*/
 
   // TOAST PRIVATE GC
   // ================
@@ -200,8 +200,8 @@
   function showToastComplete(self) {
 		const { element, options } = self;
 		if (!options.animation) {
-		  removeClass(element, showingClass);
-		  addClass(element, showClass);
+		 removeClass(element, showingClass);
+		 addClass(element, showClass);
 		}
 
 		element.dispatchEvent(shownToastEvent);
@@ -219,10 +219,10 @@
 		removeClass(element, showClass);
 
 		if (options.animation) {
-		  reflow(element);
-		  emulateTransitionEnd(element, () => hideToastComplete(self));
+		 reflow(element);
+		 emulateTransitionEnd(element, () => hideToastComplete(self));
 		} else {
-		  hideToastComplete(self);
+		 hideToastComplete(self);
 		}
   }
 
@@ -231,20 +231,20 @@
 		removeClass(element, hideClass);
 
 		if (options.animation) {
-		  reflow(element);
-		  addClass(element, showingClass);
-		  addClass(element, showClass);
+		 reflow(element);
+		 addClass(element, showingClass);
+		 addClass(element, showClass);
 
-		  emulateTransitionEnd(element, () => showToastComplete(self));
+		 emulateTransitionEnd(element, () => showToastComplete(self));
 		} else {
-		  showToastComplete(self);
+		 showToastComplete(self);
 		}
   }
 
   function toggleToastHandler(self, add) {
 		const action = add ? addEventListener : removeEventListener;
 		if (self.dismiss) {
-		  self.dismiss[action]('click', self.hide);
+		 self.dismiss[action]('click', self.hide);
 		}
   }
 
@@ -259,59 +259,59 @@
   // ================
   class Toast extends BaseComponent {
 		constructor(target, config) {
-		  super(toastComponent, target, toastDefaultOptions, config);
-		  // bind
-		  const self = this;
+		 super(toastComponent, target, toastDefaultOptions, config);
+		 // bind
+		 const self = this;
 
-		  // dismiss button
-		  self.dismiss = queryElement(toastDismissSelector, self.element);
+		 // dismiss button
+		 self.dismiss = queryElement(toastDismissSelector, self.element);
 
-		  // bind
-		  self.show = self.show.bind(self);
-		  self.hide = self.hide.bind(self);
+		 // bind
+		 self.show = self.show.bind(self);
+		 self.hide = self.hide.bind(self);
 
-		  // add event listener
-		  toggleToastHandler(self, 1);
+		 // add event listener
+		 toggleToastHandler(self, 1);
 		}
 
 		// TOAST PUBLIC METHODS
 		// ====================
 		show() {
-		  const self = this;
-		  const { element } = self;
-		  if (element && hasClass(element, hideClass)) {
+		 const self = this;
+		 const { element } = self;
+		 if (element && hasClass(element, hideClass)) {
 				element.dispatchEvent(showToastEvent);
 				if (showToastEvent.defaultPrevented) return;
 
 				addClass(element, fadeClass);
 				clearTimeout(self.timer);
 				self.timer = setTimeout(() => openToast(self), 10);
-		  }
+		 }
 		}
 
 		hide(noTimer) {
-		  const self = this;
-		  const { element, options } = self;
+		 const self = this;
+		 const { element, options } = self;
 
-		  if (element && hasClass(element, showClass)) {
+		 if (element && hasClass(element, showClass)) {
 				element.dispatchEvent(hideToastEvent);
 				if (hideToastEvent.defaultPrevented) return;
 
 				clearTimeout(self.timer);
 				self.timer = setTimeout(() => closeToast(self),
-				  noTimer ? 10 : options.delay);
-		  }
+				 noTimer ? 10 : options.delay);
+		 }
 		}
 
 		dispose() {
-		  const self = this;
-		  const { element, options } = self;
-		  self.hide();
+		 const self = this;
+		 const { element, options } = self;
+		 self.hide();
 
-		  if (options.animation) emulateTransitionEnd(element, () => completeDisposeToast(self));
-		  else completeDisposeToast(self);
+		 if (options.animation) emulateTransitionEnd(element, () => completeDisposeToast(self));
+		 else completeDisposeToast(self);
 
-		  super.dispose(toastComponent);
+		 super.dispose(toastComponent);
 		}
   }
 

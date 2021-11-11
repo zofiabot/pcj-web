@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Button v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Button v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -36,19 +36,19 @@
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -61,54 +61,54 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
@@ -133,42 +133,42 @@
   // =================
   class Button extends BaseComponent {
 		constructor(target) {
-		  super(buttonComponent, target);
-		  const self = this;
+		 super(buttonComponent, target);
+		 const self = this;
 
-		  // initialization element
-		  const { element } = self;
+		 // initialization element
+		 const { element } = self;
 
-		  // set initial state
-		  self.isActive = hasClass(element, activeClass);
-		  element.setAttribute(ariaPressed, !!self.isActive);
+		 // set initial state
+		 self.isActive = hasClass(element, activeClass);
+		 element.setAttribute(ariaPressed, !!self.isActive);
 
-		  // add event listener
-		  toggleButtonHandler(self, 1);
+		 // add event listener
+		 toggleButtonHandler(self, 1);
 		}
 
 		// BUTTON PUBLIC METHODS
 		// =====================
 		toggle(e) {
-		  if (e) e.preventDefault();
-		  const self = e ? this[buttonComponent] : this;
-		  const { element } = self;
+		 if (e) e.preventDefault();
+		 const self = e ? this[buttonComponent] : this;
+		 const { element } = self;
 
-		  if (hasClass(element, 'disabled')) return;
+		 if (hasClass(element, 'disabled')) return;
 
-		  self.isActive = hasClass(element, activeClass);
-		  const { isActive } = self;
+		 self.isActive = hasClass(element, activeClass);
+		 const { isActive } = self;
 
-		  const action = isActive ? removeClass : addClass;
-		  const ariaValue = isActive ? 'false' : 'true';
+		 const action = isActive ? removeClass : addClass;
+		 const ariaValue = isActive ? 'false' : 'true';
 
-		  action(element, activeClass);
-		  element.setAttribute(ariaPressed, ariaValue);
+		 action(element, activeClass);
+		 element.setAttribute(ariaPressed, ariaValue);
 		}
 
 		dispose() {
-		  toggleButtonHandler(this);
-		  super.dispose(buttonComponent);
+		 toggleButtonHandler(this);
+		 super.dispose(buttonComponent);
 		}
   }
 

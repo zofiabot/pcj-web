@@ -1,11 +1,10 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright	(C) 2020 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2020 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 

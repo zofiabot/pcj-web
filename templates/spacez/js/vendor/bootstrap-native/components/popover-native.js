@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Popover v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Popover v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -16,17 +16,17 @@
   const supportPassive = (() => {
 		let result = false;
 		try {
-		  const opts = Object.defineProperty({}, 'passive', {
+		 const opts = Object.defineProperty({}, 'passive', {
 				get() {
-				  result = true;
-				  return result;
+				 result = true;
+				 return result;
 				},
-		  });
-		  document[addEventListener]('DOMContentLoaded', function wrap() {
+		 });
+		 document[addEventListener]('DOMContentLoaded', function wrap() {
 				document[removeEventListener]('DOMContentLoaded', wrap, opts);
-		  }, opts);
+		 }, opts);
 		} catch (e) {
-		  throw Error('Passive events are not supported');
+		 throw Error('Passive events are not supported');
 		}
 
 		return result;
@@ -50,7 +50,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		  ? parseFloat(durationValue) * durationScale : 0;
+		 ? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
   }
@@ -61,18 +61,18 @@
 		const duration = getElementTransitionDuration(element);
 
 		if (duration) {
-		  element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+		 element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
 				if (e.target === element) {
-				  handler.apply(element, [e]);
-				  element.removeEventListener(transitionEndEvent, transitionEndWrapper);
-				  called = 1;
+				 handler.apply(element, [e]);
+				 element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+				 called = 1;
 				}
-		  });
-		  setTimeout(() => {
+		 });
+		 setTimeout(() => {
 				if (!called) element.dispatchEvent(endEvent);
-		  }, duration + 17);
+		 }, duration + 17);
 		} else {
-		  handler.apply(element, [endEvent]);
+		 handler.apply(element, [endEvent]);
 		}
   }
 
@@ -105,11 +105,11 @@
 		const OriginalCustomEvent = new CustomEvent(namespacedEventType, { cancelable: true });
 
 		if (eventProperties instanceof Object) {
-		  Object.keys(eventProperties).forEach((key) => {
+		 Object.keys(eventProperties).forEach((key) => {
 				Object.defineProperty(OriginalCustomEvent, key, {
-				  value: eventProperties[key],
+				 value: eventProperties[key],
 				});
-		  });
+		 });
 		}
 		return OriginalCustomEvent;
   }
@@ -124,18 +124,18 @@
 
   function isMedia(element) {
 		return [SVGElement, HTMLImageElement, HTMLVideoElement]
-		  .some((mediaType) => element instanceof mediaType);
+		 .some((mediaType) => element instanceof mediaType);
   }
 
   function closestRelative(element) {
 		let retval = null;
 		let el = element;
 		while (el !== document.body) {
-		  el = el.parentElement;
-		  if (getComputedStyle(el).position === 'relative') {
+		 el = el.parentElement;
+		 if (getComputedStyle(el).position === 'relative') {
 				retval = el;
 				break;
-		  }
+		 }
 		}
 		return retval;
   }
@@ -174,8 +174,8 @@
 		const absoluteTarget = targetPosition === 'absolute';
 		const targetRect = element.getBoundingClientRect();
 		const scroll = parentIsBody
-		  ? { x: window.pageXOffset, y: window.pageYOffset }
-		  : { x: container.scrollLeft, y: container.scrollTop };
+		 ? { x: window.pageXOffset, y: window.pageYOffset }
+		 : { x: container.scrollLeft, y: container.scrollTop };
 		const elemDimensions = { w: element.offsetWidth, h: element.offsetHeight };
 		const top = relativeParent ? element.offsetTop : targetRect.top;
 		const left = relativeParent ? element.offsetLeft : targetRect.left;
@@ -197,17 +197,17 @@
 		let rightExceed = targetRect.left + tipDimensions.w + elemDimensions.w >= rightBoundry;
 
 		topExceed = ['left', 'right'].includes(placement)
-		  ? targetRect.top + elemDimensions.h / 2 - tipDimensions.h / 2 < 0
-		  : topExceed;
+		 ? targetRect.top + elemDimensions.h / 2 - tipDimensions.h / 2 < 0
+		 : topExceed;
 		bottomExceed = ['left', 'right'].includes(placement)
-		  ? targetRect.top + tipDimensions.h / 2 + elemDimensions.h / 2 >= windowHeight
-		  : bottomExceed;
+		 ? targetRect.top + tipDimensions.h / 2 + elemDimensions.h / 2 >= windowHeight
+		 : bottomExceed;
 		leftExceed = ['top', 'bottom'].includes(placement)
-		  ? targetRect.left + elemDimensions.w / 2 - tipDimensions.w / 2 < leftBoundry
-		  : leftExceed;
+		 ? targetRect.left + elemDimensions.w / 2 - tipDimensions.w / 2 < leftBoundry
+		 : leftExceed;
 		rightExceed = ['top', 'bottom'].includes(placement)
-		  ? targetRect.left + tipDimensions.w / 2 + elemDimensions.w / 2 >= rightBoundry
-		  : rightExceed;
+		 ? targetRect.left + tipDimensions.w / 2 + elemDimensions.w / 2 >= rightBoundry
+		 : rightExceed;
 
 		// recompute placement
 		// first, when both left and right limits are exceeded, we fall back to top|bottom
@@ -219,7 +219,7 @@
 
 		// update tooltip/popover class
 		if (!tip.className.includes(placement)) {
-		  tip.className = tip.className.replace(tipClasses, tipClassPositions[placement]);
+		 tip.className = tip.className.replace(tipClasses, tipClassPositions[placement]);
 		}
 		// if position has changed, update tip dimensions
 		tipDimensions = { w: tip.offsetWidth, h: tip.offsetHeight };
@@ -231,66 +231,66 @@
 
 		// compute tooltip / popover coordinates
 		if (['left', 'right'].includes(placement)) { // secondary|side positions
-		  if (placement === 'left') { // LEFT
+		 if (placement === 'left') { // LEFT
 				leftPosition = left + scroll.x - tipDimensions.w - (isPopover ? arrowWidth : 0);
-		  } else { // RIGHT
+		 } else { // RIGHT
 				leftPosition = left + scroll.x + elemDimensions.w + (isPopover ? arrowWidth : 0);
-		  }
+		 }
 
-		  // adjust top and arrow
-		  if (topExceed) {
+		 // adjust top and arrow
+		 if (topExceed) {
 				topPosition = top + scroll.y;
 				arrowTop = elemDimensions.h / 2 - arrowWidth;
-		  } else if (bottomExceed) {
+		 } else if (bottomExceed) {
 				topPosition = top + scroll.y - tipDimensions.h + elemDimensions.h;
 				arrowTop = tipDimensions.h - elemDimensions.h / 2 - arrowWidth;
-		  } else {
+		 } else {
 				topPosition = top + scroll.y - tipDimensions.h / 2 + elemDimensions.h / 2;
 				arrowTop = tipDimensions.h / 2 - arrowHeight / 2;
-		  }
+		 }
 		} else if (['top', 'bottom'].includes(placement)) {
-		  if (e && isMedia(element)) {
+		 if (e && isMedia(element)) {
 				const eX = !relativeParent ? e.pageX : e.layerX + (absoluteTarget ? element.offsetLeft : 0);
 				const eY = !relativeParent ? e.pageY : e.layerY + (absoluteTarget ? element.offsetTop : 0);
 
 				if (placement === 'top') {
-				  topPosition = eY - tipDimensions.h - (isPopover ? arrowWidth : arrowHeight);
+				 topPosition = eY - tipDimensions.h - (isPopover ? arrowWidth : arrowHeight);
 				} else {
-				  topPosition = eY + arrowHeight;
+				 topPosition = eY + arrowHeight;
 				}
 
 				// adjust left | right and also the arrow
 				if (e.clientX - tipDimensions.w / 2 < leftBoundry) { // when exceeds left
-				  leftPosition = 0;
-				  arrowLeft = eX - arrowAdjust;
-				} else if (e.clientX + tipDimensions.w * 0.51 >= rightBoundry) { // when exceeds right
-				  leftPosition = 'auto';
-				  rightPosition = 0;
-				  arrowLeft = tipDimensions.w - (rightBoundry - eX) - arrowAdjust;
+				 leftPosition = 0;
+				 arrowLeft = eX - arrowAdjust;
+				} else if (e.clientX + tipDimensions.w* 0.51 >= rightBoundry) { // when exceeds right
+				 leftPosition = 'auto';
+				 rightPosition = 0;
+				 arrowLeft = tipDimensions.w - (rightBoundry - eX) - arrowAdjust;
 				} else { // normal top/bottom
-				  leftPosition = eX - tipDimensions.w / 2;
-				  arrowLeft = tipDimensions.w / 2 - arrowAdjust;
+				 leftPosition = eX - tipDimensions.w / 2;
+				 arrowLeft = tipDimensions.w / 2 - arrowAdjust;
 				}
-		  } else {
+		 } else {
 				if (placement === 'top') {
-				  topPosition = top + scroll.y - tipDimensions.h - (isPopover ? arrowHeight : 0);
+				 topPosition = top + scroll.y - tipDimensions.h - (isPopover ? arrowHeight : 0);
 				} else { // BOTTOM
-				  topPosition = top + scroll.y + elemDimensions.h + (isPopover ? arrowHeight : 0);
+				 topPosition = top + scroll.y + elemDimensions.h + (isPopover ? arrowHeight : 0);
 				}
 
 				// adjust left | right and also the arrow
 				if (leftExceed) {
-				  leftPosition = 0;
-				  arrowLeft = left + elemDimensions.w / 2 - arrowAdjust;
+				 leftPosition = 0;
+				 arrowLeft = left + elemDimensions.w / 2 - arrowAdjust;
 				} else if (rightExceed) {
-				  leftPosition = 'auto';
-				  rightPosition = 0;
-				  arrowRight = elemDimensions.w / 2 + (parentRect.right - targetRect.right) - arrowAdjust;
+				 leftPosition = 'auto';
+				 rightPosition = 0;
+				 arrowRight = elemDimensions.w / 2 + (parentRect.right - targetRect.right) - arrowAdjust;
 				} else {
-				  leftPosition = left + scroll.x - tipDimensions.w / 2 + elemDimensions.w / 2;
-				  arrowLeft = tipDimensions.w / 2 - arrowAdjust;
+				 leftPosition = left + scroll.x - tipDimensions.w / 2 + elemDimensions.w / 2;
+				 arrowLeft = tipDimensions.w / 2 - arrowAdjust;
 				}
-		  }
+		 }
 		}
 
 		// apply style to tooltip/popover and its arrow
@@ -299,13 +299,13 @@
 		tip.style.right = rightPosition !== undefined ? `${rightPosition}px` : '';
 		// update arrow placement or clear side
 		if (arrowTop !== undefined) {
-		  arrow.style.top = `${arrowTop}px`;
+		 arrow.style.top = `${arrowTop}px`;
 		}
 
 		if (arrowLeft !== undefined) {
-		  arrow.style.left = `${arrowLeft}px`;
+		 arrow.style.left = `${arrowLeft}px`;
 		} else if (arrowRight !== undefined) {
-		  arrow.style.right = `${arrowRight}px`;
+		 arrow.style.right = `${arrowRight}px`;
 		}
   }
 
@@ -338,19 +338,19 @@
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -363,59 +363,59 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
   /* Native JavaScript for Bootstrap 5 | Popover
-  ---------------------------------------------- */
+  ----------------------------------------------*/
 
   // POPOVER PRIVATE GC
   // ==================
@@ -465,9 +465,9 @@
 		const { popover, element } = self;
 
 		if ((popover && popover.contains(target)) // popover includes touch target
-		  || target === element // OR touch target is element
-		  || element.contains(target)) ; else {
-		  self.hide();
+		 || target === element // OR touch target is element
+		 || element.contains(target)) ; else {
+		 self.hide();
 		}
   }
 
@@ -476,7 +476,7 @@
   function createPopover(self) {
 		const { id, options } = self;
 		const {
-		  animation, customClass, sanitizeFn, placement, dismissible,
+		 animation, customClass, sanitizeFn, placement, dismissible,
 		} = options;
 		let { title, content, template } = options;
 
@@ -489,10 +489,10 @@
 
 		// sanitize title && content
 		if (sanitizeFn) {
-		  title = title ? sanitizeFn(title) : null;
-		  content = content ? sanitizeFn(content) : null;
-		  template = template ? sanitizeFn(template) : null;
-		  popoverCloseButton = sanitizeFn(popoverCloseButton);
+		 title = title ? sanitizeFn(title) : null;
+		 content = content ? sanitizeFn(content) : null;
+		 template = template ? sanitizeFn(template) : null;
+		 popoverCloseButton = sanitizeFn(popoverCloseButton);
 		}
 
 		self.popover = document.createElement('div');
@@ -516,8 +516,8 @@
 
 		// set dismissible button
 		if (dismissible) {
-		  title = title ? title + popoverCloseButton : title;
-		  content = title === null ? +popoverCloseButton : content;
+		 title = title ? title + popoverCloseButton : title;
+		 content = title === null ? +popoverCloseButton : content;
 		}
 
 		// fill the template with content from data attributes
@@ -528,7 +528,7 @@
 		if (!hasClass(popover, popoverString)) addClass(popover, popoverString);
 		if (animation && !hasClass(popover, fadeClass)) addClass(popover, fadeClass);
 		if (customClass && !hasClass(popover, customClass)) {
-		  addClass(popover, customClass);
+		 addClass(popover, customClass);
 		}
 		if (!hasClass(popover, placementClass)) addClass(popover, placementClass);
   }
@@ -547,15 +547,15 @@
 		self.enabled = !!add;
 
 		if (trigger === 'hover') {
-		  element[action]('mousedown', self.show);
-		  element[action]('mouseenter', self.show);
-		  if (isMedia(element)) element[action]('mousemove', self.update, passiveHandler);
-		  if (!dismissible) element[action]('mouseleave', self.hide);
+		 element[action]('mousedown', self.show);
+		 element[action]('mouseenter', self.show);
+		 if (isMedia(element)) element[action]('mousemove', self.update, passiveHandler);
+		 if (!dismissible) element[action]('mouseleave', self.hide);
 		} else if (trigger === 'click') {
-		  element[action](trigger, self.toggle);
+		 element[action](trigger, self.toggle);
 		} else if (trigger === 'focus') {
-		  if (isIphone) element[action]('click', popoverForceFocus);
-		  element[action]('focusin', self.show);
+		 if (isIphone) element[action]('click', popoverForceFocus);
+		 element[action]('focusin', self.show);
 		}
   }
 
@@ -565,16 +565,16 @@
 		const { trigger, dismissible } = options;
 
 		if (dismissible) {
-		  const [btnClose] = popover.getElementsByClassName('btn-close');
-		  if (btnClose) btnClose[action]('click', self.hide);
+		 const [btnClose] = popover.getElementsByClassName('btn-close');
+		 if (btnClose) btnClose[action]('click', self.hide);
 		} else {
-		  if (trigger === 'focus') element[action]('focusout', self.hide);
-		  if (trigger === 'hover') document[action]('touchstart', popoverTouchHandler, passiveHandler);
+		 if (trigger === 'focus') element[action]('focusout', self.hide);
+		 if (trigger === 'hover') document[action]('touchstart', popoverTouchHandler, passiveHandler);
 		}
 
 		if (!isMedia(element)) {
-		  window[action]('scroll', self.update, passiveHandler);
-		  window[action]('resize', self.update, passiveHandler);
+		 window[action]('scroll', self.update, passiveHandler);
+		 window[action]('resize', self.update, passiveHandler);
 		}
   }
 
@@ -593,159 +593,159 @@
   // ==================
   class Popover extends BaseComponent {
 		constructor(target, config) {
-		  popoverDefaultOptions.container = getTipContainer(queryElement(target));
-		  super(popoverComponent, target, popoverDefaultOptions, config);
+		 popoverDefaultOptions.container = getTipContainer(queryElement(target));
+		 super(popoverComponent, target, popoverDefaultOptions, config);
 
-		  // bind
-		  const self = this;
+		 // bind
+		 const self = this;
 
-		  // initialization element
-		  const { element } = self;
-		  // additional instance properties
-		  self.timer = null;
-		  self.popover = null;
-		  self.arrow = null;
-		  self.enabled = false;
-		  // set unique ID for aria-describedby
-		  self.id = `${popoverString}-${getUID(element)}`;
+		 // initialization element
+		 const { element } = self;
+		 // additional instance properties
+		 self.timer = null;
+		 self.popover = null;
+		 self.arrow = null;
+		 self.enabled = false;
+		 // set unique ID for aria-describedby
+		 self.id = `${popoverString}-${getUID(element)}`;
 
-		  // set instance options
-		  const { options } = self;
+		 // set instance options
+		 const { options } = self;
 
-		  // media elements only work with body as a container
-		  self.options.container = isMedia(element)
+		 // media elements only work with body as a container
+		 self.options.container = isMedia(element)
 				? popoverDefaultOptions.container
 				: queryElement(options.container);
 
-		  // reset default container
-		  popoverDefaultOptions.container = null;
+		 // reset default container
+		 popoverDefaultOptions.container = null;
 
-		  // invalidate when no content is set
-		  if (!options.content) return;
+		 // invalidate when no content is set
+		 if (!options.content) return;
 
-		  // crate popover
-		  createPopover(self);
+		 // crate popover
+		 createPopover(self);
 
-		  // bind
-		  self.update = self.update.bind(self);
+		 // bind
+		 self.update = self.update.bind(self);
 
-		  // attach event listeners
-		  togglePopoverHandlers(self, 1);
+		 // attach event listeners
+		 togglePopoverHandlers(self, 1);
 		}
 
 		update(e) {
-		  styleTip(this, e);
+		 styleTip(this, e);
 		}
 
 		// POPOVER PUBLIC METHODS
 		// ======================
 		toggle(e) {
-		  const self = e ? this[popoverComponent] : this;
-		  const { popover, options } = self;
-		  if (!isVisibleTip(popover, options.container)) self.show();
-		  else self.hide();
+		 const self = e ? this[popoverComponent] : this;
+		 const { popover, options } = self;
+		 if (!isVisibleTip(popover, options.container)) self.show();
+		 else self.hide();
 		}
 
 		show(e) {
-		  const self = e ? this[popoverComponent] : this;
-		  const {
+		 const self = e ? this[popoverComponent] : this;
+		 const {
 				element, popover, options, id,
-		  } = self;
-		  const { container } = options;
+		 } = self;
+		 const { container } = options;
 
-		  clearTimeout(self.timer);
+		 clearTimeout(self.timer);
 
-		  self.timer = setTimeout(() => {
+		 self.timer = setTimeout(() => {
 				if (!isVisibleTip(popover, container)) {
-				  element.dispatchEvent(showPopoverEvent);
-				  if (showPopoverEvent.defaultPrevented) return;
+				 element.dispatchEvent(showPopoverEvent);
+				 if (showPopoverEvent.defaultPrevented) return;
 
-				  // append to the container
-				  container.appendChild(popover);
-				  element.setAttribute(ariaDescribedBy, id);
+				 // append to the container
+				 container.appendChild(popover);
+				 element.setAttribute(ariaDescribedBy, id);
 
-				  self.update(e);
-				  if (!hasClass(popover, showClass)) addClass(popover, showClass);
+				 self.update(e);
+				 if (!hasClass(popover, showClass)) addClass(popover, showClass);
 
-				  if (options.animation) emulateTransitionEnd(popover, () => popoverShowTrigger(self));
-				  else popoverShowTrigger(self);
+				 if (options.animation) emulateTransitionEnd(popover, () => popoverShowTrigger(self));
+				 else popoverShowTrigger(self);
 				}
-		  }, 17);
+		 }, 17);
 		}
 
 		hide(e) {
-		  let self;
-		  if (e && this[popoverComponent]) {
+		 let self;
+		 if (e && this[popoverComponent]) {
 				self = this[popoverComponent];
-		  } else if (e) { // dismissible popover
+		 } else if (e) { // dismissible popover
 				const dPopover = this.closest(`.${popoverString}`);
 				const dEl = dPopover && queryElement(`[${ariaDescribedBy}="${dPopover.id}"]`);
 				self = dEl[popoverComponent];
-		  } else {
+		 } else {
 				self = this;
-		  }
-		  const { element, popover, options } = self;
+		 }
+		 const { element, popover, options } = self;
 
-		  clearTimeout(self.timer);
+		 clearTimeout(self.timer);
 
-		  self.timer = setTimeout(() => {
+		 self.timer = setTimeout(() => {
 				if (isVisibleTip(popover, options.container)) {
-				  element.dispatchEvent(hidePopoverEvent);
-				  if (hidePopoverEvent.defaultPrevented) return;
+				 element.dispatchEvent(hidePopoverEvent);
+				 if (hidePopoverEvent.defaultPrevented) return;
 
-				  removeClass(popover, showClass);
+				 removeClass(popover, showClass);
 
-				  if (options.animation) emulateTransitionEnd(popover, () => popoverHideTrigger(self));
-				  else popoverHideTrigger(self);
+				 if (options.animation) emulateTransitionEnd(popover, () => popoverHideTrigger(self));
+				 else popoverHideTrigger(self);
 				}
-		  }, options.delay + 17);
+		 }, options.delay + 17);
 		}
 
 		enable() {
-		  const self = this;
-		  const { enabled } = self;
-		  if (!enabled) {
+		 const self = this;
+		 const { enabled } = self;
+		 if (!enabled) {
 				togglePopoverHandlers(self, 1);
 				self.enabled = !enabled;
-		  }
+		 }
 		}
 
 		disable() {
-		  const self = this;
-		  const { enabled, popover, options } = self;
-		  if (enabled) {
+		 const self = this;
+		 const { enabled, popover, options } = self;
+		 if (enabled) {
 				if (isVisibleTip(popover, options.container) && options.animation) {
-				  self.hide();
+				 self.hide();
 
-				  setTimeout(
+				 setTimeout(
 						() => togglePopoverHandlers(self),
 						getElementTransitionDuration(popover) + options.delay + 17,
-				  );
+				 );
 				} else {
-				  togglePopoverHandlers(self);
+				 togglePopoverHandlers(self);
 				}
 				self.enabled = !enabled;
-		  }
+		 }
 		}
 
 		toggleEnabled() {
-		  const self = this;
-		  if (!self.enabled) self.enable();
-		  else self.disable();
+		 const self = this;
+		 if (!self.enabled) self.enable();
+		 else self.disable();
 		}
 
 		dispose() {
-		  const self = this;
-		  const { popover, options } = self;
-		  const { container, animation } = options;
-		  if (animation && isVisibleTip(popover, container)) {
+		 const self = this;
+		 const { popover, options } = self;
+		 const { container, animation } = options;
+		 if (animation && isVisibleTip(popover, container)) {
 				options.delay = 0; // reset delay
 				self.hide();
 				emulateTransitionEnd(popover, () => togglePopoverHandlers(self));
-		  } else {
+		 } else {
 				togglePopoverHandlers(self);
-		  }
-		  super.dispose(popoverComponent);
+		 }
+		 super.dispose(popoverComponent);
 		}
   }
 

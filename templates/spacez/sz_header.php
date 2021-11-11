@@ -1,10 +1,10 @@
 <?php
 /**
- * @package		Templates.SpaceZ
- *
- * @copyright	(C) 2020 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2020 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -13,10 +13,6 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 use Joomla\CMS\Document;
-
-
-// Logo file or site title param
-//require('functions.php');
 
 ?>
 

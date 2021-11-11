@@ -1,11 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright		(C) 2020 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2020 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -20,12 +22,12 @@ if ($module->content === null || $module->content === '')
 	return;
 }
 
-$moduleTag						  = $params->get('module_tag', 'div');
-$moduleAttribs				  = [];
+$moduleTag						 = $params->get('module_tag', 'div');
+$moduleAttribs				 = [];
 $moduleAttribs['class'] = $module->position . ' card ' . htmlspecialchars($params->get('moduleclass_sfx'), ENT_QUOTES, 'UTF-8');
-$headerTag						  = htmlspecialchars($params->get('header_tag', 'h3'), ENT_QUOTES, 'UTF-8');
+$headerTag						 = htmlspecialchars($params->get('header_tag', 'h3'), ENT_QUOTES, 'UTF-8');
 $headerClass						= htmlspecialchars($params->get('header_class', ''), ENT_QUOTES, 'UTF-8');
-$headerAttribs				  = [];
+$headerAttribs				 = [];
 $headerAttribs['class'] = $headerClass;
 
 // Only output a header class if it is not card-title
@@ -38,7 +40,7 @@ if ($moduleTag !== 'div')
 {
 	if ($module->showtitle) :
 		$moduleAttribs['aria-labelledby'] = 'mod-' . $module->id;
-		$headerAttribs['id']						  = 'mod-' . $module->id;
+		$headerAttribs['id']						 = 'mod-' . $module->id;
 	else:
 		$moduleAttribs['aria-label'] = $module->title;
 	endif;

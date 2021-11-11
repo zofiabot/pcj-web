@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Alert v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Alert v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
 
 const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
@@ -17,7 +17,7 @@ function getElementTransitionDuration(element) {
   const durationValue = computedStyle[transitionDuration];
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
@@ -29,14 +29,14 @@ function emulateTransitionEnd(element, handler) {
 
   if (duration) {
 		element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
-		  if (e.target === element) {
+		 if (e.target === element) {
 				handler.apply(element, [e]);
 				element.removeEventListener(transitionEndEvent, transitionEndWrapper);
 				called = 1;
-		  }
+		 }
 		});
 		setTimeout(() => {
-		  if (!called) element.dispatchEvent(endEvent);
+		 if (!called) element.dispatchEvent(endEvent);
 		}, duration + 17);
   } else {
 		handler.apply(element, [endEvent]);
@@ -71,9 +71,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -107,34 +107,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -145,7 +145,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -158,7 +158,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | Alert
--------------------------------------------- */
+--------------------------------------------*/
 
 // ALERT PRIVATE GC
 // ================
@@ -216,23 +216,23 @@ class Alert extends BaseComponent {
   close(e) {
 		const target = e ? e.target : null;
 		const self = e
-		  ? e.target.closest(alertSelector)[alertComponent]
-		  : this;
+		 ? e.target.closest(alertSelector)[alertComponent]
+		 : this;
 		const { element } = self;
 
 		if (self && element && hasClass(element, showClass)) {
-		  if (target) {
+		 if (target) {
 				closeAlertEvent.relatedTarget = target;
 				self.relatedTarget = target;
-		  }
-		  element.dispatchEvent(closeAlertEvent);
-		  if (closeAlertEvent.defaultPrevented) return;
+		 }
+		 element.dispatchEvent(closeAlertEvent);
+		 if (closeAlertEvent.defaultPrevented) return;
 
-		  removeClass(element, showClass);
+		 removeClass(element, showClass);
 
-		  if (hasClass(element, fadeClass)) {
+		 if (hasClass(element, fadeClass)) {
 				emulateTransitionEnd(element, () => alertTransitionEnd(self));
-		  } else alertTransitionEnd(self);
+		 } else alertTransitionEnd(self);
 		}
   }
 

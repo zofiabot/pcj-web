@@ -1,13 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright	(C) 2006 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @copyright	for the changes (C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2006 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for the changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -35,7 +35,7 @@ $htag		= $this->params->get('show_page_heading') ? 'h2' : 'h1';
 $assocParam				= (Associations::isEnabled() && $params->get('show_associations'));
 $currentDate				= Factory::getDate()->format('Y-m-d H:i:s');
 $isNotPublishedYet = $this->item->publish_up > $currentDate;
-$isExpired				 = !is_null($this->item->publish_down) && $this->item->publish_down < $currentDate;
+$isExpired				= !is_null($this->item->publish_down) && $this->item->publish_down < $currentDate;
 ?>
 <article class="com-content-article item-page<?php echo $this->pageclass_sfx; ?>" itemscope itemtype="https://schema.org/Article">
 	<meta itemprop="inLanguage" content="<?php echo ($this->item->language === '*') ? Factory::getApplication()->get('language') : $this->item->language; ?>">

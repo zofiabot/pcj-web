@@ -1,10 +1,10 @@
 <?php
 /**
- * @package		Templates.SpaceZ
- *
- * @copyright	(C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -17,7 +17,7 @@ use Joomla\CMS\Document;
 require_once('functions.php');
 
 
-/** @var Joomla\CMS\Document\HtmlDocument $this */
+/** @var Joomla\CMS\Document\HtmlDocument $this*/
 
 $app = Factory::getApplication();
 $wa	= $this->getWebAssetManager();

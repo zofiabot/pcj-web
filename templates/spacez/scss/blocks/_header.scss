@@ -34,22 +34,22 @@
 		color: $white;
 
 		[dir=rtl] & {
-		  margin-right: 0;
-		  margin-left: auto;
+		 margin-right: 0;
+		 margin-left: auto;
 		}
 
 		img {
-		  width: 18rem;
-		  min-width: 18rem;
+		 width: 18rem;
+		 min-width: 18rem;
 		}
 
 		a {
-		  color: $white;
+		 color: $white;
 		}
 
 		&:hover,
 		&:focus {
-		  color: scale-color($white, $lightness: -6%);
+		 color: scale-color($white, $lightness: -6%);
 		}
   }
 
@@ -59,22 +59,22 @@
 		padding-bottom: $spacez-grid-gutter;
 
 		@include media-breakpoint-down(sm) {
-		  .container-search,
-		  nav {
+		 .container-search,
+		 nav {
 				margin-top: $spacez-grid-gutter;
-		  }
+		 }
 		}
 
 		.container-search:only-child {
-		  margin-left: auto;
+		 margin-left: auto;
 		}
   }
 
   .navbar-collapse {
 		&.show {
-		  display: flex;
-		  flex-wrap: wrap;
-		  justify-content: space-between;
+		 display: flex;
+		 flex-wrap: wrap;
+		 justify-content: space-between;
 		}
   }
 
@@ -86,126 +86,126 @@
 		list-style: none;
 
 		@include media-breakpoint-up(md) {
-		  display: flex;
-		  flex: 1 1 0%;
-		  flex-direction: row;
+		 display: flex;
+		 flex: 1 1 0%;
+		 flex-direction: row;
 		}
 
 		> li {
-		  position: relative;
+		 position: relative;
 
-		  @include media-breakpoint-up(md) {
+		 @include media-breakpoint-up(md) {
 				+ li {
-				  margin-left: 1.55em;
+				 margin-left: 1.55em;
 				}
-		  }
+		 }
 
-		  > a,
-		  > span {
+		 > a,
+		 > span {
 				position: relative;
 				color: currentColor;
 				text-decoration: none;
-		  }
+		 }
 
-		  &::after {
+		 &::after {
 				@include media-breakpoint-up(md) {
-				  position: absolute;
-				  right: 50%;
-				  bottom: 0;
-				  left: 50%;
-				  display: block;
-				  height: 2px;
-				  margin: auto;
-				  content: "";
-				  background: transparent;
-				  opacity: .2;
-				  transition: all .2s ease, background-color .2s ease;
+				 position: absolute;
+				 right: 50%;
+				 bottom: 0;
+				 left: 50%;
+				 display: block;
+				 height: 2px;
+				 margin: auto;
+				 content: "";
+				 background: transparent;
+				 opacity: .2;
+				 transition: all .2s ease, background-color .2s ease;
 				}
-		  }
+		 }
 
-		  &.active::after,
-		  &:hover::after {
+		 &.active::after,
+		 &:hover::after {
 				right: 2px;
 				left: 0;
 				background: $white;
-		  }
+		 }
 
-		  @include media-breakpoint-down(md) {
+		 @include media-breakpoint-down(md) {
 				&.active > a,
 				&.active > span,
 				> a:hover {
-				  text-decoration: underline;
+				 text-decoration: underline;
 				}
-		  }
+		 }
 		}
 
 		.parent {
-		  > ul {
+		 > ul {
 				display: none;
 				color: $gray-900;
-		  }
+		 }
 		}
   }
 
   @if $metismenu==true {
 		.metismenu > li {
-		  + li {
+		 + li {
 				margin-left: 0;
-		  }
+		 }
 
-		  > a::after,
-		  > button::before {
+		 > a::after,
+		 > button::before {
 
 				@include media-breakpoint-up(md) {
-				  position: absolute;
-				  right: 50%;
-				  bottom: 0;
-				  left: 50%;
-				  display: block;
-				  height: 2px;
-				  margin: auto;
-				  content: "";
-				  background: transparent;
-				  opacity: .2;
-				  transition: all .2s ease, background-color .2s ease;
+				 position: absolute;
+				 right: 50%;
+				 bottom: 0;
+				 left: 50%;
+				 display: block;
+				 height: 2px;
+				 margin: auto;
+				 content: "";
+				 background: transparent;
+				 opacity: .2;
+				 transition: all .2s ease, background-color .2s ease;
 				}
-		  }
+		 }
 
-		  > a:hover::after,
-		  > button:hover::before,
-		  &.active > a::after,
-		  &.active > button::before {
+		 > a:hover::after,
+		 > button:hover::before,
+		 &.active > a::after,
+		 &.active > button::before {
 				right: 0;
 				left: 0;
 				background: $white;
-		  }
+		 }
 
-		  > button.mm-toggler-link:hover::before,
-		  &.active > button.mm-toggler-link::before {
+		 > button.mm-toggler-link:hover::before,
+		 &.active > button.mm-toggler-link::before {
 				right: 0;
 				left: .5em;
 
 				[dir="rtl"] & {
-				  right: .5em;
-				  left: 0;
+				 right: .5em;
+				 left: 0;
 				}
-		  }
+		 }
 		}
 
 		.metismenu > li.level-1 {
-		  &.active > a,
-		  &.active > button,
-		  > a:hover,
-		  > button:hover {
+		 &.active > a,
+		 &.active > button,
+		 > a:hover,
+		 > button:hover {
 
 				@include media-breakpoint-up(md) {
-				  text-decoration: none;
+				 text-decoration: none;
 				}
-		  }
+		 }
 
-		  > ul {
+		 > ul {
 				min-width: 12rem;
-		  }
+		 }
 		}
   }
 
@@ -215,7 +215,7 @@
 		border: 1px solid $white;
 
 		.fas {
-		  font-size: 1.5rem;
+		 font-size: 1.5rem;
 		}
   }
 
@@ -230,7 +230,7 @@
 		max-width: 100%;
 
 		> label {
-		  @include visually-hidden();
+		 @include visually-hidden();
 		}
   }
 }

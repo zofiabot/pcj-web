@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Button v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Button v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 function addClass(element, classNAME) {
   element.classList.add(classNAME);
 }
@@ -56,34 +56,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -94,7 +94,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }

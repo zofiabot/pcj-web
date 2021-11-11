@@ -1,13 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage	Templates.spacez
- *
- * @copyright	 (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- * @copyright	(C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	(C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -16,19 +16,19 @@ use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Uri\Uri;
 
-/** @var Joomla\CMS\Document\ErrorDocument $this */
+/** @var Joomla\CMS\Document\ErrorDocument $this*/
 
 $app = Factory::getApplication();
 $wa	= $this->getWebAssetManager();
 
 // Detecting Active Variables
-$option	 = $app->input->getCmd('option', '');
-$view		 = $app->input->getCmd('view', '');
-$layout	 = $app->input->getCmd('layout', '');
-$task		 = $app->input->getCmd('task', '');
-$itemid	 = $app->input->getCmd('Itemid', '');
+$option	= $app->input->getCmd('option', '');
+$view		= $app->input->getCmd('view', '');
+$layout	= $app->input->getCmd('layout', '');
+$task		= $app->input->getCmd('task', '');
+$itemid	= $app->input->getCmd('Itemid', '');
 $sitename = htmlspecialchars($app->get('sitename'), ENT_QUOTES, 'UTF-8');
-$menu		 = $app->getMenu()->getActive();
+$menu		= $app->getMenu()->getActive();
 $pageclass = $menu !== null ? $menu->getParams()->get('pageclass_sfx', '') : '';
 
 // Template path

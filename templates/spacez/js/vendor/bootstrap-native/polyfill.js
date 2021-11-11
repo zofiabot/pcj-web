@@ -76,7 +76,7 @@ if (!Array.prototype.includes) {
 		while (k < len) {
 			currentElement = O[k];
 			if (searchElement === currentElement ||
-				 (searchElement !== searchElement && currentElement !== currentElement)) {
+				(searchElement !== searchElement && currentElement !== currentElement)) {
 				return true;
 			}
 			k++;
@@ -95,7 +95,7 @@ if (!Array.from) {
 			var number = Number(value);
 			if (isNaN(number)) { return 0; }
 			if (number === 0 || !isFinite(number)) { return number; }
-			return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+			return (number > 0 ? 1 : -1)* Math.floor(Math.abs(number));
 		};
 		var maxSafeInteger = Math.pow(2, 53) - 1;
 		var toLength = function (value) {
@@ -103,7 +103,7 @@ if (!Array.from) {
 			return Math.min(Math.max(len, 0), maxSafeInteger);
 		};
 
-		return function from(arrayLike/*, mapFn, thisArg */) {
+		return function from(arrayLike/*, mapFn, thisArg*/) {
 			var C = this, items = Object(arrayLike);
 			if (arrayLike == null) {
 				throw new TypeError('Array.from requires an array-like object - not null or undefined');

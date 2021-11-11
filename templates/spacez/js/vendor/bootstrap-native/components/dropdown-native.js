@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Dropdown v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Dropdown v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -21,17 +21,17 @@
   const supportPassive = (() => {
 		let result = false;
 		try {
-		  const opts = Object.defineProperty({}, 'passive', {
+		 const opts = Object.defineProperty({}, 'passive', {
 				get() {
-				  result = true;
-				  return result;
+				 result = true;
+				 return result;
 				},
-		  });
-		  document[addEventListener]('DOMContentLoaded', function wrap() {
+		 });
+		 document[addEventListener]('DOMContentLoaded', function wrap() {
 				document[removeEventListener]('DOMContentLoaded', wrap, opts);
-		  }, opts);
+		 }, opts);
 		} catch (e) {
-		  throw Error('Passive events are not supported');
+		 throw Error('Passive events are not supported');
 		}
 
 		return result;
@@ -67,11 +67,11 @@
 		const OriginalCustomEvent = new CustomEvent(namespacedEventType, { cancelable: true });
 
 		if (eventProperties instanceof Object) {
-		  Object.keys(eventProperties).forEach((key) => {
+		 Object.keys(eventProperties).forEach((key) => {
 				Object.defineProperty(OriginalCustomEvent, key, {
-				  value: eventProperties[key],
+				 value: eventProperties[key],
 				});
-		  });
+		 });
 		}
 		return OriginalCustomEvent;
   }
@@ -80,8 +80,8 @@
 		const parentAnchor = elem.closest('A');
 		// anchor href starts with #
 		return elem && ((elem.href && elem.href.slice(-1) === '#')
-		  // OR a child of an anchor with href starts with #
-		  || (parentAnchor && parentAnchor.href && parentAnchor.href.slice(-1) === '#'));
+		 // OR a child of an anchor with href starts with #
+		 || (parentAnchor && parentAnchor.href && parentAnchor.href.slice(-1) === '#'));
   }
 
   function setFocus(element) {
@@ -90,19 +90,19 @@
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -115,59 +115,59 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
   /* Native JavaScript for Bootstrap 5 | Dropdown
-  ----------------------------------------------- */
+  -----------------------------------------------*/
 
   // DROPDOWN PRIVATE GC
   // ===================
@@ -200,7 +200,7 @@
   // ========================
   function styleDropdown(self, show) {
 		const {
-		  element, menu, originalClass, menuEnd, options,
+		 element, menu, originalClass, menuEnd, options,
 		} = self;
 		const { offset } = options;
 		const parent = element.parentElement;
@@ -211,11 +211,11 @@
 		removeClass(parent, 'position-static');
 
 		if (!show) {
-		  const menuEndNow = hasClass(menu, dropdownMenuEndClass);
-		  parent.className = originalClass.join(' ');
-		  if (menuEndNow && !menuEnd) removeClass(menu, dropdownMenuEndClass);
-		  else if (!menuEndNow && menuEnd) addClass(menu, dropdownMenuEndClass);
-		  return;
+		 const menuEndNow = hasClass(menu, dropdownMenuEndClass);
+		 parent.className = originalClass.join(' ');
+		 if (menuEndNow && !menuEnd) removeClass(menu, dropdownMenuEndClass);
+		 else if (!menuEndNow && menuEnd) addClass(menu, dropdownMenuEndClass);
+		 return;
 		}
 
 		// set initial position class
@@ -223,18 +223,18 @@
 		let positionClass = dropdownMenuClasses.find((c) => originalClass.includes(c)) || dropdownString;
 
 		let dropdownMargin = {
-		  dropdown: [offset, 0, 0],
-		  dropup: [0, 0, offset],
-		  dropstart: [-1, offset, 0],
-		  dropend: [-1, 0, 0, offset],
+		 dropdown: [offset, 0, 0],
+		 dropup: [0, 0, offset],
+		 dropstart: [-1, offset, 0],
+		 dropend: [-1, 0, 0, offset],
 		};
 
 		const dropdownPosition = {
-		  dropdown: { top: '100%' },
-		  dropup: { top: 'auto', bottom: '100%' },
-		  dropstart: { left: 'auto', right: '100%' },
-		  dropend: { left: '100%', right: 'auto' },
-		  menuEnd: { right: 0, left: 'auto' },
+		 dropdown: { top: '100%' },
+		 dropup: { top: 'auto', bottom: '100%' },
+		 dropstart: { left: 'auto', right: '100%' },
+		 dropend: { left: '100%', right: 'auto' },
+		 menuEnd: { right: 0, left: 'auto' },
 		};
 
 		// force showing the menu to calculate its size
@@ -265,47 +265,47 @@
 
 		// recompute position
 		if (horizontalClass.includes(positionClass) && leftFullExceed && rightFullExceed) {
-		  positionClass = dropdownString;
+		 positionClass = dropdownString;
 		}
 		if (horizontalClass.includes(positionClass) && bottomExceed) {
-		  positionClass = dropupString;
+		 positionClass = dropupString;
 		}
 		if (positionClass === dropstartString && leftFullExceed && !bottomExceed) {
-		  positionClass = dropendString;
+		 positionClass = dropendString;
 		}
 		if (positionClass === dropendString && rightFullExceed && !bottomExceed) {
-		  positionClass = dropstartString;
+		 positionClass = dropstartString;
 		}
 		if (positionClass === dropupString && topExceed && !bottomFullExceed) {
-		  positionClass = dropdownString;
+		 positionClass = dropdownString;
 		}
 		if (positionClass === dropdownString && bottomFullExceed && !topExceed) {
-		  positionClass = dropupString;
+		 positionClass = dropupString;
 		}
 
 		// set spacing
 		dropdownMargin = dropdownMargin[positionClass];
 		menu.style.margin = `${dropdownMargin.map((x) => (x ? `${x}px` : x)).join(' ')}`;
 		Object.keys(dropdownPosition[positionClass]).forEach((position) => {
-		  menu.style[position] = dropdownPosition[positionClass][position];
+		 menu.style[position] = dropdownPosition[positionClass][position];
 		});
 
 		// update dropdown position class
 		if (!hasClass(parent, positionClass)) {
-		  parent.className = parent.className.replace(dropdownRegex, positionClass);
+		 parent.className = parent.className.replace(dropdownRegex, positionClass);
 		}
 
 		// update dropdown / dropup to handle parent btn-group element
 		// as well as the dropdown-menu-end utility class
 		if (verticalClass.includes(positionClass)) {
-		  if (!menuEnd && rightExceed) addClass(menu, dropdownMenuEndClass);
-		  else if (menuEnd && leftExceed) removeClass(menu, dropdownMenuEndClass);
+		 if (!menuEnd && rightExceed) addClass(menu, dropdownMenuEndClass);
+		 else if (menuEnd && leftExceed) removeClass(menu, dropdownMenuEndClass);
 
-		  if (hasClass(menu, dropdownMenuEndClass)) {
+		 if (hasClass(menu, dropdownMenuEndClass)) {
 				Object.keys(dropdownPosition.menuEnd).forEach((p) => {
-				  menu.style[p] = dropdownPosition.menuEnd[p];
+				 menu.style[p] = dropdownPosition.menuEnd[p];
 				});
-		  }
+		 }
 		}
 
 		// remove util classes from the menu, we have its size
@@ -321,8 +321,8 @@
 		document[action]('keyup', dropdownKeyHandler);
 
 		if (self.options.display === 'dynamic') {
-		  window[action]('scroll', dropdownLayoutHandler, passiveHandler);
-		  window[action]('resize', dropdownLayoutHandler, passiveHandler);
+		 window[action]('scroll', dropdownLayoutHandler, passiveHandler);
+		 window[action]('resize', dropdownLayoutHandler, passiveHandler);
 		}
   }
 
@@ -333,11 +333,11 @@
 
   function getCurrentOpenDropdown() {
 		const currentParent = dropdownMenuClasses.concat('btn-group')
-		  .map((c) => document.getElementsByClassName(`${c} ${showClass}`))
-		  .find((x) => x.length);
+		 .map((c) => document.getElementsByClassName(`${c} ${showClass}`))
+		 .find((x) => x.length);
 
 		if (currentParent && currentParent.length) {
-		  return Array.from(currentParent[0].children).find((x) => x.hasAttribute(dataBsToggle));
+		 return Array.from(currentParent[0].children).find((x) => x.hasAttribute(dataBsToggle));
 		}
 		return null;
   }
@@ -355,18 +355,18 @@
 
 		const hasData = target.closest(dropdownSelector) !== null;
 		const isForm = parent && parent.contains(target)
-		  && (target.tagName === 'form' || target.closest('form') !== null);
+		 && (target.tagName === 'form' || target.closest('form') !== null);
 
 		if (type === 'click' && isEmptyAnchor(target)) {
-		  e.preventDefault();
+		 e.preventDefault();
 		}
 		if (type === 'focus'
-		  && (target === element || target === menu || menu.contains(target))) {
-		  return;
+		 && (target === element || target === menu || menu.contains(target))) {
+		 return;
 		}
 
 		if (isForm || hasData) ; else if (self) {
-		  self.hide(element);
+		 self.hide(element);
 		}
   }
 
@@ -394,15 +394,15 @@
 		let idx = menuItems.indexOf(activeItem);
 
 		if (isMenuItem) { // navigate up | down
-		  if (isSameElement) {
+		 if (isSameElement) {
 				idx = 0;
-		  } else if (which === 38) {
+		 } else if (which === 38) {
 				idx = idx > 1 ? idx - 1 : 0;
-		  } else if (which === 40) {
+		 } else if (which === 40) {
 				idx = idx < menuItems.length - 1 ? idx + 1 : idx;
-		  }
+		 }
 
-		  if (menuItems[idx]) setFocus(menuItems[idx]);
+		 if (menuItems[idx]) setFocus(menuItems[idx]);
 		}
 
 		if (((menuItems.length && isMenuItem) // menu has items
@@ -410,7 +410,7 @@
 				|| !isInsideMenu) // or the focused element is not in the menu at all
 				&& open && which === 27 // menu must be open
 		) {
-		  self.toggle();
+		 self.toggle();
 		}
   }
 
@@ -425,116 +425,116 @@
   // ===================
   class Dropdown extends BaseComponent {
 		constructor(target, config) {
-		  super(dropdownComponent, target, defaultDropdownOptions, config);
-		  // bind
-		  const self = this;
+		 super(dropdownComponent, target, defaultDropdownOptions, config);
+		 // bind
+		 const self = this;
 
-		  // initialization element
-		  const { element } = self;
+		 // initialization element
+		 const { element } = self;
 
-		  // set targets
-		  const parent = element.parentElement;
-		  self.menu = queryElement(`.${dropdownMenuClass}`, parent);
-		  const { menu } = self;
+		 // set targets
+		 const parent = element.parentElement;
+		 self.menu = queryElement(`.${dropdownMenuClass}`, parent);
+		 const { menu } = self;
 
-		  self.originalClass = Array.from(parent.classList);
+		 self.originalClass = Array.from(parent.classList);
 
-		  // set original position
-		  self.menuEnd = hasClass(menu, dropdownMenuEndClass);
+		 // set original position
+		 self.menuEnd = hasClass(menu, dropdownMenuEndClass);
 
-		  self.menuItems = [];
+		 self.menuItems = [];
 
-		  Array.from(menu.children).forEach((child) => {
+		 Array.from(menu.children).forEach((child) => {
 				if (child.children.length && (child.children[0].tagName === 'A')) self.menuItems.push(child.children[0]);
 				if (child.tagName === 'A') self.menuItems.push(child);
-		  });
+		 });
 
-		  // set initial state to closed
-		  self.open = false;
+		 // set initial state to closed
+		 self.open = false;
 
-		  // add event listener
-		  toggleDropdownHandler(self, 1);
+		 // add event listener
+		 toggleDropdownHandler(self, 1);
 		}
 
 		// DROPDOWN PUBLIC METHODS
 		// =======================
 		toggle(related) {
-		  const self = this;
-		  const { open } = self;
+		 const self = this;
+		 const { open } = self;
 
-		  if (open) self.hide(related);
-		  else self.show(related);
+		 if (open) self.hide(related);
+		 else self.show(related);
 		}
 
 		show(related) {
-		  const self = this;
-		  const currentParent = queryElement(dropdownMenuClasses.concat('btn-group').map((c) => `.${c}.${showClass}`).join(','));
-		  const currentElement = currentParent && queryElement(dropdownSelector, currentParent);
+		 const self = this;
+		 const currentParent = queryElement(dropdownMenuClasses.concat('btn-group').map((c) => `.${c}.${showClass}`).join(','));
+		 const currentElement = currentParent && queryElement(dropdownSelector, currentParent);
 
-		  if (currentElement) currentElement[dropdownComponent].hide();
+		 if (currentElement) currentElement[dropdownComponent].hide();
 
-		  const { element, menu, open } = self;
-		  const parent = element.parentNode;
+		 const { element, menu, open } = self;
+		 const parent = element.parentNode;
 
-		  // update relatedTarget and dispatch
-		  showDropdownEvent.relatedTarget = related || null;
-		  parent.dispatchEvent(showDropdownEvent);
-		  if (showDropdownEvent.defaultPrevented) return;
+		 // update relatedTarget and dispatch
+		 showDropdownEvent.relatedTarget = related || null;
+		 parent.dispatchEvent(showDropdownEvent);
+		 if (showDropdownEvent.defaultPrevented) return;
 
-		  // change menu position
-		  styleDropdown(self, 1);
+		 // change menu position
+		 styleDropdown(self, 1);
 
-		  addClass(menu, showClass);
-		  addClass(parent, showClass);
+		 addClass(menu, showClass);
+		 addClass(parent, showClass);
 
-		  element.setAttribute(ariaExpanded, true);
-		  self.open = !open;
+		 element.setAttribute(ariaExpanded, true);
+		 self.open = !open;
 
-		  setTimeout(() => {
+		 setTimeout(() => {
 				setFocus(menu.getElementsByTagName('INPUT')[0] || element); // focus the first input item | element
 				toggleDropdownDismiss(self);
 
 				shownDropdownEvent.relatedTarget = related || null;
 				parent.dispatchEvent(shownDropdownEvent);
-		  }, 1);
+		 }, 1);
 		}
 
 		hide(related) {
-		  const self = this;
-		  const { element, menu, open } = self;
-		  const parent = element.parentNode;
-		  hideDropdownEvent.relatedTarget = related || null;
-		  parent.dispatchEvent(hideDropdownEvent);
-		  if (hideDropdownEvent.defaultPrevented) return;
+		 const self = this;
+		 const { element, menu, open } = self;
+		 const parent = element.parentNode;
+		 hideDropdownEvent.relatedTarget = related || null;
+		 parent.dispatchEvent(hideDropdownEvent);
+		 if (hideDropdownEvent.defaultPrevented) return;
 
-		  removeClass(menu, showClass);
-		  removeClass(parent, showClass);
+		 removeClass(menu, showClass);
+		 removeClass(parent, showClass);
 
-		  // revert to original position
-		  styleDropdown(self);
+		 // revert to original position
+		 styleDropdown(self);
 
-		  element.setAttribute(ariaExpanded, false);
-		  self.open = !open;
+		 element.setAttribute(ariaExpanded, false);
+		 self.open = !open;
 
-		  setFocus(element);
+		 setFocus(element);
 
-		  // only re-attach handler if the instance is not disposed
-		  setTimeout(() => toggleDropdownDismiss(self), 1);
+		 // only re-attach handler if the instance is not disposed
+		 setTimeout(() => toggleDropdownDismiss(self), 1);
 
-		  // update relatedTarget and dispatch
-		  hiddenDropdownEvent.relatedTarget = related || null;
-		  parent.dispatchEvent(hiddenDropdownEvent);
+		 // update relatedTarget and dispatch
+		 hiddenDropdownEvent.relatedTarget = related || null;
+		 parent.dispatchEvent(hiddenDropdownEvent);
 		}
 
 		dispose() {
-		  const self = this;
-		  const { element } = self;
+		 const self = this;
+		 const { element } = self;
 
-		  if (hasClass(element.parentNode, showClass) && self.open) self.hide();
+		 if (hasClass(element.parentNode, showClass) && self.open) self.hide();
 
-		  toggleDropdownHandler(self);
+		 toggleDropdownHandler(self);
 
-		  super.dispose(dropdownComponent);
+		 super.dispose(dropdownComponent);
 		}
   }
 

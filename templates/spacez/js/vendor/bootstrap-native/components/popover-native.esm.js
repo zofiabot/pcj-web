@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Popover v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Popover v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 const addEventListener = 'addEventListener';
 
 const removeEventListener = 'removeEventListener';
@@ -11,13 +11,13 @@ const supportPassive = (() => {
   let result = false;
   try {
 		const opts = Object.defineProperty({}, 'passive', {
-		  get() {
+		 get() {
 				result = true;
 				return result;
-		  },
+		 },
 		});
 		document[addEventListener]('DOMContentLoaded', function wrap() {
-		  document[removeEventListener]('DOMContentLoaded', wrap, opts);
+		 document[removeEventListener]('DOMContentLoaded', wrap, opts);
 		}, opts);
   } catch (e) {
 		throw Error('Passive events are not supported');
@@ -44,7 +44,7 @@ function getElementTransitionDuration(element) {
   const durationValue = computedStyle[transitionDuration];
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
@@ -56,14 +56,14 @@ function emulateTransitionEnd(element, handler) {
 
   if (duration) {
 		element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
-		  if (e.target === element) {
+		 if (e.target === element) {
 				handler.apply(element, [e]);
 				element.removeEventListener(transitionEndEvent, transitionEndWrapper);
 				called = 1;
-		  }
+		 }
 		});
 		setTimeout(() => {
-		  if (!called) element.dispatchEvent(endEvent);
+		 if (!called) element.dispatchEvent(endEvent);
 		}, duration + 17);
   } else {
 		handler.apply(element, [endEvent]);
@@ -100,9 +100,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -127,8 +127,8 @@ function closestRelative(element) {
   while (el !== document.body) {
 		el = el.parentElement;
 		if (getComputedStyle(el).position === 'relative') {
-		  retval = el;
-		  break;
+		 retval = el;
+		 break;
 		}
   }
   return retval;
@@ -226,64 +226,64 @@ function styleTip(self, e) {
   // compute tooltip / popover coordinates
   if (['left', 'right'].includes(placement)) { // secondary|side positions
 		if (placement === 'left') { // LEFT
-		  leftPosition = left + scroll.x - tipDimensions.w - (isPopover ? arrowWidth : 0);
+		 leftPosition = left + scroll.x - tipDimensions.w - (isPopover ? arrowWidth : 0);
 		} else { // RIGHT
-		  leftPosition = left + scroll.x + elemDimensions.w + (isPopover ? arrowWidth : 0);
+		 leftPosition = left + scroll.x + elemDimensions.w + (isPopover ? arrowWidth : 0);
 		}
 
 		// adjust top and arrow
 		if (topExceed) {
-		  topPosition = top + scroll.y;
-		  arrowTop = elemDimensions.h / 2 - arrowWidth;
+		 topPosition = top + scroll.y;
+		 arrowTop = elemDimensions.h / 2 - arrowWidth;
 		} else if (bottomExceed) {
-		  topPosition = top + scroll.y - tipDimensions.h + elemDimensions.h;
-		  arrowTop = tipDimensions.h - elemDimensions.h / 2 - arrowWidth;
+		 topPosition = top + scroll.y - tipDimensions.h + elemDimensions.h;
+		 arrowTop = tipDimensions.h - elemDimensions.h / 2 - arrowWidth;
 		} else {
-		  topPosition = top + scroll.y - tipDimensions.h / 2 + elemDimensions.h / 2;
-		  arrowTop = tipDimensions.h / 2 - arrowHeight / 2;
+		 topPosition = top + scroll.y - tipDimensions.h / 2 + elemDimensions.h / 2;
+		 arrowTop = tipDimensions.h / 2 - arrowHeight / 2;
 		}
   } else if (['top', 'bottom'].includes(placement)) {
 		if (e && isMedia(element)) {
-		  const eX = !relativeParent ? e.pageX : e.layerX + (absoluteTarget ? element.offsetLeft : 0);
-		  const eY = !relativeParent ? e.pageY : e.layerY + (absoluteTarget ? element.offsetTop : 0);
+		 const eX = !relativeParent ? e.pageX : e.layerX + (absoluteTarget ? element.offsetLeft : 0);
+		 const eY = !relativeParent ? e.pageY : e.layerY + (absoluteTarget ? element.offsetTop : 0);
 
-		  if (placement === 'top') {
+		 if (placement === 'top') {
 				topPosition = eY - tipDimensions.h - (isPopover ? arrowWidth : arrowHeight);
-		  } else {
+		 } else {
 				topPosition = eY + arrowHeight;
-		  }
+		 }
 
-		  // adjust left | right and also the arrow
-		  if (e.clientX - tipDimensions.w / 2 < leftBoundry) { // when exceeds left
+		 // adjust left | right and also the arrow
+		 if (e.clientX - tipDimensions.w / 2 < leftBoundry) { // when exceeds left
 				leftPosition = 0;
 				arrowLeft = eX - arrowAdjust;
-		  } else if (e.clientX + tipDimensions.w * 0.51 >= rightBoundry) { // when exceeds right
+		 } else if (e.clientX + tipDimensions.w* 0.51 >= rightBoundry) { // when exceeds right
 				leftPosition = 'auto';
 				rightPosition = 0;
 				arrowLeft = tipDimensions.w - (rightBoundry - eX) - arrowAdjust;
-		  } else { // normal top/bottom
+		 } else { // normal top/bottom
 				leftPosition = eX - tipDimensions.w / 2;
 				arrowLeft = tipDimensions.w / 2 - arrowAdjust;
-		  }
+		 }
 		} else {
-		  if (placement === 'top') {
+		 if (placement === 'top') {
 				topPosition = top + scroll.y - tipDimensions.h - (isPopover ? arrowHeight : 0);
-		  } else { // BOTTOM
+		 } else { // BOTTOM
 				topPosition = top + scroll.y + elemDimensions.h + (isPopover ? arrowHeight : 0);
-		  }
+		 }
 
-		  // adjust left | right and also the arrow
-		  if (leftExceed) {
+		 // adjust left | right and also the arrow
+		 if (leftExceed) {
 				leftPosition = 0;
 				arrowLeft = left + elemDimensions.w / 2 - arrowAdjust;
-		  } else if (rightExceed) {
+		 } else if (rightExceed) {
 				leftPosition = 'auto';
 				rightPosition = 0;
 				arrowRight = elemDimensions.w / 2 + (parentRect.right - targetRect.right) - arrowAdjust;
-		  } else {
+		 } else {
 				leftPosition = left + scroll.x - tipDimensions.w / 2 + elemDimensions.w / 2;
 				arrowLeft = tipDimensions.w / 2 - arrowAdjust;
-		  }
+		 }
 		}
   }
 
@@ -358,34 +358,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -396,7 +396,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -409,7 +409,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | Popover
----------------------------------------------- */
+----------------------------------------------*/
 
 // POPOVER PRIVATE GC
 // ==================
@@ -608,8 +608,8 @@ class Popover extends BaseComponent {
 
 		// media elements only work with body as a container
 		self.options.container = isMedia(element)
-		  ? popoverDefaultOptions.container
-		  : queryElement(options.container);
+		 ? popoverDefaultOptions.container
+		 : queryElement(options.container);
 
 		// reset default container
 		popoverDefaultOptions.container = null;
@@ -643,14 +643,14 @@ class Popover extends BaseComponent {
   show(e) {
 		const self = e ? this[popoverComponent] : this;
 		const {
-		  element, popover, options, id,
+		 element, popover, options, id,
 		} = self;
 		const { container } = options;
 
 		clearTimeout(self.timer);
 
 		self.timer = setTimeout(() => {
-		  if (!isVisibleTip(popover, container)) {
+		 if (!isVisibleTip(popover, container)) {
 				element.dispatchEvent(showPopoverEvent);
 				if (showPopoverEvent.defaultPrevented) return;
 
@@ -663,27 +663,27 @@ class Popover extends BaseComponent {
 
 				if (options.animation) emulateTransitionEnd(popover, () => popoverShowTrigger(self));
 				else popoverShowTrigger(self);
-		  }
+		 }
 		}, 17);
   }
 
   hide(e) {
 		let self;
 		if (e && this[popoverComponent]) {
-		  self = this[popoverComponent];
+		 self = this[popoverComponent];
 		} else if (e) { // dismissible popover
-		  const dPopover = this.closest(`.${popoverString}`);
-		  const dEl = dPopover && queryElement(`[${ariaDescribedBy}="${dPopover.id}"]`);
-		  self = dEl[popoverComponent];
+		 const dPopover = this.closest(`.${popoverString}`);
+		 const dEl = dPopover && queryElement(`[${ariaDescribedBy}="${dPopover.id}"]`);
+		 self = dEl[popoverComponent];
 		} else {
-		  self = this;
+		 self = this;
 		}
 		const { element, popover, options } = self;
 
 		clearTimeout(self.timer);
 
 		self.timer = setTimeout(() => {
-		  if (isVisibleTip(popover, options.container)) {
+		 if (isVisibleTip(popover, options.container)) {
 				element.dispatchEvent(hidePopoverEvent);
 				if (hidePopoverEvent.defaultPrevented) return;
 
@@ -691,7 +691,7 @@ class Popover extends BaseComponent {
 
 				if (options.animation) emulateTransitionEnd(popover, () => popoverHideTrigger(self));
 				else popoverHideTrigger(self);
-		  }
+		 }
 		}, options.delay + 17);
   }
 
@@ -699,8 +699,8 @@ class Popover extends BaseComponent {
 		const self = this;
 		const { enabled } = self;
 		if (!enabled) {
-		  togglePopoverHandlers(self, 1);
-		  self.enabled = !enabled;
+		 togglePopoverHandlers(self, 1);
+		 self.enabled = !enabled;
 		}
   }
 
@@ -708,17 +708,17 @@ class Popover extends BaseComponent {
 		const self = this;
 		const { enabled, popover, options } = self;
 		if (enabled) {
-		  if (isVisibleTip(popover, options.container) && options.animation) {
+		 if (isVisibleTip(popover, options.container) && options.animation) {
 				self.hide();
 
 				setTimeout(
-				  () => togglePopoverHandlers(self),
-				  getElementTransitionDuration(popover) + options.delay + 17,
+				 () => togglePopoverHandlers(self),
+				 getElementTransitionDuration(popover) + options.delay + 17,
 				);
-		  } else {
+		 } else {
 				togglePopoverHandlers(self);
-		  }
-		  self.enabled = !enabled;
+		 }
+		 self.enabled = !enabled;
 		}
   }
 
@@ -733,11 +733,11 @@ class Popover extends BaseComponent {
 		const { popover, options } = self;
 		const { container, animation } = options;
 		if (animation && isVisibleTip(popover, container)) {
-		  options.delay = 0; // reset delay
-		  self.hide();
-		  emulateTransitionEnd(popover, () => togglePopoverHandlers(self));
+		 options.delay = 0; // reset delay
+		 self.hide();
+		 emulateTransitionEnd(popover, () => togglePopoverHandlers(self));
 		} else {
-		  togglePopoverHandlers(self);
+		 togglePopoverHandlers(self);
 		}
 		super.dispose(popoverComponent);
   }

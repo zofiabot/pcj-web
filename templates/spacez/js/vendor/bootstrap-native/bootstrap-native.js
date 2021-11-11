@@ -23,7 +23,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-			? parseFloat(durationValue) * durationScale : 0;
+			? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
 	}
@@ -140,7 +140,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Base Component
-	----------------------------------------------------- */
+	-----------------------------------------------------*/
 
 	class BaseComponent {
 		constructor(name, target, defaults, config) {
@@ -164,7 +164,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Alert
-	-------------------------------------------- */
+	--------------------------------------------*/
 
 	// ALERT PRIVATE GC
 	// ================
@@ -362,7 +362,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Carousel
-	----------------------------------------------- */
+	-----------------------------------------------*/
 
 	// CAROUSEL PRIVATE GC
 	// ===================
@@ -816,7 +816,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Collapse
-	----------------------------------------------- */
+	-----------------------------------------------*/
 
 	// COLLAPSE GC
 	// ===========
@@ -1032,7 +1032,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Dropdown
-	----------------------------------------------- */
+	-----------------------------------------------*/
 
 	// DROPDOWN PRIVATE GC
 	// ===================
@@ -1517,7 +1517,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Modal
-	-------------------------------------------- */
+	--------------------------------------------*/
 
 	// MODAL PRIVATE GC
 	// ================
@@ -1822,7 +1822,7 @@
 	};
 
 	/* Native JavaScript for Bootstrap 5 | OffCanvas
-	------------------------------------------------ */
+	------------------------------------------------*/
 
 	// OFFCANVAS PRIVATE GC
 	// ====================
@@ -2250,7 +2250,7 @@
 				if (e.clientX - tipDimensions.w / 2 < leftBoundry) { // when exceeds left
 					leftPosition = 0;
 					arrowLeft = eX - arrowAdjust;
-				} else if (e.clientX + tipDimensions.w * 0.51 >= rightBoundry) { // when exceeds right
+				} else if (e.clientX + tipDimensions.w* 0.51 >= rightBoundry) { // when exceeds right
 					leftPosition = 'auto';
 					rightPosition = 0;
 					arrowLeft = tipDimensions.w - (rightBoundry - eX) - arrowAdjust;
@@ -2316,7 +2316,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Popover
-	---------------------------------------------- */
+	----------------------------------------------*/
 
 	// POPOVER PRIVATE GC
 	// ==================
@@ -2657,7 +2657,7 @@
 	};
 
 	/* Native JavaScript for Bootstrap 5 | ScrollSpy
-	------------------------------------------------ */
+	------------------------------------------------*/
 
 	// SCROLLSPY PRIVATE GC
 	// ====================
@@ -2853,7 +2853,7 @@
 	const ariaSelected = 'aria-selected';
 
 	/* Native JavaScript for Bootstrap 5 | Tab
-	------------------------------------------ */
+	------------------------------------------*/
 
 	// TAB PRIVATE GC
 	// ================
@@ -3050,7 +3050,7 @@
 	};
 
 	/* Native JavaScript for Bootstrap 5 | Toast
-	-------------------------------------------- */
+	--------------------------------------------*/
 
 	// TOAST PRIVATE GC
 	// ================
@@ -3202,7 +3202,7 @@
 	const dataOriginalTitle = 'data-original-title';
 
 	/* Native JavaScript for Bootstrap 5 | Tooltip
-	---------------------------------------------- */
+	----------------------------------------------*/
 
 	// TOOLTIP PRIVATE GC
 	// ==================

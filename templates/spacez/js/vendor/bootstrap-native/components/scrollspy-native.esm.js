@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap ScrollSpy v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap ScrollSpy v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 const addEventListener = 'addEventListener';
 
 const removeEventListener = 'removeEventListener';
@@ -11,13 +11,13 @@ const supportPassive = (() => {
   let result = false;
   try {
 		const opts = Object.defineProperty({}, 'passive', {
-		  get() {
+		 get() {
 				result = true;
 				return result;
-		  },
+		 },
 		});
 		document[addEventListener]('DOMContentLoaded', function wrap() {
-		  document[removeEventListener]('DOMContentLoaded', wrap, opts);
+		 document[removeEventListener]('DOMContentLoaded', wrap, opts);
 		}, opts);
   } catch (e) {
 		throw Error('Passive events are not supported');
@@ -54,9 +54,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -90,34 +90,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -128,7 +128,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -141,7 +141,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | ScrollSpy
------------------------------------------------- */
+------------------------------------------------*/
 
 // SCROLLSPY PRIVATE GC
 // ====================
@@ -183,14 +183,14 @@ function updateSpyTargets(self) {
 		self.maxScroll = self.scrollHeight - getOffsetHeight(self);
 
 		Array.from(links).forEach((link) => {
-		  href = link.getAttribute('href');
-		  targetItem = href && href.charAt(0) === '#' && href.slice(-1) !== '#' && queryElement(href);
+		 href = link.getAttribute('href');
+		 targetItem = href && href.charAt(0) === '#' && href.slice(-1) !== '#' && queryElement(href);
 
-		  if (targetItem) {
+		 if (targetItem) {
 				self.items.push(link);
 				rect = targetItem.getBoundingClientRect();
 				self.offsets.push((isWindow ? rect.top + self.scrollTop : targetItem.offsetTop) - offset);
-		  }
+		 }
 		});
 		self.itemsLength = self.items.length;
   }
@@ -232,7 +232,7 @@ function activate(self, item) {
 		const parentLink = menuItem.previousElementSibling;
 
 		if (parentLink && !hasClass(parentLink, activeClass)) {
-		  addClass(parentLink, activeClass);
+		 addClass(parentLink, activeClass);
 		}
   });
 
@@ -294,31 +294,31 @@ class ScrollSpy extends BaseComponent {
 		updateSpyTargets(self);
 
 		const {
-		  scrollTop, maxScroll, itemsLength, items, activeItem,
+		 scrollTop, maxScroll, itemsLength, items, activeItem,
 		} = self;
 
 		if (scrollTop >= maxScroll) {
-		  const newActiveItem = items[itemsLength - 1];
+		 const newActiveItem = items[itemsLength - 1];
 
-		  if (activeItem !== newActiveItem) {
+		 if (activeItem !== newActiveItem) {
 				activate(self, newActiveItem);
-		  }
-		  return;
+		 }
+		 return;
 		}
 
 		const { offsets } = self;
 
 		if (activeItem && scrollTop < offsets[0] && offsets[0] > 0) {
-		  self.activeItem = null;
-		  clear(target);
-		  return;
+		 self.activeItem = null;
+		 clear(target);
+		 return;
 		}
 
 		items.forEach((item, i) => {
-		  if (activeItem !== item && scrollTop >= offsets[i]
+		 if (activeItem !== item && scrollTop >= offsets[i]
 				&& (typeof offsets[i + 1] === 'undefined' || scrollTop < offsets[i + 1])) {
 				activate(self, item);
-		  }
+		 }
 		});
   }
 

@@ -10,7 +10,7 @@
 	<files>
 		<filename>component.php</filename>
 		<filename>sz_header.php</filename>
-	 <filename>sz_footer.php</filename>
+	<filename>sz_footer.php</filename>
 		<filename>error.php</filename>
 		<filename>index.php</filename>
 		<filename>joomla.asset.json</filename>

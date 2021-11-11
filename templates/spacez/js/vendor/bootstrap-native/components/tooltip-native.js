@@ -21,7 +21,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-			? parseFloat(durationValue) * durationScale : 0;
+			? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
 	}
@@ -261,7 +261,7 @@
 				if (e.clientX - tipDimensions.w / 2 < leftBoundry) { // when exceeds left
 					leftPosition = 0;
 					arrowLeft = eX - arrowAdjust;
-				} else if (e.clientX + tipDimensions.w * 0.51 >= rightBoundry) { // when exceeds right
+				} else if (e.clientX + tipDimensions.w* 0.51 >= rightBoundry) { // when exceeds right
 					leftPosition = 'auto';
 					rightPosition = 0;
 					arrowLeft = tipDimensions.w - (rightBoundry - eX) - arrowAdjust;
@@ -389,7 +389,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Base Component
-	----------------------------------------------------- */
+	-----------------------------------------------------*/
 
 	class BaseComponent {
 		constructor(name, target, defaults, config) {
@@ -413,7 +413,7 @@
 	}
 
 	/* Native JavaScript for Bootstrap 5 | Tooltip
-	---------------------------------------------- */
+	----------------------------------------------*/
 
 	// TOOLTIP PRIVATE GC
 	// ==================

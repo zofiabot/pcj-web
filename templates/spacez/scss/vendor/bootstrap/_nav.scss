@@ -15,19 +15,19 @@
 
 		&:first-of-type .nav-link {
 
-		  &.active {
+		 &.active {
 				border-radius: $border-radius 0 0;
 				box-shadow: -1px 0 1px -1px hsla(0, 0%, 0%, .06), inset -2px 0 1px -1px hsla(0, 0%, 0%, .08), inset 0 1px 0 hsla(0, 0%, 0%, .02);
-		  }
+		 }
 
 		}
 
 		&:last-of-type .nav-link {
-		  box-shadow: -1px 0 0 hsla(0, 0%, 0%, .05), 1px 0 0 hsla(0, 0%, 0%, .05);
+		 box-shadow: -1px 0 0 hsla(0, 0%, 0%, .05), 1px 0 0 hsla(0, 0%, 0%, .05);
 
-		  &.active {
+		 &.active {
 				box-shadow: inset 2px 0 1px -1px hsla(0, 0%, 0%, .08), inset -2px 0 1px -1px hsla(0, 0%, 0%, .08), inset 0 1px 0 hsla(0, 0%, 0%, .02);
-		  }
+		 }
 
 		}
 
@@ -43,15 +43,15 @@
 		box-shadow: -1px 0 0 hsla(0, 0%, 0%, .05);
 
 		&.active {
-		  background-color: $spacez-tabs-active-bg;
-		  background-image: linear-gradient(to bottom, hsla(0, 0%, 0%,0), hsla(0, 0%, 0%, .05) 100%);
-		  border-right: 0;
-		  border-left: 0;
-		  border-top-left-radius: 0;
-		  border-top-right-radius: 0;
-		  box-shadow: inset 2px 0 1px -1px hsla(0, 0%, 0%, .08), inset -2px 0 1px -1px hsla(0, 0%, 0%, .08), inset 0 1px 0 hsla(0, 0%, 0%, .02);
+		 background-color: $spacez-tabs-active-bg;
+		 background-image: linear-gradient(to bottom, hsla(0, 0%, 0%,0), hsla(0, 0%, 0%, .05) 100%);
+		 border-right: 0;
+		 border-left: 0;
+		 border-top-left-radius: 0;
+		 border-top-right-radius: 0;
+		 box-shadow: inset 2px 0 1px -1px hsla(0, 0%, 0%, .08), inset -2px 0 1px -1px hsla(0, 0%, 0%, .08), inset 0 1px 0 hsla(0, 0%, 0%, .02);
 
-		  &::after {
+		 &::after {
 				position: absolute;
 				right: 0;
 				bottom: -1px;
@@ -60,7 +60,7 @@
 				content: "";
 				background-color: $spacez-tabs-active-highlight;
 				opacity: .8;
-		  }
+		 }
 
 		}
 

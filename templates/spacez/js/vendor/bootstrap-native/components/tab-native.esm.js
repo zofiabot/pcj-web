@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Tab v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Tab v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 const supportTransition = 'webkitTransition' in document.head.style || 'transition' in document.head.style;
 
 const transitionEndEvent = 'webkitTransition' in document.head.style ? 'webkitTransitionEnd' : 'transitionend';
@@ -17,7 +17,7 @@ function getElementTransitionDuration(element) {
   const durationValue = computedStyle[transitionDuration];
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
@@ -29,14 +29,14 @@ function emulateTransitionEnd(element, handler) {
 
   if (duration) {
 		element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
-		  if (e.target === element) {
+		 if (e.target === element) {
 				handler.apply(element, [e]);
 				element.removeEventListener(transitionEndEvent, transitionEndWrapper);
 				called = 1;
-		  }
+		 }
 		});
 		setTimeout(() => {
-		  if (!called) element.dispatchEvent(endEvent);
+		 if (!called) element.dispatchEvent(endEvent);
 		}, duration + 17);
   } else {
 		handler.apply(element, [endEvent]);
@@ -90,9 +90,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -126,34 +126,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -164,7 +164,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -177,7 +177,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | Tab
------------------------------------------- */
+------------------------------------------*/
 
 // TAB PRIVATE GC
 // ================
@@ -214,13 +214,13 @@ function triggerTabShow(self) {
 
   if (tabContent) { // height animation
 		if (tabEqualContents) {
-		  triggerTabEnd(self);
+		 triggerTabEnd(self);
 		} else {
-		  setTimeout(() => { // enables height animation
+		 setTimeout(() => { // enables height animation
 				tabContent.style.height = `${nextTabHeight}px`; // height animation
 				reflow(tabContent);
 				emulateTransitionEnd(tabContent, () => triggerTabEnd(self));
-		  }, 50);
+		 }, 50);
 		}
   } else {
 		nav.isAnimating = false;
@@ -258,10 +258,10 @@ function triggerTabHide(self) {
 
   if (hasClass(nextTabContent, fadeClass)) {
 		setTimeout(() => {
-		  addClass(nextTabContent, showClass);
-		  emulateTransitionEnd(nextTabContent, () => {
+		 addClass(nextTabContent, showClass);
+		 emulateTransitionEnd(nextTabContent, () => {
 				triggerTabShow(self);
-		  });
+		 });
 		}, 20);
   } else { triggerTabShow(self); }
 
@@ -330,34 +330,34 @@ class Tab extends BaseComponent {
 		const { element, nav, dropdown } = self;
 		nextTab = element;
 		if (!hasClass(nextTab, activeClass)) {
-		  // this is the actual object, the nextTab tab content to activate
-		  nextTabContent = queryElement(nextTab.getAttribute('href'));
-		  activeTab = getActiveTab({ nav });
-		  activeTabContent = getActiveTabContent({ nav });
+		 // this is the actual object, the nextTab tab content to activate
+		 nextTabContent = queryElement(nextTab.getAttribute('href'));
+		 activeTab = getActiveTab({ nav });
+		 activeTabContent = getActiveTabContent({ nav });
 
-		  // update relatedTarget and dispatch
-		  hideTabEvent.relatedTarget = nextTab;
-		  activeTab.dispatchEvent(hideTabEvent);
-		  if (hideTabEvent.defaultPrevented) return;
+		 // update relatedTarget and dispatch
+		 hideTabEvent.relatedTarget = nextTab;
+		 activeTab.dispatchEvent(hideTabEvent);
+		 if (hideTabEvent.defaultPrevented) return;
 
-		  nav.isAnimating = true;
-		  removeClass(activeTab, activeClass);
-		  activeTab.setAttribute(ariaSelected, 'false');
-		  addClass(nextTab, activeClass);
-		  nextTab.setAttribute(ariaSelected, 'true');
+		 nav.isAnimating = true;
+		 removeClass(activeTab, activeClass);
+		 activeTab.setAttribute(ariaSelected, 'false');
+		 addClass(nextTab, activeClass);
+		 nextTab.setAttribute(ariaSelected, 'true');
 
-		  if (dropdown) {
+		 if (dropdown) {
 				if (!hasClass(element.parentNode, dropdownMenuClass)) {
-				  if (hasClass(dropdown, activeClass)) removeClass(dropdown, activeClass);
+				 if (hasClass(dropdown, activeClass)) removeClass(dropdown, activeClass);
 				} else if (!hasClass(dropdown, activeClass)) addClass(dropdown, activeClass);
-		  }
+		 }
 
-		  if (hasClass(activeTabContent, fadeClass)) {
+		 if (hasClass(activeTabContent, fadeClass)) {
 				removeClass(activeTabContent, showClass);
 				emulateTransitionEnd(activeTabContent, () => triggerTabHide(self));
-		  } else {
+		 } else {
 				triggerTabHide(self);
-		  }
+		 }
 		}
   }
 

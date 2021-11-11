@@ -29,13 +29,13 @@
 		background-color: $white;
 
 		option {
-		  padding: $form-select-multiple-padding-y $form-select-padding-x;
-		  background-color: $white;
+		 padding: $form-select-multiple-padding-y $form-select-padding-x;
+		 background-color: $white;
 
-		  &:checked {
+		 &:checked {
 				color: $white;
 				background-color: var(--spacez-color-primary) !important;
-		  }
+		 }
 		}
   }
 
@@ -45,8 +45,8 @@
 		background-color: $success;
 
 		option {
-		  color: $form-select-color;
-		  background-color: $white;
+		 color: $form-select-color;
+		 background-color: $white;
 		}
   }
 
@@ -56,8 +56,8 @@
 		background-color: $danger;
 
 		option {
-		  color: $form-select-color;
-		  background-color: $white;
+		 color: $form-select-color;
+		 background-color: $white;
 		}
   }
 

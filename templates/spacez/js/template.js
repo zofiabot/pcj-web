@@ -1,9 +1,9 @@
-/**
- * @package			Joomla.Site
- * @subpackage	Templates.spacez
- * @copyright		(C) 2021 Michał Sobkowiak & Zofia
- * @license			Single use licence for Polskie Centrum Joomla
- */
+
+// * @package		Joomla.Site
+// * @package		Templates.spacez
+// * @copyright	(C) 2021 Michał Sobkowiak & Zofia
+// * @license		single use licence for Polskie Centrum Joomla
+
 
 Joomla = window.Joomla || {};
 
@@ -14,8 +14,8 @@ Joomla = window.Joomla || {};
 		var target = event && event.target ? event.target : document;
 
 		/**
-		 * Prevent clicks on buttons within a disabled fieldset
-		 */
+		* Prevent clicks on buttons within a disabled fieldset
+		*/
 		var fieldsets = target.querySelectorAll('fieldset.btn-group');
 		for (var i = 0; i < fieldsets.length; i++) {
 			var self = fieldsets[i];
@@ -33,8 +33,8 @@ Joomla = window.Joomla || {};
 		initTemplate(event);
 
 		/**
-		 * Back to top
-		 */
+		* Back to top
+		*/
 		var backToTop = document.getElementById('back-top');
 
 		if (backToTop) {
@@ -66,8 +66,8 @@ Joomla = window.Joomla || {};
 	});
 
 	/**
-	 * Initialize when a part of the page was updated
-	 */
+	* Initialize when a part of the page was updated
+	*/
 	document.addEventListener('joomla:updated', initTemplate);
 
 })(Joomla, document);

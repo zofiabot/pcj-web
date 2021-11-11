@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Modal v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Modal v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -16,17 +16,17 @@
   const supportPassive = (() => {
 		let result = false;
 		try {
-		  const opts = Object.defineProperty({}, 'passive', {
+		 const opts = Object.defineProperty({}, 'passive', {
 				get() {
-				  result = true;
-				  return result;
+				 result = true;
+				 return result;
 				},
-		  });
-		  document[addEventListener]('DOMContentLoaded', function wrap() {
+		 });
+		 document[addEventListener]('DOMContentLoaded', function wrap() {
 				document[removeEventListener]('DOMContentLoaded', wrap, opts);
-		  }, opts);
+		 }, opts);
 		} catch (e) {
-		  throw Error('Passive events are not supported');
+		 throw Error('Passive events are not supported');
 		}
 
 		return result;
@@ -50,7 +50,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		  ? parseFloat(durationValue) * durationScale : 0;
+		 ? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
   }
@@ -61,18 +61,18 @@
 		const duration = getElementTransitionDuration(element);
 
 		if (duration) {
-		  element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+		 element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
 				if (e.target === element) {
-				  handler.apply(element, [e]);
-				  element.removeEventListener(transitionEndEvent, transitionEndWrapper);
-				  called = 1;
+				 handler.apply(element, [e]);
+				 element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+				 called = 1;
 				}
-		  });
-		  setTimeout(() => {
+		 });
+		 setTimeout(() => {
 				if (!called) element.dispatchEvent(endEvent);
-		  }, duration + 17);
+		 }, duration + 17);
 		} else {
-		  handler.apply(element, [endEvent]);
+		 handler.apply(element, [endEvent]);
 		}
   }
 
@@ -109,11 +109,11 @@
 		const OriginalCustomEvent = new CustomEvent(namespacedEventType, { cancelable: true });
 
 		if (eventProperties instanceof Object) {
-		  Object.keys(eventProperties).forEach((key) => {
+		 Object.keys(eventProperties).forEach((key) => {
 				Object.defineProperty(OriginalCustomEvent, key, {
-				  value: eventProperties[key],
+				 value: eventProperties[key],
 				});
-		  });
+		 });
 		}
 		return OriginalCustomEvent;
   }
@@ -126,8 +126,8 @@
 
   function getTargetElement(element) {
 		return queryElement(element.getAttribute(dataBsTarget) || element.getAttribute('href'))
-				  || element.closest(element.getAttribute(dataBsParent))
-				  || queryElement(element.getAttribute(dataBsContainer));
+				 || element.closest(element.getAttribute(dataBsParent))
+				 || queryElement(element.getAttribute(dataBsContainer));
   }
 
   const fixedTopClass = 'fixed-top';
@@ -147,10 +147,10 @@
 		bd.style.overflow = '';
 
 		if (fixedItems.length) {
-		  fixedItems.forEach((fixed) => {
+		 fixedItems.forEach((fixed) => {
 				fixed.style.paddingRight = '';
 				fixed.style.marginRight = '';
-		  });
+		 });
 		}
   }
 
@@ -167,20 +167,20 @@
 		const sbWidth = isOpen && bodyPad ? 0 : scrollbarWidth;
 
 		if (overflow) {
-		  bd.style.overflow = 'hidden';
-		  bd.style.paddingRight = `${bodyPad + sbWidth}px`;
+		 bd.style.overflow = 'hidden';
+		 bd.style.paddingRight = `${bodyPad + sbWidth}px`;
 
-		  if (fixedItems.length) {
+		 if (fixedItems.length) {
 				fixedItems.forEach((fixed) => {
-				  const isSticky = hasClass(fixed, stickyTopClass);
-				  const itemPadValue = getComputedStyle(fixed).paddingRight;
-				  fixed.style.paddingRight = `${parseInt(itemPadValue, 10) + sbWidth}px`;
-				  if (isSticky) {
+				 const isSticky = hasClass(fixed, stickyTopClass);
+				 const itemPadValue = getComputedStyle(fixed).paddingRight;
+				 fixed.style.paddingRight = `${parseInt(itemPadValue, 10) + sbWidth}px`;
+				 if (isSticky) {
 						const itemMValue = getComputedStyle(fixed).marginRight;
 						fixed.style.marginRight = `${parseInt(itemMValue, 10) - sbWidth}px`;
-				  }
+				 }
 				});
-		  }
+		 }
 		}
   }
 
@@ -201,7 +201,7 @@
   function toggleOverlayType(isModal) {
 		const targetClass = isModal ? modalBackdropClass : offcanvasBackdropClass;
 		[modalBackdropClass, offcanvasBackdropClass].forEach((c) => {
-		  removeClass(overlay, c);
+		 removeClass(overlay, c);
 		});
 		addClass(overlay, targetClass);
   }
@@ -226,9 +226,9 @@
 		const currentOpen = getCurrentOpen();
 
 		if (!currentOpen) {
-		  removeClass(overlay, fadeClass);
-		  bd.removeChild(overlay);
-		  resetScrollbar();
+		 removeClass(overlay, fadeClass);
+		 bd.removeChild(overlay);
+		 resetScrollbar();
 		}
   }
 
@@ -238,24 +238,24 @@
 
   function isVisible(element) {
 		return getComputedStyle(element).visibility !== 'hidden'
-		  && element.offsetParent !== null;
+		 && element.offsetParent !== null;
   }
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -268,59 +268,59 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
   /* Native JavaScript for Bootstrap 5 | Modal
-  -------------------------------------------- */
+  --------------------------------------------*/
 
   // MODAL PRIVATE GC
   // ================
@@ -350,11 +350,11 @@
 		const bd = document.body;
 		const html = document.documentElement;
 		const bodyOverflow = html.clientHeight !== html.scrollHeight
-										  || bd.clientHeight !== bd.scrollHeight;
+										 || bd.clientHeight !== bd.scrollHeight;
 		const modalOverflow = element.clientHeight !== element.scrollHeight;
 
 		if (!modalOverflow && scrollbarWidth) {
-		  element.style.paddingRight = `${scrollbarWidth}px`;
+		 element.style.paddingRight = `${scrollbarWidth}px`;
 		}
 		setScrollbar(scrollbarWidth, (modalOverflow || bodyOverflow));
   }
@@ -371,7 +371,7 @@
 		const { triggers } = self;
 
 		if (triggers.length) {
-		  triggers.forEach((btn) => btn[action]('click', modalClickHandler));
+		 triggers.forEach((btn) => btn[action]('click', modalClickHandler));
 		}
   }
 
@@ -382,8 +382,8 @@
 		self.isAnimating = false;
 
 		if (triggers.length) {
-		  const visibleTrigger = triggers.find((x) => isVisible(x));
-		  if (visibleTrigger) setFocus(visibleTrigger);
+		 const visibleTrigger = triggers.find((x) => isVisible(x));
+		 if (visibleTrigger) setFocus(visibleTrigger);
 		}
   }
 
@@ -404,7 +404,7 @@
 
 		setModalScrollbar(self);
 		if (!queryElement(modalActiveSelector)) {
-		  document.body.style.overflow = 'hidden';
+		 document.body.style.overflow = 'hidden';
 		}
 
 		addClass(element, showClass);
@@ -417,7 +417,7 @@
 
   function beforeModalHide(self, force) {
 		const {
-		  element, relatedTarget, hasFade,
+		 element, relatedTarget, hasFade,
 		} = self;
 		const currentOpen = getCurrentOpen();
 
@@ -426,11 +426,11 @@
 		// force can also be the transitionEvent object, we wanna make sure it's not
 		// call is not forced and overlay is visible
 		if (!force && hasFade && hasClass(overlay, showClass)
-		  && !currentOpen) { // AND no modal is visible
-		  hideOverlay();
-		  emulateTransitionEnd(overlay, () => afterModalHide(self));
+		 && !currentOpen) { // AND no modal is visible
+		 hideOverlay();
+		 emulateTransitionEnd(overlay, () => afterModalHide(self));
 		} else {
-		  afterModalHide(self);
+		 afterModalHide(self);
 		}
 
 		toggleModalDismiss(self);
@@ -461,10 +461,10 @@
 		const self = element[modalComponent];
 		const { options, isAnimating } = self;
 		if (!isAnimating // modal has no animations running
-		  && options.keyboard && which === 27 // the keyboard option is enabled and the key is 27
-		  && hasClass(element, showClass)) { // the modal is not visible
-		  self.relatedTarget = null;
-		  self.hide();
+		 && options.keyboard && which === 27 // the keyboard option is enabled and the key is 27
+		 && hasClass(element, showClass)) { // the modal is not visible
+		 self.relatedTarget = null;
+		 self.hide();
 		}
   }
 
@@ -481,13 +481,13 @@
 		const dismiss = target.closest(modalDismissSelector);
 
 		if (isStatic && !targetInsideDialog) {
-		  addClass(element, modalStaticClass);
-		  self.isAnimating = true;
-		  emulateTransitionEnd(modalDialog, () => staticTransitionEnd(self));
+		 addClass(element, modalStaticClass);
+		 self.isAnimating = true;
+		 emulateTransitionEnd(modalDialog, () => staticTransitionEnd(self));
 		} else if (dismiss || (!selectedText && !isStatic && !targetInsideDialog)) {
-		  self.relatedTarget = dismiss || null;
-		  self.hide();
-		  e.preventDefault();
+		 self.relatedTarget = dismiss || null;
+		 self.hide();
+		 e.preventDefault();
 		}
   }
 
@@ -502,119 +502,119 @@
   // ================
   class Modal extends BaseComponent {
 		constructor(target, config) {
-		  super(modalComponent, target, modalDefaultOptions, config);
+		 super(modalComponent, target, modalDefaultOptions, config);
 
-		  // bind
-		  const self = this;
+		 // bind
+		 const self = this;
 
-		  // the modal
-		  const { element } = self;
+		 // the modal
+		 const { element } = self;
 
-		  // the modal-dialog
-		  self.modalDialog = queryElement(`.${modalString}-dialog`, element);
+		 // the modal-dialog
+		 self.modalDialog = queryElement(`.${modalString}-dialog`, element);
 
-		  // modal can have multiple triggering elements
-		  self.triggers = Array.from(document.querySelectorAll(modalToggleSelector))
+		 // modal can have multiple triggering elements
+		 self.triggers = Array.from(document.querySelectorAll(modalToggleSelector))
 				.filter((btn) => getTargetElement(btn) === element);
 
-		  // additional internals
-		  self.isStatic = self.options.backdrop === 'static';
-		  self.hasFade = hasClass(element, fadeClass);
-		  self.isAnimating = false;
-		  self.scrollbarWidth = measureScrollbar();
-		  self.relatedTarget = null;
+		 // additional internals
+		 self.isStatic = self.options.backdrop === 'static';
+		 self.hasFade = hasClass(element, fadeClass);
+		 self.isAnimating = false;
+		 self.scrollbarWidth = measureScrollbar();
+		 self.relatedTarget = null;
 
-		  // attach event listeners
-		  toggleModalHandler(self, 1);
+		 // attach event listeners
+		 toggleModalHandler(self, 1);
 
-		  // bind
-		  self.update = self.update.bind(self);
+		 // bind
+		 self.update = self.update.bind(self);
 		}
 
 		// MODAL PUBLIC METHODS
 		// ====================
 		toggle() {
-		  const self = this;
-		  if (hasClass(self.element, showClass)) self.hide();
-		  else self.show();
+		 const self = this;
+		 if (hasClass(self.element, showClass)) self.hide();
+		 else self.show();
 		}
 
 		show() {
-		  const self = this;
-		  const {
+		 const self = this;
+		 const {
 				element, isAnimating, hasFade, relatedTarget,
-		  } = self;
-		  let overlayDelay = 0;
+		 } = self;
+		 let overlayDelay = 0;
 
-		  if (hasClass(element, showClass) && !isAnimating) return;
+		 if (hasClass(element, showClass) && !isAnimating) return;
 
-		  showModalEvent.relatedTarget = relatedTarget || null;
-		  element.dispatchEvent(showModalEvent);
-		  if (showModalEvent.defaultPrevented) return;
+		 showModalEvent.relatedTarget = relatedTarget || null;
+		 element.dispatchEvent(showModalEvent);
+		 if (showModalEvent.defaultPrevented) return;
 
-		  self.isAnimating = true;
+		 self.isAnimating = true;
 
-		  // we elegantly hide any opened modal/offcanvas
-		  const currentOpen = getCurrentOpen();
-		  if (currentOpen && currentOpen !== element) {
+		 // we elegantly hide any opened modal/offcanvas
+		 const currentOpen = getCurrentOpen();
+		 if (currentOpen && currentOpen !== element) {
 				const that = currentOpen[modalComponent]
-				  ? currentOpen[modalComponent]
-				  : currentOpen.Offcanvas;
+				 ? currentOpen[modalComponent]
+				 : currentOpen.Offcanvas;
 				that.hide();
-		  }
+		 }
 
-		  if (!queryElement(`.${modalBackdropClass},.${offcanvasBackdropClass}`)) {
+		 if (!queryElement(`.${modalBackdropClass},.${offcanvasBackdropClass}`)) {
 				appendOverlay(hasFade, 1);
-		  } else {
+		 } else {
 				toggleOverlayType(1);
-		  }
-		  overlayDelay = getElementTransitionDuration(overlay);
+		 }
+		 overlayDelay = getElementTransitionDuration(overlay);
 
-		  if (!hasClass(overlay, showClass)) {
+		 if (!hasClass(overlay, showClass)) {
 				showOverlay();
-		  }
+		 }
 
-		  if (!currentOpen) {
+		 if (!currentOpen) {
 				setTimeout(() => beforeModalShow(self), overlayDelay);
-		  } else beforeModalShow(self);
+		 } else beforeModalShow(self);
 		}
 
 		hide(force) {
-		  const self = this;
-		  const {
+		 const self = this;
+		 const {
 				element, isAnimating, hasFade, relatedTarget,
-		  } = self;
-		  if (!hasClass(element, showClass) && !isAnimating) return;
+		 } = self;
+		 if (!hasClass(element, showClass) && !isAnimating) return;
 
-		  hideModalEvent.relatedTarget = relatedTarget || null;
-		  element.dispatchEvent(hideModalEvent);
-		  if (hideModalEvent.defaultPrevented) return;
+		 hideModalEvent.relatedTarget = relatedTarget || null;
+		 element.dispatchEvent(hideModalEvent);
+		 if (hideModalEvent.defaultPrevented) return;
 
-		  self.isAnimating = true;
-		  removeClass(element, showClass);
-		  element.setAttribute(ariaHidden, true);
-		  element.removeAttribute(ariaModal);
+		 self.isAnimating = true;
+		 removeClass(element, showClass);
+		 element.setAttribute(ariaHidden, true);
+		 element.removeAttribute(ariaModal);
 
-		  if (hasFade && force !== 1) {
+		 if (hasFade && force !== 1) {
 				emulateTransitionEnd(element, () => beforeModalHide(self));
-		  } else {
+		 } else {
 				beforeModalHide(self, force);
-		  }
+		 }
 		}
 
 		update() {
-		  const self = this;
+		 const self = this;
 
-		  if (hasClass(self.element, showClass)) setModalScrollbar(self);
+		 if (hasClass(self.element, showClass)) setModalScrollbar(self);
 		}
 
 		dispose() {
-		  const self = this;
-		  self.hide(1); // forced call
+		 const self = this;
+		 self.hide(1); // forced call
 
-		  toggleModalHandler(self);
+		 toggleModalHandler(self);
 
-		  super.dispose(modalComponent);
+		 super.dispose(modalComponent);
 		}
   }
 

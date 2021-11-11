@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Offcanvas v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Offcanvas v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -44,7 +44,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		  ? parseFloat(durationValue) * durationScale : 0;
+		 ? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
   }
@@ -55,18 +55,18 @@
 		const duration = getElementTransitionDuration(element);
 
 		if (duration) {
-		  element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+		 element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
 				if (e.target === element) {
-				  handler.apply(element, [e]);
-				  element.removeEventListener(transitionEndEvent, transitionEndWrapper);
-				  called = 1;
+				 handler.apply(element, [e]);
+				 element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+				 called = 1;
 				}
-		  });
-		  setTimeout(() => {
+		 });
+		 setTimeout(() => {
 				if (!called) element.dispatchEvent(endEvent);
-		  }, duration + 17);
+		 }, duration + 17);
 		} else {
-		  handler.apply(element, [endEvent]);
+		 handler.apply(element, [endEvent]);
 		}
   }
 
@@ -74,11 +74,11 @@
 		const OriginalCustomEvent = new CustomEvent(namespacedEventType, { cancelable: true });
 
 		if (eventProperties instanceof Object) {
-		  Object.keys(eventProperties).forEach((key) => {
+		 Object.keys(eventProperties).forEach((key) => {
 				Object.defineProperty(OriginalCustomEvent, key, {
-				  value: eventProperties[key],
+				 value: eventProperties[key],
 				});
-		  });
+		 });
 		}
 		return OriginalCustomEvent;
   }
@@ -91,8 +91,8 @@
 
   function getTargetElement(element) {
 		return queryElement(element.getAttribute(dataBsTarget) || element.getAttribute('href'))
-				  || element.closest(element.getAttribute(dataBsParent))
-				  || queryElement(element.getAttribute(dataBsContainer));
+				 || element.closest(element.getAttribute(dataBsParent))
+				 || queryElement(element.getAttribute(dataBsContainer));
   }
 
   const dataBsDismiss = 'data-bs-dismiss';
@@ -113,7 +113,7 @@
 
   function isVisible(element) {
 		return getComputedStyle(element).visibility !== 'hidden'
-		  && element.offsetParent !== null;
+		 && element.offsetParent !== null;
   }
 
   const fixedTopClass = 'fixed-top';
@@ -133,10 +133,10 @@
 		bd.style.overflow = '';
 
 		if (fixedItems.length) {
-		  fixedItems.forEach((fixed) => {
+		 fixedItems.forEach((fixed) => {
 				fixed.style.paddingRight = '';
 				fixed.style.marginRight = '';
-		  });
+		 });
 		}
   }
 
@@ -153,20 +153,20 @@
 		const sbWidth = isOpen && bodyPad ? 0 : scrollbarWidth;
 
 		if (overflow) {
-		  bd.style.overflow = 'hidden';
-		  bd.style.paddingRight = `${bodyPad + sbWidth}px`;
+		 bd.style.overflow = 'hidden';
+		 bd.style.paddingRight = `${bodyPad + sbWidth}px`;
 
-		  if (fixedItems.length) {
+		 if (fixedItems.length) {
 				fixedItems.forEach((fixed) => {
-				  const isSticky = hasClass(fixed, stickyTopClass);
-				  const itemPadValue = getComputedStyle(fixed).paddingRight;
-				  fixed.style.paddingRight = `${parseInt(itemPadValue, 10) + sbWidth}px`;
-				  if (isSticky) {
+				 const isSticky = hasClass(fixed, stickyTopClass);
+				 const itemPadValue = getComputedStyle(fixed).paddingRight;
+				 fixed.style.paddingRight = `${parseInt(itemPadValue, 10) + sbWidth}px`;
+				 if (isSticky) {
 						const itemMValue = getComputedStyle(fixed).marginRight;
 						fixed.style.marginRight = `${parseInt(itemMValue, 10) - sbWidth}px`;
-				  }
+				 }
 				});
-		  }
+		 }
 		}
   }
 
@@ -189,7 +189,7 @@
   function toggleOverlayType(isModal) {
 		const targetClass = isModal ? modalBackdropClass : offcanvasBackdropClass;
 		[modalBackdropClass, offcanvasBackdropClass].forEach((c) => {
-		  removeClass(overlay, c);
+		 removeClass(overlay, c);
 		});
 		addClass(overlay, targetClass);
   }
@@ -214,27 +214,27 @@
 		const currentOpen = getCurrentOpen();
 
 		if (!currentOpen) {
-		  removeClass(overlay, fadeClass);
-		  bd.removeChild(overlay);
-		  resetScrollbar();
+		 removeClass(overlay, fadeClass);
+		 bd.removeChild(overlay);
+		 resetScrollbar();
 		}
   }
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -247,59 +247,59 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
   /* Native JavaScript for Bootstrap 5 | OffCanvas
-  ------------------------------------------------ */
+  ------------------------------------------------*/
 
   // OFFCANVAS PRIVATE GC
   // ====================
@@ -328,7 +328,7 @@
 		const bd = document.body;
 		const html = document.documentElement;
 		const bodyOverflow = html.clientHeight !== html.scrollHeight
-										  || bd.clientHeight !== bd.scrollHeight;
+										 || bd.clientHeight !== bd.scrollHeight;
 		setScrollbar(self.scrollbarWidth, bodyOverflow);
   }
 
@@ -347,8 +347,8 @@
 		const { element, options } = self;
 
 		if (!options.scroll) {
-		  document.body.style.overflow = 'hidden';
-		  setOffCanvasScrollbar(self);
+		 document.body.style.overflow = 'hidden';
+		 setOffCanvasScrollbar(self);
 		}
 
 		addClass(element, offcanvasTogglingClass);
@@ -365,8 +365,8 @@
 		element.blur();
 
 		if (!currentOpen && options.backdrop && hasClass(overlay, showClass)) {
-		  hideOverlay();
-		  emulateTransitionEnd(overlay, () => hideOffcanvasComplete(self));
+		 hideOverlay();
+		 emulateTransitionEnd(overlay, () => hideOffcanvasComplete(self));
 		} else hideOffcanvasComplete(self);
   }
 
@@ -379,8 +379,8 @@
 
 		if (trigger.tagName === 'A') e.preventDefault();
 		if (self) {
-		  self.relatedTarget = trigger;
-		  self.toggle();
+		 self.relatedTarget = trigger;
+		 self.toggle();
 		}
   }
 
@@ -399,10 +399,10 @@
 		if (trigger && trigger.tagName === 'A') e.preventDefault();
 
 		if (open && ((!element.contains(target) && options.backdrop
-		  && (!trigger || (trigger && !triggers.includes(trigger))))
-		  || offCanvasDismiss.contains(target))) {
-		  self.relatedTarget = target === offCanvasDismiss ? offCanvasDismiss : null;
-		  self.hide();
+		 && (!trigger || (trigger && !triggers.includes(trigger))))
+		 || offCanvasDismiss.contains(target))) {
+		 self.relatedTarget = target === offCanvasDismiss ? offCanvasDismiss : null;
+		 self.hide();
 		}
   }
 
@@ -413,8 +413,8 @@
 		const self = element[offcanvasComponent];
 
 		if (self && self.options.keyboard && which === 27) {
-		  self.relatedTarget = null;
-		  self.hide();
+		 self.relatedTarget = null;
+		 self.hide();
 		}
   }
 
@@ -428,7 +428,7 @@
 		self.isAnimating = false;
 
 		if (triggers.length) {
-		  triggers.forEach((btn) => btn.setAttribute(ariaExpanded, true));
+		 triggers.forEach((btn) => btn.setAttribute(ariaExpanded, true));
 		}
 
 		shownOffcanvasEvent.relatedTarget = relatedTarget || null;
@@ -440,7 +440,7 @@
 
   function hideOffcanvasComplete(self) {
 		const {
-		  element, options, relatedTarget, triggers,
+		 element, options, relatedTarget, triggers,
 		} = self;
 		const currentOpen = getCurrentOpen();
 
@@ -452,17 +452,17 @@
 		self.isAnimating = false;
 
 		if (triggers.length) {
-		  triggers.forEach((btn) => btn.setAttribute(ariaExpanded, false));
-		  const visibleTrigger = triggers.find((x) => isVisible(x));
-		  if (visibleTrigger) setFocus(visibleTrigger);
+		 triggers.forEach((btn) => btn.setAttribute(ariaExpanded, false));
+		 const visibleTrigger = triggers.find((x) => isVisible(x));
+		 if (visibleTrigger) setFocus(visibleTrigger);
 		}
 
 		// handle new offcanvas showing up
 		if (!currentOpen) {
-		  if (options.backdrop) removeOverlay();
-		  if (!options.scroll) {
+		 if (options.backdrop) removeOverlay();
+		 if (!options.scroll) {
 				resetScrollbar();
-		  }
+		 }
 		}
 
 		hiddenOffcanvasEvent.relatedTarget = relatedTarget || null;
@@ -476,63 +476,63 @@
   // ====================
   class Offcanvas extends BaseComponent {
 		constructor(target, config) {
-		  super(offcanvasComponent, target, offcanvasDefaultOptions, config);
-		  const self = this;
+		 super(offcanvasComponent, target, offcanvasDefaultOptions, config);
+		 const self = this;
 
-		  // instance element
-		  const { element } = self;
+		 // instance element
+		 const { element } = self;
 
-		  // all the triggering buttons
-		  self.triggers = Array.from(document.querySelectorAll(offcanvasToggleSelector))
+		 // all the triggering buttons
+		 self.triggers = Array.from(document.querySelectorAll(offcanvasToggleSelector))
 				.filter((btn) => getTargetElement(btn) === element);
 
-		  // additional instance property
-		  self.open = false;
-		  self.isAnimating = false;
-		  self.scrollbarWidth = measureScrollbar();
+		 // additional instance property
+		 self.open = false;
+		 self.isAnimating = false;
+		 self.scrollbarWidth = measureScrollbar();
 
-		  // attach event listeners
-		  toggleOffcanvasEvents(self, 1);
+		 // attach event listeners
+		 toggleOffcanvasEvents(self, 1);
 		}
 
 		// OFFCANVAS PUBLIC METHODS
 		// ========================
 		toggle() {
-		  const self = this;
-		  return self.open ? self.hide() : self.show();
+		 const self = this;
+		 return self.open ? self.hide() : self.show();
 		}
 
 		show() {
-		  const self = this[offcanvasComponent] ? this[offcanvasComponent] : this;
-		  const {
+		 const self = this[offcanvasComponent] ? this[offcanvasComponent] : this;
+		 const {
 				element, options, isAnimating, relatedTarget,
-		  } = self;
-		  let overlayDelay = 0;
+		 } = self;
+		 let overlayDelay = 0;
 
-		  if (self.open || isAnimating) return;
+		 if (self.open || isAnimating) return;
 
-		  showOffcanvasEvent.relatedTarget = relatedTarget || null;
-		  element.dispatchEvent(showOffcanvasEvent);
+		 showOffcanvasEvent.relatedTarget = relatedTarget || null;
+		 element.dispatchEvent(showOffcanvasEvent);
 
-		  if (showOffcanvasEvent.defaultPrevented) return;
+		 if (showOffcanvasEvent.defaultPrevented) return;
 
-		  // we elegantly hide any opened modal/offcanvas
-		  const currentOpen = getCurrentOpen();
-		  if (currentOpen && currentOpen !== element) {
+		 // we elegantly hide any opened modal/offcanvas
+		 const currentOpen = getCurrentOpen();
+		 if (currentOpen && currentOpen !== element) {
 				const that = currentOpen[offcanvasComponent]
-				  ? currentOpen[offcanvasComponent]
-				  : currentOpen.Modal;
+				 ? currentOpen[offcanvasComponent]
+				 : currentOpen.Modal;
 				that.hide();
-		  }
+		 }
 
-		  self.open = true;
-		  self.isAnimating = true;
+		 self.open = true;
+		 self.isAnimating = true;
 
-		  if (options.backdrop) {
+		 if (options.backdrop) {
 				if (!queryElement(`.${modalBackdropClass},.${offcanvasBackdropClass}`)) {
-				  appendOverlay(1);
+				 appendOverlay(1);
 				} else {
-				  toggleOverlayType();
+				 toggleOverlayType();
 				}
 
 				overlayDelay = getElementTransitionDuration(overlay);
@@ -540,33 +540,33 @@
 				if (!hasClass(overlay, showClass)) showOverlay();
 
 				setTimeout(() => beforeOffcanvasShow(self), overlayDelay);
-		  } else beforeOffcanvasShow(self);
+		 } else beforeOffcanvasShow(self);
 		}
 
 		hide(force) {
-		  const self = this;
-		  const { element, isAnimating, relatedTarget } = self;
+		 const self = this;
+		 const { element, isAnimating, relatedTarget } = self;
 
-		  if (!self.open || isAnimating) return;
+		 if (!self.open || isAnimating) return;
 
-		  hideOffcanvasEvent.relatedTarget = relatedTarget || null;
-		  element.dispatchEvent(hideOffcanvasEvent);
-		  if (hideOffcanvasEvent.defaultPrevented) return;
+		 hideOffcanvasEvent.relatedTarget = relatedTarget || null;
+		 element.dispatchEvent(hideOffcanvasEvent);
+		 if (hideOffcanvasEvent.defaultPrevented) return;
 
-		  self.isAnimating = true;
-		  addClass(element, offcanvasTogglingClass);
-		  removeClass(element, showClass);
+		 self.isAnimating = true;
+		 addClass(element, offcanvasTogglingClass);
+		 removeClass(element, showClass);
 
-		  if (!force) {
+		 if (!force) {
 				emulateTransitionEnd(element, () => beforeOffcanvasHide(self));
-		  } else beforeOffcanvasHide(self);
+		 } else beforeOffcanvasHide(self);
 		}
 
 		dispose() {
-		  const self = this;
-		  self.hide(1);
-		  toggleOffcanvasEvents(self);
-		  super.dispose(offcanvasComponent);
+		 const self = this;
+		 self.hide(1);
+		 toggleOffcanvasEvents(self);
+		 super.dispose(offcanvasComponent);
 		}
   }
 

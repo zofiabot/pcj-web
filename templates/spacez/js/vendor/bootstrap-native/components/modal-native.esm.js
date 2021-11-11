@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Modal v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Modal v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 const addEventListener = 'addEventListener';
 
 const removeEventListener = 'removeEventListener';
@@ -11,13 +11,13 @@ const supportPassive = (() => {
   let result = false;
   try {
 		const opts = Object.defineProperty({}, 'passive', {
-		  get() {
+		 get() {
 				result = true;
 				return result;
-		  },
+		 },
 		});
 		document[addEventListener]('DOMContentLoaded', function wrap() {
-		  document[removeEventListener]('DOMContentLoaded', wrap, opts);
+		 document[removeEventListener]('DOMContentLoaded', wrap, opts);
 		}, opts);
   } catch (e) {
 		throw Error('Passive events are not supported');
@@ -44,7 +44,7 @@ function getElementTransitionDuration(element) {
   const durationValue = computedStyle[transitionDuration];
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
@@ -56,14 +56,14 @@ function emulateTransitionEnd(element, handler) {
 
   if (duration) {
 		element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
-		  if (e.target === element) {
+		 if (e.target === element) {
 				handler.apply(element, [e]);
 				element.removeEventListener(transitionEndEvent, transitionEndWrapper);
 				called = 1;
-		  }
+		 }
 		});
 		setTimeout(() => {
-		  if (!called) element.dispatchEvent(endEvent);
+		 if (!called) element.dispatchEvent(endEvent);
 		}, duration + 17);
   } else {
 		handler.apply(element, [endEvent]);
@@ -104,9 +104,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -142,8 +142,8 @@ function resetScrollbar() {
 
   if (fixedItems.length) {
 		fixedItems.forEach((fixed) => {
-		  fixed.style.paddingRight = '';
-		  fixed.style.marginRight = '';
+		 fixed.style.paddingRight = '';
+		 fixed.style.marginRight = '';
 		});
   }
 }
@@ -165,15 +165,15 @@ function setScrollbar(scrollbarWidth, overflow) {
 		bd.style.paddingRight = `${bodyPad + sbWidth}px`;
 
 		if (fixedItems.length) {
-		  fixedItems.forEach((fixed) => {
+		 fixedItems.forEach((fixed) => {
 				const isSticky = hasClass(fixed, stickyTopClass);
 				const itemPadValue = getComputedStyle(fixed).paddingRight;
 				fixed.style.paddingRight = `${parseInt(itemPadValue, 10) + sbWidth}px`;
 				if (isSticky) {
-				  const itemMValue = getComputedStyle(fixed).marginRight;
-				  fixed.style.marginRight = `${parseInt(itemMValue, 10) - sbWidth}px`;
+				 const itemMValue = getComputedStyle(fixed).marginRight;
+				 fixed.style.marginRight = `${parseInt(itemMValue, 10) - sbWidth}px`;
 				}
-		  });
+		 });
 		}
   }
 }
@@ -263,34 +263,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -301,7 +301,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -314,7 +314,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | Modal
--------------------------------------------- */
+--------------------------------------------*/
 
 // MODAL PRIVATE GC
 // ================
@@ -509,7 +509,7 @@ class Modal extends BaseComponent {
 
 		// modal can have multiple triggering elements
 		self.triggers = Array.from(document.querySelectorAll(modalToggleSelector))
-		  .filter((btn) => getTargetElement(btn) === element);
+		 .filter((btn) => getTargetElement(btn) === element);
 
 		// additional internals
 		self.isStatic = self.options.backdrop === 'static';
@@ -536,7 +536,7 @@ class Modal extends BaseComponent {
   show() {
 		const self = this;
 		const {
-		  element, isAnimating, hasFade, relatedTarget,
+		 element, isAnimating, hasFade, relatedTarget,
 		} = self;
 		let overlayDelay = 0;
 
@@ -551,32 +551,32 @@ class Modal extends BaseComponent {
 		// we elegantly hide any opened modal/offcanvas
 		const currentOpen = getCurrentOpen();
 		if (currentOpen && currentOpen !== element) {
-		  const that = currentOpen[modalComponent]
+		 const that = currentOpen[modalComponent]
 				? currentOpen[modalComponent]
 				: currentOpen.Offcanvas;
-		  that.hide();
+		 that.hide();
 		}
 
 		if (!queryElement(`.${modalBackdropClass},.${offcanvasBackdropClass}`)) {
-		  appendOverlay(hasFade, 1);
+		 appendOverlay(hasFade, 1);
 		} else {
-		  toggleOverlayType(1);
+		 toggleOverlayType(1);
 		}
 		overlayDelay = getElementTransitionDuration(overlay);
 
 		if (!hasClass(overlay, showClass)) {
-		  showOverlay();
+		 showOverlay();
 		}
 
 		if (!currentOpen) {
-		  setTimeout(() => beforeModalShow(self), overlayDelay);
+		 setTimeout(() => beforeModalShow(self), overlayDelay);
 		} else beforeModalShow(self);
   }
 
   hide(force) {
 		const self = this;
 		const {
-		  element, isAnimating, hasFade, relatedTarget,
+		 element, isAnimating, hasFade, relatedTarget,
 		} = self;
 		if (!hasClass(element, showClass) && !isAnimating) return;
 
@@ -590,9 +590,9 @@ class Modal extends BaseComponent {
 		element.removeAttribute(ariaModal);
 
 		if (hasFade && force !== 1) {
-		  emulateTransitionEnd(element, () => beforeModalHide(self));
+		 emulateTransitionEnd(element, () => beforeModalHide(self));
 		} else {
-		  beforeModalHide(self, force);
+		 beforeModalHide(self, force);
 		}
   }
 

@@ -7,18 +7,18 @@ body {
   &.wrapper-fluid {
 
 		.site-grid {
-		  grid-template-columns: [full-start] minmax(0, 1fr) [main-start] repeat(4, minmax(0, 25%)) [main-end] minmax(0, 1fr) [full-end];
-		  grid-gap: 0 ($spacez-grid-gutter*2);
+		 grid-template-columns: [full-start] minmax(0, 1fr) [main-start] repeat(4, minmax(0, 25%)) [main-end] minmax(0, 1fr) [full-end];
+		 grid-gap: 0 ($spacez-grid-gutter*2);
 		}
 
 		.grid-child {
-		  max-width: none;
+		 max-width: none;
 		}
 
 		header > .grid-child,
 		footer > .grid-child {
-		  padding-right: $spacez-grid-gutter*2;
-		  padding-left: $spacez-grid-gutter*2;
+		 padding-right: $spacez-grid-gutter*2;
+		 padding-left: $spacez-grid-gutter*2;
 		}
   }
 
@@ -39,29 +39,29 @@ body {
   .site-grid {
 		display: grid;
 		grid-template-areas: ". banner banner banner banner ."
-		  ". top-a top-a top-a top-a ."
-		  ". top-b top-b top-b top-b ."
-		  ". comp comp comp comp ."
-		  ". side-r side-r side-r side-r ."
-		  ". side-l side-l side-l side-l ."
-		  ". bot-a bot-a bot-a bot-a ."
-		  ". bot-b bot-b bot-b bot-b .";
+		 ". top-a top-a top-a top-a ."
+		 ". top-b top-b top-b top-b ."
+		 ". comp comp comp comp ."
+		 ". side-r side-r side-r side-r ."
+		 ". side-l side-l side-l side-l ."
+		 ". bot-a bot-a bot-a bot-a ."
+		 ". bot-b bot-b bot-b bot-b .";
 		grid-template-columns: [full-start] minmax(0, 1fr) [main-start] repeat(4, minmax(0, 19.875rem)) [main-end] minmax(0, 1fr) [full-end];
 		grid-gap: 0 $spacez-grid-gutter;
 
 		> [class^="container-"],
 		> [class*=" container-"] {
-		  width: 100%;
-		  max-width: none;
-		  column-gap: $spacez-grid-gutter;
+		 width: 100%;
+		 max-width: none;
+		 column-gap: $spacez-grid-gutter;
 		}
 
 		> .full-width {
-		  grid-column: full-start / full-end;
+		 grid-column: full-start / full-end;
 		}
 
 		@include media-breakpoint-up(md) {
-		  grid-template-areas: ". banner banner banner banner ."
+		 grid-template-areas: ". banner banner banner banner ."
 				". top-a top-a top-a top-a ."
 				". top-b top-b top-b top-b ."
 				". side-l comp comp side-r ."

@@ -17,7 +17,7 @@ function getElementTransitionDuration(element) {
 	var durationValue = computedStyle[transitionDuration];
 	var durationScale = durationValue.includes('ms') ? 1 : 1000;
 	var duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
 	return !Number.isNaN(duration) ? duration : 0;
 }
@@ -66,7 +66,7 @@ function dispatchCustomEvent(customEvent) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Alert
--------------------------------------------- */
+--------------------------------------------*/
 
 // ALERT DEFINITION
 // ================
@@ -328,7 +328,7 @@ function reflow(element) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Carousel
------------------------------------------------ */
+-----------------------------------------------*/
 
 // CAROUSEL DEFINITION
 // ===================
@@ -492,7 +492,7 @@ function Carousel(elem, opsInput) {
 	function transitionEndHandler(e) {
 		if (vars.touchPosition) {
 			var next = vars.index;
-			var timeout = e && e.target !== slides[next] ? e.elapsedTime * 1000 + 100 : 20;
+			var timeout = e && e.target !== slides[next] ? e.elapsedTime* 1000 + 100 : 20;
 			var activeItem = self.getActiveIndex();
 			var orientation = vars.direction === 'left' ? 'next' : 'prev';
 
@@ -685,7 +685,7 @@ function Carousel(elem, opsInput) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Collapse
------------------------------------------------ */
+-----------------------------------------------*/
 
 // COLLAPSE DEFINITION
 // ===================
@@ -829,7 +829,7 @@ function setFocus(element) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Dropdown
------------------------------------------------ */
+-----------------------------------------------*/
 
 // DROPDOWN DEFINITION
 // ===================
@@ -1001,7 +1001,7 @@ function Dropdown(elem, option) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Modal
--------------------------------------------- */
+--------------------------------------------*/
 
 // MODAL DEFINITION
 // ================
@@ -1366,7 +1366,7 @@ function styleTip(link, element, originalPosition, parent) {
 			arrowTop = elementDimensions.h - linkDimensions.h / 2 - arrowWidth;
 		} else {
 			topPosition = rect.top + scroll.y - elementDimensions.h / 2 + linkDimensions.h / 2;
-			arrowTop = elementDimensions.h / 2 - (isPopover ? arrowHeight * 0.9 : arrowHeight / 2);
+			arrowTop = elementDimensions.h / 2 - (isPopover ? arrowHeight* 0.9 : arrowHeight / 2);
 		}
 	// primary|vertical positions
 	} else if (position === 'top' || position === 'bottom') {
@@ -1380,7 +1380,7 @@ function styleTip(link, element, originalPosition, parent) {
 			leftPosition = 0;
 			arrowLeft = rect.left + linkDimensions.w / 2 - arrowWidth;
 		} else if (halfRightExceed) {
-			leftPosition = windowWidth - elementDimensions.w * 1.01;
+			leftPosition = windowWidth - elementDimensions.w* 1.01;
 			arrowLeft = elementDimensions.w - (windowWidth - rect.left)
 				+ linkDimensions.w / 2 - arrowWidth / 2;
 		} else {
@@ -1398,7 +1398,7 @@ function styleTip(link, element, originalPosition, parent) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Popover
----------------------------------------------- */
+----------------------------------------------*/
 
 // POPOVER DEFINITION
 // ==================
@@ -1520,8 +1520,8 @@ function Popover(elem, opsInput) {
 			element[action](mouseClickEvents.down, self.show);
 			element[action](mouseHoverEvents[0], self.show);
 			// mouseHover = ('onmouseleave' in document)
-			//	 ? [ 'mouseenter', 'mouseleave']
-			//	 : [ 'mouseover', 'mouseout' ]
+			//	? [ 'mouseenter', 'mouseleave']
+			//	: [ 'mouseover', 'mouseout' ]
 			if (!ops.dismissible) { element[action](mouseHoverEvents[1], self.hide); }
 		} else if (ops.trigger === 'click') {
 			element[action](ops.trigger, self.toggle);
@@ -1661,7 +1661,7 @@ function Popover(elem, opsInput) {
 }
 
 /* Native JavaScript for Bootstrap 5 | ScrollSpy
------------------------------------------------- */
+------------------------------------------------*/
 
 // SCROLLSPY DEFINITION
 // ====================
@@ -1842,7 +1842,7 @@ function ScrollSpy(elem, opsInput) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Tab
------------------------------------------- */
+------------------------------------------*/
 
 // TAB DEFINITION
 // ==============
@@ -2022,7 +2022,7 @@ function Tab(elem, opsInput) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Toast
--------------------------------------------- */
+--------------------------------------------*/
 
 // TOAST DEFINITION
 // ==================
@@ -2134,7 +2134,7 @@ function Toast(elem, opsInput) {
 }
 
 /* Native JavaScript for Bootstrap 4 | Tooltip
----------------------------------------------- */
+----------------------------------------------*/
 
 // TOOLTIP DEFINITION
 // ==================
@@ -2346,7 +2346,7 @@ function Tooltip(elem, opsInput) {
 var componentsInit = {};
 
 /* Native JavaScript for Bootstrap | Initialize Data API
--------------------------------------------------------- */
+--------------------------------------------------------*/
 function initializeDataAPI(Constructor, collection) {
 	Array.from(collection).map(function (x) { return new Constructor(x); });
 }
@@ -2380,7 +2380,7 @@ else {
 }
 
 /* Native JavaScript for Bootstrap | Remove Data API
----------------------------------------------------- */
+----------------------------------------------------*/
 function removeElementDataAPI(ConstructorName, collection) {
 	Array.from(collection).map(function (x) { return x[ConstructorName].dispose(); });
 }

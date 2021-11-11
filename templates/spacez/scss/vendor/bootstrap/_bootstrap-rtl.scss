@@ -147,14 +147,14 @@
   &:not(.has-validation) {
 		> :not(:last-child):not(.dropdown-toggle):not(.dropdown-menu),
 		> .dropdown-toggle:nth-last-child(n + 3) {
-		  @include border-end-radius($border-radius);
+		 @include border-end-radius($border-radius);
 		}
   }
 
   &.has-validation {
 		> :nth-last-child(n + 3):not(.dropdown-toggle):not(.dropdown-menu),
 		> .dropdown-toggle:nth-last-child(n + 4) {
-		  @include border-end-radius(0);
+		 @include border-end-radius(0);
 		}
   }
   $validation-messages: "";
@@ -182,11 +182,11 @@
 		padding-left: 0 !important;
 
 		&::before {
-		  float: right; // Suppress inline spacings and underlining of the separator
-		  padding-right: 0 !important;
-		  padding-left: $breadcrumb-item-padding-x;
-		  color: $breadcrumb-divider-color;
-		  content: var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
+		 float: right; // Suppress inline spacings and underlining of the separator
+		 padding-right: 0 !important;
+		 padding-left: $breadcrumb-item-padding-x;
+		 color: $breadcrumb-divider-color;
+		 content: var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider)) #{"/* rtl:"} var(--#{$variable-prefix}breadcrumb-divider, escape-svg($breadcrumb-divider-flipped)) #{"*/"};
 		}
   }
 

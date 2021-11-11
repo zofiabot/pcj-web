@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Dropdown v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Dropdown v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 function queryElement(selector, parent) {
   const lookUp = parent && parent instanceof Element ? parent : document;
   return selector instanceof Element ? selector : lookUp.querySelector(selector);
@@ -16,13 +16,13 @@ const supportPassive = (() => {
   let result = false;
   try {
 		const opts = Object.defineProperty({}, 'passive', {
-		  get() {
+		 get() {
 				result = true;
 				return result;
-		  },
+		 },
 		});
 		document[addEventListener]('DOMContentLoaded', function wrap() {
-		  document[removeEventListener]('DOMContentLoaded', wrap, opts);
+		 document[removeEventListener]('DOMContentLoaded', wrap, opts);
 		}, opts);
   } catch (e) {
 		throw Error('Passive events are not supported');
@@ -62,9 +62,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -110,34 +110,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -148,7 +148,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -161,7 +161,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | Dropdown
------------------------------------------------ */
+-----------------------------------------------*/
 
 // DROPDOWN PRIVATE GC
 // ===================
@@ -296,9 +296,9 @@ function styleDropdown(self, show) {
 		else if (menuEnd && leftExceed) removeClass(menu, dropdownMenuEndClass);
 
 		if (hasClass(menu, dropdownMenuEndClass)) {
-		  Object.keys(dropdownPosition.menuEnd).forEach((p) => {
+		 Object.keys(dropdownPosition.menuEnd).forEach((p) => {
 				menu.style[p] = dropdownPosition.menuEnd[p];
-		  });
+		 });
 		}
   }
 
@@ -389,20 +389,20 @@ function dropdownKeyHandler({ which }) {
 
   if (isMenuItem) { // navigate up | down
 		if (isSameElement) {
-		  idx = 0;
+		 idx = 0;
 		} else if (which === 38) {
-		  idx = idx > 1 ? idx - 1 : 0;
+		 idx = idx > 1 ? idx - 1 : 0;
 		} else if (which === 40) {
-		  idx = idx < menuItems.length - 1 ? idx + 1 : idx;
+		 idx = idx < menuItems.length - 1 ? idx + 1 : idx;
 		}
 
 		if (menuItems[idx]) setFocus(menuItems[idx]);
   }
 
   if (((menuItems.length && isMenuItem) // menu has items
-		  || (!menuItems.length && (isInsideMenu || isSameElement)) // menu might be a form
-		  || !isInsideMenu) // or the focused element is not in the menu at all
-		  && open && which === 27 // menu must be open
+		 || (!menuItems.length && (isInsideMenu || isSameElement)) // menu might be a form
+		 || !isInsideMenu) // or the focused element is not in the menu at all
+		 && open && which === 27 // menu must be open
   ) {
 		self.toggle();
   }
@@ -439,8 +439,8 @@ class Dropdown extends BaseComponent {
 		self.menuItems = [];
 
 		Array.from(menu.children).forEach((child) => {
-		  if (child.children.length && (child.children[0].tagName === 'A')) self.menuItems.push(child.children[0]);
-		  if (child.tagName === 'A') self.menuItems.push(child);
+		 if (child.children.length && (child.children[0].tagName === 'A')) self.menuItems.push(child.children[0]);
+		 if (child.tagName === 'A') self.menuItems.push(child);
 		});
 
 		// set initial state to closed
@@ -485,11 +485,11 @@ class Dropdown extends BaseComponent {
 		self.open = !open;
 
 		setTimeout(() => {
-		  setFocus(menu.getElementsByTagName('INPUT')[0] || element); // focus the first input item | element
-		  toggleDropdownDismiss(self);
+		 setFocus(menu.getElementsByTagName('INPUT')[0] || element); // focus the first input item | element
+		 toggleDropdownDismiss(self);
 
-		  shownDropdownEvent.relatedTarget = related || null;
-		  parent.dispatchEvent(shownDropdownEvent);
+		 shownDropdownEvent.relatedTarget = related || null;
+		 parent.dispatchEvent(shownDropdownEvent);
 		}, 1);
   }
 

@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Offcanvas v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Offcanvas v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 function queryElement(selector, parent) {
   const lookUp = parent && parent instanceof Element ? parent : document;
   return selector instanceof Element ? selector : lookUp.querySelector(selector);
@@ -38,7 +38,7 @@ function getElementTransitionDuration(element) {
   const durationValue = computedStyle[transitionDuration];
   const durationScale = durationValue.includes('ms') ? 1 : 1000;
   const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		? parseFloat(durationValue) * durationScale : 0;
+		? parseFloat(durationValue)* durationScale : 0;
 
   return !Number.isNaN(duration) ? duration : 0;
 }
@@ -50,14 +50,14 @@ function emulateTransitionEnd(element, handler) {
 
   if (duration) {
 		element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
-		  if (e.target === element) {
+		 if (e.target === element) {
 				handler.apply(element, [e]);
 				element.removeEventListener(transitionEndEvent, transitionEndWrapper);
 				called = 1;
-		  }
+		 }
 		});
 		setTimeout(() => {
-		  if (!called) element.dispatchEvent(endEvent);
+		 if (!called) element.dispatchEvent(endEvent);
 		}, duration + 17);
   } else {
 		handler.apply(element, [endEvent]);
@@ -69,9 +69,9 @@ function bootstrapCustomEvent(namespacedEventType, eventProperties) {
 
   if (eventProperties instanceof Object) {
 		Object.keys(eventProperties).forEach((key) => {
-		  Object.defineProperty(OriginalCustomEvent, key, {
+		 Object.defineProperty(OriginalCustomEvent, key, {
 				value: eventProperties[key],
-		  });
+		 });
 		});
   }
   return OriginalCustomEvent;
@@ -128,8 +128,8 @@ function resetScrollbar() {
 
   if (fixedItems.length) {
 		fixedItems.forEach((fixed) => {
-		  fixed.style.paddingRight = '';
-		  fixed.style.marginRight = '';
+		 fixed.style.paddingRight = '';
+		 fixed.style.marginRight = '';
 		});
   }
 }
@@ -151,15 +151,15 @@ function setScrollbar(scrollbarWidth, overflow) {
 		bd.style.paddingRight = `${bodyPad + sbWidth}px`;
 
 		if (fixedItems.length) {
-		  fixedItems.forEach((fixed) => {
+		 fixedItems.forEach((fixed) => {
 				const isSticky = hasClass(fixed, stickyTopClass);
 				const itemPadValue = getComputedStyle(fixed).paddingRight;
 				fixed.style.paddingRight = `${parseInt(itemPadValue, 10) + sbWidth}px`;
 				if (isSticky) {
-				  const itemMValue = getComputedStyle(fixed).marginRight;
-				  fixed.style.marginRight = `${parseInt(itemMValue, 10) - sbWidth}px`;
+				 const itemMValue = getComputedStyle(fixed).marginRight;
+				 fixed.style.marginRight = `${parseInt(itemMValue, 10) - sbWidth}px`;
 				}
-		  });
+		 });
 		}
   }
 }
@@ -242,34 +242,34 @@ function normalizeOptions(element, defaultOps, inputOps, ns) {
 
   Object.keys(data)
 		.forEach((k) => {
-		  const key = k.includes(ns)
+		 const key = k.includes(ns)
 				? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
 				: k;
 
-		  dataOps[key] = normalizeValue(data[k]);
+		 dataOps[key] = normalizeValue(data[k]);
 		});
 
   Object.keys(inputOps)
 		.forEach((k) => {
-		  inputOps[k] = normalizeValue(inputOps[k]);
+		 inputOps[k] = normalizeValue(inputOps[k]);
 		});
 
   Object.keys(defaultOps)
 		.forEach((k) => {
-		  if (k in inputOps) {
+		 if (k in inputOps) {
 				normalOps[k] = inputOps[k];
-		  } else if (k in dataOps) {
+		 } else if (k in dataOps) {
 				normalOps[k] = dataOps[k];
-		  } else {
+		 } else {
 				normalOps[k] = defaultOps[k];
-		  }
+		 }
 		});
 
   return normalOps;
 }
 
 /* Native JavaScript for Bootstrap 5 | Base Component
------------------------------------------------------ */
+-----------------------------------------------------*/
 
 class BaseComponent {
   constructor(name, target, defaults, config) {
@@ -280,7 +280,7 @@ class BaseComponent {
 		self.element = element;
 
 		if (defaults && Object.keys(defaults).length) {
-		  self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
+		 self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
 		}
 		element[name] = self;
   }
@@ -293,7 +293,7 @@ class BaseComponent {
 }
 
 /* Native JavaScript for Bootstrap 5 | OffCanvas
------------------------------------------------- */
+------------------------------------------------*/
 
 // OFFCANVAS PRIVATE GC
 // ====================
@@ -455,7 +455,7 @@ function hideOffcanvasComplete(self) {
   if (!currentOpen) {
 		if (options.backdrop) removeOverlay();
 		if (!options.scroll) {
-		  resetScrollbar();
+		 resetScrollbar();
 		}
   }
 
@@ -478,7 +478,7 @@ class Offcanvas extends BaseComponent {
 
 		// all the triggering buttons
 		self.triggers = Array.from(document.querySelectorAll(offcanvasToggleSelector))
-		  .filter((btn) => getTargetElement(btn) === element);
+		 .filter((btn) => getTargetElement(btn) === element);
 
 		// additional instance property
 		self.open = false;
@@ -499,7 +499,7 @@ class Offcanvas extends BaseComponent {
   show() {
 		const self = this[offcanvasComponent] ? this[offcanvasComponent] : this;
 		const {
-		  element, options, isAnimating, relatedTarget,
+		 element, options, isAnimating, relatedTarget,
 		} = self;
 		let overlayDelay = 0;
 
@@ -513,27 +513,27 @@ class Offcanvas extends BaseComponent {
 		// we elegantly hide any opened modal/offcanvas
 		const currentOpen = getCurrentOpen();
 		if (currentOpen && currentOpen !== element) {
-		  const that = currentOpen[offcanvasComponent]
+		 const that = currentOpen[offcanvasComponent]
 				? currentOpen[offcanvasComponent]
 				: currentOpen.Modal;
-		  that.hide();
+		 that.hide();
 		}
 
 		self.open = true;
 		self.isAnimating = true;
 
 		if (options.backdrop) {
-		  if (!queryElement(`.${modalBackdropClass},.${offcanvasBackdropClass}`)) {
+		 if (!queryElement(`.${modalBackdropClass},.${offcanvasBackdropClass}`)) {
 				appendOverlay(1);
-		  } else {
+		 } else {
 				toggleOverlayType();
-		  }
+		 }
 
-		  overlayDelay = getElementTransitionDuration(overlay);
+		 overlayDelay = getElementTransitionDuration(overlay);
 
-		  if (!hasClass(overlay, showClass)) showOverlay();
+		 if (!hasClass(overlay, showClass)) showOverlay();
 
-		  setTimeout(() => beforeOffcanvasShow(self), overlayDelay);
+		 setTimeout(() => beforeOffcanvasShow(self), overlayDelay);
 		} else beforeOffcanvasShow(self);
   }
 
@@ -552,7 +552,7 @@ class Offcanvas extends BaseComponent {
 		removeClass(element, showClass);
 
 		if (!force) {
-		  emulateTransitionEnd(element, () => beforeOffcanvasHide(self));
+		 emulateTransitionEnd(element, () => beforeOffcanvasHide(self));
 		} else beforeOffcanvasHide(self);
   }
 

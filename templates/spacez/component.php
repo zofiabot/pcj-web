@@ -1,20 +1,20 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage	Templates.spacez
- *
- * @copyright	 (C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- * @copyright	(C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2017 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	(C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
 use Joomla\CMS\Factory;
 use Joomla\CMS\HTML\HTMLHelper;
 
-/** @var JDocumentHtml $this */
+/** @var JDocumentHtml $this*/
 
 $app = Factory::getApplication();
 $wa	= $this->getWebAssetManager();

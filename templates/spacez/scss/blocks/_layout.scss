@@ -30,7 +30,7 @@
 .container-bottom-a,
 .container-bottom-b {
   position: relative;
-  > * {
+  >* {
 		flex: 1;
 		margin: ($spacez-grid-gutter / 2) 0;
   }
@@ -38,8 +38,8 @@
   @include media-breakpoint-down(md) {
 		flex-direction: column;
 
-		> * {
-		  flex: 0 1 auto;
+		>* {
+		 flex: 0 1 auto;
 		}
   }
 }
@@ -55,15 +55,15 @@
   flex: 1;
   flex-direction: column;
 
-  > * {
+  >* {
 		margin-bottom: 0;
 
 		&:first-child {
-		  margin-top: $spacez-grid-gutter;
+		 margin-top: $spacez-grid-gutter;
 		}
   }
 
-  > * + * {
+  >* +* {
 		margin-top: $spacez-grid-gutter;
   }
 }

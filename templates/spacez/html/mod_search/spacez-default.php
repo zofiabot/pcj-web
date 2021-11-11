@@ -1,11 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright	Michał Sobkowiak & Zofia
- * @license		 propriatery, see LICENSE.txt
- */
+* @package		Templates.spacez
+*
+* @copyright	Michał Sobkowiak & Zofia
+* @license		propriatery, see LICENSE.txt
+*
+* @copyright	for changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
@@ -46,7 +48,7 @@ $btn_search = '<button class="btn input-group-text">' . $formicon . '</button>';
 		
 		<div id="search-nav" name="search-nav" class="collapse navbar-collapse input-group search<?php echo $moduleclass_sfx; ?>">
 			
-			 <?php echo $inputfield . $btn_search; ?>
+			<?php echo $inputfield . $btn_search; ?>
 			
 		</div>
 		

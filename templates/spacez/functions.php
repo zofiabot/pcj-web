@@ -1,10 +1,10 @@
 <?php
 /**
- * @package		Templates.SpaceZ
- *
- * @copyright	(C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -27,7 +27,7 @@ function format_advantages( $positionName , $num = 0 ) {
 	
 	for ( $i=0; $i < $DOM->getElementsByTagName('h4')->length; $i++ ){
 	
-		$output .= 	'<div class="advantage col ' . strtolower($Headers->item($i)->textContent) . 
+		$output .=	'<div class="advantage col ' . strtolower($Headers->item($i)->textContent) . 
 					'"><div>
 						<h5>' . ($Headers->item($i)->textContent) . '</h5>' .
 						svg( [$icons[$i], [ 128 , 128], 'size' => 64 ] ) .
@@ -41,7 +41,7 @@ function format_advantages( $positionName , $num = 0 ) {
 	foreach ($Buttons as $Button){
 	
 		$output .= '<div class="align-self-center adv-btn"><a href="' . trim($Button->getAttribute('href')) . '" class="btn btn-primary btn-lg mx-auto my-4">' .
-							 trim($Button->textContent) . '</a></div>' . '</div>';
+							trim($Button->textContent) . '</a></div>' . '</div>';
 	
 	}
 
@@ -69,7 +69,7 @@ function format_sites( $positionName , $num = 0 ) {
 	$i=0;
 	foreach ($Buttons as $Button){
 	
-		$output .= 	'<div class="col">' .
+		$output .=	'<div class="col">' .
 						'<a href="' . trim($Button->getAttribute('href')) . '" class="sites-link">' . 
 							svg( [$icons[$i], [ 128 , 128 ], 'size' => 64, 'title' => trim($Button->textContent), 'class' => $classes[$i] ] ) .
 						'</a>' .
@@ -88,7 +88,7 @@ function renderModule ( $positionName, $num = 0 ){
 	$document = JFactory::getDocument();
 	$renderer = $document->loadRenderer('module');
 	$db = JFactory::getDBO();
-	$db->setQuery("SELECT * FROM #__modules WHERE position='$positionName'
+	$db->setQuery("SELECT* FROM #__modules WHERE position='$positionName'
 	AND published=1 ORDER BY ordering");
 
 

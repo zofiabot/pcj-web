@@ -1,11 +1,10 @@
 <?php
 /**
- * * @package		Templates.SpaceZ
- * @subpackage	Templates.SpaceZ
- *
- * @copyright Michał Sobkowiak & Zofia
- * @license	GNU General Public License version 2 or later; see LICENSE.txt
- */
+* @package		Templates.spacez
+*
+* @copyright	Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 use Joomla\CMS\Language\Text;
@@ -13,7 +12,7 @@ use Joomla\CMS\Language\Text;
 
 function joomlalogo( $sitename, $width = false ) {
 
- 	$args = [ constant('Logo_Joomla') , 'title' => 'Joomla!', 'desc' => $sitename, 'class' => 'logo me-2', 'id' => 'joomla-logo' ];
+	$args = [ constant('Logo_Joomla') , 'title' => 'Joomla!', 'desc' => $sitename, 'class' => 'logo me-2', 'id' => 'joomla-logo' ];
 	if ($width) { $args['size'] = $width; }
 
 	return svg( $args );
@@ -46,7 +45,7 @@ function svg ( $args )
 		if (is_int($size)) { 
 				// if only width given
 				$height = $size; 
-				$width = ( $vb[0] / $vb[1] ) * $size;
+				$width = ( $vb[0] / $vb[1] )* $size;
 		} 
 		else { $width = $size[0]; $height = $size[1]; }
 

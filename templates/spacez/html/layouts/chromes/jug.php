@@ -1,11 +1,10 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright	(C) 2020 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2020 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -20,12 +19,12 @@ if ($module->content === null || $module->content === '')
 	return;
 }
 
-$moduleTag						  = $params->get('module_tag', 'div');
-$moduleAttribs				  = [];
+$moduleTag						 = $params->get('module_tag', 'div');
+$moduleAttribs				 = [];
 $moduleAttribs['class'] = $module->position . ' ' . htmlspecialchars($params->get('moduleclass_sfx'), ENT_QUOTES, 'UTF-8');
-$headerTag						  = htmlspecialchars($params->get('header_tag', 'h3'), ENT_QUOTES, 'UTF-8');
+$headerTag						 = htmlspecialchars($params->get('header_tag', 'h3'), ENT_QUOTES, 'UTF-8');
 $headerClass						= htmlspecialchars($params->get('header_class', ''), ENT_QUOTES, 'UTF-8');
-$headerAttribs				  = [];
+$headerAttribs				 = [];
 $headerAttribs['class'] = $headerClass;
 
 $moduleAttribs['aria-label'] = $module->title;

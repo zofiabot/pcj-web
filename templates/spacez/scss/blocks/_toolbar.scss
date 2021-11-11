@@ -25,7 +25,7 @@
 		margin-inline-start: .75rem;
 
 		&:first-child {
-		  margin-inline-start: 0;
+		 margin-inline-start: 0;
 		}
   }
 
@@ -33,9 +33,9 @@
 
 		.btn > span,
 		.dropdown-item > span {
-		  margin-inline-end: .5rem;
-		  width: 1.25em;
-		  text-align: center;
+		 margin-inline-end: .5rem;
+		 width: 1.25em;
+		 text-align: center;
 		}
   }
 
@@ -50,74 +50,74 @@
 		border-color: $gray-500;
 
 		> span {
-		  display: inline-block;
-		  color: var(--subhead-btn-accent);
+		 display: inline-block;
+		 color: var(--subhead-btn-accent);
 		}
 
 		&:not([disabled]):hover,
 		&:not([disabled]):active,
 		&:not([disabled]):focus {
-		  color: rgba(255, 255, 255, .9);
-		  background-color: var(--subhead-btn-accent);
-		  border-color: var(--subhead-btn-accent);
+		 color: rgba(255, 255, 255, .9);
+		 background-color: var(--subhead-btn-accent);
+		 border-color: var(--subhead-btn-accent);
 
-		  > span {
+		 > span {
 				color: rgba(255, 255, 255, .9);
-		  }
+		 }
 		}
 
 		&.btn-success {
-		  --subhead-btn-accent: var(--success);
+		 --subhead-btn-accent: var(--success);
 		}
 
 		&.btn-danger {
-		  --subhead-btn-accent: var(--danger);
+		 --subhead-btn-accent: var(--danger);
 		}
 
 		&.btn-primary {
-		  --subhead-btn-accent: #2a69b8;
+		 --subhead-btn-accent: #2a69b8;
 		}
 
 		&.btn-secondary {
-		  --subhead-btn-accent: #001b4c;
+		 --subhead-btn-accent: #001b4c;
 		}
 
 		&.btn-info {
-		  --subhead-btn-accent: #132f53;
+		 --subhead-btn-accent: #132f53;
 		}
 
 		&.btn-action {
-		  --subhead-btn-accent: #132f53;
-		  display: flex;
-		  align-items: center;
+		 --subhead-btn-accent: #132f53;
+		 display: flex;
+		 align-items: center;
 
-		  &::after {
+		 &::after {
 				width: 2.375rem;
 				font-family: "Font Awesome 5 Free";
 				font-weight: 900;
 				content: "\f078";
 				border: 0;
 
-		  }
+		 }
 		}
 
 		&[disabled],
 		&.dropdown-toggle[disabled] {
-		  --subhead-btn-accent: #132f53;
-		  background: rgba($gray-300, .8);
-		  opacity: .5;
+		 --subhead-btn-accent: #132f53;
+		 background: rgba($gray-300, .8);
+		 opacity: .5;
 
-		  &:hover,
-		  &:active,
-		  &:focus {
+		 &:hover,
+		 &:active,
+		 &:focus {
 				cursor: not-allowed;
-		  }
+		 }
 		}
   }
 
   .dropdown-toggle {
 		&.btn {
-		  padding-inline-end: 0;
+		 padding-inline-end: 0;
 		}
   }
 
@@ -126,11 +126,11 @@
 		margin-inline-start: -$border-radius;
 
 		[dir="ltr"] & {
-		  border-radius: 0 $border-radius $border-radius 0;
+		 border-radius: 0 $border-radius $border-radius 0;
 		}
 
 		[dir="rtl"] & {
-		  border-radius: $border-radius 0 0 $border-radius;
+		 border-radius: $border-radius 0 0 $border-radius;
 		}
   }
 
@@ -160,23 +160,23 @@
 		joomla-toolbar-button,
 		.btn-group,
 		.btn {
-		  width: 100%;
-		  margin-left: 0;
-		  text-align: left;
+		 width: 100%;
+		 margin-left: 0;
+		 text-align: left;
 		}
 
 		.btn-toolbar > .btn-group,
 		.btn-toolbar > joomla-toolbar-button {
-		  margin-left: 0;
+		 margin-left: 0;
 		}
 
 		.btn.btn-action::after {
-		  text-align: center;
-		  margin-inline-start: auto;
+		 text-align: center;
+		 margin-inline-start: auto;
 		}
 
 		.dropdown-toggle-split {
-		  width: auto;
+		 width: auto;
 		}
   }
 }

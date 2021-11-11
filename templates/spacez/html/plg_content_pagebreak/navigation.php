@@ -1,11 +1,14 @@
 <?php
 /**
- * @package		 Joomla.Plugin
- * @subpackage  Templates.spacez
- *
- * @copyright		(C) 2018 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- */
+* @package		Joomla.Plugin
+* @package		Templates.spacez
+*
+* @copyright	(C) 2018 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -14,9 +17,9 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\Router\Route;
 
 /**
- * @var $links		array		Array with keys 'previous' and 'next' with non-SEO links to the previous and next pages
- * @var $page		integer  The page number
- */
+* @var $links		array		Array with keys 'previous' and 'next' with non-SEO links to the previous and next pages
+* @var $page		integer  The page number
+*/
 
 $lang = Factory::getLanguage();
 ?>

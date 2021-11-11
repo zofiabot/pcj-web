@@ -1,11 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright		(C) 2011 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2011 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -52,7 +54,7 @@ use Joomla\CMS\Uri\Uri;
 		$this->document->addScriptOptions(
 			'highlight',
 			[[
-					'class'		  => 'js-highlight',
+					'class'		 => 'js-highlight',
 					'highLight'  => $this->query->highlight,
 			]]
 		);
@@ -80,7 +82,7 @@ use Joomla\CMS\Uri\Uri;
 			<?php // Prepare the pagination string.  Results X - Y of Z ?>
 			<?php $start = (int) $this->pagination->limitstart + 1; ?>
 			<?php $total = (int) $this->pagination->total; ?>
-			<?php $limit = (int) $this->pagination->limit * $this->pagination->pagesCurrent; ?>
+			<?php $limit = (int) $this->pagination->limit* $this->pagination->pagesCurrent; ?>
 			<?php $limit = (int) ($limit > $total ? $total : $limit); ?>
 			<?php echo Text::sprintf('COM_FINDER_SEARCH_RESULTS_OF', $start, $limit, $total); ?>
 		</div>

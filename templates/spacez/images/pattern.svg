@@ -14,30 +14,30 @@
 		xmlns="http://www.w3.org/2000/svg"
 		xmlns:svg="http://www.w3.org/2000/svg">
   <sodipodi:namedview
-		 id="namedview2684"
-		 pagecolor="#ffffff"
-		 bordercolor="#666666"
-		 borderopacity="1.0"
-		 inkscape:pageshadow="2"
-		 inkscape:pageopacity="0.0"
-		 inkscape:pagecheckerboard="0"
-		 inkscape:document-units="mm"
-		 showgrid="false"
-		 inkscape:zoom="1.711862"
-		 inkscape:cx="550.86215"
-		 inkscape:cy="396.05996"
-		 inkscape:window-width="1866"
-		 inkscape:window-height="1043"
-		 inkscape:window-x="54"
-		 inkscape:window-y="0"
-		 inkscape:window-maximized="1"
-		 inkscape:current-layer="layer1" />
+		id="namedview2684"
+		pagecolor="#ffffff"
+		bordercolor="#666666"
+		borderopacity="1.0"
+		inkscape:pageshadow="2"
+		inkscape:pageopacity="0.0"
+		inkscape:pagecheckerboard="0"
+		inkscape:document-units="mm"
+		showgrid="false"
+		inkscape:zoom="1.711862"
+		inkscape:cx="550.86215"
+		inkscape:cy="396.05996"
+		inkscape:window-width="1866"
+		inkscape:window-height="1043"
+		inkscape:window-x="54"
+		inkscape:window-y="0"
+		inkscape:window-maximized="1"
+		inkscape:current-layer="layer1" />
   <defs
-		 id="defs2679" />
+		id="defs2679" />
   <g
-		 inkscape:label="Layer 1"
-		 inkscape:groupmode="layer"
-		 id="layer1">
+		inkscape:label="Layer 1"
+		inkscape:groupmode="layer"
+		id="layer1">
 		<path
 				style="fill:#000000;stroke-width:0.264583"
 				d="m 137.74758,81.232 c 0.16048,-0.10691 0.35678,-0.93002 0.43621,-1.82913 0.18803,-2.12834 1.26014,-4.11996 2.84387,-5.283 0.65484,-0.48089 1.35236,-0.8773 1.55004,-0.88091 0.25367,-0.005 0.30894,-0.20762 0.18787,-0.69 -0.18092,-0.72084 -1.29487,-2.61462 -1.67682,-2.85068 -0.12372,-0.0765 -0.91923,0.21119 -1.7678,0.63922 -2.16214,1.09061 -4.22506,1.08668 -6.39194,-0.0122 -0.85726,-0.43472 -1.5803,-0.79191 -1.60677,-0.79375 -0.15227,-0.0106 -1.21421,1.69116 -1.53616,2.46169 -0.37949,0.90825 -0.37949,0.90825 0.89167,1.69844 2.20609,1.37138 3.47074,3.61829 3.47074,6.16648 0,0.76652 0.13074,1.32036 0.33073,1.40105 0.51799,0.20901 2.94406,0.18878 3.26836,-0.0273 z"

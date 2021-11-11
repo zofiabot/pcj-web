@@ -1,13 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright	(C) 2006 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @copyright	for the changes (C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2006 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for the changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -29,9 +29,9 @@ $info		= $this->item->params->get('info_block_position', 0);
 $assocParam = (Associations::isEnabled() && $params->get('show_associations'));
 
 $currentDate				= Factory::getDate()->format('Y-m-d H:i:s');
-$isExpired				 = !is_null($this->item->publish_down) && $this->item->publish_down < $currentDate;
+$isExpired				= !is_null($this->item->publish_down) && $this->item->publish_down < $currentDate;
 $isNotPublishedYet = $this->item->publish_up > $currentDate;
-$isUnpublished		 = $this->item->state == ContentComponent::CONDITION_UNPUBLISHED || $isNotPublishedYet || $isExpired;
+$isUnpublished		= $this->item->state == ContentComponent::CONDITION_UNPUBLISHED || $isNotPublishedYet || $isExpired;
 ?>
 
 <?php echo LayoutHelper::render('joomla.content.intro_image', $this->item); ?>

@@ -1,8 +1,8 @@
 /*!
-  * Native JavaScript for Bootstrap Collapse v4.0.5 (https://thednp.github.io/bootstrap.native/)
-  * Copyright 2015-2021 © dnp_theme
-  * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
-  */
+ * Native JavaScript for Bootstrap Collapse v4.0.5 (https://thednp.github.io/bootstrap.native/)
+ * Copyright 2015-2021 © dnp_theme
+ * Licensed under MIT (https://github.com/thednp/bootstrap.native/blob/master/LICENSE)
+ */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
@@ -23,7 +23,7 @@
 		const durationValue = computedStyle[transitionDuration];
 		const durationScale = durationValue.includes('ms') ? 1 : 1000;
 		const duration = supportTransition && propertyValue && propertyValue !== 'none'
-		  ? parseFloat(durationValue) * durationScale : 0;
+		 ? parseFloat(durationValue)* durationScale : 0;
 
 		return !Number.isNaN(duration) ? duration : 0;
   }
@@ -34,18 +34,18 @@
 		const duration = getElementTransitionDuration(element);
 
 		if (duration) {
-		  element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
+		 element.addEventListener(transitionEndEvent, function transitionEndWrapper(e) {
 				if (e.target === element) {
-				  handler.apply(element, [e]);
-				  element.removeEventListener(transitionEndEvent, transitionEndWrapper);
-				  called = 1;
+				 handler.apply(element, [e]);
+				 element.removeEventListener(transitionEndEvent, transitionEndWrapper);
+				 called = 1;
 				}
-		  });
-		  setTimeout(() => {
+		 });
+		 setTimeout(() => {
 				if (!called) element.dispatchEvent(endEvent);
-		  }, duration + 17);
+		 }, duration + 17);
 		} else {
-		  handler.apply(element, [endEvent]);
+		 handler.apply(element, [endEvent]);
 		}
   }
 
@@ -87,11 +87,11 @@
 		const OriginalCustomEvent = new CustomEvent(namespacedEventType, { cancelable: true });
 
 		if (eventProperties instanceof Object) {
-		  Object.keys(eventProperties).forEach((key) => {
+		 Object.keys(eventProperties).forEach((key) => {
 				Object.defineProperty(OriginalCustomEvent, key, {
-				  value: eventProperties[key],
+				 value: eventProperties[key],
 				});
-		  });
+		 });
 		}
 		return OriginalCustomEvent;
   }
@@ -104,25 +104,25 @@
 
   function getTargetElement(element) {
 		return queryElement(element.getAttribute(dataBsTarget) || element.getAttribute('href'))
-				  || element.closest(element.getAttribute(dataBsParent))
-				  || queryElement(element.getAttribute(dataBsContainer));
+				 || element.closest(element.getAttribute(dataBsParent))
+				 || queryElement(element.getAttribute(dataBsContainer));
   }
 
   function normalizeValue(value) {
 		if (value === 'true') {
-		  return true;
+		 return true;
 		}
 
 		if (value === 'false') {
-		  return false;
+		 return false;
 		}
 
 		if (!Number.isNaN(+value)) {
-		  return +value;
+		 return +value;
 		}
 
 		if (value === '' || value === 'null') {
-		  return null;
+		 return null;
 		}
 
 		// string / function / Element / Object
@@ -135,59 +135,59 @@
 		const data = { ...element.dataset };
 
 		Object.keys(data)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				const key = k.includes(ns)
-				  ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
-				  : k;
+				 ? k.replace(ns, '').replace(/[A-Z]/, (match) => match.toLowerCase())
+				 : k;
 
 				dataOps[key] = normalizeValue(data[k]);
-		  });
+		 });
 
 		Object.keys(inputOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				inputOps[k] = normalizeValue(inputOps[k]);
-		  });
+		 });
 
 		Object.keys(defaultOps)
-		  .forEach((k) => {
+		 .forEach((k) => {
 				if (k in inputOps) {
-				  normalOps[k] = inputOps[k];
+				 normalOps[k] = inputOps[k];
 				} else if (k in dataOps) {
-				  normalOps[k] = dataOps[k];
+				 normalOps[k] = dataOps[k];
 				} else {
-				  normalOps[k] = defaultOps[k];
+				 normalOps[k] = defaultOps[k];
 				}
-		  });
+		 });
 
 		return normalOps;
   }
 
   /* Native JavaScript for Bootstrap 5 | Base Component
-  ----------------------------------------------------- */
+  -----------------------------------------------------*/
 
   class BaseComponent {
 		constructor(name, target, defaults, config) {
-		  const self = this;
-		  const element = queryElement(target);
+		 const self = this;
+		 const element = queryElement(target);
 
-		  if (element[name]) element[name].dispose();
-		  self.element = element;
+		 if (element[name]) element[name].dispose();
+		 self.element = element;
 
-		  if (defaults && Object.keys(defaults).length) {
+		 if (defaults && Object.keys(defaults).length) {
 				self.options = normalizeOptions(element, defaults, (config || {}), 'bs');
-		  }
-		  element[name] = self;
+		 }
+		 element[name] = self;
 		}
 
 		dispose(name) {
-		  const self = this;
-		  self.element[name] = null;
-		  Object.keys(self).forEach((prop) => { self[prop] = null; });
+		 const self = this;
+		 self.element[name] = null;
+		 Object.keys(self).forEach((prop) => { self[prop] = null; });
 		}
   }
 
   /* Native JavaScript for Bootstrap 5 | Collapse
-  ----------------------------------------------- */
+  -----------------------------------------------*/
 
   // COLLAPSE GC
   // ===========
@@ -207,7 +207,7 @@
   // ========================
   function expandCollapse(self) {
 		const {
-		  element, parent, triggers,
+		 element, parent, triggers,
 		} = self;
 
 		element.dispatchEvent(showCollapseEvent);
@@ -222,24 +222,24 @@
 		element.style.height = `${element.scrollHeight}px`;
 
 		emulateTransitionEnd(element, () => {
-		  self.isAnimating = false;
-		  if (parent) parent.isAnimating = false;
+		 self.isAnimating = false;
+		 if (parent) parent.isAnimating = false;
 
-		  triggers.forEach((btn) => btn.setAttribute(ariaExpanded, 'true'));
+		 triggers.forEach((btn) => btn.setAttribute(ariaExpanded, 'true'));
 
-		  removeClass(element, collapsingClass);
-		  addClass(element, collapseString);
-		  addClass(element, showClass);
+		 removeClass(element, collapsingClass);
+		 addClass(element, collapseString);
+		 addClass(element, showClass);
 
-		  element.style.height = '';
+		 element.style.height = '';
 
-		  element.dispatchEvent(shownCollapseEvent);
+		 element.dispatchEvent(shownCollapseEvent);
 		});
   }
 
   function collapseContent(self) {
 		const {
-		  element, parent, triggers,
+		 element, parent, triggers,
 		} = self;
 
 		element.dispatchEvent(hideCollapseEvent);
@@ -259,17 +259,17 @@
 		element.style.height = '0px';
 
 		emulateTransitionEnd(element, () => {
-		  self.isAnimating = false;
-		  if (parent) parent.isAnimating = false;
+		 self.isAnimating = false;
+		 if (parent) parent.isAnimating = false;
 
-		  triggers.forEach((btn) => btn.setAttribute(ariaExpanded, 'false'));
+		 triggers.forEach((btn) => btn.setAttribute(ariaExpanded, 'false'));
 
-		  removeClass(element, collapsingClass);
-		  addClass(element, collapseString);
+		 removeClass(element, collapsingClass);
+		 addClass(element, collapseString);
 
-		  element.style.height = '';
+		 element.style.height = '';
 
-		  element.dispatchEvent(hiddenCollapseEvent);
+		 element.dispatchEvent(hiddenCollapseEvent);
 		});
   }
 
@@ -278,7 +278,7 @@
 		const { triggers } = self;
 
 		if (triggers.length) {
-		  triggers.forEach((btn) => btn[action]('click', collapseClickHandler));
+		 triggers.forEach((btn) => btn[action]('click', collapseClickHandler));
 		}
   }
 
@@ -299,84 +299,84 @@
   // ===================
   class Collapse extends BaseComponent {
 		constructor(target, config) {
-		  super(collapseComponent, target, { parent: null }, config);
-		  // bind
-		  const self = this;
+		 super(collapseComponent, target, { parent: null }, config);
+		 // bind
+		 const self = this;
 
-		  // initialization element
-		  const { element, options } = self;
+		 // initialization element
+		 const { element, options } = self;
 
-		  // set triggering elements
-		  self.triggers = Array.from(document.querySelectorAll(collapseToggleSelector))
+		 // set triggering elements
+		 self.triggers = Array.from(document.querySelectorAll(collapseToggleSelector))
 				.filter((btn) => getTargetElement(btn) === element);
 
-		  // set parent accordion
-		  self.parent = queryElement(options.parent);
-		  const { parent } = self;
+		 // set parent accordion
+		 self.parent = queryElement(options.parent);
+		 const { parent } = self;
 
-		  // set initial state
-		  self.isAnimating = false;
-		  if (parent) parent.isAnimating = false;
+		 // set initial state
+		 self.isAnimating = false;
+		 if (parent) parent.isAnimating = false;
 
-		  // add event listeners
-		  toggleCollapseHandler(self, 1);
+		 // add event listeners
+		 toggleCollapseHandler(self, 1);
 		}
 
 		// COLLAPSE PUBLIC METHODS
 		// =======================
 		toggle(related) {
-		  const self = this;
-		  if (!hasClass(self.element, showClass)) self.show(related);
-		  else self.hide(related);
+		 const self = this;
+		 if (!hasClass(self.element, showClass)) self.show(related);
+		 else self.hide(related);
 		}
 
 		hide() {
-		  const self = this;
-		  const { triggers, isAnimating } = self;
-		  if (isAnimating) return;
+		 const self = this;
+		 const { triggers, isAnimating } = self;
+		 if (isAnimating) return;
 
-		  collapseContent(self);
-		  if (triggers.length) {
+		 collapseContent(self);
+		 if (triggers.length) {
 				triggers.forEach((btn) => addClass(btn, `${collapseString}d`));
-		  }
+		 }
 		}
 
 		show() {
-		  const self = this;
-		  const {
+		 const self = this;
+		 const {
 				element, parent, triggers, isAnimating,
-		  } = self;
-		  let activeCollapse;
-		  let activeCollapseInstance;
+		 } = self;
+		 let activeCollapse;
+		 let activeCollapseInstance;
 
-		  if (parent) {
+		 if (parent) {
 				activeCollapse = Array.from(parent.querySelectorAll(`.${collapseString}.${showClass}`))
-				  .find((i) => i[collapseComponent]);
+				 .find((i) => i[collapseComponent]);
 				activeCollapseInstance = activeCollapse && activeCollapse[collapseComponent];
-		  }
+		 }
 
-		  if ((!parent || (parent && !parent.isAnimating)) && !isAnimating) {
+		 if ((!parent || (parent && !parent.isAnimating)) && !isAnimating) {
 				if (activeCollapseInstance && activeCollapse !== element) {
-				  collapseContent(activeCollapseInstance);
-				  activeCollapseInstance.triggers.forEach((btn) => {
+				 collapseContent(activeCollapseInstance);
+				 activeCollapseInstance.triggers.forEach((btn) => {
 						addClass(btn, `${collapseString}d`);
-				  });
+				 });
 				}
 
 				expandCollapse(self);
 				if (triggers.length) {
-				  triggers.forEach((btn) => removeClass(btn, `${collapseString}d`));
+				 triggers.forEach((btn) => removeClass(btn, `${collapseString}d`));
 				}
-		  }
+		 }
 		}
 
 		dispose() {
-		  const self = this;
-		  const { parent } = self;
-		  toggleCollapseHandler(self);
+		 const self = this;
+		 const { parent } = self;
+		 toggleCollapseHandler(self);
 
-		  if (parent) delete parent.isAnimating;
-		  super.dispose(collapseComponent);
+		 if (parent) delete parent.isAnimating;
+		 super.dispose(collapseComponent);
 		}
   }
 

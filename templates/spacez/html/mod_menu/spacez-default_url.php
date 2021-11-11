@@ -1,11 +1,13 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright		(C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2009 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
@@ -24,10 +26,10 @@ if ($item->anchor_css)
 if ($item->level == 1)
 {
   $class .= ' nav-link';
-  	if ($item->deeper)
+		if ($item->deeper)
 		{
-		 $class .= ' dropdown-toggle';
-		 $attributes['data-bs-toggle'] = "dropdown";
+		$class .= ' dropdown-toggle';
+		$attributes['data-bs-toggle'] = "dropdown";
 		}
 
 }
@@ -66,7 +68,7 @@ if ($item->menu_image)
 	}
 	else
 	{
-	 $linktype .= '<span class="image-title visually-hidden">' . $item->title . '</span>';
+	$linktype .= '<span class="image-title visually-hidden">' . $item->title . '</span>';
 	}
 }
 

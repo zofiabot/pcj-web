@@ -25,19 +25,19 @@
 
   @if $metismenu==true {
 		.metismenu.mod-menu {
-		  .mm-collapse {
+		 .mm-collapse {
 				background: var(--spacez-color-primary);
-		  }
+		 }
 		}
   }
 
   @include media-breakpoint-down(md) {
 		.grid-child {
-		  flex-direction: column;
+		 flex-direction: column;
 
-		  .mod-footer {
+		 .mod-footer {
 				margin: .375rem 0;
-		  }
+		 }
 		}
   }
 }

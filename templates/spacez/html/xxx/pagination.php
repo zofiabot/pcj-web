@@ -1,73 +1,75 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright		Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
- * @license		 GNU General Public License version 2 or later; see LICENSE.txt
- */
+* @package		Templates.spacez
+*
+* @copyright	Copyright (C) 2005 - 2019 Open Source Matters, Inc. All rights reserved.
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
 
 /**
- * This is a file to add template specific chrome to pagination rendering.
- *
- * pagination_list_footer
- * 	Input variable $list is an array with offsets:
- * 		$list[limit]		: int
- * 		$list[limitstart]	: int
- * 		$list[total]		: int
- * 		$list[limitfield]	: string
- * 		$list[pagescounter]	: string
- * 		$list[pageslinks]	: string
- *
- * pagination_list_render
- * 	Input variable $list is an array with offsets:
- * 		$list[all]
- * 			[data]		: string
- * 			[active]	: boolean
- * 		$list[start]
- * 			[data]		: string
- * 			[active]	: boolean
- * 		$list[previous]
- * 			[data]		: string
- * 			[active]	: boolean
- * 		$list[next]
- * 			[data]		: string
- * 			[active]	: boolean
- * 		$list[end]
- * 			[data]		: string
- * 			[active]	: boolean
- * 		$list[pages]
- * 			[{PAGE}][data]		: string
- * 			[{PAGE}][active]	: boolean
- *
- * pagination_item_active
- * 	Input variable $item is an object with fields:
- * 		$item->base	: integer
- * 		$item->link	: string
- * 		$item->text	: string
- *
- * pagination_item_inactive
- * 	Input variable $item is an object with fields:
- * 		$item->base	: integer
- * 		$item->link	: string
- * 		$item->text	: string
- *
- * This gives template designers ultimate control over how pagination is rendered.
- *
- * NOTE: If you override pagination_item_active OR pagination_item_inactive you MUST override them both
- */
+* This is a file to add template specific chrome to pagination rendering.
+*
+* pagination_list_footer
+*	Input variable $list is an array with offsets:
+*		$list[limit]		: int
+*		$list[limitstart]	: int
+*		$list[total]		: int
+*		$list[limitfield]	: string
+*		$list[pagescounter]	: string
+*		$list[pageslinks]	: string
+*
+* pagination_list_render
+*	Input variable $list is an array with offsets:
+*		$list[all]
+*			[data]		: string
+*			[active]	: boolean
+*		$list[start]
+*			[data]		: string
+*			[active]	: boolean
+*		$list[previous]
+*			[data]		: string
+*			[active]	: boolean
+*		$list[next]
+*			[data]		: string
+*			[active]	: boolean
+*		$list[end]
+*			[data]		: string
+*			[active]	: boolean
+*		$list[pages]
+*			[{PAGE}][data]		: string
+*			[{PAGE}][active]	: boolean
+*
+* pagination_item_active
+*	Input variable $item is an object with fields:
+*		$item->base	: integer
+*		$item->link	: string
+*		$item->text	: string
+*
+* pagination_item_inactive
+*	Input variable $item is an object with fields:
+*		$item->base	: integer
+*		$item->link	: string
+*		$item->text	: string
+*
+* This gives template designers ultimate control over how pagination is rendered.
+*
+* NOTE: If you override pagination_item_active OR pagination_item_inactive you MUST override them both
+*/
 
 /**
- * Renders the pagination footer
- *
- * @param		array		$list  Array containing pagination footer
- *
- * @return  string				 HTML markup for the full pagination footer
- *
- * @since		3.0
- */
+* Renders the pagination footer
+*
+* @param		array		$list  Array containing pagination footer
+*
+* @return  string				HTML markup for the full pagination footer
+*
+* @since		3.0
+*/
 function pagination_list_footer($list)
 {
 	$html = "<div class=\"pagination\">\n";
@@ -79,14 +81,14 @@ function pagination_list_footer($list)
 }
 
 /**
- * Renders the pagination list
- *
- * @param		array		$list  Array containing pagination information
- *
- * @return  string				 HTML markup for the full pagination object
- *
- * @since		3.0
- */
+* Renders the pagination list
+*
+* @param		array		$list  Array containing pagination information
+*
+* @return  string				HTML markup for the full pagination object
+*
+* @since		3.0
+*/
 function pagination_list_render($list)
 {
 	// Calculate to display range of pages
@@ -119,9 +121,9 @@ function pagination_list_render($list)
 
 	foreach ($list['pages'] as $k => $page)
 	{
-		if ($k !== $currentPage && $k !== $range * $step - $step
-			&& ($k % $step === 0 || $k === $range * $step - ($step + 1))
-			&& in_array($k, range($range * $step - ($step + 1), $range * $step)))
+		if ($k !== $currentPage && $k !== $range* $step - $step
+			&& ($k % $step === 0 || $k === $range* $step - ($step + 1))
+			&& in_array($k, range($range* $step - ($step + 1), $range* $step)))
 		{
 			$page['data'] = preg_replace('#(<a.*?>).*?(</a>)#', '$1...$2', $page['data']);
 		}
@@ -138,14 +140,14 @@ function pagination_list_render($list)
 }
 
 /**
- * Renders an active item in the pagination block
- *
- * @param		JPaginationObject  $item  The current pagination object
- *
- * @return  string										HTML markup for active item
- *
- * @since		3.0
- */
+* Renders an active item in the pagination block
+*
+* @param		JPaginationObject  $item  The current pagination object
+*
+* @return  string										HTML markup for active item
+*
+* @since		3.0
+*/
 function pagination_item_active(&$item)
 {
 	$class = '';
@@ -191,14 +193,14 @@ function pagination_item_active(&$item)
 }
 
 /**
- * Renders an inactive item in the pagination block
- *
- * @param		JPaginationObject  $item  The current pagination object
- *
- * @return  string  HTML markup for inactive item
- *
- * @since		3.0
- */
+* Renders an inactive item in the pagination block
+*
+* @param		JPaginationObject  $item  The current pagination object
+*
+* @return  string  HTML markup for inactive item
+*
+* @since		3.0
+*/
 function pagination_item_inactive(&$item)
 {
 	// Check for "Start" item

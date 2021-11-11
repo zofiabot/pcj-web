@@ -8,7 +8,7 @@ $chosen-select-padding-y: $form-select-padding-y + .21;
 
   .chosen-single {
 		display: inline-block;
-		$select-border-width: ($form-select-border-width * 2);
+		$select-border-width: ($form-select-border-width* 2);
 		height: #{$input-height};
 		padding: $chosen-select-padding-y ($form-select-padding-x + $form-select-indicator-padding) $chosen-select-padding-y $form-select-padding-x;
 		line-height: 1.5;
@@ -22,29 +22,29 @@ $chosen-select-padding-y: $form-select-padding-y + .21;
 		appearance: none;
 
 		@if $enable-rounded {
-		  border-radius: $form-select-border-radius;
+		 border-radius: $form-select-border-radius;
 		} @else {
-		  border-radius: 0;
+		 border-radius: 0;
 		}
 
 		abbr {
-		  top: 10px;
+		 top: 10px;
 		}
 
 		&:focus {
-		  @include box-shadow($form-select-focus-box-shadow);
-		  border-color: $form-select-focus-border-color;
-		  outline: none;
+		 @include box-shadow($form-select-focus-box-shadow);
+		 border-color: $form-select-focus-border-color;
+		 outline: none;
 		}
 
 		&:disabled {
-		  color: $form-select-disabled-color;
-		  cursor: not-allowed;
-		  background-color: $form-select-disabled-bg;
+		 color: $form-select-disabled-color;
+		 cursor: not-allowed;
+		 background-color: $form-select-disabled-bg;
 		}
 
 		div b {
-		  background: none !important;
+		 background: none !important;
 		}
   }
 
@@ -72,21 +72,21 @@ $chosen-select-padding-y: $form-select-padding-y + .21;
 		background-image: $white;
 
 		li.search-choice {
-		  $chosen-multi-close-width: 20px;
+		 $chosen-multi-close-width: 20px;
 
-		  padding: 5px (13 + $chosen-multi-close-width) 5px 10px;
-		  color: $white;
-		  background: var(--primary);
-		  border: 0;
-		  box-shadow: $spacez-box-shadow;
+		 padding: 5px (13 + $chosen-multi-close-width) 5px 10px;
+		 color: $white;
+		 background: var(--primary);
+		 border: 0;
+		 box-shadow: $spacez-box-shadow;
 
-		  @if $enable-rounded {
+		 @if $enable-rounded {
 				border-radius: $form-select-border-radius;
-		  } @else {
+		 } @else {
 				border-radius: 0;
-		  }
+		 }
 
-		  .search-choice-close {
+		 .search-choice-close {
 				top: 0;
 				right: 0;
 				width: $chosen-multi-close-width;
@@ -95,14 +95,14 @@ $chosen-select-padding-y: $form-select-padding-y + .21;
 				background-image: none !important;
 
 				&::before {
-				  position: absolute;
-				  top: 6px;
-				  right: ($chosen-multi-close-width / 4);
-				  font-size: $font-size-base;
-				  color: $white;
-				  content: "\00d7";
+				 position: absolute;
+				 top: 6px;
+				 right: ($chosen-multi-close-width / 4);
+				 font-size: $font-size-base;
+				 color: $white;
+				 content: "\00d7";
 				}
-		  }
+		 }
 		}
   }
 }

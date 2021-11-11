@@ -1,22 +1,24 @@
 <?php
 /**
- * @package		 Joomla.Site
- * @subpackage  Templates.spacez
- *
- * @copyright	(C) 2006 Open Source Matters, Inc. <https://www.joomla.org>
- * @license		GNU General Public License version 2 or later; see LICENSE.txt
- * @copyright	for the changes (C) 2021 Michał Sobkowiak & Zofia
- * @license		Single use licence for Polskie Centrum Joomla
- */
+* @package		Templates.spacez
+*
+* @copyright	(C) 2006 Open Source Matters, Inc. <https://www.joomla.org>
+* @license		GNU General Public License version 2 or later; see LICENSE.txt
+*
+* @copyright	for the changes (C) 2021 Michał Sobkowiak & Zofia
+* @license		Single use licence for Polskie Centrum Joomla
+*/
 
 defined('_JEXEC') or die;
+require_once('templates/spacez/functions.php');
+
 
 ?>
 <div class="blog-featured" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading') != 0) : ?>
 	<div class="page-header">
 		<h1>
-		<?php echo $this->escape($this->params->get('page_heading')); ?>
+		<?php echo tagReplace($this->escape($this->params->get('page_heading'))); ?>
 		</h1>
 	</div>
 	<?php endif; ?>
@@ -29,7 +31,7 @@ defined('_JEXEC') or die;
 					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 						<?php
 						$this->item = & $item;
-						echo $this->loadTemplate('item');
+						echo tagReplace($this->loadTemplate('item'));
 						?>
 				</div>
 				<?php $leadingcount++; ?>
@@ -49,7 +51,7 @@ defined('_JEXEC') or die;
 				itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 					<?php
 					$this->item = & $item;
-					echo $this->loadTemplate('item');
+					echo tagReplace($this->loadTemplate('item'));
 					?>
 			</div>
 		<?php endforeach; ?>
