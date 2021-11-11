@@ -6752,6 +6752,9 @@ div[class*='mod-'] h3, div[class*='mod-'] .h3 {
     transform: scale(1.2) !important;
     transition: all 0.7s ease-in-out !important; }
 
+header ul.social-links {
+  padding-right: .7rem; }
+
 footer ul.list-inline {
   flex-direction: row; }
   footer ul.list-inline li {
