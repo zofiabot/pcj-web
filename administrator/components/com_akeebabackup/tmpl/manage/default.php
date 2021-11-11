@@ -131,7 +131,7 @@ if ($this->promptForBackupRestoration)
 							<tr class="row<?= $i % 2; ?>">
 								<?php // Checkbox ?>
 								<td class="text-center">
-									<?= HTMLHelper::_('grid.id', $i, $record['id'], false, 'cid', 'cb', $record['name']); ?>
+									<?= HTMLHelper::_('grid.id', $i, $record['id'], false, 'cid', 'cb', $record['id']); ?>
 								</td>
 								<?php // Backup ID ?>
 								<td class="d-none d-md-table-cell">

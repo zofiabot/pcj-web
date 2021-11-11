@@ -9,6 +9,7 @@ namespace Akeeba\Component\AkeebaBackup\Administrator\View\Profile;
 
 defined('_JEXEC') or die;
 
+use Akeeba\Component\AkeebaBackup\Administrator\Model\ProfileModel;
 use Exception;
 use Joomla\CMS\Factory;
 use Joomla\CMS\Form\Form;
@@ -16,7 +17,6 @@ use Joomla\CMS\Language\Text;
 use Joomla\CMS\MVC\View\GenericDataException;
 use Joomla\CMS\MVC\View\HtmlView as BaseHtmlView;
 use Joomla\CMS\Toolbar\ToolbarHelper;
-use Joomla\Component\Banners\Administrator\Model\BannerModel;
 
 class HtmlView extends BaseHtmlView
 {
@@ -57,7 +57,7 @@ class HtmlView extends BaseHtmlView
 	 */
 	public function display($tpl = null): void
 	{
-		/** @var BannerModel $model */
+		/** @var ProfileModel $model */
 		$model       = $this->getModel();
 		$this->form  = $model->getForm();
 		$this->item  = $model->getItem();

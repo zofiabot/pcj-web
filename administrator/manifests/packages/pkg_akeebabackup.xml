@@ -8,15 +8,15 @@
 <extension version="3.9.0" type="package" method="upgrade">
     <name>Akeeba Backup for Joomla! package</name>
     <author>Nicholas K. Dionysopoulos</author>
-    <creationDate>2021-09-09</creationDate>
+    <creationDate>2021-10-26</creationDate>
     <packagename>akeebabackup</packagename>
-    <version>9.0.6</version>
+    <version>9.0.8</version>
     <url>https://www.akeeba.com</url>
     <packager>Akeeba Ltd</packager>
     <packagerurl>https://www.akeeba.com</packagerurl>
     <copyright>Copyright (c)2006-2021 Akeeba Ltd / Nicholas K. Dionysopoulos</copyright>
     <license>GNU GPL v3 or later</license>
-    <description>Akeeba Backup for Joomla! installation package v.9.0.6</description>
+    <description>Akeeba Backup for Joomla! installation package v.9.0.8</description>
 
     <!-- List of extensions to install -->
     <files>

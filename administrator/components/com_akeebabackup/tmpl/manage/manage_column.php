@@ -129,13 +129,13 @@ if (substr($relativePath, 0, 2) === './')
 		<div class="modal-dialog modal-lg modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h3 id="akeeba-buadmin-download-<?= (int)$record['id'] ?>">
+					<h3 class="modal-title" id="akeeba-buadmin-download-<?= (int)$record['id'] ?>">
 						<?= Text::_('COM_AKEEBABACKUP_BUADMIN_LBL_DOWNLOAD_TITLE')?>
 					</h3>
 					<button type="button" class="btn-close novalidate" data-bs-dismiss="modal"
 							aria-label="<?= Text::_('JLIB_HTML_BEHAVIOR_CLOSE') ?>"></button>
 				</div>
-				<div class="modal-body">
+				<div class="modal-body p-3">
 					<div class="alert alert-warning">
 						<p>
 							<?= Text::_('COM_AKEEBABACKUP_BUADMIN_LBL_DOWNLOAD_WARNING')?>

@@ -23,7 +23,6 @@ use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\Component\ComponentHelper;
 use Joomla\CMS\Date\Date;
 use Joomla\CMS\Factory as JoomlaFactory;
-use Joomla\CMS\Filesystem\File;
 use Joomla\CMS\Filesystem\Folder;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Mail\Mail;
@@ -1040,6 +1039,28 @@ class Joomla extends BasePlatform
 				}
 			}
 		}
+	}
+
+	/** @inheritdoc  */
+	protected function detectProxySettings()
+	{
+		try
+		{
+			$app = JoomlaFactory::getApplication();
+		}
+		catch (Exception $e)
+		{
+			$this->proxyEnabled                = false;
+			$this->hasInitialisedProxySettings = true;
+		}
+
+		$enabled = $app->get('proxy_enable', false);
+		$host    = $app->get('proxy_host', '');
+		$port    = (int) $app->get('proxy_port', 8080);
+		$user    = $app->get('proxy_user', '');
+		$pass    = $app->get('proxy_pass', '');
+
+		$this->setProxySettings($enabled, $host, $port, $user, $pass);
 	}
 
 	/**

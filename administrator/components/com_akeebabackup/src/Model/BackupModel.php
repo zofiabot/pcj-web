@@ -686,7 +686,7 @@ class BackupModel extends BaseDatabaseModel
 		}
 
 		// Try to open the converted log file (.log.php)
-		$fp = @fopen($newFile, 'wb');
+		$fp = @fopen($newFile, 'w');
 
 		if ($fp === false)
 		{
@@ -694,7 +694,7 @@ class BackupModel extends BaseDatabaseModel
 		}
 
 		// Try to open the source log file (.log)
-		$sourceFP = @fopen($filePath, 'rb');
+		$sourceFP = @fopen($filePath, 'r');
 
 		if ($sourceFP === false)
 		{

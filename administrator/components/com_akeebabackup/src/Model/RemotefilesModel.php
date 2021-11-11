@@ -170,7 +170,7 @@ class RemotefilesModel extends BaseDatabaseModel
 			{
 				Platform::getInstance()->unlink($localFilepath);
 
-				$fp = @fopen($localFilepath, 'wb');
+				$fp = @fopen($localFilepath, 'w');
 
 				if ($fp === false)
 				{
@@ -399,14 +399,14 @@ class RemotefilesModel extends BaseDatabaseModel
 	{
 		try
 		{
-			$localFilePointer = @fopen($localFilepath, 'ab');
+			$localFilePointer = @fopen($localFilepath, 'a');
 
 			if ($localFilePointer === false)
 			{
 				throw new RuntimeException(Text::sprintf('COM_AKEEBABACKUP_REMOTEFILES_ERR_CANTOPENFILE', $localFilepath), 500);
 			}
 
-			$tempFilePointer = fopen($tempFilepath, 'rb');
+			$tempFilePointer = fopen($tempFilepath, 'r');
 
 			// Um, weird, I can't open the temp file.
 			if ($tempFilePointer === false)

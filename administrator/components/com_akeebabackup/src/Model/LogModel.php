@@ -146,7 +146,7 @@ class LogModel extends BaseModel
 
 		// The at sign (silence operator) is necessary to prevent PHP showing a warning if the file doesn't exist or
 		// isn't readable for any reason.
-		$fp = @fopen($logFile, 'rt');
+		$fp = @fopen($logFile, 'r');
 
 		if ($fp === false)
 		{

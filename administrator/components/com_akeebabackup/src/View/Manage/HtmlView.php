@@ -140,9 +140,9 @@ class HtmlView extends BaseHtmlView
 		$app               = Factory::getApplication();
 		$user              = $app->getIdentity();
 		$this->permissions = [
-			'configure' => $user->authorise('akeeba.configure', 'com_akeebabackup'),
-			'backup'    => $user->authorise('akeeba.backup', 'com_akeebabackup'),
-			'download'  => $user->authorise('akeeba.download', 'com_akeebabackup'),
+			'configure' => $user->authorise('akeebabackup.configure', 'com_akeebabackup'),
+			'backup'    => $user->authorise('akeebabackup.backup', 'com_akeebabackup'),
+			'download'  => $user->authorise('akeebabackup.download', 'com_akeebabackup'),
 		];
 
 		// Push translations to the frontend
@@ -559,8 +559,8 @@ class HtmlView extends BaseHtmlView
 	{
 		$user = Factory::getUser();
 		$permissions = [
-			'configure' => $user->authorise('akeeba.configure', 'com_akeebabackup'),
-			'backup'    => $user->authorise('akeeba.backup', 'com_akeebabackup'),
+			'configure' => $user->authorise('akeebabackup.configure', 'com_akeebabackup'),
+			'backup'    => $user->authorise('akeebabackup.backup', 'com_akeebabackup'),
 		];
 
 		// Get the toolbar object instance

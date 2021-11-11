@@ -61,6 +61,20 @@ class ConfigurationwizardModel extends BaseDatabaseModel
 		$outputDirectory = $engineConfig->get('akeeba.basic.output_directory', '');
 		$fixOut          = true;
 
+		// If no output directory is specified set it the default output and retry.
+		if (empty($outputDirectory) && !$dontRecurse)
+		{
+			/** @var ConfigurationModel $model */
+			$model = $this->getMVCFactory()->createModel('Configuration', 'Administrator');
+
+			$model->setState('engineconfig', [
+				'akeeba.basic.output_directory' => '[DEFAULT_OUTPUT]',
+			]);
+			$model->saveEngineConfig();
+
+			return $this->autofixDirectories(true);
+		}
+
 		// Is the folder writeable?
 		if (is_dir($outputDirectory))
 		{

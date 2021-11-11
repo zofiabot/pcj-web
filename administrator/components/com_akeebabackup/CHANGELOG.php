@@ -1,3 +1,17 @@
+Akeeba Backup 9.0.8
+================================================================================
+# [MEDIUM] Wrong ACL check wouldn't allow non–Super User accounts from accessing the component
+# [LOW] PHP 8 error if the output directory is empty
+
+Akeeba Backup 9.0.7
+================================================================================
+~ Remove dash from automatically generated random values for archive naming
+~ Adjusted padding in download backup modal
++ Increase the maximum Size Quota limit to 1Pb
++ Support for Joomla proxy configuration
+# [MEDIUM] Cannot restore on PHP 8 if Two Factor Authentication is enabled in any user account
+# [HIGH] Backing up to Box, Dropbox, Google Drive or OneDrive may not be possible if you are using an add-on Download ID
+
 Akeeba Backup 9.0.6
 ================================================================================
 # [HIGH] Legacy front-end backup fails to execute when stepping through the backup with a 404 error

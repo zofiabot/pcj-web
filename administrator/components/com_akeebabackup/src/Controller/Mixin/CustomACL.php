@@ -32,25 +32,25 @@ trait CustomACL
 		// Akeeba Backup-specific ACL checks. All views not listed here are limited by the akeeba.configure privilege.
 		$viewACLMap = [
 			'controlpanel'       => 'core.manage',
-			'backup'             => 'akeeba.backup',
+			'backup'             => 'akeebabackup.backup',
 			'manage'             => 'core.manage',
-			'manage.download'    => 'akeeba.download',
-			'manage.remove'      => 'akeeba.download',
-			'manage.deletefiles' => 'akeeba.download',
-			'manage.showcomment' => 'akeeba.backup',
-			'manage.save'        => 'akeeba.download',
-			'manage.restore'     => 'akeeba.configure',
-			'manage.cancel'      => 'akeeba.backup',
-			'upload'             => 'akeeba.backup',
-			'remotefiles'        => 'akeeba.download',
-			'transfer'           => 'akeeba.download',
+			'manage.download'    => 'akeebabackup.download',
+			'manage.remove'      => 'akeebabackup.download',
+			'manage.deletefiles' => 'akeebabackup.download',
+			'manage.showcomment' => 'akeebabackup.backup',
+			'manage.save'        => 'akeebabackup.download',
+			'manage.restore'     => 'akeebabackup.configure',
+			'manage.cancel'      => 'akeebabackup.backup',
+			'upload'             => 'akeebabackup.backup',
+			'remotefiles'        => 'akeebabackup.download',
+			'transfer'           => 'akeebabackup.download',
 		];
 
 		$view = strtolower($view ?? 'controlpanel');
 		$task = strtolower($task ?? 'main');
 
 		// Default
-		$privilege = 'akeeba.configure';
+		$privilege = 'akeebabackup.configure';
 
 		// Just the view was found
 		if (array_key_exists($view, $viewACLMap))
