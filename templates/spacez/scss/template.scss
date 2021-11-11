@@ -45,7 +45,7 @@ body {overflow-x: hidden}
 @import "../../../media/vendor/bootstrap/scss/badge";
 @import "../../../media/vendor/bootstrap/scss/alert";
 // @import "../../../media/vendor/bootstrap/scss/progress";
-// @import "../../../media/vendor/bootstrap/scss/list-group";
+@import "../../../media/vendor/bootstrap/scss/list-group";
 @import "../../../media/vendor/bootstrap/scss/close";
 // @import "../../../media/vendor/bootstrap/scss/toasts";
 // @import "../../../media/vendor/bootstrap/scss/modal";
@@ -355,7 +355,6 @@ div[class*='mod-'] {
 	transform: skew(0deg, 1deg); margin-bottom: .5rem; background-color: $gray-200;
 
 	p, li {transform: skew( 0deg,-1deg) rotate(1deg);}
-	a {color: $white;}
 }
 
 .social-links {
@@ -395,7 +394,7 @@ footer ul.list-inline {flex-direction: row;
 		background-color: $white;
 		box-shadow: 0 .3rem .7rem #0003, 0 .2rem .5rem #0003;
 		border-radius: 6em;
-		color: $success;
+		color: shade-color($success, 10%);
 		display: inline-block; 
 		width: 10rem; height: 10rem; 
 		text-align: center; 
@@ -412,10 +411,15 @@ footer ul.list-inline {flex-direction: row;
 	}
 	img { width: 6rem }
 
+	.btn {background-color: shade-color($success, 20%);color: white;}
+
 }
 
 .sites {
-	background: rebeccapurple;border: 1px solid transparent;
+	background-color: shade-color($dark, 5%);
+	background-image: linear-gradient(to bottom, transparent, rgba(75,0,125,.3), rgba(66,0,100,.4));
+	border: 1px solid transparent;
+	
 	div.row {transform: skew( 0deg, 1.5deg);}
 	div.col {transform: skew( 0deg, -1.5deg);text-align: center;}
 	.sites-link {
@@ -434,7 +438,10 @@ footer ul.list-inline {flex-direction: row;
 
 		.s-forum {color: #276ca9;}
 
-		.s-fundacja {color: #227486;}
+		.s-fundacja {color: #227486;
+			path {fill: #b8aaaa !important;}
+			path.a {fill: #81b0bb !important;}
+		}
 
 		.s-demo {color: #2a3b57;}
 	}
@@ -522,7 +529,6 @@ figure + div.article-body {
 
 footer section.dark{
 	transform: skew(0deg, 2deg); 
-
 	.container > div{transform: skew( 0deg, -2deg);}
 }
 
@@ -531,16 +537,17 @@ section.sites::before {
 	display: block; 
 	border: 0px solid transparent; 
 	border-width: 0 20vw 0 80vw ;
-	border-bottom: 1rem solid rebeccapurple; 
+	border-bottom: 1rem solid shade-color($dark, 5%); 
 	background-color: $light ;
 }
 footer section.dark::after {
 	transform: skew( 0deg, -1deg); 
 	margin-bottom: -1.5rem; content:''; 
-	display: block; border: 1px solid transparent; 
+	display: block; 
+	border: 1px solid transparent; 
 	border-width: 0 40vw 0 60vw ;
-	border-top: 3rem solid $dark; 
-	background-color: shade-color($dark, 30%) ;
+	border-top: 3rem solid shade-color($dark, 15%); 
+	background-color: shade-color($dark, 40%) ;
 }
 
 footer section.darker::after {
@@ -548,24 +555,26 @@ footer section.darker::after {
 	display: block; border: 1px solid transparent; 
 	border-width: 0 60vw 0 40vw ;
 	border-bottom: 2rem solid shade-color($dark, 50%); 
-	background-color: shade-color($dark, 20%);
+	background-color: shade-color($dark, 30%);
 }
 
 .dark {
-	background-color: $dark; color: tint-color($dark, 90%);
-	*, .form-control::placeholder {color: tint-color($dark, 70%);}
+	background-color: shade-color($dark, 15%);
+	background-image: linear-gradient(to bottom, rgba(33,0,66,0.25), transparent, transparent);
+	*, .form-control::placeholder {color: tint-color($dark, 60%);}
+}
+header.dark {
+	background-color: shade-color($dark, 15%);
+	background-image: linear-gradient(to bottom, rgba(100,0,75,0.3), rgba(75,0,75,0.3), transparent);
+	*, .form-control::placeholder {color: tint-color($dark, 60%);}
 }
 
-.dark {
-	background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), transparent, transparent);
-}
-
-footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(150,0,100,0.1));}
+// footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(150,0,100,0.1));}
 
 .darker {
-	background-color: shade-color($dark, 30%); color: tint-color($dark, 90%);
-	background-image: linear-gradient(to bottom, transparent, transparent, shade-color($dark, 20%));
-	* {color: tint-color($dark, 60%);}
+	background-color: shade-color($dark, 40%); color: tint-color($dark, 90%);
+	background-image: linear-gradient(to bottom, transparent, transparent,  shade-color($dark, 35%), shade-color($dark, 30%));
+	* {color: tint-color($dark, 66%);}
 }
 
 .darkest {
@@ -578,11 +587,10 @@ footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(1
 	a:hover, a:focus {color: tint-color($dark, 90%);transform: scale(1.05)}
 	.btn {color: $white;}
 }
-
+.search.input-group:focus-within  {transform: scale(1.1);}
 #search-nav{ flex-wrap: nowrap;
 	* {border-color:tint-color($dark, 10%)}
 	svg { vertical-align: middle;padding: 0 0 .2rem; }
-	:focus-within {transform: scale(1.1);}
 }
 #searchword {width: 11rem; background:transparent;color: $white; box-shadow: none !important;}
 @include media-breakpoint-up(xl) {
