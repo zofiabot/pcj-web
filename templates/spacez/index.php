@@ -161,6 +161,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	</div>
 	<?php endif; ?>
 
+	
 	<div class="container-fluid pb-4">
 		<div class="container container-component ">
 			<jdoc:include type="modules" name="main-top" style="none" />
