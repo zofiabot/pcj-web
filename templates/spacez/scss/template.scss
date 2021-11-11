@@ -1,12 +1,12 @@
 /* Bootstrap v5.0.2 (https://getbootstrap.com/)
- * Copyright 2011-2021 The Bootstrap Authors
- * Copyright 2011-2021 Twitter, Inc.
- * Licensed under MIT (https://github.com	wbs/bootstrap/blob/main/LICENSE)
- *
- * SpaceZ dedicated changes:
- * Copyright 2021 Michał Sobkowiak & Zofia michal@workita.com
- * Licensed for Polskie Centrum Joomla! (Polish joomla Centre) for single site use.
- */
+* Copyright 2011-2021 The Bootstrap Authors
+* Copyright 2011-2021 Twitter, Inc.
+* Licensed under MIT (https://github.com	wbs/bootstrap/blob/main/LICENSE)
+*
+* SpaceZ dedicated changes:
+* Copyright 2021 Michał Sobkowiak & Zofia michal@workita.com
+* Licensed for Polskie Centrum Joomla! (Polish joomla Centre) for single site use.
+*/
 
 $grid-gutter-width:			1.6%;  // changed SpaceZ
 $breadcrumb-divider:		'>';  // changed SpaceZ
@@ -64,7 +64,7 @@ body {overflow-x: hidden}
 
 // jQuery Minicolors
 
-/*. minicolors */
+/*. minicolors*/
 @import "../../../media/system/scss/jquery-minicolors";
 
 @import "vendor/mainmenu";
@@ -80,7 +80,7 @@ body {overflow-x: hidden}
 //   fill: currentColor;
 // }
 
-/* Non-free, bad and ugly hacking below */
+/* Non-free, bad and ugly hacking below*/
 
 p { widows: 2; orphans: 2 }
 
@@ -125,6 +125,7 @@ svg.logo {
 }
 
 // start for bootstrap cheatsheet
+
 .bd-cheatsheet { 
 	h3 { padding-top: 3rem !important;margin-bottom: 0 !important } // for bootstrap cheatsheet
 	h2 { padding-bottom: 4.5rem !important; padding-top: .5rem !important; background-color:$light !important; font-size: 2rem; }
@@ -223,11 +224,11 @@ ul.dropdown-menu.show {
 
 
 /* As SVG does not provide a default visual style for links,
-		it's considered best practice to add some */
+		it's considered best practice to add some*/
 
 @namespace svg url(http://www.w3.org/2000/svg);
 /* Necessary to select only SVG <a> elements, and not also HTML’s.
-		See warning below */
+		See warning below*/
 
 svg|a:link, svg|a:visited {
   cursor: pointer;
@@ -235,7 +236,7 @@ svg|a:link, svg|a:visited {
 
 svg|a text,
 text svg|a {
-  fill: red; /* Even for text, SVG uses fill over color */
+  fill: red; /* Even for text, SVG uses fill over color*/
   text-decoration: underline;
 }
 
@@ -311,26 +312,26 @@ section.top2 {
 		max-width: 350px;
 		counter-reset: my-awesome-counter;
 		list-style: none;
-		padding-left: calc( var(--size) * 1.5 );
-	 }
-	 ul.nav li.nav-item {
+		padding-left: calc( var(--size)* 1.5 );
+	}
+	ul.nav li.nav-item {
 		margin: 0;
 		counter-increment: my-awesome-counter;
 		position: relative;
 		font-size: 1.2rem;
 		font-weight: 700;
-	 }
-	 ul.nav li.nav-item a {
+	}
+	ul.nav li.nav-item a {
 		color: $dark;
-	 }
-	 ul.nav li.nav-item a::before {
+	}
+	ul.nav li.nav-item a::before {
 		content: counter(my-awesome-counter);
 		color:$white;
 		font-size: 1.5rem;
 		font-weight: 900;
 		position: absolute;
 		
-		left: calc( -1.5 * var(--size) );
+		left: calc( -1.5* var(--size) );
 		line-height: var(--size);
 		width: var(--size);
 		height: var(--size);
@@ -452,7 +453,7 @@ footer ul.list-inline {flex-direction: row;
 .mod-custom-195 {
 	transform: scale(0.85);
 
-	p {margin:0;padding: $spacer * .5}
+	p {margin:0;padding: $spacer* .5}
 }
 
 article figure.item-image {
@@ -471,13 +472,13 @@ article figure.item-image::after {
 	left:0; top:0;
 	width:100%; height:100%;
 	display:inline-block;
-	// background: -moz-linear-gradient(top, rgba(0,47,75,0.5) 0%, rgba(220, 66, 37, 0.5) 100%); /* FF3.6+ */
-	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(220, 66, 37, 0.5)), color-stop(100%,rgba(0,47,75,0.5))); /* Chrome,Safari4+ */
-	// background: -webkit-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* Chrome10+,Safari5.1+ */
-	// background: -o-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* Opera 11.10+ */
-	// background: -ms-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* IE10+ */
-	background:  linear-gradient(0deg, rgba($light, 0.5), rgba($light, 0) 6em),  linear-gradient(0deg, rgba($light, 1), rgba($light, 0) 12em), linear-gradient(180deg, rgba($light, 0.5), rgba($light, 0) 12em), linear-gradient(180deg, rgba($light, 1), rgba($light, 0) 6em); /* W3C */
-	// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+	// background: -moz-linear-gradient(top, rgba(0,47,75,0.5) 0%, rgba(220, 66, 37, 0.5) 100%); /* FF3.6+*/
+	// background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(220, 66, 37, 0.5)), color-stop(100%,rgba(0,47,75,0.5))); /* Chrome,Safari4+*/
+	// background: -webkit-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* Chrome10+,Safari5.1+*/
+	// background: -o-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* Opera 11.10+*/
+	// background: -ms-linear-gradient(top, rgba(0,47,75,0.5) 0%,rgba(220, 66, 37, 0.5) 100%); /* IE10+*/
+	background:  linear-gradient(0deg, rgba($light, 0.5), rgba($light, 0) 6em),  linear-gradient(0deg, rgba($light, 1), rgba($light, 0) 12em), linear-gradient(180deg, rgba($light, 0.5), rgba($light, 0) 12em), linear-gradient(180deg, rgba($light, 1), rgba($light, 0) 6em); /* W3C*/
+	// filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f4b', endColorstr='#00000000',GradientType=0 ); /* IE6-9*/
 }
 
 article figure.item-image img{
@@ -595,7 +596,7 @@ nav button.collapsed {
 }
 header button {box-shadow: none !important;}
 
-a.navbar-brand * {color:$light}
+a.navbar-brand* {color:$light}
 button.navbar-toggler {align-self: start; border: 0;}
 .navbar-search {padding: 0;}
 
