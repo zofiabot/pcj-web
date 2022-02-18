@@ -185,14 +185,15 @@ ul.dropdown-menu.show {
 		a.dropdown-item:hover, a.dropdown-item:focus, a.dropdown-item:active, a:focus-within, a:target {
 			color: $primary;
 			background-color: $light;  
-			transform: scale(1.1);
-			border-radius: .25rem; box-shadow: 0 0 .2rem #00000088;
+			
+			border-radius: .05rem; box-shadow: 0 0 .2rem #00000088;
 			font-weight: 700;
 			padding: 0.25rem 1rem  0.25rem 1.13rem;
 		}
 	}
 	a.nav-link {font-weight: 600;font-kerning:none}
-	a.active, a:active, a.nav-link[aria-expanded="true"] {transform: scale(1.05); font-weight: 800;font-kerning:auto}
+	a.active, a:focus, a.nav-link[aria-expanded="true"] {transform: scale(1.05); font-weight: 800;font-kerning:auto; color: $primary;margin: 0;}
+	li li, span{border:0;padding: 0;background-color: transparent};
 }
 
 .show > .dropdown-toggle::after { //flip the arrow for active dropdown button
@@ -447,6 +448,9 @@ footer ul.list-inline {flex-direction: row;
 .btn .smico {vertical-align: middle;}
 
 .pathway .smico {margin-top:-.75em;}
+
+a.pathway { transform: none;}
+a.pathway:hover { transform: scale(1.1);}
 
 .mod-custom-195 {
 	transform: scale(0.85);

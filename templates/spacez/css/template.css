@@ -7299,8 +7299,7 @@ ul.dropdown-menu.show {
   #nav-1 ul ul a.dropdown-item:hover, #nav-1 ul ul a.dropdown-item:focus, #nav-1 ul ul a.dropdown-item:active, #nav-1 ul ul a:focus-within, #nav-1 ul ul a:target {
     color: #2200aa;
     background-color: #f8f9fa;
-    transform: scale(1.1);
-    border-radius: .25rem;
+    border-radius: .05rem;
     box-shadow: 0 0 .2rem #00000088;
     font-weight: 700;
     padding: 0.25rem 1rem  0.25rem 1.13rem; }
@@ -7309,10 +7308,17 @@ ul.dropdown-menu.show {
   font-weight: 600;
   font-kerning: none; }
 
-#nav-1 a.active, #nav-1 a:active, #nav-1 a.nav-link[aria-expanded="true"] {
+#nav-1 a.active, #nav-1 a:focus, #nav-1 a.nav-link[aria-expanded="true"] {
   transform: scale(1.05);
   font-weight: 800;
-  font-kerning: auto; }
+  font-kerning: auto;
+  color: #2200aa;
+  margin: 0; }
+
+#nav-1 li li, #nav-1 span {
+  border: 0;
+  padding: 0;
+  background-color: transparent; }
 
 .show > .dropdown-toggle::after {
   border-bottom: .3em solid;
@@ -7559,6 +7565,12 @@ footer ul.list-inline {
 
 .pathway .smico {
   margin-top: -.75em; }
+
+a.pathway {
+  transform: none; }
+
+a.pathway:hover {
+  transform: scale(1.1); }
 
 .mod-custom-195 {
   transform: scale(0.85); }
