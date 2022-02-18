@@ -33,6 +33,7 @@ $afterDisplayContent = trim(implode("\n", $results));
 
 $htag    = $this->params->get('show_page_heading') ? 'h2' : 'h1';
 $columms = (int) $this->params->get('num_columns');
+$columm  = ' col-lg-'. 12/$columms . ' col-md-6'. ' col-sm-12' 
 
 ?>
 <div class="com-content-category-blog blog" itemscope itemtype="https://schema.org/Blog">
@@ -98,12 +99,12 @@ $columms = (int) $this->params->get('num_columns');
 	<?php if (!empty($this->intro_items)) : ?>
 		<?php $blogClass = $this->params->get('blog_class', ''); ?>
 		<?php if ((int) $this->params->get('num_columns') > 1) : ?>
-			<?php $blogClass .= (int) $this->params->get('multi_column_order', 0) === 0 ? ' masonry-'.$columms : 'row gy-3'; ?>
+			<?php $blogClass .= (int) $this->params->get('multi_column_order', 0) === 0 ? ' masonry-3' : 'row gy-3'; ?>
 		<?php endif; ?>
 		<div class="<?php echo $blogClass; ?>">
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
-			<div class=" <?php echo ' col-'. 12/$columms ?>">
-				<div class="card  h-100"
+			<div class=" <?php echo $columm ?>">
+				<div class="card h-100"
 					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 						<?php
 						$this->item = & $item;

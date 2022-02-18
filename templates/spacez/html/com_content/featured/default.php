@@ -13,6 +13,7 @@ defined('_JEXEC') or die;
 require_once('templates/spacez/functions.php');
 
 $columms = (int) $this->params->get('num_columns');
+$columm  = ' col-lg-'. 12/$columms . ' col-md-6'. ' col-sm-12' 
 ?>
 <div class="blog-featured" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading') != 0) : ?>
@@ -46,8 +47,8 @@ $columms = (int) $this->params->get('num_columns');
 		<?php endif; ?>
 		<div class="blog-items <?php echo $blogClass; ?>">
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
-			<div class=" <?php echo ' col-'. 12/$columms ?>">
-				<div class="blog-item card "
+			<div class=" <?php echo $columm ?>">
+				<div class="blog-item card w-100 "
 					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 						<?php
 						$this->item = & $item;

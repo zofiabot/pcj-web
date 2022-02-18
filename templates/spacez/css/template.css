@@ -7765,6 +7765,9 @@ hr#system-readmore {
 .card-footer {
   background-color: transparent; }
 
+.card-header {
+  text-align: center; }
+
 .action h2, .action .h2, footer h3, footer .h3 {
   padding-top: 0; }
 
