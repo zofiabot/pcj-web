@@ -93,7 +93,7 @@ $stickyHeader = $this->params->get('stickyHeader') ? 'position-sticky sticky-top
 	<?php require_once('sz_header.php');?>
 	
 	<?php if ($this->countModules('top1', true)) : ?>
-		<section class="section-top pt-2 pb-5 top1">
+		<section class="section-top py-5 top1">
 			<div class="container text-center">
 				<?php format_advantages('top1'); ?>
 			</div>

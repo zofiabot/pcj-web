@@ -56,7 +56,7 @@ use Joomla\CMS\Document;
 
 	<?php if ($this->countModules('social')) : ?>
 	<div class="container-fluid social pb-1 pb-xl-2">
-		<div class="container text-end pe-3">
+		<div class="container text-end">
 		<jdoc:include type="modules" name="social" style="none" />
 		</div>
 	</div>

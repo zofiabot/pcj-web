@@ -12,7 +12,7 @@
 defined('_JEXEC') or die;
 require_once('templates/spacez/functions.php');
 
-
+$columms = (int) $this->params->get('num_columns');
 ?>
 <div class="blog-featured" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading') != 0) : ?>
@@ -42,17 +42,18 @@ require_once('templates/spacez/functions.php');
 	<?php if (!empty($this->intro_items)) : ?>
 		<?php $blogClass = $this->params->get('blog_class', ''); ?>
 		<?php if ((int) $this->params->get('num_columns') > 1) : ?>
-			<?php $blogClass .= (int) $this->params->get('multi_column_order', 0) === 0 ? ' masonry-' : ' columns-'; ?>
-			<?php $blogClass .= (int) $this->params->get('num_columns'); ?>
+			<?php $blogClass .= (int) $this->params->get('multi_column_order', 0) === 0 ? ' masonry-'.$columms : 'row'; ?>
 		<?php endif; ?>
 		<div class="blog-items <?php echo $blogClass; ?>">
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
-			<div class="blog-item"
-				itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-					<?php
-					$this->item = & $item;
-					echo tagReplace($this->loadTemplate('item'));
-					?>
+			<div class=" <?php echo ' col-'. 12/$columms ?>">
+				<div class="blog-item card "
+					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+						<?php
+						$this->item = & $item;
+						echo tagReplace($this->loadTemplate('item'));
+						?>
+				</div>
 			</div>
 		<?php endforeach; ?>
 		</div>

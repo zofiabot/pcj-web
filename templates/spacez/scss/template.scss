@@ -1,86 +1,77 @@
-/* Bootstrap v5.0.2 (https://getbootstrap.com/)
+/*!
+* Bootstrap v5.1.3 (https://getbootstrap.com/)
 * Copyright 2011-2021 The Bootstrap Authors
 * Copyright 2011-2021 Twitter, Inc.
-* Licensed under MIT (https://github.com	wbs/bootstrap/blob/main/LICENSE)
+* Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
 *
 * SpaceZ dedicated changes:
 * Copyright 2021 Michał Sobkowiak & Zofia michal@workita.com
 * Licensed for Polskie Centrum Joomla! (Polish joomla Centre) for single site use.
 */
 
-$grid-gutter-width:			1.6%;  // changed SpaceZ
-$breadcrumb-divider:		'>';  // changed SpaceZ
-a {transition: all 0.3s ease-in-out} // added SpaceZ
-a:hover, a:focus {transform: scale(1.05)} // added SpaceZ
-%heading {
-	padding-top: 1em; // 1
-  }
-body {overflow-x: hidden}
-  
+// scss-docs-start import-stack
 // Configuration
-@import "../../../media/vendor/bootstrap/scss/functions";
-@import "variables";
-@import "../../../media/vendor/bootstrap/scss/mixins";
-@import "../../../media/vendor/bootstrap/scss/utilities";
+@import "vendor/bootstrap-5.1.3/functions";
+@import "variables.scss";  // SpaceZ tweeks of Bootstrap defaults
+@import "vendor/bootstrap-5.1.3/variables";
+@import "vendor/bootstrap-5.1.3/mixins";
+@import "vendor/bootstrap-5.1.3/utilities";
 
 // Layout & components
-@import "../../../media/vendor/bootstrap/scss/root";
-@import "../../../media/vendor/bootstrap/scss/reboot";
-@import "../../../media/vendor/bootstrap/scss/type";
-@import "../../../media/vendor/bootstrap/scss/images";
-@import "../../../media/vendor/bootstrap/scss/containers";
-@import "../../../media/vendor/bootstrap/scss/grid";
-@import "../../../media/vendor/bootstrap/scss/tables";
-@import "../../../media/vendor/bootstrap/scss/forms";
-@import "../../../media/vendor/bootstrap/scss/buttons";
-@import "../../../media/vendor/bootstrap/scss/transitions";
-@import "../../../media/vendor/bootstrap/scss/dropdown";
-@import "../../../media/vendor/bootstrap/scss/button-group";
-@import "../../../media/vendor/bootstrap/scss/nav";
-@import "../../../media/vendor/bootstrap/scss/navbar";
-@import "../../../media/vendor/bootstrap/scss/card";
-@import "../../../media/vendor/bootstrap/scss/accordion";
-@import "../../../media/vendor/bootstrap/scss/breadcrumb";
-@import "../../../media/vendor/bootstrap/scss/pagination";
-@import "../../../media/vendor/bootstrap/scss/badge";
-@import "../../../media/vendor/bootstrap/scss/alert";
-// @import "../../../media/vendor/bootstrap/scss/progress";
-@import "../../../media/vendor/bootstrap/scss/list-group";
-@import "../../../media/vendor/bootstrap/scss/close";
-// @import "../../../media/vendor/bootstrap/scss/toasts";
-// @import "../../../media/vendor/bootstrap/scss/modal";
-// @import "../../../media/vendor/bootstrap/scss/tooltip";
-// @import "../../../media/vendor/bootstrap/scss/popover";
-// @import "../../../media/vendor/bootstrap/scss/carousel";
-// @import "../../../media/vendor/bootstrap/scss/spinners";
-// @import "../../../media/vendor/bootstrap/scss/offcanvas";
+@import "vendor/bootstrap-5.1.3/root";
+@import "vendor/bootstrap-5.1.3/reboot";
+@import "vendor/bootstrap-5.1.3/type";
+@import "vendor/bootstrap-5.1.3/images";
+@import "vendor/bootstrap-5.1.3/containers";
+@import "vendor/bootstrap-5.1.3/grid";
+@import "vendor/bootstrap-5.1.3/tables";
+@import "vendor/bootstrap-5.1.3/forms";
+@import "vendor/bootstrap-5.1.3/buttons";
+@import "vendor/bootstrap-5.1.3/transitions";
+@import "vendor/bootstrap-5.1.3/dropdown";
+@import "vendor/bootstrap-5.1.3/button-group";
+@import "vendor/bootstrap-5.1.3/nav";
+@import "vendor/bootstrap-5.1.3/navbar";
+@import "vendor/bootstrap-5.1.3/card";
+@import "vendor/bootstrap-5.1.3/accordion";
+@import "vendor/bootstrap-5.1.3/breadcrumb";
+@import "vendor/bootstrap-5.1.3/pagination";
+@import "vendor/bootstrap-5.1.3/badge";
+@import "vendor/bootstrap-5.1.3/alert";
+@import "vendor/bootstrap-5.1.3/progress";
+// @import "vendor/bootstrap-5.1.3/list-group";
+@import "vendor/bootstrap-5.1.3/close";
+// @import "vendor/bootstrap-5.1.3/toasts";
+@import "vendor/bootstrap-5.1.3/modal";
+@import "vendor/bootstrap-5.1.3/tooltip";
+@import "vendor/bootstrap-5.1.3/popover";
+// @import "vendor/bootstrap-5.1.3/carousel";
+// @import "vendor/bootstrap-5.1.3/spinners";
+// @import "vendor/bootstrap-5.1.3/offcanvas";
+// @import "vendor/bootstrap-5.1.3/placeholders";
 
 // Helpers
-@import "../../../media/vendor/bootstrap/scss/helpers";
+@import "vendor/bootstrap-5.1.3/helpers";
 
 // Utilities
-@import "../../../media/vendor/bootstrap/scss/utilities/api";
+@import "vendor/bootstrap-5.1.3/utilities/api";
 // scss-docs-end import-stack
 
-// jQuery Minicolors
 
-/*. minicolors*/
-@import "../../../media/system/scss/jquery-minicolors";
-
-@import "vendor/mainmenu";
 
 // Vendor overrides
 //@import "vendor/awesomplete"; autocomplete
 //@import "vendor/chosen"; // select enhancer
 @import "vendor/tinymce";
-// @import "../../../media/vendor/fontawesome-free/scss/fontawesome.scss";
+@import "vendor/mainmenu";
 
-// .bi, .bi path {
-//   vertical-align: -.125em;
-//   fill: currentColor;
-// }
+/****************************************/
+/* Non-free, bad and ugly hacking below */
+/****************************************/
 
-/* Non-free, bad and ugly hacking below*/
+a {transition: all 0.2s ease-in-out; transform: scale(0.95); display: inline-block}
+a:hover, a:focus {transform: scale(1.05);}
+body {overflow-x: hidden}
 
 p { widows: 2; orphans: 2 }
 
@@ -353,15 +344,15 @@ div[class*='mod-'] {
 
 .top4 {
 	transform: skew(0deg, 1deg); margin-bottom: .5rem; background-color: $gray-200;
-
-	p, li {transform: skew( 0deg,-1deg) rotate(1deg);}
-}
+	
+	p, li { transform: skew( 0deg,-1deg) rotate(1deg); }
+} 
 
 .social-links {
 	
 	padding-bottom: .1em;
 
-	a { padding:.25rem; }
+	a { padding:.25rem;transform: none !important; }
 
 	a svg { 
 		transform: scale(0.75) !important;
@@ -370,7 +361,7 @@ div[class*='mod-'] {
 	
 	a:hover svg, a:focus svg{ 
 		transform: scale(1.2) !important;
-		transition: all 0.7s ease-in-out !important;
+		transition: all 0.3s ease-in-out !important;
 	}
 }
 header ul.social-links {padding-right: .7rem;}
@@ -623,3 +614,6 @@ hr#system-readmore {display:none}
 
 // Debug & Tools
 .debug	{ position: fixed; margin-top: -2.5rem; padding:  .25rem .5rem; background: var(--bs-dark);}
+.debug	{ position: fixed; margin-top: -2.5rem; padding:  .25rem .5rem; background: var(--bs-dark);}
+
+//end
