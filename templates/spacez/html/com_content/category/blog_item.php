@@ -35,7 +35,7 @@ $isUnpublished = ($this->item->state == ContentComponent::CONDITION_UNPUBLISHED 
 
 <?php echo LayoutHelper::render('joomla.content.intro_image', $this->item); ?>
 
-<div class="item-content">
+<div class="card-header">
 	<?php if ($isUnpublished) : ?>
 		<div class="system-unpublished">
 	<?php endif; ?>
@@ -45,7 +45,8 @@ $isUnpublished = ($this->item->state == ContentComponent::CONDITION_UNPUBLISHED 
 	<?php if ($canEdit) : ?>
 		<?php echo LayoutHelper::render('joomla.content.icons', array('params' => $params, 'item' => $this->item)); ?>
 	<?php endif; ?>
-
+</div>
+<div class="card-body">
 	<?php // Todo Not that elegant would be nice to group the params ?>
 	<?php $useDefList = ($params->get('show_modify_date') || $params->get('show_publish_date') || $params->get('show_create_date')
 		|| $params->get('show_hits') || $params->get('show_category') || $params->get('show_parent_category') || $params->get('show_author') || $assocParam); ?>
@@ -86,6 +87,8 @@ $isUnpublished = ($this->item->state == ContentComponent::CONDITION_UNPUBLISHED 
 			$link = new Uri(Route::_('index.php?option=com_users&view=login&Itemid=' . $itemId, false));
 			$link->setVar('return', base64_encode(RouteHelper::getArticleRoute($this->item->slug, $this->item->catid, $this->item->language)));
 		endif; ?>
+	</div>
+	<div class="card-footer">
 
 		<?php echo LayoutHelper::render('joomla.content.readmore', array('item' => $this->item, 'params' => $params, 'link' => $link)); ?>
 

@@ -32,11 +32,12 @@ $results = $app->triggerEvent('onContentAfterDisplay', array($this->category->ex
 $afterDisplayContent = trim(implode("\n", $results));
 
 $htag    = $this->params->get('show_page_heading') ? 'h2' : 'h1';
+$columms = (int) $this->params->get('num_columns');
 
 ?>
 <div class="com-content-category-blog blog" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading')) : ?>
-		<div class="page-header">
+		<div class="page-header pt-2">
 			<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
 		</div>
 	<?php endif; ?>
@@ -75,9 +76,9 @@ $htag    = $this->params->get('show_page_heading') ? 'h2' : 'h1';
 
 	<?php $leadingcount = 0; ?>
 	<?php if (!empty($this->lead_items)) : ?>
-		<div class="com-content-category-blog__items blog-items items-leading <?php echo $this->params->get('blog_class_leading'); ?>">
+		<div class="blog-items items-leading <?php echo $this->params->get('blog_class_leading'); ?>">
 			<?php foreach ($this->lead_items as &$item) : ?>
-				<div class="com-content-category-blog__item blog-item"
+				<div class="card"
 					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 						<?php
 						$this->item = & $item;
@@ -97,17 +98,18 @@ $htag    = $this->params->get('show_page_heading') ? 'h2' : 'h1';
 	<?php if (!empty($this->intro_items)) : ?>
 		<?php $blogClass = $this->params->get('blog_class', ''); ?>
 		<?php if ((int) $this->params->get('num_columns') > 1) : ?>
-			<?php $blogClass .= (int) $this->params->get('multi_column_order', 0) === 0 ? ' masonry-' : ' columns-'; ?>
-			<?php $blogClass .= (int) $this->params->get('num_columns'); ?>
+			<?php $blogClass .= (int) $this->params->get('multi_column_order', 0) === 0 ? ' masonry-'.$columms : 'row gy-3'; ?>
 		<?php endif; ?>
-		<div class="com-content-category-blog__items blog-items <?php echo $blogClass; ?>">
+		<div class="<?php echo $blogClass; ?>">
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
-			<div class="com-content-category-blog__item blog-item"
-				itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
-					<?php
-					$this->item = & $item;
-					echo $this->loadTemplate('item');
-					?>
+			<div class=" <?php echo ' col-'. 12/$columms ?>">
+				<div class="card  h-100"
+					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+						<?php
+						$this->item = & $item;
+						echo $this->loadTemplate('item');
+						?>
+				</div>
 			</div>
 		<?php endforeach; ?>
 		</div>

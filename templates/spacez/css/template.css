@@ -7762,6 +7762,9 @@ hr#system-readmore {
   font-size: 1.2rem;
   line-height: 1em; }
 
+.card-footer {
+  background-color: transparent; }
+
 .action h2, .action .h2, footer h3, footer .h3 {
   padding-top: 0; }
 
