@@ -192,7 +192,7 @@ ul.dropdown-menu.show {
 		}
 	}
 	a.nav-link {font-weight: 600;font-kerning:none}
-	a.active, a:focus, a.nav-link[aria-expanded="true"] {transform: scale(1.05); font-weight: 800;font-kerning:auto; color: $primary;margin: 0;}
+	a.active, a:focus, a.nav-link[aria-expanded="true"] {transform: scale(1.05); font-weight: 800;font-kerning:auto;margin: 0;}
 	li li, span{border:0;padding: 0;background-color: transparent};
 }
 
