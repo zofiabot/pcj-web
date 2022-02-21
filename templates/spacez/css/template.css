@@ -7536,7 +7536,7 @@ footer ul.list-inline {
   .sites h3, .sites .h3 {
     color: #fffb !important;
     text-align: right;
-    padding-bottom: .5rem; }
+    padding: 1rem 0 .5rem; }
 
 .logos svg text {
   font-family: var(--bs-font-sans-serif);
