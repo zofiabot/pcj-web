@@ -7637,6 +7637,9 @@ figure + div.article-body {
   figure + div.article-body .blog-item {
     width: fit-content; }
 
+.pagination {
+  justify-content: center; }
+
 footer section.dark {
   transform: skew(0deg, 2deg); }
   footer section.dark .container > div {

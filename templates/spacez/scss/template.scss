@@ -522,6 +522,8 @@ figure + div.article-body {
 	.blog-item {width: fit-content;}
 }
 
+.pagination{ justify-content: center; }
+
 footer section.dark{
 	transform: skew(0deg, 2deg); 
 	.container > div{transform: skew( 0deg, -2deg);}
