@@ -36,7 +36,7 @@ $label= '';
 $collapseicon = smico('search', 28, $text, 'collapsed') .  smico('x', 28, $text, 'expanded') ;
 $formicon = smico('search', 28, $text) ;
 
-$inputfield = '<input type="text" name="searchword" id="searchword" class="searchword form-control dark" type="search" placeholder="' . $text . '" aria-label="' . $text . '" >';
+$inputfield = '<input type="text" name="searchword" id="searchword" class="searchword form-control dark" minlength="3" type="search" placeholder="' . $text . '" aria-label="' . $text . '" >';
 $btn_search = '<button class="btn input-group-text">' . $formicon . '</button>';
 
 ?>

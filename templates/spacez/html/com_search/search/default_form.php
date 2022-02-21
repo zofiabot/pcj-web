@@ -44,7 +44,7 @@ $svgicon = ' <svg class="search-icon inline-icon" viewBox="0 0 30 30" width="24"
 				 </p>
 
 		<div class="input-group py-2">
-			<input type="text" name="searchword" class="form-control form-control-lg border-primary border-end-0" aria-label="<?php echo $searchbuttonkeyword; ?>" title="<?php echo $searchbuttonkeyword; ?>" placeholder="<?php echo $searchbuttonkeyword; ?>" id="search-searchword" value="<?php echo $this->escape($this->origkeyword); ?>" class="inputbox" />
+			<input type="text" name="searchword" minlength="3" class="form-control form-control-lg border-primary border-end-0" aria-label="<?php echo $searchbuttonkeyword; ?>" title="<?php echo $searchbuttonkeyword; ?>" placeholder="<?php echo $searchbuttonkeyword; ?>" id="search-searchword" value="<?php echo $this->escape($this->origkeyword); ?>" class="inputbox" />
 		<input type="hidden" name="task" value="search" />
 			<button name="Search" onclick="this.form.submit()" class="input-group-text button btn btn-primary color-white" aria-label="<?php echo $searchbuttonlabel; ?>" title="<?php echo $searchbuttonlabel; ?>">
 				<?php echo $svgicon; ?>
