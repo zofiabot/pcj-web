@@ -133,7 +133,14 @@ svg.logo {
 }
 // end for bootstrap cheatsheet
 
-header {transform: skew(0deg, 1.5deg); background-color: $gray-200; transform-origin: center right;margin-bottom:-2.2rem;padding-bottom:0;
+header {
+	transform: skew(0deg, 1.5deg); 
+	transform-origin: center right;
+	margin-bottom:-2.2rem;
+	padding-bottom:0;
+	position: relative;
+	width: 100%;
+	z-index: 1000;
 
 	.social, #main-nav, section.action div.row {transform: skew( 0deg,-1.5deg);transform-origin: center right; position:relative ;}
 }

@@ -16,7 +16,7 @@ use Joomla\CMS\Document;
 
 ?>
 
-<header class="pt-3 dark<?php echo $stickyHeader ? ' ' . $stickyHeader : ''; ?>" id="top">
+<header class="pt-3 dark" id="top">
 
 	
 	<div id="main-nav">

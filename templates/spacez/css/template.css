@@ -7239,10 +7239,12 @@ svg.logo {
 
 header {
   transform: skew(0deg, 1.5deg);
-  background-color: #e9ecef;
   transform-origin: center right;
   margin-bottom: -2.2rem;
-  padding-bottom: 0; }
+  padding-bottom: 0;
+  position: relative;
+  width: 100%;
+  z-index: 1000; }
   header .social, header #main-nav, header section.action div.row {
     transform: skew(0deg, -1.5deg);
     transform-origin: center right;
