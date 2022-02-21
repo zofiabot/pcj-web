@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -15,7 +15,6 @@ use Akeeba\Engine\Core\Timer;
 use Akeeba\Engine\Factory;
 use Akeeba\Engine\Platform;
 use Akeeba\Engine\Util\PushMessages;
-use Closure;
 use DateTimeZone;
 use DirectoryIterator;
 use Exception;
@@ -90,28 +89,18 @@ class BackupModel extends BaseDatabaseModel
 	 */
 	public function startBackup(array $overrides = []): array
 	{
-		// Get information from the session
+		// Get information from the model state
 		$tag         = $this->getState('tag', null);
-		$backupId    = $this->getState('backupid', null);
 		$description = $this->getState('description', '');
 		$comment     = $this->getState('comment', '');
 		$jpskey      = $this->getState('jpskey', null);
 		$angiekey    = $this->getState('angiekey', null);
-
-		// Try to get a backup ID if none is provided
-		if (is_null($backupId))
-		{
-			$backupId = $this->getBackupId();
-		}
+		$backupId    = $this->getBackupId();
 
 		$profile = JoomlaFactory::getApplication()->getSession()->get('akeebabackup.profile', defined('AKEEBA_PROFILE') ? AKEEBA_PROFILE : 1);
-		$this->triggerEvent('onStart', [(int) substr($backupId, 2), $profile]);
 
 		// Use the default description if none specified
-		if (empty($description))
-		{
-			$description = $this->getDefaultDescription();
-		}
+		$description = $description ?: $this->getDefaultDescription();
 
 		// Try resetting the engine
 		try
@@ -267,6 +256,10 @@ class BackupModel extends BaseDatabaseModel
 
 		$ret_array = $kettenrad->getStatusArray();
 
+		// Notify the actionlog plugin
+		$statistics = Factory::getStatistics();
+		$this->triggerEvent('onStart', [$statistics->getId(), $profile]);
+
 		try
 		{
 			Factory::saveState($tag, $backupId);
@@ -294,35 +287,15 @@ class BackupModel extends BaseDatabaseModel
 	 */
 	public function stepBackup($requireBackupId = true)
 	{
-		// Get the tag. If not specified use the AKEEBA_BACKUP_ORIGIN constant.
-		$tag = $this->getState('tag', null);
-
-		if (is_null($tag) && defined('AKEEBA_BACKUP_ORIGIN'))
-		{
-			$tag = AKEEBA_BACKUP_ORIGIN;
-		}
-
-		// Get the Backup ID. If not specified use the AKEEBA_BACKUP_ID constant.
+		// Get information from the model state
+		$tag      = $this->getState('tag', defined('AKEEBA_BACKUP_ORIGIN') ? AKEEBA_BACKUP_ORIGIN : null);
 		$backupId = $this->getState('backupid', null);
 
-		if (is_null($backupId) && defined('AKEEBA_BACKUP_ID'))
-		{
-			$backupId = AKEEBA_BACKUP_ID;
-		}
-
 		// populateState() pushes the current profile number into the state.
-		$profile = max(0, (int) $this->getState('profile', 0));
-
-		if (empty($profile))
-		{
-			$profile = $this->getLastBackupProfile($tag, $backupId);
-		}
+		$profile = max(0, (int) $this->getState('profile', 0)) ?: $this->getLastBackupProfile($tag, $backupId);
 
 		// Set the active profile
-		if (!JoomlaFactory::getApplication()->isClient('cli'))
-		{
-			JoomlaFactory::getApplication()->getSession()->set('akeebabackup.profile', $profile);
-		}
+		JoomlaFactory::getApplication()->getSession()->set('akeebabackup.profile', $profile);
 
 		if (!defined('AKEEBA_PROFILE'))
 		{
@@ -350,7 +323,6 @@ class BackupModel extends BaseDatabaseModel
 
 			// Set the backup ID and run a backup step
 			$kettenrad = Factory::getKettenrad();
-			$kettenrad->setBackupId($backupId);
 			$kettenrad->tick();
 			$ret_array = $kettenrad->getStatusArray();
 		}
@@ -629,7 +601,7 @@ class BackupModel extends BaseDatabaseModel
 	 *
 	 * @return  int  The profile ID of the latest backup taken with the specified tag / backup ID
 	 */
-	protected function getLastBackupProfile(string $tag, ?string $backupId = null): int
+	public function getLastBackupProfile(string $tag, ?string $backupId = null): int
 	{
 		$filters = [
 			['field' => 'tag', 'value' => $tag],
@@ -733,76 +705,25 @@ class BackupModel extends BaseDatabaseModel
 	}
 
 	/**
-	 * Get a new backup ID string
+	 * Get a new backup ID string.
+	 *
+	 * In the past we were trying to get the next backup record ID using two methods:
+	 * - Querying the information_schema.tables metadata table. In many cases we saw this returning the wrong value,
+	 *   even though the MySQL documentation said this should return the next autonumber (WTF?)
+	 * - Doing a MAX(id) on the table and adding 1. This didn't work correctly if the latest records were deleted by the
+	 *   user.
+	 *
+	 * However, the backup ID does not need to be the same as the backup record ID. It only needs to be *unique*. So
+	 * this time around we are using a simple, unique ID based on the current GMT date and time.
 	 *
 	 * @return  string
 	 */
 	private function getBackupId(): string
 	{
-		$db = $this->getDbo();
+		$microtime    = explode(' ', microtime(false));
+		$microseconds = (int) ($microtime[0] * 1000000);
 
-		/**
-		 * I need to get the current database name. I'll use Ocramius' trick.
-		 * See https://ocramius.github.io/blog/accessing-private-php-class-members-without-reflection/
-		 *
-		 * @param   object  $db  The DatabaseDriver instance
-		 *
-		 * @return  string
-		 */
-		$protectedMethodAccessor = function ($db) {
-			return $db->getDatabase();
-		};
-		$boundClosure            = Closure::bind($protectedMethodAccessor, null, $db);
-		$dbName                  = $boundClosure($db);
-		$tableName               = $db->replacePrefix('#__akeebabackup_backups');
-
-		/**
-		 * Now, I will first try to get the AUTO_INCREMENT value via INFORMATION_SCHEMA.
-		 * See https://stackoverflow.com/questions/15821532/get-current-auto-increment-value-for-any-table
-		 */
-		$query = $db->getQuery(true)
-			->select($db->qn('AUTO_INCREMENT'))
-			->from($db->qn('INFORMATION_SCHEMA.TABLES'))
-			->where($db->qn('TABLE_SCHEMA') . ' = ' . $db->q($dbName))
-			->where($db->qn('TABLE_NAME') . ' = ' . $db->q($tableName));
-
-		try
-		{
-			$backupId = $db->setQuery($query)->loadResult();
-
-			if (!empty($backupId))
-			{
-				return $backupId;
-			}
-		}
-		catch (Exception $e)
-		{
-			// This didn't work. No problem, I'll use my legacy method instead.
-		}
-
-		/**
-		 * Get the maximum ID already in use and add 1. This is not the same as the table's auto_increment value if the
-		 * user has deleted the latest backup records. If the latest existing backup record has an ID of 20 but the user
-		 * had already deleted records 21 and 22 then the auto_increment is 23. However, this legacy method will return
-		 * a backup ID of 21 instead of the correct value of 23. There's not much I can do since I could not read the
-		 * actual auto_increment value above. Oh well, it's not the end of the world :)
-		 */
-		$query = $db->getQuery(true)
-			->select('MAX(' . $db->qn('id') . ')')
-			->from($db->qn('#__akeebabackup_backups'));
-
-		try
-		{
-			$maxId = $db->setQuery($query)->loadResult();
-		}
-		catch (Exception $e)
-		{
-			$maxId = 0;
-		}
-
-		$backupId = 'id' . ($maxId + 1);
-
-		return $backupId;
+		return 'id-' . gmdate('Ymd-His') . '-' . $microseconds;
 	}
 
 }

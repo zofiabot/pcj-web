@@ -64,6 +64,13 @@ class WFEditor
      */
     private static $plugins = array('core', 'help', 'autolink', 'effects', 'cleanup', 'code', 'format', 'importcss', 'colorpicker', 'blobupload', 'upload', 'figure', 'ui', 'noneditable', 'branding');
 
+    /**
+     * Initialization state
+     *
+     * @var boolean
+     */
+    public $initialized = false;
+
     private function addScript($url)
     {
         $url = $this->addAssetVersion($url);
@@ -158,6 +165,8 @@ class WFEditor
 
     public function init()
     {
+        $this->initialized = true;
+
         $settings = $this->getSettings();
 
         JFactory::getApplication()->triggerEvent('onBeforeWfEditorRender', array(&$settings));
@@ -217,7 +226,7 @@ class WFEditor
         $wf = WFApplication::getInstance();
 
         // assign skin - new default is "modern"
-        $settings['skin'] = $wf->getParam('editor.toolbar_theme', 'default');
+        $settings['skin'] = $wf->getParam('editor.toolbar_theme', 'modern');
 
         if (empty($settings['skin'])) {
             $settings['skin'] = 'modern';
@@ -233,7 +242,7 @@ class WFEditor
         }
 
         if ($settings['skin'] == 'mobile') {
-            $settings['skin'] = 'default';
+            $settings['skin'] = 'modern';
             $settings['skin_variant'] = 'touch';
         }
     }
@@ -261,9 +270,9 @@ class WFEditor
             }
 
             // Remove values with invalid key
-        	$userParams = array_filter($userParams, function ($key) {
-            	return !is_numeric($key);
-        	}, ARRAY_FILTER_USE_KEY);
+            $userParams = array_filter($userParams, function ($key) {
+                return !is_numeric($key);
+            }, ARRAY_FILTER_USE_KEY);
 
             foreach ($userParams as $userParam) {
                 $name = '';
@@ -308,6 +317,16 @@ class WFEditor
         return $language->isRTL() ? 'rtl' : 'ltr';
     }
 
+    protected function getLanguageCode()
+    {
+        return WFLanguage::getCode();
+    }
+
+    protected function getLanguageTag()
+    {
+        return WFLanguage::getTag();
+    }
+
     public function getSettings()
     {
         // get an editor instance
@@ -325,7 +344,7 @@ class WFEditor
         $settings = array(
             'token' => JSession::getFormToken(),
             'base_url' => JURI::root(),
-            'language' => WFLanguage::getCode(),
+            'language' => $this->getLanguageCode(),
             'directionality' => $this->getLanguageDirection(),
             'theme' => 'none',
             'plugins' => '',
@@ -463,10 +482,10 @@ class WFEditor
 
             // Editor
             $this->addScript($this->getURL(true) . '/libraries/js/editor.min.js');
-
-            // language
-            $this->addScript(JURI::base(true) . '/index.php?option=com_jce&task=editor.loadlanguages&lang=' . $settings['language'] . '&' . http_build_query((array) $settings['query']));
         }
+
+        // language
+        $this->addScript(JURI::base(true) . '/index.php?option=com_jce&task=editor.loadlanguages&lang=' . $settings['language'] . '&' . http_build_query((array) $settings['query']));
 
         $this->getCustomConfig($settings);
 
@@ -520,7 +539,7 @@ class WFEditor
         $tinymce = json_encode($settings, JSON_NUMERIC_CHECK | JSON_UNESCAPED_SLASHES);
 
         $this->addScriptDeclaration("try{WfEditor.init(" . $tinymce . ");}catch(e){console.debug(e);}");
-        
+
         if (is_object($this->profile)) {
             if ($wf->getParam('editor.callback_file')) {
                 $this->addScript(JURI::root(true) . '/' . $wf->getParam('editor.callback_file'));
@@ -965,10 +984,17 @@ class WFEditor
             }
         }
 
+        $delim = array('-', '_');
+
         // loop through list and create/call method
         foreach ($items as $plugin) {
+            $name = str_replace($delim, ' ', $plugin);
+
             // Create class name
-            $classname = 'WF' . ucwords($plugin, '_') . 'PluginConfig';
+            $classname = 'WF' . ucwords($name) . 'PluginConfig';
+
+            // remove space
+            $classname = str_replace(' ', '', $classname);
 
             // Check class and method are callable, and call
             if (class_exists($classname) && method_exists($classname, 'getConfig')) {
@@ -1403,24 +1429,17 @@ class WFEditor
 
                 // add external plugins
                 foreach ($plugins['external'] as $plugin => $path) {
-                    $files[] = $path . '/' . $plugin . '/editor_plugin' . $suffix . '.js';
+                    $files[] = JPATH_SITE . '/plugins/jce/editor-' . $plugin . '/editor_plugin' . $suffix . '.js';
                 }
 
                 // add Editor file
                 $files[] = WF_EDITOR . '/libraries/js/editor.min.js';
 
-                // parse ini language files
-                $parser = new WFLanguageParser();
-                $data = $parser->load();
-
-                // add to packer
-                $packer->setContentEnd($data);
-
                 break;
             case 'css':
-                $layout = $wf->input->getWord('layout', 'editor');
+                $slot = $wf->input->getCmd('slot', 'editor');
 
-                if ($layout == 'content') {
+                if ($slot == 'content') {
                     $files = array();
 
                     $files[] = WF_EDITOR_THEMES . '/' . $themes[0] . '/skins/' . $skin . '/content.css';
@@ -1437,6 +1456,7 @@ class WFEditor
                     // Add core plugins
                     foreach ($plugins['core'] as $plugin) {
                         $content = WF_EDITOR_PLUGINS . '/' . $plugin . '/css/content.css';
+
                         if (JFile::exists($content)) {
                             $files[] = $content;
                         }
@@ -1444,13 +1464,13 @@ class WFEditor
 
                     // add external plugins
                     foreach ($plugins['external'] as $plugin => $path) {
-                        $content = $path . '/' . $plugin . '/css/content.css';
+                        $content = JPATH_SITE . '/plugins/jce/editor-' . $plugin . '/css/content.css';
 
                         if (JFile::exists($content)) {
                             $files[] = $content;
                         }
                     }
-                } elseif ($layout == 'preview') {
+                } elseif ($slot == 'preview') {
                     $files = array();
                     $files[] = WF_EDITOR_PLUGINS . '/preview/css/preview.css';
                     // get template stylesheets
@@ -1494,7 +1514,7 @@ class WFEditor
 
     public function loadlanguages()
     {
-        $parser = new WFLanguageParser(array('plugins' => $this->getPlugins()));
+        $parser = new WFLanguageParser(array('language' => $this->getLanguageTag(), 'plugins' => $this->getPlugins()));
         $data = $parser->load();
         $parser->output($data);
     }

@@ -1,3 +1,50 @@
+Akeeba Backup 9.1.1
+================================================================================
+# [HIGH] Wrong RewriteBase set up in the .htaccess Maker when restoring a Joomla site with Admin Tools Professional installed
+
+Akeeba Backup 9.1.0
+================================================================================
++ Allow using [REMOTESTATUS] in the email subject, not just the body
++ Warn about the Console – Akeeba Backup plugin being disabled in the Schedule Automatic Backups page
++ Joomla restoration: modify domains in the Admin Tools' Allowed Domains and server config maker features if necessary
+~ Force the Quickicon plugin to always show in the Notifications area instead of the 3rd Party area
+# [HIGH] Problems restoring if a table name ends in 0 when another table with an identical name EXCEPT the trailing zero is also being backed up
+# [HIGH] Backing up to SQL: indices would not have the correct table name prefix
+# [HIGH] Backing up as SQL: the query for finder_taxonomy does not use the correct prefix
+# [MEDIUM] Log Priorities global configuration option got mangled restoring a Joomla 4 site
+# [LOW] Restore backup admin menu does not work correctly with multiple backup profiles
+# [LOW] RackSpace CloudFiles: some hosts change the case of HTTP headers
+# [LOW] Test FTP button was not working
+# [LOW] Fixed displaying multi-line backup comments in the Manage Backups page
+
+Akeeba Backup 9.0.11
+================================================================================
++ Support for MySQL 8 invisible columns
+# [LOW] Rare type error under PHP 8 during restoration
+# [LOW] Wrong translation string in backend menu item type
+# [LOW] Wrong controls in Backup and Restore backend menu item types
+
+Akeeba Backup 9.0.10
+================================================================================
+- Remove piecon (pie graph favicon showing the backup progress)
+~ JSON API: Forcibly use the ‘json’ origin everywhere
+~ JSON API: Throw an error if the backup ID sent to stepBackup does not exist
+~ JSON API: Improved backup IDs prevent a number of JSON API issues
+~ Auto–publish the Console plugin in the Professional version
+# [LOW] JSON API: The wrong origin (‘frontend’ instead of ‘json’) was recorded
+# [LOW] Manage Backups: The View Log button didn't take you to the correct log file
+
+Akeeba Backup 9.0.9
+================================================================================
+- Removed iDriveSync; the service has been discontinued by the provider.
+- Removed the “Archive integrity check” feature.
+~ Ensure the correct collation of all database tables and columns used by the extension
+~ Dropbox connector updated to require TLS v1.2
++ API requests: Prevent server cache
++ Better support for custom database drivers provided by third party extensions
+# [LOW] Bootstrap 5.1.2 included in Joomla 4.0.4 broke the CSS for Control Panel icons
+# [LOW] Check failed backups: All Super Users were notified even when an email was supplied
+
 Akeeba Backup 9.0.8
 ================================================================================
 # [MEDIUM] Wrong ACL check wouldn't allow non–Super User accounts from accessing the component

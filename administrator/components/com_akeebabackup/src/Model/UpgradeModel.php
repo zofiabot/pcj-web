@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -76,8 +76,20 @@ class UpgradeModel extends BaseModel
 	private const REMOVE_FROM_ALL_VERSIONS = [
 		'files'   => [
 			JPATH_ADMINISTRATOR . '/components/com_akeebabackup/src/Model/UsageStatisticsModel.php',
+
+			// Remove iDriveSync — the service has been discontinued
+			'administrator/components/com_akeebabackup/engine/Postproc/idrivesync.json',
+			'administrator/components/com_akeebabackup/engine/Postproc/Idrivesync.php',
+			'administrator/components/com_akeebabackup/engine/Postproc/Connector/Idrivesync.php',
+
+			// Remove Piecon
+			'media/com_akeebabackup/js/piecon.js',
+			'media/com_akeebabackup/js/piecon.min.js',
+			'media/com_akeebabackup/js/piecon.min.js.map',
 		],
-		'folders' => [],
+		'folders' => [
+			'administrator/components/com_akeebabackup/pkatform/Joomla/Finalization',
+		],
 	];
 
 	/**
@@ -252,6 +264,7 @@ class UpgradeModel extends BaseModel
 	private const ENABLE_EXTENSIONS = [
 		'plg_quickicon_akeebabackup',
 		'plg_system_backuponupdate',
+		'plg_console_akeebabackup',
 	];
 
 	/** @var string[] Included extensions to automatically publish on NEW INSTALLATION OR UPGRADE */

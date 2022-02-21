@@ -3,7 +3,7 @@
  * Akeeba Engine
  *
  * @package   akeebaengine
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -430,6 +430,9 @@ class Finalization extends Part
 			$body = str_replace('[REMOTESTATUS]', $remoteStatus, $body);
 			$body = str_replace('[TOTALSIZE]', $this->formatByteSize($totalSize), $body);
 		}
+
+		// Post-process the subject (support the [REMOTESTATUS] variable)
+		$subject = str_replace('[REMOTESTATUS]', $remoteStatus, $subject);
 
 		// Sometimes $body contains literal \n instead of newlines
 		$body = str_replace('\\n', "\n", $body);

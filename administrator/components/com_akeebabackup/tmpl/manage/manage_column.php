@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -213,7 +213,7 @@ if (substr($relativePath, 0, 2) === './')
 	<?php if($showViewLog): ?>
         <a class="btn btn-outline-dark btn-small text-decoration-none me-2 mb-2 akeebaCommentPopover"
            <?= ($record['meta'] != 'obsolete') ? '' : 'disabled="disabled"' ?>
-           href="index.php?option=com_akeebabackup&view=Log&tag=<?= (int) $record['tag'] ?>.<?= $this->escape($record['backupid']) ?>&profileid=<?= (int)$record['profile_id'] ?>"
+           href="index.php?option=com_akeebabackup&view=Log&tag=<?= $this->escape($record['tag']) ?>.<?= $this->escape($record['backupid']) ?>&profileid=<?= (int)$record['profile_id'] ?>"
            title="<?= Text::_('COM_AKEEBABACKUP_BUADMIN_LBL_LOGFILEID') ?>"
            data-bs-content="<?= $this->escape($record['backupid']) ?>">
             <span class="fa fa-search"></span>

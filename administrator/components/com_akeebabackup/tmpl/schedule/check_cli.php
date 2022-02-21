@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -19,18 +19,29 @@ use Joomla\CMS\Language\Text;
 	</h3>
 
 	<div class="card-body">
-		<p>
-			<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_GENERICUSECLI') ?>
-			<code>
-				<?= $this->escape($this->checkinfo->info->php_path); ?>
-				<?= $this->escape($this->checkinfo->cli->path); ?>
-			</code>
-		</p>
-		<p>
+		<?php if (!$this->isConsolePluginEnabled): ?>
+			<div class="alert alert-danger">
+				<h3 class="alert-header">
+					<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_CONSOLEPLUGINDISALBED_HEAD') ?>
+				</h3>
+				<p>
+					<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_CONSOLEPLUGINDISALBED_BODY') ?>
+				</p>
+			</div>
+		<?php else: ?>
+			<p>
+				<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_GENERICUSECLI') ?>
+				<code>
+					<?= $this->escape($this->checkinfo->info->php_path); ?>
+					<?= $this->escape($this->checkinfo->cli->path); ?>
+				</code>
+			</p>
+			<p>
 			<span class="badge bg-warning">
 				<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_CLIGENERICIMPROTANTINFO') ?>
 			</span>
-			<?= Text::sprintf('COM_AKEEBABACKUP_SCHEDULE_LBL_CLIGENERICINFO', $this->checkinfo->info->php_path) ?>
-		</p>
+				<?= Text::sprintf('COM_AKEEBABACKUP_SCHEDULE_LBL_CLIGENERICINFO', $this->checkinfo->info->php_path) ?>
+			</p>
+		<?php endif ?>
 	</div>
 </div>

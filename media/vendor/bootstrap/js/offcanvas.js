@@ -1,10 +1,8 @@
-import { B as BaseComponent, E as EventHandler, M as Manipulator, b as typeCheckConfig, g as getElementFromSelector, i as isDisabled, a as isVisible, S as SelectorEngine, d as defineJQueryPlugin } from './dom.js?1635100342';
-import { S as ScrollBarHelper, B as Backdrop, F as FocusTrap } from './modal.js';
-import { e as enableDismissTrigger } from './alert.js';
+import { E as EventHandler, c as getElementFromSelector, j as isDisabled, i as isVisible, S as SelectorEngine, e as enableDismissTrigger, d as defineJQueryPlugin, B as BaseComponent, l as ScrollBarHelper, M as Manipulator, a as typeCheckConfig, m as Backdrop, F as FocusTrap } from './dom.js?5.1.3';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): offcanvas.js
+ * Bootstrap (v5.1.3): offcanvas.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

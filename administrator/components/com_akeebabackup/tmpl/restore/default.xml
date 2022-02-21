@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+<!--~
   ~ @package   akeebabackup
-  ~ @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
   ~ @license   GNU General Public License version 3, or later
   -->
 <metadata>
@@ -10,9 +10,12 @@
 			<![CDATA[COM_AKEEBABACKUP_VIEW_RESTORE_DESC]]>
 		</message>
 	</layout>
-	<fields name="request" addfieldpath="administrator/components/com_akeebabackup/fields">
+	<fields name="request"
+			addfieldpath="/administrator/components/com_akeebabackup/src/Field"
+			addfieldprefix="Akeeba\Component\AkeebaBackup\Administrator\Field">
 		<fieldset name="request">
-			<field name="profileid" type="backupprofiles"
+			<field name="profileid"
+				   type="backupprofiles"
 				   show_none="no"
 				   default="0"
 				   label="COM_AKEEBABACKUP_VIEW_RESTORE_PROFILE_LABEL"

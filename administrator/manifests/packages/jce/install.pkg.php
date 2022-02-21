@@ -184,11 +184,13 @@ class pkg_jceInstallerScript
             return true;
         }
 
+        $parent = $installer->getParent();
+
         $requirements = '<a href="https://www.joomlacontenteditor.net/support/documentation/editor/requirements" title="Editor Requirements" target="_blank" rel="noopener">https://www.joomlacontenteditor.net/support/documentation/editor/requirements</a>';
 
         // php version check
-        if (version_compare(PHP_VERSION, '5.6', 'lt')) {
-            throw new RuntimeException('JCE requires PHP 5.6 or later - ' . $requirements);
+        if (version_compare(PHP_VERSION, '7.4', 'lt')) {
+            JFactory::getApplication()->enqueueMessage('JCE requires PHP 7.4 or later - ' . $requirements . '. Although JCE may function with earlier PHP versions, we recommend you upgrade your server as soon as possible, as future versions of JCE will not install on sites running obsolete versions of PHP.');
         }
 
         $jversion = new JVersion();
@@ -197,8 +199,6 @@ class pkg_jceInstallerScript
         if (version_compare($jversion->getShortVersion(), '3.9', 'lt')) {
             throw new RuntimeException('JCE requires Joomla 3.9 or later - ' . $requirements);
         }
-
-        $parent = $installer->getParent();
 
         // set current package version and variant
         list($version, $variant) = $this->getCurrentVersion();
@@ -380,8 +380,15 @@ class pkg_jceInstallerScript
             }
 
             // fix checkout_out table
-            if (version_compare($current_version, '2.9.14', 'le')) {
+            if (version_compare($current_version, '2.9.18', 'lt')) {
                 $query = "ALTER TABLE #__wf_profiles CHANGE COLUMN " . $db->qn('checked_out') . " " . $db->qn('checked_out') . " INT UNSIGNED NULL";
+                $db->setQuery($query);
+                $db->execute();
+            }
+
+            // fix checked_out_time deafult value
+            if (version_compare($current_version, '2.9.18', 'lt')) {                
+                $query = "ALTER TABLE #__wf_profiles CHANGE COLUMN " . $db->qn('checked_out_time') . " " . $db->qn('checked_out_time') . " DATETIME NULL DEFAULT NULL";
                 $db->setQuery($query);
                 $db->execute();
             }
@@ -495,9 +502,15 @@ class pkg_jceInstallerScript
             $site . '/editor/libraries/classes/vendor/getid3'
         );
 
-        // remove old logo
-        $files['2.9.9'] = array(
-            $admin . '/media/img/logo.png'
+        // remove media folder
+        $folders['2.9.17'] = array(
+            $admin . '/media'
+        );
+
+        // remove font manifest and window
+        $files['2.9.18'] = array(
+            $site . '/editor/libraries/fonts/selection.json',
+            $site . '/editor/tiny_mce/plugins/browser/js/window.min.js'
         );
 
         $files['2.6.38'] = array(
@@ -577,9 +590,7 @@ class pkg_jceInstallerScript
         // remove help files
         $files['2.8.6'] = array(
             $admin . '/controller/help.php',
-            $admin . '/models/help.php',
-            $admin . '/media/css/help.min.css',
-            $admin . '/media/js/help.min.js'
+            $admin . '/models/help.php'
         );
 
         $files['2.8.11'] = array(

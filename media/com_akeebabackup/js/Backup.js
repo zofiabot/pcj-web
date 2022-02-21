@@ -1,6 +1,6 @@
-/*!
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 "use strict";
@@ -100,10 +100,6 @@ akeebabackup.Backup.startTimeoutBar = function (max_allowance, bias)
  */
 akeebabackup.Backup.resetTimeoutBar = function ()
 {
-    Piecon.setOptions({
-        color: "#333333", background: "#e0e0e0", shadow: "#000000", fallback: "force"
-    });
-
     try
     {
         clearInterval(akeebabackup.Backup.timeoutTimer);
@@ -292,16 +288,6 @@ akeebabackup.Backup.onStep = function (data)
     elProgress.style.width = data.Progress + "%";
     elProgress.setAttribute('aria-valuenow', percentageText);
     elProgress.innerHTML = percentageText;
-
-    // Update Piecon percentage display
-    if (data.Progress >= 100)
-    {
-        Piecon.setProgress(99);
-    }
-    else
-    {
-        Piecon.setProgress(data.Progress);
-    }
 
     // Update step/substep display
     document.getElementById("backup-step").textContent    = data.Step;
@@ -513,14 +499,6 @@ akeebabackup.Backup.endWithError = function (message)
     // Make sure the timer is stopped
     akeebabackup.Backup.resetTimeoutBar();
 
-    try
-    {
-        Piecon.reset();
-    }
-    catch (e)
-    {
-    }
-
     var alice_autorun = false;
 
     // Hide progress and warnings
@@ -586,14 +564,6 @@ akeebabackup.Backup.onDone = function ()
 
     // Make sure the timer is stopped
     akeebabackup.Backup.resetTimeoutBar();
-
-    try
-    {
-        Piecon.reset();
-    }
-    catch (e)
-    {
-    }
 
     // Hide progress
     document.getElementById("backup-progress-pane").style.display = "none";

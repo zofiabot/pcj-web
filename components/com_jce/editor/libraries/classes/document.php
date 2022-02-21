@@ -474,8 +474,8 @@ class WFDocument extends JObject
 
         $query['plugin'] = $name;
 
-        // set layout
-        $query['layout'] = $app->input->getCmd('layout');
+        // set slot
+        $query['slot'] = $app->input->getCmd('slot');
 
         // set standalone mode (for File Browser etc)
         $query['standalone'] = $this->get('standalone');
@@ -665,7 +665,9 @@ class WFDocument extends JObject
                         'plugins' => array('core' => array($this->getName()), 'external' => array()),
                         'sections' => array('dlg', $this->getName() . '_dlg'),
                         'mode' => 'plugin',
+                        'language' => WFLanguage::getTag()
                     ));
+
                     $data .= $parser->load();
 
                     // add script declarations

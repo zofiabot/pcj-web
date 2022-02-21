@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -18,16 +18,6 @@ use Joomla\CMS\Factory as JFactory;
 class Dispatcher extends BackendDispatcher
 {
 	protected $defaultController = 'backup';
-
-	protected function onBeforeDispatch()
-	{
-		if (!defined('AKEEBA_BACKUP_ORIGIN'))
-		{
-			define('AKEEBA_BACKUP_ORIGIN', 'frontend');
-		}
-
-		parent::onBeforeDispatch();
-	}
 
 	protected function onAfterDispatch()
 	{

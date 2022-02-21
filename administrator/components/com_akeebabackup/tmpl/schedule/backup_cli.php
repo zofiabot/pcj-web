@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -25,25 +25,35 @@ use Joomla\CMS\Language\Text;
 			</p>
 			<p>
 				<a class="btn btn-primary"
-				   href="https://www.akeeba.com/documentation/akeeba-backup-joomla/native-cron-script.html"
-				   target="_blank">
+						href="https://www.akeeba.com/documentation/akeeba-backup-joomla/native-cron-script.html"
+						target="_blank">
 					<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_GENERICREADDOC') ?>
 				</a>
 			</p>
 		</div>
-
-		<p>
-			<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_GENERICUSECLI') ?>
-			<code>
-				<?php echo $this->escape($this->croninfo->info->php_path); ?>
-				<?php echo $this->escape($this->croninfo->cli->path); ?>
-			</code>
-		</p>
-		<p>
+		<?php if (!$this->isConsolePluginEnabled): ?>
+			<div class="alert alert-danger">
+				<h3 class="alert-header">
+					<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_CONSOLEPLUGINDISALBED_HEAD') ?>
+				</h3>
+				<p>
+					<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_CONSOLEPLUGINDISALBED_BODY') ?>
+				</p>
+			</div>
+		<?php else: ?>
+			<p>
+				<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_GENERICUSECLI') ?>
+				<code>
+					<?php echo $this->escape($this->croninfo->info->php_path); ?>
+					<?php echo $this->escape($this->croninfo->cli->path); ?>
+				</code>
+			</p>
+			<p>
 			<span class="badge bg-warning">
 				<?= Text::_('COM_AKEEBABACKUP_SCHEDULE_LBL_CLIGENERICIMPROTANTINFO') ?>
 			</span>
-			<?= Text::sprintf('COM_AKEEBABACKUP_SCHEDULE_LBL_CLIGENERICINFO', $this->croninfo->info->php_path) ?>
-		</p>
+				<?= Text::sprintf('COM_AKEEBABACKUP_SCHEDULE_LBL_CLIGENERICINFO', $this->croninfo->info->php_path) ?>
+			</p>
+		<?php endif; ?>
 	</div>
 </div>

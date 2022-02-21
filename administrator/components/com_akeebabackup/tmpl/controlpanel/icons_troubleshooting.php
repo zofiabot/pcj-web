@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -21,7 +21,7 @@ use Joomla\CMS\Language\Text;
 	<div class="card-body">
 		<div class="d-flex flex-row flex-wrap align-items-stretch">
 			<?php if($this->permissions['backup']): ?>
-				<a class="text-center btn btn-outline-primary border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-primary border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Log">
 					<div class="bg-primary text-white d-block text-center p-3 h2">
 						<span class="fa fa-search"></span>
@@ -33,7 +33,7 @@ use Joomla\CMS\Language\Text;
 			<?php endif ?>
 
 			<?php if(AKEEBABACKUP_PRO && $this->permissions['configure']): ?>
-				<a class="text-center btn btn-outline-primary border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-primary border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Alice">
 					<div class="bg-primary text-white d-block text-center p-3 h2">
 						<span class="fa fa-briefcase-medical"></span>

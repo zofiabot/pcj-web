@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -116,6 +116,7 @@ if ($this->promptForBackupRestoration)
 							[$startTime, $duration, $timeZoneText] = $this->getTimeInformation($record);
 							[$statusClass, $statusIcon] = $this->getStatusInformation($record);
 							$profileName = $this->getProfileName($record);
+                            $comment     = $this->escapeComment($record['comment']);
 
 							$frozenIcon  = 'akion-waterdrop';
 							$frozenTask  = 'freeze';
@@ -147,10 +148,10 @@ if ($this->promptForBackupRestoration)
 									<span class="<?= $originIcon ?> akeebaCommentPopover" rel="popover"
 									  title="<?= Text::_('COM_AKEEBABACKUP_BUADMIN_LABEL_ORIGIN') ?>"
 									  data-bs-content="<?= $originDescription ?>"></span>
-									<?php if (!(empty($record['comment']))): ?>
+									<?php if (!(empty($comment))): ?>
 										<span class="fa fa-info-circle akeebaCommentPopover" rel="popover"
 											  title="<?= Text::_('COM_AKEEBABACKUP_BUADMIN_LABEL_COMMENT') ?>"
-											  data-bs-content="<?= $this->escape($record['comment']) ?>"></span>
+											  data-bs-content="<?= $comment ?>"></span>
 									<?php endif ?>
 									<a href="<?= Uri::base() ?>index.php?option=com_akeebabackup&view=statistic&layout=edit&id=<?= $record['id'] ?>">
 										<?= empty($record['description'])

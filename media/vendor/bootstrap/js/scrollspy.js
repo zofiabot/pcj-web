@@ -1,8 +1,8 @@
-import { B as BaseComponent, E as EventHandler, S as SelectorEngine, f as getSelectorFromElement, M as Manipulator, h as getElement, b as typeCheckConfig, d as defineJQueryPlugin } from './dom.js?1635100342';
+import { E as EventHandler, S as SelectorEngine, d as defineJQueryPlugin, B as BaseComponent, f as getSelectorFromElement, M as Manipulator, h as getElement, a as typeCheckConfig } from './dom.js?5.1.3';
 
 /**
  * --------------------------------------------------------------------------
- * Bootstrap (v5.1.2): scrollspy.js
+ * Bootstrap (v5.1.3): scrollspy.js
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  * --------------------------------------------------------------------------
  */

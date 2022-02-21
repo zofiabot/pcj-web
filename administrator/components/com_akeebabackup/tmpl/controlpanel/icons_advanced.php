@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -31,7 +31,7 @@ if (!AKEEBABACKUP_PRO)
 	<div class="card-body">
 		<div class="d-flex flex-row flex-wrap align-items-stretch">
 			<?php if($this->permissions['configure']): ?>
-				<a class="text-center btn btn-outline-primary border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-primary border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Schedule">
 					<div class="bg-primary text-white d-block text-center p-3 h2">
 						<span class="fa fa-calendar"></span>
@@ -43,7 +43,7 @@ if (!AKEEBABACKUP_PRO)
 			<?php endif ?>
 
 			<?php if($this->permissions['configure']): ?>
-				<a class="text-center btn btn-outline-warning text-dark border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-warning text-dark border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Discover">
 					<div class="bg-warning d-block text-center p-3 h2">
 						<span class="fa fa-file-import"></span>
@@ -55,7 +55,7 @@ if (!AKEEBABACKUP_PRO)
 			<?php endif ?>
 
 			<?php if($this->permissions['configure']): ?>
-				<a class="text-center btn btn-outline-warning text-dark border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-warning text-dark border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=S3import">
 					<div class="bg-warning d-block text-center p-3 h2">
 						<span class="fa fa-cloud-download-alt"></span>

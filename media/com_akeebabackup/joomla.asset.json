@@ -1,7 +1,7 @@
 {
 	"$schema": "https://developer.joomla.org/schemas/json-schema/web_assets.json",
 	"name": "com_akeebabackup",
-	"version": "9.0.8",
+	"version": "9.1.1",
 	"description": "Akeeba Backup",
 	"license": "GPL-3.0-or-later",
 	"assets": [
@@ -12,16 +12,6 @@
 			"uri": "com_akeebabackup/akeebaui.css"
 		},
 
-		{
-			"name": "com_akeebabackup.piecon",
-			"description": "PieCon — show progress pie in the browser's tab icon area",
-			"type": "script",
-			"uri": "com_akeebabackup/piecon.min.js",
-			"dependencies": [],
-			"attributes": {
-				"defer": true
-			}
-		},
 		{
 			"name": "com_akeebabackup.system",
 			"description": "Common JavaScript",
@@ -102,7 +92,6 @@
 			"dependencies": [
 				"core",
 				"com_akeebabackup.system",
-				"com_akeebabackup.piecon",
 				"bootstrap.modal"
 			],
 			"attributes": {

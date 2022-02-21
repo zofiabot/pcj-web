@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -21,7 +21,7 @@ use Joomla\CMS\Language\Text;
 	<div class="card-body">
 		<div class="d-flex flex-row flex-wrap align-items-stretch">
 			<?php if(AKEEBABACKUP_PRO): ?>
-				<a class="text-center btn btn-outline-success border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-success border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Multipledatabases">
 					<div class="bg-success text-white d-block text-center p-3 h2">
 						<span class="fa fa-database"></span>
@@ -31,7 +31,7 @@ use Joomla\CMS\Language\Text;
 					</span>
 				</a>
 
-				<a class="text-center btn btn-outline-success border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-success border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Includefolders">
 					<div class="bg-success text-white d-block text-center p-3 h2">
 						<span class="fa fa-folder-plus"></span>
@@ -42,7 +42,7 @@ use Joomla\CMS\Language\Text;
 				</a>
 			<?php endif ?>
 
-			<a class="text-center btn btn-outline-danger border-0" style="width: 10em"
+			<a class="text-center align-self-stretch btn btn-outline-danger border-0" style="width: 10em"
 			   href="index.php?option=com_akeebabackup&view=Databasefilters">
 				<div class="bg-danger text-white d-block text-center p-3 h2">
 					<span class="fa fa-table"></span>
@@ -52,7 +52,7 @@ use Joomla\CMS\Language\Text;
 				</span>
 			</a>
 
-			<a class="text-center btn btn-outline-danger border-0" style="width: 10em"
+			<a class="text-center align-self-stretch btn btn-outline-danger border-0" style="width: 10em"
 			   href="index.php?option=com_akeebabackup&view=Filefilters">
 				<div class="bg-danger text-white d-block text-center p-3 h2">
 					<span class="fa fa-folder-minus"></span>
@@ -63,7 +63,7 @@ use Joomla\CMS\Language\Text;
 			</a>
 
 			<?php if(AKEEBABACKUP_PRO): ?>
-				<a class="text-center btn btn-outline-danger border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-danger border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Regexdatabasefilters">
 					<div class="bg-danger text-white d-block text-center p-3 h2">
 						<span class="fa fa-clipboard"></span>
@@ -73,7 +73,7 @@ use Joomla\CMS\Language\Text;
 					</span>
 				</a>
 
-				<a class="text-center btn btn-outline-danger border-0" style="width: 10em"
+				<a class="text-center align-self-stretch btn btn-outline-danger border-0" style="width: 10em"
 				   href="index.php?option=com_akeebabackup&view=Regexfilefilters">
 					<div class="bg-danger text-white d-block text-center p-3 h2">
 						<span class="fa fa-folder"></span>

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
+<!--~
   ~ @package   akeebabackup
-  ~ @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+  ~ @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
   ~ @license   GNU General Public License version 3, or later
   -->
 
 <extension version="4.0.0" type="plugin" group="quickicon" method="upgrade">
 	<name>PLG_QUICKICON_AKEEBABACKUP</name>
-	<version>9.0.8</version>
-	<creationDate>2021-10-26</creationDate>
+	<version>9.1.1</version>
+	<creationDate>2022-02-16</creationDate>
 	<author>Nicholas K. Dionysopoulos</author>
 	<authorEmail>nicholas@dionysopoulos.me</authorEmail>
 	<authorUrl>https://www.akeeba.com</authorUrl>
@@ -18,10 +18,9 @@
 	<namespace path="src">Joomla\Plugin\Quickicon\AkeebaBackup</namespace>
 
 	<files>
-		<folder>services</folder>
+		<folder plugin="akeebabackup">services</folder>
 		<folder>src</folder>
 
-		<filename plugin="akeebabackup">akeebabackup.php</filename>
 		<filename>.htaccess</filename>
 		<filename>web.config</filename>
 	</files>

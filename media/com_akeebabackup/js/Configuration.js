@@ -1,6 +1,6 @@
-/*!
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 "use strict";
@@ -850,17 +850,18 @@ if (typeof akeebabackup.Configuration === "undefined")
 
                     try
                     {
+                        var ssl_key = "var[" + configKey + ".ftps]";
+                        var passive_key = "var[" + configKey + ".passive_mode]"
+
                         data = {
                             isCurl:                  (isCurl ? 1 : 0),
                             host:                    document.getElementById("var[" + configKey + ".host]").value,
                             port:                    document.getElementById("var[" + configKey + ".port]").value,
                             user:                    document.getElementById("var[" + configKey + ".user]").value,
                             pass:                    document.getElementById("var[" + configKey + ".pass]").value,
-                            initdir:                 document.getElementById(
-                                "var[" + configKey + ".initial_directory]").value,
-                            usessl:                  document.getElementById("var[" + configKey + ".ftps]").checked,
-                            passive:                 document.getElementById(
-                                "var[" + configKey + ".passive_mode]").checked,
+                            initdir:                 document.getElementById("var[" + configKey + ".initial_directory]").value,
+                            usessl:                  document.querySelector('input[name="' + ssl_key +'"]:checked').value,
+                            passive:                 document.querySelector('input[name="' + passive_key +'"]:checked').value,
                             passive_mode_workaround: 0
                         };
                     }
@@ -885,7 +886,7 @@ if (typeof akeebabackup.Configuration === "undefined")
                         try
                         {
                             data.passive_mode_workaround =
-                                document.getElementById("var[" + configKey + ".passive_mode_workaround]").checked;
+                                document.querySelector('input[name="var[' + configKey + '.passive_mode_workaround]"]:checked').value;
                         }
                         catch (e)
                         {

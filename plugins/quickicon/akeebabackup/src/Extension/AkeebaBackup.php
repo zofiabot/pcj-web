@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -107,7 +107,7 @@ class AkeebaBackup extends CMSPlugin implements SubscriberInterface
 		$context = $event->getContext();
 
 		$user = $this->app->getIdentity();
-		if ($context !== $this->params->get('context', 'update_quickicon') || !$user->authorise('core.manage', 'com_installer'))
+		if ($context !== 'update_quickicon' || !$user->authorise('core.manage', 'com_installer'))
 		{
 			return;
 		}

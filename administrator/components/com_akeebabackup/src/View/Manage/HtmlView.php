@@ -1,7 +1,7 @@
 <?php
-/*
+/**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -385,6 +385,26 @@ class HtmlView extends BaseHtmlView
 		}
 
 		return [$originDescription, $originIcon];
+	}
+
+	/**
+	 * Escapes backup comment to remove all tags, convert new-lines and finally convert HTML entities
+	 *
+	 * @param $comment
+	 *
+	 * @return string
+	 */
+	protected function escapeComment($comment)
+	{
+		if (!$comment)
+		{
+			return '';
+		}
+
+		$comment = strip_tags($comment);
+		$comment = nl2br($comment);
+
+		return $this->escape($comment);
 	}
 
 	/**

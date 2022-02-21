@@ -1,7 +1,7 @@
 <?php
 /**
  * @package   akeebabackup
- * @copyright Copyright (c)2006-2021 Nicholas K. Dionysopoulos / Akeeba Ltd
+ * @copyright Copyright (c)2006-2022 Nicholas K. Dionysopoulos / Akeeba Ltd
  * @license   GNU General Public License version 3, or later
  */
 
@@ -12,6 +12,16 @@ defined('_JEXEC') || die();
 
 use Exception;
 use Joomla\CMS\Factory;
+use Joomla\Database\DatabaseDriver;
+use Joomla\Database\DatabaseInterface;
+use Joomla\Database\Mysql\MysqlDriver;
+use Joomla\Database\Mysqli\MysqliDriver;
+use Joomla\Database\Pdo\PdoDriver;
+use Joomla\Database\Pgsql\PgsqlDriver;
+use Joomla\Database\Sqlazure\SqlazureDriver;
+use Joomla\Database\Sqlite\SqliteDriver;
+use Joomla\Database\Sqlsrv\SqlsrvDriver;
+use ReflectionObject;
 use RuntimeException;
 
 class Joomla
@@ -27,25 +37,23 @@ class Joomla
 	public function __construct($options = [])
 	{
 		// Get the database driver *AND* make sure it's connected.
+		/** @var DatabaseInterface|null $db */
 		$db = Factory::getContainer()->get('DatabaseDriver');
+
+		if (empty($db))
+		{
+			throw new RuntimeException("Joomla does not return a database driver.");
+		}
+
 		$db->connect();
 
 		$options['connection'] = $db->getConnection();
 
-		switch ($db->name)
+		$driver = $this->getDriverType($db);
+
+		if (empty($driver))
 		{
-			case 'mysql':
-			case 'pdomysql':
-				// Note that Joomla! 4's "mysql" is, actually, "pdomysql".
-				$driver = 'pdomysql';
-				break;
-
-			case 'mysqli':
-				$driver = 'mysqli';
-				break;
-
-			default:
-				throw new RuntimeException("Unsupported database driver {$db->name}");
+			throw new RuntimeException("Unsupported database driver {$db->getName()}");
 		}
 
 		$driver    = '\\Akeeba\\Engine\\Driver\\' . ucfirst($driver);
@@ -129,5 +137,164 @@ class Joomla
 
 		$this->dbo->$name = null;
 		user_error('Database driver not support property ' . $name);
+	}
+
+	/**
+	 * Get the Akeeba Engine database driver type for the Joomla database object.
+	 *
+	 * Weak typing of the argument is deliberate. The class hierarchy of the database driver classes may change even
+	 * within the same major version of Joomla, as happened in the past with Joomla 3. Having weak typing we can amend
+	 * this method to straddle the change, i.e. make it compatible with Joomla versions before and after the change. In
+	 * simple terms, it's future–proofing.
+	 *
+	 * @param   DatabaseInterface|DatabaseDriver  $db
+	 *
+	 * @return  string|null  The driver type; null if unsupported
+	 */
+	private function getDriverType($db): ?string
+	{
+		// Make sure we got an object
+		if (!is_object($db))
+		{
+			return null;
+		}
+
+		// Get the Joomla database driver name — assuming the object passed is a DatabaseInterface instance
+		if (method_exists($db, 'getName'))
+		{
+			$jDriverName = $db->getName();
+		}
+		else
+		{
+			// On Joomla 4 this is supposed to raise an E_USER_DEPRECATED notice
+			$jDriverName = $db->name ?? '';
+		}
+
+		// Quick shortcuts to known core Joomla database drivers
+		if (in_array($jDriverName, ['mysql', 'pdomysql']))
+		{
+			return 'pdomysql';
+		}
+		elseif ($jDriverName === 'mysqli')
+		{
+			return 'mysqli';
+		}
+		elseif (
+			(stristr($jDriverName, 'postgre') !== false)
+			|| (stristr($jDriverName, 'pgsql') !== false)
+			|| (stristr($jDriverName, 'oracle') !== false)
+			|| (stristr($jDriverName, 'sqlite') !== false)
+			|| (stristr($jDriverName, 'sqlsrv') !== false)
+			|| (stristr($jDriverName, 'sqlazure') !== false)
+			|| (stristr($jDriverName, 'mssql') !== false)
+		)
+		{
+			return null;
+		}
+
+		/**
+		 * We do not have a driver name known to the core. This is a custom database driver, implemented by a Joomla
+		 * extension. This is typically used in two use cases:
+		 * - Transparent content translation (JoomFish, Falang, jDiction, ...)
+		 * - Support for primary / secondary database servers (primary is read only, secondary is write only)
+		 * The custom database drier will be extending one of the core drivers. We will use defensive code to detect
+		 * that, making no assumption that the core driver class exists because these classes are an implementation
+		 * detail in Joomla which may change over time, even though they are explicitly included in its SemVer promise.
+		 * We have been around long enough to know better than believing Joomla won't break SemVer by accident...
+		 */
+		if (
+			(class_exists(MysqlDriver::class) && ($db instanceof MysqlDriver))
+			|| (class_exists(Pdomysql::class) && ($db instanceof Pdomysql))
+		)
+		{
+			return 'pdomysql';
+		}
+		elseif (class_exists(MysqliDriver::class) && ($db instanceof MysqliDriver))
+		{
+			return 'mysqli';
+		}
+		elseif (
+			(class_exists(PgsqlDriver::class) && ($db instanceof PgsqlDriver))
+			|| (class_exists(SqliteDriver::class) && ($db instanceof SqliteDriver))
+			|| (class_exists(SqlsrvDriver::class) && ($db instanceof SqlsrvDriver))
+			|| (class_exists(SqlazureDriver::class) && ($db instanceof SqlazureDriver))
+		)
+		{
+			return null;
+		}
+
+		// We still have no idea. We will need to use reflection. If it's unavailable we give up.
+		if (!class_exists(ReflectionObject::class))
+		{
+			return null;
+		}
+
+		$refDriver = new ReflectionObject($db);
+
+		// Is this a generic PDO driver instance?
+		if ((class_exists(PdoDriver::class) && ($db instanceof PdoDriver)) && $refDriver->hasProperty('options'))
+		{
+			$refOptions = $refDriver->getProperty('options');
+			$refOptions->setAccessible(true);
+			$options = $refOptions->getValue($db);
+			$options = is_array($options) ? $options : [];
+
+			$pdoDriver = $options['driver'] ?? 'odbc';
+
+			switch ($pdoDriver)
+			{
+				// PDO MySQL. We support this!
+				case 'mysql':
+					return 'pdomysql';
+
+				// ODBC: I need to inspect the DSN
+				case 'obdc':
+					$dsn = $options['dsn'] ?? '';
+
+					// No DSN? No joy.
+					if (empty($dsn))
+					{
+						return null;
+					}
+
+					// That's MySQL over ODBC over PDO. OK, rather strained but we can do that.
+					if (stripos($dsn, 'mysql:') === 0)
+					{
+						return 'pdomysql';
+					}
+
+					// Anything else: tough luck.
+					return null;
+
+				// Anything else: tough luck.
+				default:
+					return null;
+			}
+		}
+
+		// Let's get the class hierarchy and see if we have anything that looks like MySQL in its name.
+		$classNames = class_parents($db);
+		array_unshift($classNames, get_class($db));
+
+		$isMySQLi = array_reduce($classNames, function (bool $carry, string $className) {
+			return $carry || (stripos($className, 'mysqli') !== false);
+		}, false);
+
+		if ($isMySQLi)
+		{
+			return 'mysqli';
+		}
+
+		$isPdoMySQL = array_reduce($classNames, function (bool $carry, string $className) {
+			return $carry || (stripos($className, 'pdomysql') !== false);
+		}, false);
+
+		if ($isPdoMySQL)
+		{
+			return 'pdomysql';
+		}
+
+		// All possible checks failed. I have no idea what you're doing here, mate.
+		return null;
 	}
 }
