@@ -7404,6 +7404,9 @@ section.top2 {
   margin: -4rem auto;
   padding: 5em 1em 6em; }
 
+.list-group {
+  list-style: none; }
+
 .fancy-list {
   --size: 32px; }
   .fancy-list ul.nav {

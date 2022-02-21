@@ -13,7 +13,7 @@ defined('_JEXEC') or die;
 
 ?>
 	<?php if ($this->params->get('show_page_heading')) : ?>
-		<h1 class="card-title text-center col-6 col-lg-6 col-md-12 search<?php echo $this->pageclass_sfx; ?>">
+		<h1 class="card-title text-center mt-4 pt-4 col-6 col-lg-6 col-md-12 search<?php echo $this->pageclass_sfx; ?>">
 			<?php if ($this->escape($this->params->get('page_heading'))) : ?>
 				<?php echo $this->escape($this->params->get('page_heading')); ?>
 			<?php else : ?>
