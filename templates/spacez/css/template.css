@@ -7615,7 +7615,8 @@ div.article-body {
   column-count: 1;
   column-gap: 1.6%; }
   div.article-body h2, div.article-body .h2, div.article-body h3, div.article-body .h3 {
-    column-span: all; }
+    column-span: all;
+    margin-top: .75em; }
   div.article-body h4, div.article-body .h4 {
     break-before: always;
     break-after: avoid;

@@ -48,7 +48,7 @@ $columm  = ' col-lg-'. 12/$columms . ' col-md-6'. ' col-sm-12'
 		<div class="blog-items <?php echo $blogClass; ?>">
 		<?php foreach ($this->intro_items as $key => &$item) : ?>
 			<div class=" <?php echo $columm ?>">
-				<div class="blog-item card w-100 "
+				<div class="card h-100 "
 					itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
 						<?php
 						$this->item = & $item;
