@@ -36,7 +36,7 @@ $columms = (int) $this->params->get('num_columns');
 $columm  = ' col-lg-'. 12/$columms . ' col-md-6'. ' col-sm-12' 
 
 ?>
-<div class="com-content-category-blog blog" itemscope itemtype="https://schema.org/Blog">
+<div class="blog" itemscope itemtype="https://schema.org/Blog">
 	<?php if ($this->params->get('show_page_heading')) : ?>
 		<div class="page-header pt-2">
 			<h1> <?php echo $this->escape($this->params->get('page_heading')); ?> </h1>
@@ -130,9 +130,9 @@ $columm  = ' col-lg-'. 12/$columms . ' col-md-6'. ' col-sm-12'
 			<?php echo $this->loadTemplate('children'); ?> </div>
 	<?php endif; ?>
 	<?php if (($this->params->def('show_pagination', 1) == 1 || ($this->params->get('show_pagination') == 2)) && ($this->pagination->pagesTotal > 1)) : ?>
-		<div class="com-content-category-blog__navigation w-100">
+		<div class="w-100">
 			<?php if ($this->params->def('show_pagination_results', 1)) : ?>
-				<p class="com-content-category-blog__counter counter float-end pt-3 pe-2">
+				<p class="counter float-end pt-3 pe-2">
 					<?php echo $this->pagination->getPagesCounter(); ?>
 				</p>
 			<?php endif; ?>
