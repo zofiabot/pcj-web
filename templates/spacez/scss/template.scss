@@ -165,7 +165,7 @@ ul.dropdown-menu.show {
 		border-right-width: 1rem;
 		width: 2rem;
 		opacity:1;
-		border-bottom-color: $primary;
+		border-bottom-color: lighten($dark,10%);
 	}
 
 	.item-101 a {text-transform: none}
@@ -178,12 +178,12 @@ ul.dropdown-menu.show {
 	.item-228 a {display: none;} // hide start item
 	
 	ul ul {
-		background-color: $primary;
+		background-color: lighten($dark,10%);
 		border:0;
 		box-shadow: 0 .5rem .5rem #00000088; 
-		a.dropdown-item {color:$light; background-color: $primary; font-weight: 900;}
+		a.dropdown-item {color:$light; background-color: transparent; font-weight: 900;}
 		a.dropdown-item:hover, a.dropdown-item:focus, a.dropdown-item:active, a:focus-within, a:target {
-			color: $primary;
+			color: $dark;
 			background-color: $light;  
 			
 			border-radius: .05rem; box-shadow: 0 0 .2rem #00000088;
