@@ -7686,10 +7686,10 @@ footer section.darker::after {
     color: #a7adc2; }
 
 header.dark {
-  background-color: #1d2b57;
-  background-image: linear-gradient(to bottom, #090d1a, #152040, transparent); }
+  background-color: #223366;
+  background-image: linear-gradient(to bottom, #0f162d, #19264b, transparent, transparent); }
   header.dark *, header.dark .form-control::placeholder {
-    color: #a7adc2; }
+    color: #b9c5e8; }
 
 .darker {
   background-color: #141f3d;

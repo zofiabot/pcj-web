@@ -569,9 +569,9 @@ footer section.darker::after {
 	*, .form-control::placeholder {color: tint-color($dark, 60%);}
 }
 header.dark {
-	background-color: shade-color($dark, 15%);
-	background-image: linear-gradient(to bottom, darken($dark, 20%),darken($dark, 10%), transparent);
-	*, .form-control::placeholder {color: tint-color($dark, 60%);}
+	background-color: $dark;
+	background-image: linear-gradient(to bottom, darken($dark, 15%),darken($dark, 7%), transparent, transparent);
+	*, .form-control::placeholder {color: lighten($dark, 55%);}
 }
 
 // footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(150,0,100,0.1));}
