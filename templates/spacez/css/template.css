@@ -7680,13 +7680,13 @@ footer section.darker::after {
 
 .dark {
   background-color: #212437;
-  background-image: linear-gradient(to bottom, rgba(33, 0, 66, 0.25), transparent, transparent); }
+  background-image: linear-gradient(to bottom, #22336633, transparent, transparent); }
   .dark *, .dark .form-control::placeholder {
     color: #a9aab3; }
 
 header.dark {
   background-color: #212437;
-  background-image: linear-gradient(to bottom, rgba(100, 0, 75, 0.3), rgba(75, 0, 75, 0.3), transparent); }
+  background-image: linear-gradient(to bottom, #22335533, #22336633, transparent); }
   header.dark *, header.dark .form-control::placeholder {
     color: #a9aab3; }
 
