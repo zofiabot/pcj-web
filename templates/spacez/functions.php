@@ -27,7 +27,7 @@ function format_advantages( $positionName , $num = 0 ) {
 	
 	for ( $i=0; $i < $DOM->getElementsByTagName('h4')->length; $i++ ){
 	
-		$output .=	'<div class="advantage col ' . strtolower($Headers->item($i)->textContent) . 
+		$output .=	'<div class="pt-4 advantage col ' . strtolower($Headers->item($i)->textContent) . 
 					'"><div>
 						<h5>' . ($Headers->item($i)->textContent) . '</h5>' .
 						svg( [$icons[$i], [ 128 , 128], 'size' => 64 ] ) .
@@ -40,7 +40,7 @@ function format_advantages( $positionName , $num = 0 ) {
 
 	foreach ($Buttons as $Button){
 	
-		$output .= '<div class="align-self-center adv-btn"><a href="' . trim($Button->getAttribute('href')) . '" class="btn btn-primary btn-lg mx-auto my-4">' .
+		$output .= '<div class="align-self-center adv-btn"><a href="' . trim($Button->getAttribute('href')) . '" class="btn btn-dark btn-lg mx-auto my-4">' .
 							trim($Button->textContent) . '</a></div>' . '</div>';
 	
 	}

@@ -252,7 +252,7 @@ svg|a:hover, svg|a:active {
 
 	transform: skew(0deg, -2deg); margin-bottom: 2rem; margin-top: -2rem;
 
-	p, h5, svg, .btn {transform: skew( 0deg,2deg);}
+	.container{transform: skew( 0deg,2deg);}
 }
 
 
@@ -260,12 +260,9 @@ svg|a:hover, svg|a:active {
 .advantage {
 
 	div {
-		// padding: .5rem .2rem;
+
 		height: 10rem;
 		transform: scale(.9);
-		// display: flex;
-		// align-items: center;
-		// flex-wrap: wrap;
 		transition: all 0.4s ease-in-out, box-shadow .5s ease-out;
 
 		h5 { width: 100%; color: $dark;}
@@ -299,7 +296,7 @@ div.advantage:hover div {
 div.jwhy {font-size: 121%;}
 
 section.top2 {
-	background: tint-color($dark, 70%);
+	background: lighten($dark, 62%); // lighten rather than tint to not gray it too much
     margin: -4rem auto;
     padding: 5em 1em 6em;
 	color: shade-color($dark,30%)
@@ -357,7 +354,7 @@ div[class*='mod-'] {
 .top4 {
 	transform: skew(0deg, 1deg); margin-bottom: .5rem; background-color: $gray-200;
 	
-	p, li { transform: skew( 0deg,-1deg) rotate(1deg); }
+	p, li { transform: skew( 0deg,-1deg); }
 } 
 
 .social-links {
@@ -573,7 +570,7 @@ footer section.darker::after {
 }
 header.dark {
 	background-color: shade-color($dark, 15%);
-	background-image: linear-gradient(to bottom, shade-color($dark, 40%), transparent, transparent);
+	background-image: linear-gradient(to bottom, darken($dark, 20%),darken($dark, 10%), transparent);
 	*, .form-control::placeholder {color: tint-color($dark, 60%);}
 }
 
