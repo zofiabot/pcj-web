@@ -299,9 +299,10 @@ div.advantage:hover div {
 div.jwhy {font-size: 121%;}
 
 section.top2 {
-	background: tint-color($indigo, 80%);
+	background: tint-color($dark, 70%);
     margin: -4rem auto;
     padding: 5em 1em 6em;
+	color: shade-color($dark,30%)
 }
 
 .list-group {list-style: none;}
@@ -337,7 +338,7 @@ section.top2 {
 		line-height: var(--size);
 		width: var(--size);
 		height: var(--size);
-		background: $purple-400;
+		background: $dark;
 		border-radius: 50%;
 		text-align: center;
 		vertical-align: middle;
@@ -419,7 +420,7 @@ footer ul.list-inline {flex-direction: row;
 
 .sites {
 	background-color: shade-color($dark, 5%);
-	background-image: linear-gradient(to bottom, transparent, #11226633, #11226655); //???
+	background-image: linear-gradient(to bottom, transparent, transparent, tint-color($dark, 2%));
 	border: 1px solid transparent;
 	
 	div.row {transform: skew( 0deg, 1.5deg);}
@@ -572,7 +573,7 @@ footer section.darker::after {
 }
 header.dark {
 	background-color: shade-color($dark, 15%);
-	background-image: linear-gradient(to bottom, #22335533, #22336633, transparent);
+	background-image: linear-gradient(to bottom, shade-color($dark, 40%), transparent, transparent);
 	*, .form-control::placeholder {color: tint-color($dark, 60%);}
 }
 

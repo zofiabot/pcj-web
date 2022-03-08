@@ -9,7 +9,6 @@
 * Copyright 2021 Michał Sobkowiak & Zofia michal@workita.com
 * Licensed for Polskie Centrum Joomla! (Polish joomla Centre) for single site use.
 */
-
 :root {
   --bs-blue: #223fcc;
   --bs-indigo: #2200aa;
@@ -7401,9 +7400,10 @@ div.jwhy {
   font-size: 121%; }
 
 section.top2 {
-  background: #d3ccee;
+  background: #bebfc6;
   margin: -4rem auto;
-  padding: 5em 1em 6em; }
+  padding: 5em 1em 6em;
+  color: #1b1d2e; }
 
 .list-group {
   list-style: none; }
@@ -7433,7 +7433,7 @@ section.top2 {
     line-height: var(--size);
     width: var(--size);
     height: var(--size);
-    background: #525567;
+    background: #272a41;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
@@ -7509,7 +7509,7 @@ footer ul.list-inline {
 
 .sites {
   background-color: #25283e;
-  background-image: linear-gradient(to bottom, transparent, #11226633, #11226655);
+  background-image: linear-gradient(to bottom, transparent, transparent, #2b2e45);
   border: 1px solid transparent; }
   .sites div.row {
     transform: skew(0deg, 1.5deg); }
@@ -7687,7 +7687,7 @@ footer section.darker::after {
 
 header.dark {
   background-color: #212437;
-  background-image: linear-gradient(to bottom, #22335533, #22336633, transparent); }
+  background-image: linear-gradient(to bottom, #171927, transparent, transparent); }
   header.dark *, header.dark .form-control::placeholder {
     color: #a9aab3; }
 
