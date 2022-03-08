@@ -40,7 +40,7 @@ function format_advantages( $positionName , $num = 0 ) {
 
 	foreach ($Buttons as $Button){
 	
-		$output .= '<div class="align-self-center adv-btn"><a href="' . trim($Button->getAttribute('href')) . '" class="btn btn-dark btn-lg mx-auto my-4">' .
+		$output .= '<div class="align-self-center adv-btn"><a href="' . trim($Button->getAttribute('href')) . '" class="btn btn-primary btn-lg mx-auto my-4">' .
 							trim($Button->textContent) . '</a></div>' . '</div>';
 	
 	}
