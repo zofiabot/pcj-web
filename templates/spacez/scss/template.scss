@@ -172,7 +172,7 @@ ul.dropdown-menu.show {
 		border-right-width: 1rem;
 		width: 2rem;
 		opacity:1;
-		border-bottom-color: lighten($dark,10%);
+		border-bottom-color: lighten($dark,1%);
 	}
 
 	.item-101 a {text-transform: none}
@@ -185,7 +185,7 @@ ul.dropdown-menu.show {
 	.item-228 a {display: none;} // hide start item
 	
 	ul ul {
-		background-color: lighten($dark,10%);
+		background-color: lighten($dark,1%);
 		border:0;
 		box-shadow: 0 .5rem .5rem #00000088; 
 		a.dropdown-item {color:$light; background-color: transparent; font-weight: 900;}
@@ -335,7 +335,7 @@ section.top2 {
 		line-height: var(--size);
 		width: var(--size);
 		height: var(--size);
-		background: $dark;
+		background: $primary;
 		border-radius: 50%;
 		text-align: center;
 		vertical-align: middle;
@@ -417,7 +417,7 @@ footer ul.list-inline {flex-direction: row;
 
 .sites {
 	background-color: shade-color($dark, 5%);
-	background-image: linear-gradient(to bottom, transparent, transparent, tint-color($dark, 2%));
+	background-image: linear-gradient(to bottom, transparent, transparent, lighten($dark, 5%));
 	border: 1px solid transparent;
 	
 	div.row {transform: skew( 0deg, 1.5deg);}
@@ -628,7 +628,6 @@ hr#system-readmore {display:none}
 .image_right { padding: .25rem 0 .25rem .25rem; float: right}
 
 // Debug & Tools
-.debug	{ position: fixed; margin-top: -2.5rem; padding:  .25rem .5rem; background: var(--bs-dark);}
-.debug	{ position: fixed; margin-top: -2.5rem; padding:  .25rem .5rem; background: var(--bs-dark);}
+.debug	{ position: fixed; margin-top: -2.5rem; padding:  .25rem .5rem; background: transparent;}
 
 //end

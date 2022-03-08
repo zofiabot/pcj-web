@@ -7275,7 +7275,7 @@ ul.dropdown-menu.show {
   border-right-width: 1rem;
   width: 2rem;
   opacity: 1;
-  border-bottom-color: #2f468c; }
+  border-bottom-color: #23356a; }
 
 #nav-1 .item-101 a {
   text-transform: none; }
@@ -7291,7 +7291,7 @@ ul.dropdown-menu.show {
   display: none; }
 
 #nav-1 ul ul {
-  background-color: #2f468c;
+  background-color: #23356a;
   border: 0;
   box-shadow: 0 .5rem .5rem #00000088; }
   #nav-1 ul ul a.dropdown-item {
@@ -7433,7 +7433,7 @@ section.top2 {
     line-height: var(--size);
     width: var(--size);
     height: var(--size);
-    background: #223366;
+    background: #223388;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
@@ -7509,7 +7509,7 @@ footer ul.list-inline {
 
 .sites {
   background-color: #203061;
-  background-image: linear-gradient(to bottom, transparent, transparent, #263769);
+  background-image: linear-gradient(to bottom, transparent, transparent, #283d79);
   border: 1px solid transparent; }
   .sites div.row {
     transform: skew(0deg, 1.5deg); }
@@ -7793,10 +7793,4 @@ hr#system-readmore {
   position: fixed;
   margin-top: -2.5rem;
   padding: .25rem .5rem;
-  background: var(--bs-dark); }
-
-.debug {
-  position: fixed;
-  margin-top: -2.5rem;
-  padding: .25rem .5rem;
-  background: var(--bs-dark); }
+  background: transparent; }
