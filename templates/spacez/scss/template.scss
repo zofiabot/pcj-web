@@ -419,7 +419,7 @@ footer ul.list-inline {flex-direction: row;
 
 .sites {
 	background-color: shade-color($dark, 5%);
-	background-image: linear-gradient(to bottom, transparent, #11226633, #11226655);
+	background-image: linear-gradient(to bottom, transparent, #11226633, #11226655); //???
 	border: 1px solid transparent;
 	
 	div.row {transform: skew( 0deg, 1.5deg);}
