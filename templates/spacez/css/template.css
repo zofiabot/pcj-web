@@ -7508,7 +7508,7 @@ footer ul.list-inline {
 
 .sites {
   background-color: #25283e;
-  background-image: linear-gradient(to bottom, transparent, rgba(75, 0, 125, 0.3), rgba(66, 0, 100, 0.4));
+  background-image: linear-gradient(to bottom, transparent, #11226633, #11226655);
   border: 1px solid transparent; }
   .sites div.row {
     transform: skew(0deg, 1.5deg); }
