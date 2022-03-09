@@ -415,38 +415,6 @@ footer ul.list-inline {flex-direction: row;
 
 }
 
-.sites {
-	background-color: shade-color($dark, 5%);
-	background-image: linear-gradient(to bottom, transparent, transparent, lighten($dark, 5%));
-	border: 1px solid transparent;
-	
-	div.row {transform: skew( 0deg, 1.5deg);}
-	div.col {transform: skew( 0deg, -1.5deg);text-align: center;}
-	.sites-link {
-		color: $gray-700;
-		padding: .5rem 1rem;
-		display: inline-block;
-		background: url(../images/sites.svg) top center no-repeat;
-		width: 210px;
-		margin: .5rem auto;
-		svg {
-			
-			width: 100%;
-		
-			text {font-family:var(--bs-font-sans-serif);font-size:64px;font-weight:700}
-		}
-
-		.s-forum {color: #276ca9;}
-
-		.s-fundacja {color: #227486;
-			path {fill: #b8aaaa !important;}
-			path.a {fill: #81b0bb !important;}
-		}
-
-		.s-demo {color: #2a3b57;}
-	}
-	h3 {color: #fffb !important;text-align: right;padding:1rem 0 .5rem;}
-}
 .logos svg text {font-family:var(--bs-font-sans-serif);font-size:64px;font-weight:700}
 
 #tt { max-width: 100%; height: auto; min-width: auto; max-height: 180px; opacity: .85;}
@@ -496,6 +464,12 @@ article figure.item-image img{
 	width:100%;
 	height:auto;
 }
+article figure img{
+	display:inline-block;
+	max-width:100%;
+	height:auto;
+}
+figcaption { line-height: 1.2em;color: $gray-700;font-size: .9em;}
 
 article div.page-header {
 	background: rgba(248, 249, 250, 0.5);
@@ -545,6 +519,47 @@ section.sites::before {
 	border-bottom: 1rem solid shade-color($dark, 5%); 
 	background-color: $light ;
 }
+.sites {
+	background-color: shade-color($dark, 5%);
+	background-image: linear-gradient(to bottom, transparent, transparent, lighten($dark, 5%));
+	border: 1px solid transparent;
+	
+	div.row {transform: skew( 0deg, 1.5deg);}
+	div.col {transform: skew( 0deg, -1.5deg);text-align: center;}
+	.sites-link {
+		color: $gray-700;
+		padding: .5rem 1rem;
+		display: inline-block;
+		background: url(../images/sites.svg) top center no-repeat;
+		width: 210px;
+		margin: .5rem auto;
+		svg {
+			
+			width: 100%;
+		
+			text {font-family:var(--bs-font-sans-serif);font-size:64px;font-weight:700}
+		}
+
+		.s-forum {color: #276ca9;}
+
+		.s-fundacja {color: #227486;
+			path {fill: #b8aaaa !important;}
+			path.a {fill: #81b0bb !important;}
+		}
+
+		.s-demo {color: #2a3b57;}
+	}
+	h3 {color: #fffb !important;text-align: right;padding:1rem 0 .5rem;}
+}
+footer section.dark{
+	transform: skew(0deg, 2deg); 
+	.container > div{transform: skew( 0deg, -2deg);}
+}
+
+.dark {
+	background-color: shade-color($dark, 15%);
+	*, .form-control::placeholder {color: tint-color($dark, 60%);}
+}
 footer section.dark::after {
 	transform: skew( 0deg, -1deg); 
 	margin-bottom: -1.5rem; content:''; 
@@ -555,19 +570,6 @@ footer section.dark::after {
 	background-color: shade-color($dark, 40%) ;
 }
 
-footer section.darker::after {
-	margin-bottom: -1.5rem; content:''; 
-	display: block; border: 1px solid transparent; 
-	border-width: 0 60vw 0 40vw ;
-	border-bottom: 2rem solid shade-color($dark, 50%); 
-	background-color: shade-color($dark, 30%);
-}
-
-.dark {
-	background-color: shade-color($dark, 15%);
-	background-image: linear-gradient(to bottom, #22336633, transparent, transparent);
-	*, .form-control::placeholder {color: tint-color($dark, 60%);}
-}
 header.dark {
 	background-color: $dark;
 	background-image: linear-gradient(to bottom, darken($dark, 15%),darken($dark, 7%), transparent, transparent);
@@ -578,9 +580,16 @@ header.dark {
 
 .darker {
 	background-color: shade-color($dark, 40%); color: tint-color($dark, 90%);
-	background-image: linear-gradient(to bottom, transparent, transparent,  shade-color($dark, 35%), shade-color($dark, 30%));
 	* {color: tint-color($dark, 66%);}
 }
+footer section.darker::after {
+	margin-bottom: -1.5rem; content:''; 
+	display: block; border: 1px solid transparent; 
+	border-width: 0 60vw 0 40vw ;
+	border-bottom: 2rem solid shade-color($dark, 50%); 
+	background-color: shade-color($dark, 40%);
+}
+
 
 .darkest {
 	background-color:  shade-color($dark, 50%); color: tint-color($dark, 70%);

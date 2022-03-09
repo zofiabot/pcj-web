@@ -7507,43 +7507,6 @@ footer ul.list-inline {
     background-color: #1b5f00;
     color: white; }
 
-.sites {
-  background-color: #203061;
-  background-image: linear-gradient(to bottom, transparent, transparent, #283d79);
-  border: 1px solid transparent; }
-  .sites div.row {
-    transform: skew(0deg, 1.5deg); }
-  .sites div.col {
-    transform: skew(0deg, -1.5deg);
-    text-align: center; }
-  .sites .sites-link {
-    color: #495057;
-    padding: .5rem 1rem;
-    display: inline-block;
-    background: url(../images/sites.svg) top center no-repeat;
-    width: 210px;
-    margin: .5rem auto; }
-    .sites .sites-link svg {
-      width: 100%; }
-      .sites .sites-link svg text {
-        font-family: var(--bs-font-sans-serif);
-        font-size: 64px;
-        font-weight: 700; }
-    .sites .sites-link .s-forum {
-      color: #276ca9; }
-    .sites .sites-link .s-fundacja {
-      color: #227486; }
-      .sites .sites-link .s-fundacja path {
-        fill: #b8aaaa !important; }
-      .sites .sites-link .s-fundacja path.a {
-        fill: #81b0bb !important; }
-    .sites .sites-link .s-demo {
-      color: #2a3b57; }
-  .sites h3, .sites .h3 {
-    color: #fffb !important;
-    text-align: right;
-    padding: 1rem 0 .5rem; }
-
 .logos svg text {
   font-family: var(--bs-font-sans-serif);
   font-size: 64px;
@@ -7608,6 +7571,16 @@ article figure.item-image img {
   width: 100%;
   height: auto; }
 
+article figure img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto; }
+
+figcaption {
+  line-height: 1.2em;
+  color: #495057;
+  font-size: .9em; }
+
 article div.page-header {
   background: rgba(248, 249, 250, 0.5);
   border-bottom: 1px solid rgba(173, 181, 189, 0.3);
@@ -7660,6 +7633,53 @@ section.sites::before {
   border-bottom: 1rem solid #203061;
   background-color: #f8f9fa; }
 
+.sites {
+  background-color: #203061;
+  background-image: linear-gradient(to bottom, transparent, transparent, #283d79);
+  border: 1px solid transparent; }
+  .sites div.row {
+    transform: skew(0deg, 1.5deg); }
+  .sites div.col {
+    transform: skew(0deg, -1.5deg);
+    text-align: center; }
+  .sites .sites-link {
+    color: #495057;
+    padding: .5rem 1rem;
+    display: inline-block;
+    background: url(../images/sites.svg) top center no-repeat;
+    width: 210px;
+    margin: .5rem auto; }
+    .sites .sites-link svg {
+      width: 100%; }
+      .sites .sites-link svg text {
+        font-family: var(--bs-font-sans-serif);
+        font-size: 64px;
+        font-weight: 700; }
+    .sites .sites-link .s-forum {
+      color: #276ca9; }
+    .sites .sites-link .s-fundacja {
+      color: #227486; }
+      .sites .sites-link .s-fundacja path {
+        fill: #b8aaaa !important; }
+      .sites .sites-link .s-fundacja path.a {
+        fill: #81b0bb !important; }
+    .sites .sites-link .s-demo {
+      color: #2a3b57; }
+  .sites h3, .sites .h3 {
+    color: #fffb !important;
+    text-align: right;
+    padding: 1rem 0 .5rem; }
+
+footer section.dark {
+  transform: skew(0deg, 2deg); }
+  footer section.dark .container > div {
+    transform: skew(0deg, -2deg); }
+
+.dark {
+  background-color: #1d2b57; }
+  .dark *, .dark .form-control::placeholder {
+    color: #a7adc2; }
+
 footer section.dark::after {
   transform: skew(0deg, -1deg);
   margin-bottom: -1.5rem;
@@ -7670,21 +7690,6 @@ footer section.dark::after {
   border-top: 3rem solid #1d2b57;
   background-color: #141f3d; }
 
-footer section.darker::after {
-  margin-bottom: -1.5rem;
-  content: '';
-  display: block;
-  border: 1px solid transparent;
-  border-width: 0 60vw 0 40vw;
-  border-bottom: 2rem solid #111a33;
-  background-color: #182447; }
-
-.dark {
-  background-color: #1d2b57;
-  background-image: linear-gradient(to bottom, #22336633, transparent, transparent); }
-  .dark *, .dark .form-control::placeholder {
-    color: #a7adc2; }
-
 header.dark {
   background-color: #223366;
   background-image: linear-gradient(to bottom, #0f162d, #19264b, transparent, transparent); }
@@ -7693,10 +7698,18 @@ header.dark {
 
 .darker {
   background-color: #141f3d;
-  color: #e9ebf0;
-  background-image: linear-gradient(to bottom, transparent, transparent, #162142, #182447); }
+  color: #e9ebf0; }
   .darker * {
     color: #b4bacb; }
+
+footer section.darker::after {
+  margin-bottom: -1.5rem;
+  content: '';
+  display: block;
+  border: 1px solid transparent;
+  border-width: 0 60vw 0 40vw;
+  border-bottom: 2rem solid #111a33;
+  background-color: #141f3d; }
 
 .darkest {
   background-color: #111a33;
