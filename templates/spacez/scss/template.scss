@@ -265,11 +265,11 @@ svg|a:hover, svg|a:active {
 		transform: scale(.9);
 		transition: all 0.4s ease-in-out, box-shadow .5s ease-out;
 
-		h5 { width: 100%; color: $dark;}
+		h5 { width: 100%;font-weight: 600; }
 		p, svg { width:85%; margin: .5rem auto 0; }
 		svg{ 
 			margin: 0 auto; 
-			color: tint-color($dark, 40%);
+			color:lighten($dark, 15%);
 			path {fill: currentColor}
 		}
 	}
@@ -464,12 +464,6 @@ article figure.item-image img{
 	width:100%;
 	height:auto;
 }
-article figure img{
-	display:inline-block;
-	max-width:100%;
-	height:auto;
-}
-figcaption { line-height: 1.2em;color: $gray-700;font-size: .9em;}
 
 article div.page-header {
 	background: rgba(248, 249, 250, 0.5);
@@ -487,6 +481,14 @@ div.article-body {
 
 	h2, h3 {column-span: all; margin-top: .75em;}
 	h4 {break-before: always; break-after: avoid; break-inside: avoid;} // not working yet :( 
+	figure {display: table;}
+	figure img{
+		
+		min-width:auto;
+		max-width:100%;
+		height:auto;
+	}
+	figcaption { line-height: 1.2em; color: $gray-700; font-size:.9em;width: auto ;width: 97%;}
 }
 
 @include media-breakpoint-up(lg) {
@@ -516,12 +518,11 @@ section.sites::before {
 	display: block; 
 	border: 0px solid transparent; 
 	border-width: 0 20vw 0 80vw ;
-	border-bottom: 1rem solid shade-color($dark, 5%); 
+	border-bottom: 1rem solid lighten($dark, 2%);
 	background-color: $light ;
 }
 .sites {
-	background-color: shade-color($dark, 5%);
-	background-image: linear-gradient(to bottom, transparent, transparent, lighten($dark, 5%));
+	background-color: lighten($dark, 2%);
 	border: 1px solid transparent;
 	
 	div.row {transform: skew( 0deg, 1.5deg);}
@@ -558,7 +559,7 @@ footer section.dark{
 
 .dark {
 	background-color: shade-color($dark, 15%);
-	*, .form-control::placeholder {color: tint-color($dark, 60%);}
+	*, .form-control::placeholder,a {color: tint-color($dark, 60%);}
 }
 footer section.dark::after {
 	transform: skew( 0deg, -1deg); 
@@ -571,16 +572,16 @@ footer section.dark::after {
 }
 
 header.dark {
-	background-color: $dark;
-	background-image: linear-gradient(to bottom, darken($dark, 15%),darken($dark, 7%), transparent, transparent);
+	background-color: darken($dark,10%);
+	background-image: linear-gradient(to bottom, darken($dark, 16%),darken($dark, 14%), transparent, transparent);
 	*, .form-control::placeholder {color: lighten($dark, 55%);}
 }
 
 // footer {background-image: linear-gradient(to bottom, rgba(150,0,100,0.1), rgba(150,0,100,0.1));}
 
 .darker {
-	background-color: shade-color($dark, 40%); color: tint-color($dark, 90%);
-	* {color: tint-color($dark, 66%);}
+	background-color: shade-color($dark, 40%); color: tint-color($dark, 60%);
+	* {color: tint-color($dark, 60%);}
 }
 footer section.darker::after {
 	margin-bottom: -1.5rem; content:''; 
@@ -590,9 +591,8 @@ footer section.darker::after {
 	background-color: shade-color($dark, 40%);
 }
 
-
 .darkest {
-	background-color:  shade-color($dark, 50%); color: tint-color($dark, 70%);
+	background-color:  shade-color($dark, 50%);
 	* {color: tint-color($dark, 50%);}
 }
 
