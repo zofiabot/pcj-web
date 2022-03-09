@@ -441,7 +441,7 @@ article figure.item-image {
 	height: auto;
 	margin: 0;
 	z-index: -1;
-	margin-top: -6rem;
+	margin-top: -5rem;
 }
 
 article figure.item-image::after {
@@ -467,7 +467,7 @@ article figure.item-image img{
 
 article div.page-header {
 	background: rgba(248, 249, 250, 0.5);
-		border-bottom: 1px solid rgba($gray-500, 0.3);
+		border-bottom: 1px solid rgba($gray-500, 0.1);
 	padding: 0 .5rem;
 	
 
@@ -488,7 +488,7 @@ div.article-body {
 		max-width:100%;
 		height:auto;
 	}
-	figcaption { line-height: 1.2em; color: $gray-700; font-size:.9em;width: auto ;width: 97%;}
+	figcaption { line-height: 1.2em; color: $gray-700; font-size:.9em;width: 97%;}
 }
 
 @include media-breakpoint-up(lg) {
@@ -499,7 +499,7 @@ div.article-body {
 }
 
 figure + div.article-body {
-	border-top: 1px solid rgba($gray-500, 0.3);
+	border-top: 1px solid rgba($gray-500, 0.1);
 	margin-top: -6rem;
 	background: rgba(248, 249, 250, 0.5);
 
@@ -573,7 +573,7 @@ footer section.dark::after {
 
 header.dark {
 	background-color: darken($dark,10%);
-	background-image: linear-gradient(to bottom, darken($dark, 16%),darken($dark, 14%), transparent, transparent);
+	background-image: linear-gradient(to bottom, darken($dark, 16%),transparent,darken($dark, 6%));
 	*, .form-control::placeholder {color: lighten($dark, 55%);}
 }
 
