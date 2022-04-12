@@ -7156,7 +7156,6 @@ textarea.form-control-lg {
 /****************************************/
 a {
   transition: all 0.2s ease-in-out;
-  transform: scale(0.95);
   display: inline-block; }
 
 a:hover, a:focus {

@@ -69,7 +69,7 @@
 /* Non-free, bad and ugly hacking below */
 /****************************************/
 
-a {transition: all 0.2s ease-in-out; transform: scale(0.95); display: inline-block}
+a {transition: all 0.2s ease-in-out; display: inline-block}
 a:hover, a:focus {transform: scale(1.05);}
 body {overflow-x: hidden}
 
